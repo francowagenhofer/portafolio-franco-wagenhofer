@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="stylesheet" href="style.css">
+
+    <!-- Poppins -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <!-- Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- Roboto -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <script type="module" src="./main.js" defer></script>
+
+    <title>Portafolio | Franco Wagenhöfer</title>
+</head>
+
+<body>
+
+    <canvas id="gradient"></canvas>
+
+    <nav class="navbar">
+        <div class="container">
+            <a href="#home" class="logo">FrancoW</a>
+
+            <div class="navbar-right">
+                <ul class="nav-links">
+                    <li><a href="#about">Sobre mí</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#projects">Proyectos</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+                <!-- <button id="theme-toggle-btn">🌙</button> -->
+                <div class="wrapper">
+                    <input type="checkbox" id="theme-toggle" />
+                    <label for="theme-toggle" class="toggle">
+                        <span class="toggle-ball"></span>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+
+    <header id="home" class="hero-section">
+        <h1 class="blend-title">Franco Wagenhöfer</h1>
+        <p class="subtitle">Desarrollador web creativo & apasionado por el diseño</p>
+
+        <div class="hero-buttons">
+            <a href="CV/cv-franco-wagenhofer.pdf" download class="btn">Descargar CV</a>
+            <a href="https://linkedin.com/in/franco-wagenhöfer" target="_blank" rel="noopener noreferrer"
+                class="btn btn-secondary">LinkedIn</a>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section id="about" class="section">
+            <h2>Sobre mí</h2>
+            <p class="about-text">Soy estudiante de programación con fuerte interés en el desarrollo de software.
+                Vengo aprendiendo tanto por mi cuenta como en una tecnicatura, complementando con cursos formales.
+                Tuve la oportunidad de desarrollar proyectos en escritorio y web con .NET y bases de datos.
+                Actualmente sigo formándome con entusiasmo, con ganas de crecer, sumar experiencia y aportar valor en
+                cada nuevo desafío.
+            </p>
+        </section>
+
+        <section id="skills" class="section">
+            <h2>Skills & Tecnologías</h2>
+            <div class="skills-grid">
+                <div class="skill">JavaScript</div>
+                <div class="skill">Angular</div>
+                <div class="skill">Node.js</div>
+                <div class="skill">CSS / SASS</div>
+                <div class="skill">.NET</div>
+                <div class="skill">C#</div>
+                <div class="skill">SQL</div>
+            </div>
+        </section>
+
+        <section id="projects" class="section">
+            <h2>Proyectos destacados</h2>
+            <div class="projects-grid">
+
+                <article class="project-card">
+                    <img src="proyecto1.png" alt="Proyecto 1" />
+                    <h3>Catalogo Web</h3>
+                    <p>Aplicación web desarrollada en C# con .NET para administrar un catálogo de artículos con roles de
+                        administrador y usuario.</p>
+                    <!-- Tecnologías usadas -->
+                    <div class="tech-icons">
+                        <img src="Iconos/csharp.svg" alt="C#" title="C#" />
+                        <!-- <img src="Iconos/csharp2.svg" alt="C#" title="C#" /> -->
+                        <!-- <img src="Iconos/csharp3.svg" alt="C#" title="C#" /> -->
+                        <!-- <img src="Iconos/dotnet.svg" alt=".NET" title=".NET" /> -->
+                        <img src="Iconos/dotnet2.svg" alt=".NET" title=".NET" />
+                        <img src="Iconos/bootstrap.svg" alt="Bootstrap" title="Bootstrap" />
+                        <img src="Iconos/sql-server.svg" alt="SQL Server" title="SQL Server" />
+                    </div>
+                    <a href="http://webcatalog.somee.com/" target="_blank">Ver proyecto</a>
+                </article>
+
+                <article class="project-card">
+                    <img src="proyecto2.png" alt="Proyecto 2" />
+                    <h3>Proyecto 2</h3>
+                    <p>Descripción breve y tecnologías usadas.</p>
+                    <!-- Tecnologías usadas -->
+                    <div class="tech-icons">
+                        <img src="Iconos/javascript.svg" alt="JS" title="JS" />
+                        <img src="Iconos/html5.svg" alt="HTML" title="HTML" />
+                        <img src="Iconos/css_old.svg" alt="CSS" title="CSS" />
+                        <img src="Iconos/vscode.svg" alt="vscode" title="VSCode" />
+                    </div>
+                    <a href="#" target="_blank">Ver proyecto</a>
+                </article>
+
+                <article class="project-card">
+                    <img src="proyecto3.png" alt="Proyecto 3" />
+                    <h3>Proyecto 3</h3>
+                    <p>Descripción breve y tecnologías usadas.</p>
+                    <!-- Tecnologías usadas -->
+                    <div class="tech-icons">
+                        <img src="Iconos/typescript.svg" alt="TS" title="TS" />
+                        <img src="Iconos/angular.svg" alt="Angular" title="Angular" />
+                        <img src="Iconos/nodejs.svg" alt="Nodejs" title="Node.js" />
+                        <img src="Iconos/mongodb.svg" alt="mongodb" title="Mongodb" />
+                    </div>
+                    <a href="#" target="_blank">Ver proyecto</a>
+                </article>
+
+                <article class="project-card">
+                    <img src="proyecto4.png" alt="Proyecto 4" />
+                    <h3>Proyecto 4</h3>
+                    <p>Descripción breve y tecnologías usadas.</p>
+                    <a href="#" target="_blank">Ver proyecto</a>
+                </article>
+                <article class="project-card">
+                    <img src="proyecto5.png" alt="Proyecto 5" />
+                    <h3>Proyecto 5</h3>
+                    <p>Descripción breve y tecnologías usadas.</p>
+                    <a href="#" target="_blank">Ver proyecto</a>
+                </article>
+                <article class="project-card">
+                    <img src="proyecto6.png" alt="Proyecto 6" />
+                    <h3>Proyecto 6</h3>
+                    <p>Descripción breve y tecnologías usadas.</p>
+                    <a href="#" target="_blank">Ver proyecto</a>
+                </article>
+
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Contacto</h2>
+            <div class="contact-container">
+
+                <form class="contact-form" action="#" method="POST">
+                    <label for="name">Nombre</label>
+                    <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+
+                    <label for="email">Correo electrónico</label>
+                    <input type="email" id="email" name="email" placeholder="Tu email" required>
+
+                    <label for="message">Mensaje</label>
+                    <textarea id="message" name="message" rows="6" placeholder="Escribe tu mensaje" required></textarea>
+
+                    <button type="submit">Enviar</button>
+                </form>
+
+                <div class="contact-info">
+                    <h3>Mis datos</h3>
+                    <p>
+                        <img src="Iconos/gmail.svg" alt="Email" class="icon">
+                        <a href="mailto:franwagen.500@gmail.com">franwagen.500@gmail.com</a>
+                    </p>
+                    <p>
+                        <img src="Iconos/whatsapp.svg" alt="Teléfono" class="icon">
+                        <a href="#">011 3922-4388</a>
+                    </p>
+                    <p>
+                        <img src="Iconos/linkedin.svg" alt="LinkedIn" class="icon">
+                        <a href="https://linkedin.com/in/franco-wagenhöfer" target="_blank" rel="noopener noreferrer">
+                            linkedin.com/in/franco-wagenhöfer
+                        </a>
+                    </p>
+                    <p>
+                        <!-- <img src="Iconos/github.svg" alt="GitHub" class="icon"> -->
+                        <img src="Iconos/GitHub_dark.svg" alt="GitHub" class="icon">
+                        <a href="https://github.com/francowagenhofer" target="_blank" rel="noopener noreferrer">
+                            github.com/francowagenhofer
+                        </a>
+                    </p>
+
+                    <a href="CV/cv-franco-wagenhofer.pdf" download class="btn">
+                        📄 Descargar CV
+                    </a>
+
+                </div>
+            </div>
+        </section>
+
+
+    </main>
+
+    <footer>
+        <p>© 2025 Franco Wagenhöfer. Todos los derechos reservados.</p>
+    </footer>
+
+
+</body>
+
+</html>
