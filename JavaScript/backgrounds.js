@@ -157,3 +157,35 @@ export const lightThemeConfig = {
 //   resolution: 1,
 //   yOffset: 0,
 // };
+
+// # VIOLETAS
+// export const darkThemeConfig = {
+//     colors: [
+//         { color: "#2f2e41", enabled: true }, // gris oscuro azulado
+//         { color: "#4b4a67", enabled: true }, // gris violeta
+//         { color: "#6a5d8f", enabled: true }, // morado suave
+//         { color: "#394867", enabled: true }, // azul serio
+//         { color: "#2a2d43", enabled: true }, // gris azulado muy oscuro
+//       ],
+//       backgroundColor: "#2a2d43",
+//       speed: 1.5,
+//       horizontalPressure: 3,
+//       verticalPressure: 5,
+//       waveFrequencyX: 1,
+//       waveFrequencyY: 3,
+//       waveAmplitude: 12,
+//       shadows: 0,
+//       highlights: 2,
+//       colorBrightness: 0.85,
+//       colorSaturation: 3.5,
+//       wireframe: false,
+//       colorBlending: 7,
+//       backgroundAlpha: 1,
+//       grainScale: 2,
+//       grainSparsity: 0,
+//       grainIntensity: 0.15,
+//       grainSpeed: 1,
+//       resolution: 1,
+//       yOffset: 0,
+//     };
+   

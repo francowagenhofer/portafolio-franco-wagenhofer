@@ -120,6 +120,7 @@
     align-items: center;
     justify-content: center;
     z-index: 999;
+    /* z-index: 9999;  */
 }
 
 .project-modal.hidden {
@@ -135,16 +136,17 @@
     height: 65%;
     max-width: 90%;
     max-height: 90%;
+    /* overflow-y: hidden; */
     overflow-y: auto;
     clip-path: inset(0 round 0.5rem);
     position: relative;
 }
 
-.modal-content::-webkit-scrollbar {
-  width: 8px;
-  transition: opacity 0.3s ease;
-  /* opacity: 0; */
-}
+/* .modal-content::-webkit-scrollbar {
+    width: 8px;
+    transition: opacity 0.3s ease;
+} */
+
 
 .modal-content p {
     text-align: justify;
@@ -170,6 +172,8 @@
     align-items: center;
     justify-content: center;
     margin-bottom: 1rem;
+    /* height: 100%; */
+    height: auto;
 }
 
 .gallery-image {
@@ -202,19 +206,23 @@
 
 /* Listas horizontales - modal*/
 .tech-methods-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center; /* centrado horizontal */
-  gap: 7rem;               /* espacio entre listas */
-  margin: 1.5rem auto;     /* márgenes verticales + centrado */
-  max-width: 80%;          /* evita que se extienda demasiado */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    /* centrado horizontal */
+    gap: 7rem;
+    /* espacio entre listas */
+    margin: 1.5rem auto;
+    /* márgenes verticales + centrado */
+    max-width: 80%;
+    /* evita que se extienda demasiado */
 }
 
 .tech-methods-container ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  text-align: justify;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: justify;
 }
 
 .tech-methods-container li {
@@ -237,4 +245,38 @@
     text-decoration: none;
     transition: background 0.3s ease;
     text-align: center;
+}
+
+
+/* vista mas amplia de la imagen */
+
+#image-overlay {
+    position: fixed;
+    inset: 0;
+    /* background: rgba(0, 0, 0, 0.85); */
+    background: rgba(0, 0, 0, 0.971);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+}
+
+#image-overlay.hidden {
+    display: none;
+}
+
+#image-overlay img {
+    max-width: 85%;
+    max-height: 85%;
+    border-radius: 0.5rem;
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.112);
+}
+
+#close-overlay {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
 }
