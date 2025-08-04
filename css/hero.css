@@ -1,0 +1,87 @@
+/* Hero / header */
+.hero-section {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding-top: 3rem;
+}
+
+.blend-title {
+    /* font-size: clamp(4rem, 10vw, 6rem); */
+    font-size: clamp(4rem, 8vw, 5rem);
+    font-weight: 700;
+    color: var(--blend-title-color);
+    opacity: 1;
+    pointer-events: none;
+    margin: 0;
+
+    /* font-family: "Segoe UI", sans-serif; */
+    /* font-family: 'Poppins', sans-serif; */
+    /* font-family: "Roboto", sans-serif; */
+    font-family: 'Inter', sans-serif;
+}
+
+body.dark .blend-title {
+    mix-blend-mode: color-dodge;
+}
+
+body.light .blend-title {
+    /* mix-blend-mode: color-dodge; */
+    /* mix-blend-mode:difference; */
+    mix-blend-mode: darken;
+    filter: brightness(1.2) contrast(1.2);
+    /* text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2); */
+}
+
+.subtitle {
+    font-size: 1.5rem;
+    margin-top: 1rem;
+    color: var(--text-color);
+}
+
+.hero-buttons {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn {
+    padding: 0.8rem 1.6rem;
+    background-color: var(--btn-bg);
+    /* color: var(--text-color); */
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    user-select: none;
+}
+
+
+.btn:hover {
+    background-color: var(--btn-hover-bg);
+    /* color: var(--btn-hover-text); */
+    color: white;
+}
+
+.btn-secondary {
+    background-color: var(--btn-secondary-bg);
+    border: 2px solid var(--btn-secondary-color);
+    color: var(--btn-secondary-color);
+}
+
+.btn-secondary:hover {
+    background-color: var(--btn-secondary-color);
+    color: white;
+}
+
+
+h2 {
+    font-size: 1.7rem;
+    margin: 2rem;
+}

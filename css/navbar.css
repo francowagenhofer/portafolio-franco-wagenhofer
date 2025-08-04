@@ -1,0 +1,117 @@
+/* Navbar  */
+
+.navbar {
+    position: fixed;
+    left: 0;
+    top: -200px;
+    width: 100%;
+    background: var(--navbar-bg);
+    backdrop-filter: blur(10px);
+    z-index: 100;
+    padding: 0.8rem 1rem;
+    opacity: 0;
+    transition: top 0.2s ease-in-out, opacity 0.3s ease-in-out, background-color 0.3s ease;
+}
+
+.navbar.show {
+    top: 0;
+    opacity: 1;
+}
+
+.navbar .container {
+    max-width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 2rem;
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+}
+
+.nav-links a {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--link-hover-color);
+}
+
+.logo {
+    color: var(--text-color);
+    font-weight: 700;
+    font-size: 2rem;
+    text-decoration: none;
+    flex-shrink: 0;
+}
+
+/* Toggle cambiar tema*/
+.wrapper {
+    margin-left: 1rem;
+}
+
+#theme-toggle {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.toggle {
+    width: 40px;
+    /* Antes 60px */
+    height: 20px;
+    /* Antes 30px */
+    background: var(--toggle-bg, #ccc);
+    border-radius: 20px;
+    position: relative;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+}
+
+.toggle-ball {
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    width: 16px;
+    /* Antes 24px */
+    height: 16px;
+    background: var(--toggle-ball, #fff);
+    border-radius: 50%;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+    box-shadow: 0 0 3px rgba(0, 0, 0, 0.2);
+}
+
+#theme-toggle:checked+.toggle .toggle-ball {
+    transform: translateX(20px);
+    /* Se adapta al nuevo ancho */
+}
+
+/* Boton cambiar tema */
+/* #theme-toggle-btn {
+  background: none;
+  border: none;
+  border-radius: 5px;
+  padding: 0.3rem 0.8rem;
+  color: var(--text-color);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+}  */
+
+/* Toggle cambiar tema*/

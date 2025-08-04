@@ -1,0 +1,48 @@
+/* Main */
+
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2rem 1rem;
+    position: relative;
+    z-index: 10;
+}
+h2 {
+    /* font-size: auto; */
+    /* font-size: 2rem; */
+    font-size: 1.7rem;
+    margin: 2rem;
+}
+
+/* Secciones */
+.section {
+    text-align: center;
+    padding: 5rem 2rem;
+}
+
+.about-text {
+    max-width: 750px;
+    margin: 0 auto;
+    /* line-height: 1.6; */
+    line-height: 1.8;
+    font-size: 1.2rem;
+    padding: 0 1rem;
+    /* text-align: center; */
+    text-align: justify;
+    hyphens: auto;
+}
+
+/* Skills grid */
+.skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.skill {
+    background: var(--card-bg);
+    padding: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+}

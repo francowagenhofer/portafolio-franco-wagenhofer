@@ -1,0 +1,87 @@
+/* Reset y básico */
+* {
+    box-sizing: border-box;
+}
+
+a[href="https://neat.firecms.co"] {
+    display: none !important;
+}
+
+/* Tema oscuro (por defecto) */
+:root {
+    /* Titulo h1*/
+    --blend-title-color: rgb(202, 228, 233);
+
+    /*Body*/
+    --bg-color: #020210;
+    --text-color: white;
+    --navbar-bg: rgba(0, 0, 0, 0.5);
+    --section-bg: rgba(0, 0, 0, 0.6);
+
+    /*Toggle*/
+    --toggle-bg: #4d5c894b;
+    --toggle-ball: #fff5eedd;
+
+    /* todos los links */
+    --link-color: rgb(255, 255, 255);
+    --link-hover-color: #03a9f4;
+    --link-card-color: #03a9f4;
+
+    /* boton descargar cv*/
+    --btn-bg: #03a9f4;
+    --btn-hover-bg: #0288d1;
+
+    /* boton linkedin */
+    --btn-secondary-bg: transparent;
+    --btn-secondary-color: #03a9f4;
+
+    /* transfondo de las tarjetas */
+    --card-bg: rgba(255, 255, 255, 0.1);
+    --card-hover-bg: rgba(255, 255, 255, 0.15);
+
+    /* Colores botones tarjeta*/
+    --proyect-btn-color: #4d5c8969;
+    --proyect-btn-hover-color: #0057b3db;
+    --proyect-text-color: white;
+    --proyect-text-hover-color: white;
+
+    /* modal */
+    --modal-bg: rgba(25, 25, 35, 0.95);
+    --modal-text: #ffffff;
+
+    /* botones contacto */
+    --btn-form-bg: #3568ffba;
+    --btn-form-hover-bg: #36a7d7;
+    /* --btn-form-hover-text: #fff; */
+    --btn-form-hover-text: #000000;
+
+    /* footer */
+    --footer: rgba(255, 255, 255, 0.5);
+}
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+
+    font-family: "Segoe UI", sans-serif;
+    /* font-family: 'Poppins', sans-serif; */
+    /* font-family: 'Inter', sans-serif;  */
+    /* font-family: "Roboto", sans-serif; */
+
+    color: var(--text-color);
+    /* overflow-x: hidden; */
+    overflow-x: clip;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+#gradient {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    display: block;
+}
