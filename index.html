@@ -38,7 +38,8 @@
             <div class="navbar-right">
                 <ul class="nav-links">
                     <li><a href="#about">Sobre mí</a></li>
-                    <li><a href="#skills">Skills</a></li>
+                    <!-- <li><a href="#skills">Skills</a></li> -->
+                    <li><a href="#skills">Aptitudes</a></li>
                     <li><a href="#projects">Proyectos</a></li>
                     <li><a href="#contact">Contacto</a></li>
                 </ul>
@@ -80,7 +81,7 @@
         <!-- Seccion de habilidades -------------------------------------->
         <section id="skills" class="section">
             <!-- <h2>Skills & Tecnologías</h2> -->
-            <h2>Stacks & Tecnologías</h2>
+            <h2>Aptitudes & Tecnologías</h2>
             <div class="skills-stacks">
 
                 <div class="skills-grid">
@@ -115,14 +116,13 @@
 
         <!-- Seccion de proyectos ------------------------------------->
         <section id="projects" class="section">
-            <!-- <h2>Proyectos destacados</h2> -->
-            <h2>Proyectos</h2>
+            <!-- <h2>Proyectos</h2> -->
+            <h2>Mis proyectos</h2>
             <div class="projects-grid">
 
                 <!-- PROYECTO 1 ----------------------->
                 <article class="project-card">
                     <h3>Catálogo Web</h3>
-                    <!-- <img src="Imagenes/CatalogoWeb.png" alt="Proyecto 1" /> -->
                     <p>App web en C# con .NET para gestión de artículos.</p>
                     <div class="tech-icons">
                         <img src="Iconos/csharp.svg" alt="C#" />
@@ -131,31 +131,26 @@
                         <img src="Iconos/sql-server.svg" alt="SQL Server" />
                     </div>
                     <div class="project-links">
-                        <!-- <a href="http://webcatalog.somee.com/" target="_blank">Ver sitio</a> -->
                         <a href="http://webcatalog.somee.com/" target="_blank">Ver sitio Web</a>
-                        <!-- <a href="https://github.com/..." target="_blank">Repo GitHub</a> -->
                         <button class="open-modal" data-id="modal1">Ver más</button>
                     </div>
                 </article>
-
                 <div id="modal1" class="project-modal hidden">
                     <div class="modal-content">
                         <span class="close-modal">&times;</span>
                         <h3>Catálogo Web</h3>
-                        <!-- Galería con controles -->
+
                         <div class="modal-gallery-slider">
                             <button class="gallery-prev">&#10094;</button>
-                            <img src="Imagenes/CatalogoWeb/CatalogoWeb.png" class="gallery-image"
-                                alt="Captura de pantalla del proyecto">
                             <button class="gallery-next">&#10095;</button>
                         </div>
-                        <!-- Descripcion -->
                         <p>
-                            App construida con ASP.NET Web Forms en .NET Framework. Permite gestión de artículos,
-                            filtrado por categorías y CRUD. Cuenta con autenticación de usuarios y roles de
-                            administrador.
+                            Aplicación web desarrollada como trabajo práctico para la facultad, utilizando ASP.NET Web
+                            Forms en .NET Framework.
+                            Permite la gestión completa de artículos (CRUD), filtrado por categorías y administración de
+                            usuarios con distintos roles.
+                            Se enfocó en implementar buenas prácticas de arquitectura y seguridad básica.
                         </p>
-                        <!-- Dos listas paralelas -->
                         <div class="tech-methods-container">
                             <ul class="tech-list">
                                 <li><strong>Backend:</strong> C#, ASP.NET</li>
@@ -170,12 +165,10 @@
                                 <li><strong>Seguridad:</strong> Roles y login</li>
                             </ul>
                         </div>
-                        <!-- Botones -->
                         <div class="project-links">
-                            <!-- <a href="http://webcatalog.somee.com/" target="_blank">Ver proyecto</a> -->
-                            <!-- <a href="https://github.com/..." target="_blank">Ver código</a> -->
-                            <a href="http://webcatalog.somee.com/" target="_blank">Ver sitio web</a>
-                            <a href="https://github.com/..." target="_blank">Ver repositorio Github</a>
+                            <a href="http://webcatalog.somee.com/" target="_blank">🌐 Ver sitio web</a>
+                            <a href="https://github.com/francowagenhofer/tp-final-nivel3-Wagenhofer-Franco.git"
+                                target="_blank">📄 Ver código</a>
                         </div>
                     </div>
                 </div>
@@ -183,8 +176,7 @@
                 <!-- PROYECTO 2 -------------------->
                 <article class="project-card">
                     <h3>WebBook</h3>
-                    <!-- <img src="proyecto1.png" alt="Proyecto 2" /> -->
-                    <p>App web para explorar el mundo literario. </p>
+                    <p>App web con Angular y Node.js para explorar libros.</p>
                     <div class="tech-icons">
                         <img src="Iconos/typescript.svg" alt="TS" />
                         <img src="Iconos/angular.svg" alt="Angular" />
@@ -192,87 +184,76 @@
                         <img src="Iconos/mongodb.svg" alt="MongoDB" />
                     </div>
                     <div class="project-links">
-                        <!-- <a href="#" target="_blank">Ver sitio</a> -->
                         <a href="#" target="_blank">Ver sitio Web</a>
-                        <!-- <a href="#" target="_blank">Repo GitHub</a> -->
                         <button class="open-modal" data-id="modal2">Ver más</button>
                     </div>
                 </article>
-
                 <div id="modal2" class="project-modal hidden">
                     <div class="modal-content">
                         <span class="close-modal">&times;</span>
                         <h3>WebBook</h3>
-                        <!-- Galería con controles -->
                         <div class="modal-gallery-slider">
                             <button class="gallery-prev">&#10094;</button>
-                            <img src="Imagenes/4.jpeg" class="gallery-image" alt="Captura de pantalla del proyecto">
                             <button class="gallery-next">&#10095;</button>
                         </div>
-                        <!-- Descripcion -->
                         <p>
-                            Plataforma web para explorar libros, autores y géneros. Permite registrarse, guardar
-                            favoritos y hacer reseñas. Desarrollada con Angular, Node.js y MongoDB.
+                            Proyecto personal diseñado para explorar libros, autores y géneros en un entorno web
+                            interactivo. Permite a los usuarios registrarse, guardar favoritos y escribir reseñas.
+                            Desarrollado como SPA con Angular en el frontend, Node.js en el backend y MongoDB como base
+                            de datos. Pensado como una práctica integral de desarrollo fullstack moderno.
                         </p>
-                        <!-- Dos listas paralelas -->
                         <div class="tech-methods-container">
                             <ul class="tech-list">
                                 <li><strong>Frontend:</strong> Angular</li>
                                 <li><strong>Backend:</strong> Node.js, Express</li>
                                 <li><strong>Base de datos:</strong> MongoDB</li>
+                                <li><strong>IDE:</strong> Visual Studio Code</li>
                             </ul>
                             <ul class="methods-list">
                                 <li><strong>Lógica:</strong> POO</li>
-                                <li><strong>Consultas:</strong> T-SQL, joins</li>
+                                <!-- <li><strong>Consultas:</strong> Mongo queries, filtros avanzados</li> -->
+                                <li><strong>Consultas:</strong> Mongo queries</li>
                                 <li><strong>Gestión:</strong> CRUD</li>
                                 <li><strong>Seguridad:</strong> Roles y login</li>
                             </ul>
                         </div>
-                        <!-- Botones -->
                         <div class="project-links">
-                            <!-- <a href="http://webcatalog.somee.com/" target="_blank">Ver proyecto</a> -->
-                            <!-- <a href="https://github.com/..." target="_blank">Ver código</a> -->
-                            <a href="http://webcatalog.somee.com/" target="_blank">Ver sitio web</a>
-                            <a href="https://github.com/..." target="_blank">Ver repositorio Github</a>
+                            <a href="#" target="_blank">🌐 Ver sitio web</a>
+                            <a href="https://github.com/..." target="_blank">📄 Ver código</a>
                         </div>
                     </div>
                 </div>
 
                 <!-- PROYECTO 3 -------------------->
                 <article class="project-card">
-                    <h3>Winform Pokedex</h3>
-                    <!-- <img src="proyecto1.png" alt="Proyecto 3" /> -->
-                    <p>App de escritorio para tu información Pokedex.</p>
+                    <h3>Gestor de empleados </h3>
+                    <p>App de consola y escritorio en C# .NET para gestión de empleados.</p>
                     <div class="tech-icons">
                         <img src="Iconos/csharp.svg" alt="C#" />
                         <img src="Iconos/dotnet2.svg" alt=".NET" />
                         <img src="Iconos/sql-server.svg" alt="SQL Server" />
                     </div>
                     <div class="project-links">
-                        <!-- <a href="#" target="_blank">Ver sitio</a> -->
-                        <a href="#" target="_blank">Repo GitHub</a>
+                        <a href="https://github.com/francowagenhofer/app-gestion-empleados-csharp.git"
+                            target="_blank">Ver repositorio</a>
                         <button class="open-modal" data-id="modal3">Ver más</button>
                     </div>
                 </article>
-
                 <div id="modal3" class="project-modal hidden">
                     <div class="modal-content">
                         <span class="close-modal">&times;</span>
-                        <h3>Winform Pokedex</h3>
-                        <!-- Galería con controles -->
+                        <h3>Gestor de empleados</h3>
                         <div class="modal-gallery-slider">
                             <button class="gallery-prev">&#10094;</button>
-                            <img src="Imagenes/CatalogoWeb.png" class="gallery-image"
-                                alt="Captura de pantalla del proyecto">
                             <button class="gallery-next">&#10095;</button>
                         </div>
-                        <!-- Descripcion -->
                         <p>
-                            Aplicación de escritorio creada en Windows Forms para visualizar información de Pokémon,
-                            buscar por nombre, tipo o ID. Se conecta a una base de datos y presenta una interfaz
-                            amigable.
+                            Aplicación para gestión de empleados desarrollada inicialmente como app de consola en C#
+                            .NET para practicar lógica de programación.
+                            Luego evolucionó a una versión con interfaz gráfica (WinForms),
+                            orientada a cubrir necesidades de una PyME. Permite gestionar datos del personal,
+                            proyectos y tareas, con almacenamiento en SQL Server y funcionalidades CRUD completas.
                         </p>
-                        <!-- Dos listas paralelas -->
                         <div class="tech-methods-container">
                             <ul class="tech-list">
                                 <li><strong>Frontend:</strong> WinForms</li>
@@ -283,15 +264,11 @@
                                 <li><strong>Lógica:</strong> POO</li>
                                 <li><strong>Consultas:</strong> T-SQL, joins</li>
                                 <li><strong>Gestión:</strong> CRUD</li>
-                                <li><strong>Seguridad:</strong> Roles y login</li>
                             </ul>
                         </div>
-                        <!-- Botones -->
                         <div class="project-links">
-                            <!-- <a href="http://webcatalog.somee.com/" target="_blank">Ver proyecto</a> -->
-                            <!-- <a href="https://github.com/..." target="_blank">Ver código</a> -->
-                            <a href="http://webcatalog.somee.com/" target="_blank">Ver sitio web</a>
-                            <a href="https://github.com/..." target="_blank">Ver repositorio Github</a>
+                            <a href="https://github.com/francowagenhofer/app-gestion-empleados-csharp.git"
+                                target="_blank">📄 Ver repositorio Github</a>
                         </div>
                     </div>
                 </div>
@@ -303,18 +280,30 @@
             <h2>Contacto</h2>
             <div class="contact-container">
 
-                <form class="contact-form" action="#" method="POST">
+
+                <!-- <form id="contactForm" class="contact-form" action="#" method="POST"> -->
+                <form id="contactForm" class="contact-form" method="POST">
+                    <!-- <form id="contactForm" class="contact-form"
+                    action="https://formsubmit.co/fdf5475b7762c29691cf9a303b16eeff" method="POST"> -->
+
                     <label for="name">Nombre</label>
-                    <input type="text" id="name" name="name" placeholder="Tu nombre" required>
+                    <input type="text" id="name" name="name" placeholder="Tu nombre" required autocomplete="name">
 
                     <label for="email">Correo electrónico</label>
-                    <input type="email" id="email" name="email" placeholder="Tu email" required>
+                    <input type="email" id="email" name="email" placeholder="Tu email" required autocomplete="email">
+
+                    <label for="phone">Teléfono (opcional)</label>
+                    <!-- <input type="tel" id="phone" name="phone" placeholder="Tu número (opcional)" autocomplete="tel"> -->
+                    <input type="tel" id="phone" name="phone" placeholder="Tu número" autocomplete="tel">
 
                     <label for="message">Mensaje</label>
                     <textarea id="message" name="message" rows="6" placeholder="Escribe tu mensaje" required></textarea>
 
                     <button type="submit">Enviar</button>
                 </form>
+
+                <!-- Cartel de respuesta al fomulario -->
+                <div id="alertaGracias" class="alerta"></div>
 
                 <div class="contact-info">
                     <h3>Mis datos</h3>
@@ -324,7 +313,8 @@
                     </p>
                     <p>
                         <img src="Iconos/whatsapp.svg" alt="Teléfono" class="icon">
-                        <a href="#">011 3922-4388</a>
+                        <a href="https://wa.me/5491139224386" target="_blank" rel="noopener noreferrer">+54 9 11 3922
+                            4386</a>
                     </p>
                     <p>
                         <img src="Iconos/linkedin.svg" alt="LinkedIn" class="icon">
@@ -352,7 +342,6 @@
     <footer>
         <p>© 2025 Franco Wagenhöfer. Todos los derechos reservados.</p>
     </footer>
-
 
     <!-- Imagen ampliada -->
     <div id="image-overlay" class="hidden">

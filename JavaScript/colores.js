@@ -124,12 +124,11 @@ export function applyThemeColors(theme) {
     );
 
     // modal color - background y texto
-    root.style.setProperty("--modal-bg", "rgba(30, 30, 50, 0.95)");
     // root.style.setProperty("--modal-bg", "#1e1e2f");
-    // root.style.setProperty("--modal-bg", "#12181f");
+    // root.style.setProperty("--modal-bg", "#12181feb");
+    root.style.setProperty("--modal-bg", "#13121feb");
+    root.style.setProperty("--modal-bg", "#110f21eb");
     root.style.setProperty("--modal-text", "#e0e6f1");
-    // root.style.setProperty("--modal-text", "#f2f2f2");
-    // root.style.setProperty("--modal-text", "#d6f3ff");
 
     // texto
     root.style.setProperty("--text-color", "white");

@@ -45,6 +45,12 @@
     width: 100%;
     max-width: 400px;
 }
+.contact-form textarea{
+    height: 5rem;
+    min-height: 5rem;
+    max-height: 15rem;
+}
+
 
 .contact-form button {
     margin-top: 1rem;
@@ -126,4 +132,39 @@
     width: 20px;
     height: 20px;
     object-fit: contain;
+}
+
+/* ---------------------------------------------- */
+/* Cartel de agradecimiento Personalizado */
+
+.alerta {
+    position: fixed;
+    /* top: 20px; */
+    bottom: 20px;
+    right: 20px;
+    /* left: 20px; */
+    padding: 1rem 2rem;
+    border-radius: 8px;
+    color: white;
+    font-weight: bold;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s ease;
+    z-index: 9999;
+    /* transform: translateY(20px);
+    transition: opacity 0.5s ease, transform 0.5s ease; */
+}
+
+.alerta.show {
+    opacity: 1;
+    pointer-events: auto;
+    /* transform: translateY(0); */
+}
+
+.alerta.success {
+    background-color: #4caf50;
+}
+
+.alerta.error {
+    background-color: #f44336;
 }

@@ -83,16 +83,57 @@ window.addEventListener("click", (e) => {
 // Galerías reutilizables para cada proyecto
 function setupGallery(modalId, images) {
   const modal = document.getElementById(modalId);
-  const imageElement = modal.querySelector(".gallery-image");
+
+  // const imageElement = modal.querySelector(".gallery-image");
+  // const prevBtn = modal.querySelector(".gallery-prev");
+  // const nextBtn = modal.querySelector(".gallery-next");
+
+  // if (!imageElement || !prevBtn || !nextBtn || !modal) return;
+
+  const galleryContainer = modal.querySelector(".modal-gallery-slider");
   const prevBtn = modal.querySelector(".gallery-prev");
   const nextBtn = modal.querySelector(".gallery-next");
 
-  if (!imageElement || !prevBtn || !nextBtn || !modal) return;
+  if (!galleryContainer || !prevBtn || !nextBtn || !modal) return;
 
   let currentIndex = 0;
 
+  // const updateImage = () => {
+  //   imageElement.src = images[currentIndex];
+  // };
+
   const updateImage = () => {
-    imageElement.src = images[currentIndex];
+    galleryContainer.innerHTML = ""; // Limpiar el contenido actual
+
+    const currentSrc = images[currentIndex];
+    const isVideo = currentSrc.endsWith(".mp4") || currentSrc.endsWith(".webm");
+
+    if (isVideo) {
+      const video = document.createElement("video");
+      video.src = currentSrc;
+      video.controls = true;
+      video.classList.add("gallery-image");
+      video.style.maxHeight = "250px";
+      video.style.borderRadius = "0.5rem";
+      galleryContainer.appendChild(prevBtn);
+      galleryContainer.appendChild(video);
+      galleryContainer.appendChild(nextBtn);
+    } else {
+      const img = document.createElement("img");
+      img.src = currentSrc;
+      img.alt = "Captura del proyecto";
+      img.classList.add("gallery-image");
+
+      // 👉 Evento para ampliar imagen
+      img.addEventListener("click", () => {
+        overlayImage.src = img.src;
+        overlay.classList.remove("hidden");
+      });
+
+      galleryContainer.appendChild(prevBtn);
+      galleryContainer.appendChild(img);
+      galleryContainer.appendChild(nextBtn);
+    }
   };
 
   prevBtn.addEventListener("click", () => {
@@ -122,6 +163,7 @@ setupGallery("modal1", [
   "Imagenes/CatalogoWeb/CatalogoWeb.png",
   "Imagenes/CatalogoWeb/CatalogoWeb_Lista.png",
   "Imagenes/CatalogoWeb/CatalogoWeb_Articulo.png",
+  "Imagenes/CatalogoWeb/CatalogoWebDB.png",
 ]);
 
 setupGallery("modal2", [
@@ -132,23 +174,24 @@ setupGallery("modal2", [
 ]);
 
 setupGallery("modal3", [
-  "Imagenes/1.jpg",
-  "Imagenes/3.jpg",
+  "Imagenes/GestorEmpleados/MenuConsola.png",
+  "Imagenes/GestorEmpleados/VideoConsola_Prueba.mp4",
+  "Imagenes/GestorEmpleados/GestionEmpleadosDB.png",
 ]);
 
 //****************************************************************************************************************************//
-// Imagen ampliada al hacer clic 
+// Imagen ampliada al hacer clic
 const overlay = document.getElementById("image-overlay");
 const overlayImage = document.getElementById("overlay-image");
 const closeOverlay = document.getElementById("close-overlay");
 
-// Abrir imagen al hacer clic
-document.querySelectorAll(".gallery-image").forEach((img) => {
-  img.addEventListener("click", () => {
-    overlayImage.src = img.src;
-    overlay.classList.remove("hidden");
-  });
-});
+// // Abrir imagen al hacer clic
+// document.querySelectorAll(".gallery-image").forEach((img) => {
+//   img.addEventListener("click", () => {
+//     overlayImage.src = img.src;
+//     overlay.classList.remove("hidden");
+//   });
+// });
 
 // Cerrar overlay
 closeOverlay.addEventListener("click", () => {
@@ -163,5 +206,84 @@ overlay.addEventListener("click", (e) => {
 });
 
 //****************************************************************************************************************************//
+// # ENVIO DE FOMLARIO Y CARTEL DE RESPUESTA
+
+// const form = document.getElementById("contactForm");
+// const alerta = document.getElementById("alertaGracias");
+
+// form.addEventListener("submit", async (e) => {
+//   e.preventDefault();
+
+//   const formData = new FormData(form);
+
+//   // Mostrar mensaje de "Enviando..."
+//   alerta.textContent = "Enviando tu mensaje...";
+//   alerta.className = "alerta show";
+
+//   try {
+//     const response = await fetch(form.action, {
+//       method: "POST",
+//       body: formData,
+//       headers: {
+//         Accept: "application/json", // para que FormSubmit responda con JSON
+//       },
+//     });
+
+//     if (response.ok) {
+//       alerta.textContent =
+//         "¡Gracias por tu mensaje! Me comunicaré contigo pronto.";
+//       alerta.className = "alerta success show";
+//       form.reset();
+//     } else {
+//       const data = await response.json();
+//       alerta.textContent = data.message || "Error al enviar el mensaje.";
+//       alerta.className = "alerta error show";
+//     }
+//   } catch (error) {
+//     alerta.textContent = "Error al enviar el mensaje. Intenta nuevamente.";
+//     alerta.className = "alerta error show";
+//     console.error(error);
+//   }
+
+//   // Ocultar alerta después de 7 segundos
+//   setTimeout(() => {
+//     alerta.classList.remove("show");
+//   }, 6000);
+// });
+
+// # SIMULACION PARA PROBAR ENVIO DE FORMULARIO
+const form = document.getElementById("contactForm");
+const alerta = document.getElementById("alertaGracias");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  // Simulamos que se está enviando...
+  alerta.textContent = "Enviando...";
+  alerta.className = "alerta show";
+
+  // Simulación de espera de red
+  setTimeout(() => {
+    // Simular éxito o error
+    const exito = true; // Cambialo a false para simular error
+    // const exito = false; // Cambialo a false para simular error
+
+    if (exito) {
+      alerta.textContent =
+        "¡Gracias por tu mensaje! Me comunicaré contigo pronto.";
+      alerta.className = "alerta success show";
+      form.reset();
+    } else {
+      alerta.textContent = "Error al enviar el mensaje. Intenta nuevamente.";
+      alerta.className = "alerta error show";
+    }
+
+    // Ocultar después de unos segundos
+    setTimeout(() => {
+      alerta.classList.remove("show");
+    }, 6000);
+  }, 2000); // Simula 2 segundo de espera
+});
+
 //****************************************************************************************************************************//
 //****************************************************************************************************************************//

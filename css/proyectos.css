@@ -44,6 +44,15 @@
     /* text-align: justify; */
 }
 
+/* .project-card p {
+    padding: 0 1rem 1rem;
+    min-height: 3.8em; 
+    line-height: 1.4em;
+    text-align: center;
+    overflow: hidden;
+} */
+
+
 .project-card .tech-icons {
     padding-bottom: 0.5rem;
 }
@@ -81,6 +90,7 @@
     flex-direction: column;
     gap: 0.5rem;
     margin-top: 1rem;
+
 }
 
 .project-links a,
@@ -104,6 +114,7 @@
 .project-links button:hover {
     background-color: var(--proyect-btn-hover-color);
     color: var(--proyect-text-hover-color);
+    text-decoration: none;
 }
 
 .project-links button {
@@ -133,6 +144,7 @@
     padding: 1rem;
     border-radius: 0.5rem;
     width: 55%;
+    /* width: 65%; */
     height: 65%;
     max-width: 90%;
     max-height: 90%;
@@ -150,11 +162,12 @@
 
 .modal-content p {
     text-align: justify;
-    padding-bottom: 0.7rem;
-    padding-bottom: 0.7rem;
-    padding-top: 1rem;
-    padding-left: 7rem;
-    padding-right: 7rem;
+    padding-bottom: 0.5rem;
+    padding-top: 0.5rem;
+    padding-left: 3rem;
+    padding-right: 3rem;
+    margin: 2rem;
+    min-height: 80px;
 }
 
 .close-modal {
@@ -176,12 +189,36 @@
     height: auto;
 }
 
+/* ------------------------------------------------ */
 .gallery-image {
-    max-width: 100%;
-    max-height: 300px;
+    max-width: 70%;
+    max-height: 250px;
+    min-height: 200px;
     border-radius: 0.5rem;
     object-fit: contain;
+
+    position: relative;
+    cursor: zoom-in;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
+
+.gallery-image:hover {
+    transform: scale(1.02);
+    /* box-shadow: 0 0 12px rgba(255, 255, 255, 0.3); */
+}
+
+.gallery-image:hover::after {
+    opacity: 1;
+}
+
+video.gallery-image::after,
+video.gallery-image:hover {
+    transform: none;
+    box-shadow: none;
+    cursor: default;
+}
+
+/* ------------------------------------------------ */
 
 .gallery-prev,
 .gallery-next {
@@ -189,12 +226,19 @@
     color: var(--text-color);
     border: none;
     font-size: 1.7rem;
-    padding: 0.5rem 6rem;
+    padding: 0.5rem 4rem;
+    /* padding: 0.5rem 8rem; */
     cursor: pointer;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
 }
+
+.gallery-prev:hover,
+.gallery-next:hover {
+    color: #c4c4c4;
+}
+
 
 .gallery-prev {
     left: 10px;
@@ -209,13 +253,9 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    /* centrado horizontal */
     gap: 7rem;
-    /* espacio entre listas */
     margin: 1.5rem auto;
-    /* márgenes verticales + centrado */
     max-width: 80%;
-    /* evita que se extienda demasiado */
 }
 
 .tech-methods-container ul {
@@ -249,7 +289,6 @@
 
 
 /* vista mas amplia de la imagen */
-
 #image-overlay {
     position: fixed;
     inset: 0;
