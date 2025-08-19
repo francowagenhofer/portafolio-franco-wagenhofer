@@ -1,0 +1,50 @@
+ // titulo - h1
+    root.style.setProperty("--blend-title-color", "rgb(202, 228, 233)");
+
+    // navbar y fondo
+    root.style.setProperty("--navbar-bg", "rgba(20, 21, 22, 0.7)"); // Negro aterciopelado translúcido
+    root.style.setProperty("--navbar-text-color", "#D6D9DB"); // Gris claro
+    root.style.setProperty("--section-bg", "rgba(26, 28, 31, 0.75)"); // Gris oscuro azulado
+
+    // toggle
+    root.style.setProperty("--toggle-bg", "#2B2E31"); // Gris plomo oscuro
+    root.style.setProperty("--toggle-ball", "#E8E8E8"); // Gris muy claro
+
+    // links
+    root.style.setProperty("--link-color", "#D6D9DB");
+    root.style.setProperty("--link-hover-color", "#5C7CA3"); // Azul grisáceo suave
+    root.style.setProperty("--link-card-color", "#5C7CA3");
+
+    // botones principal
+    root.style.setProperty("--btn-bg", "#5C7CA3"); // Azul grisáceo
+    root.style.setProperty("--btn-hover-bg", "#6E8BB0"); // Hover más claro
+
+    // botones secundarios
+    root.style.setProperty("--btn-secondary-bg", "transparent");
+    root.style.setProperty("--btn-secondary-color", "#5C7CA3");
+
+    // botones formulario
+    root.style.setProperty("--btn-form-bg", "#5C7CA3cc");
+    root.style.setProperty("--btn-form-hover-bg", "#6E8BB0");
+    root.style.setProperty("--btn-form-hover-text", "#fff");
+
+    // tarjetas proyectos - fondo
+    root.style.setProperty("--card-bg", "rgba(255, 255, 255, 0.04)");
+    root.style.setProperty("--card-hover-bg", "rgba(255, 255, 255, 0.08)");
+    root.style.setProperty("--bg-color", "#141516");
+
+    // tarjetas proyectos - botones
+    root.style.setProperty("--proyect-btn-color", "#2B2E3180");
+    root.style.setProperty("--proyect-btn-hover-color", "#5C7CA3");
+    root.style.setProperty("--proyect-text-color", "rgba(214, 217, 219, 0.9)");
+    root.style.setProperty("--proyect-text-hover-color", "#fff");
+
+    // modal
+    root.style.setProperty("--modal-bg", "#1A1C1Fdd");
+    root.style.setProperty("--modal-text", "#D6D9DB");
+
+    // texto general
+    root.style.setProperty("--text-color", "#D6D9DB");
+
+    // footer
+    root.style.setProperty("--footer", "rgba(214, 217, 219, 0.4)");

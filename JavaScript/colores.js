@@ -7,85 +7,88 @@ export function applyThemeColors(theme) {
   document.body.classList.add(theme);
 
   if (theme === "light") {
+
     // --- Colores título ---
-    root.style.setProperty("--blend-title-color", "rgba(69, 24, 0, 0.52)"); // #45180084
+    root.style.setProperty("--blend-title-color", "rgba(55, 39, 19, 0.6)"); // marrón grisáceo sobrio
 
     // --- Navbar ---
-    root.style.setProperty("--navbar-bg", "rgba(255, 230, 238, 0.18)");
-    root.style.setProperty("--navbar-text-color", "#5A2A1F");
-
-    // --- Secciones ---
-    root.style.setProperty("--section-bg", "rgba(255, 239, 208, 0.9)");
+    root.style.setProperty("--navbar-bg", "rgba(192, 165, 149, 0.16)"); // crema grisácea clara
+    root.style.setProperty("--navbar-text-color", "#3C2F22"); // marrón-gris sobrio
 
     // --- Toggle (interruptor) ---
-    root.style.setProperty("--toggle-bg", "#da7522ab");
-    root.style.setProperty("--toggle-ball", "#FFEFD0");
+    root.style.setProperty("--toggle-bg", "#BFA47A"); // miel grisácea sobria
+    root.style.setProperty("--toggle-bg", "#6a5025a7"); // miel grisácea sobria
+    root.style.setProperty("--toggle-ball", "#F8F6F2"); // marfil muy claro
 
     // --- Links ---
-    root.style.setProperty("--link-card-color", "#451800c4");
-    // root.style.setProperty("--link-color", "#451800b7");
-    root.style.setProperty("--link-color", "#451800ed");
-    root.style.setProperty("--link-hover-color", "#FF9E3D");
+    root.style.setProperty("--link-card-color", "#3C2F22cc"); 
+    root.style.setProperty("--link-color", "#3C2F22"); 
+    root.style.setProperty("--link-hover-color", "#c28a11d5"); 
 
-    // --- Botones principales ---
-    root.style.setProperty("--btn-bg", "#DA7422");
-    root.style.setProperty("--btn-hover-bg", "#B3541A");
-
-    // --- Botones secundarios ---
+    // --- Boton principal - "descarga cv"   
+    root.style.setProperty("--btn-bg", "#bfa57add"); 
+    root.style.setProperty("--btn-hover-bg", "#6a5025a7"); 
+  
+    // --- Botones secundarios - linkedin/github
     root.style.setProperty("--btn-secondary-bg", "transparent");
-    root.style.setProperty("--btn-secondary-color", "#DA7422");
+    root.style.setProperty("--btn-secondary-color", "#BFA47A"); 
+    
+    // --- Tarjetas/Proyectos - Background ---
+    // root.style.setProperty("--card-bg", "rgba(255, 255, 255, 0.35)"); // gris arena suave
+    // root.style.setProperty("--card-hover-bg", "rgba(255, 252, 246, 0.44)"); // gris-beige elegante
+    root.style.setProperty("--card-bg", "rgba(255, 255, 255, 0.35)"); // gris arena suave
+    root.style.setProperty("--card-hover-bg", "rgba(238, 238, 238, 0.48)"); // gris-beige elegante
 
-    // --- Botones de formulario ---
-    root.style.setProperty("--btn-form-bg", "#E9C785");
-    root.style.setProperty("--btn-form-hover-bg", "#CDA45B");
+    // --- Tarjetas/Proyectos - Botones ---
+    root.style.setProperty("--proyect-btn-color", "#23150688"); 
+    root.style.setProperty("--proyect-btn-hover-color", "#bfa57a98"); 
+    root.style.setProperty("--proyect-text-color", "#ffffffff"); 
+    root.style.setProperty("--btn-vermas-text", "#231506c9");
+    root.style.setProperty("--proyect-text-hover-color", "white");
+    
+    // --- Contacto - Background ---
+    // root.style.setProperty("--section-bg", "rgba(250, 241, 231, 0.77)"); // gris topo suave, sobrio
+    root.style.setProperty("--section-bg", "rgba(185, 174, 154, 0.39)"); // gris topo suave, sobrio
+    root.style.setProperty("--section-bg", "rgba(185, 174, 154, 0.29)"); // gris topo suave, sobrio
+
+    // --- Contacto - Botones ---
+    root.style.setProperty("--btn-form-bg", "#272219e4"); 
+    root.style.setProperty("--btn-form-hover-bg", "#2a1f15b9"); 
+    root.style.setProperty("--btn-form-text", "#fff");
     root.style.setProperty("--btn-form-hover-text", "#fff");
 
-    //  // Tarjetas proyectos - fondo/background
-    root.style.setProperty("--card-bg", "rgba(255, 245, 238, 0.5)");
-    root.style.setProperty("--card-hover-bg", "rgba(255, 255, 255, 0.69)");
-    // root.style.setProperty("--card-bg", "rgba(255, 239, 208, 0.95)");
-    // root.style.setProperty("--card-hover-bg", "rgba(255, 255, 255, 0.7)");
+    // --- Modal ---
+    root.style.setProperty("--modal-background", "#897f7d65");
+    root.style.setProperty("--modal-bg", "#fffffff6");
+    root.style.setProperty("--modal-text", "#3C2F22");
+    root.style.setProperty("--flechas", "#3C2F22");
 
-    // Tarjetas proyectos - botones/btn
-    root.style.setProperty("--proyect-btn-color", " #da902271");
-    root.style.setProperty("--proyect-btn-hover-color", "#b34500db");
-    root.style.setProperty("--proyect-text-color", "rgb(76, 20, 8)");
-    root.style.setProperty("--proyect-text-hover-color", "white");
+    // --- Texto general ---
+    root.style.setProperty("--text-color", "#3C2F22");
 
-    // modal
-    // root.style.setProperty("--modal-bg", "white");
-    root.style.setProperty("--modal-bg", "#ffffffd6");
-    root.style.setProperty("--modal-text", "#5A2A1F");
+    // --- Footer ---
+    root.style.setProperty("--footer", "#2C241D");  
 
-    // --- Texto general --
-    root.style.setProperty("--text-color", "#5A2A1F");
 
-    // --- Texto general --
-    root.style.setProperty("--footer", "#310f07ff");
   } else {
     // titulo - h1
     root.style.setProperty("--blend-title-color", "rgb(202, 228, 233)");
 
     // navbar y fondo
-    root.style.setProperty("--navbar-bg", "rgba(0, 0, 0, 0.5)");
-    // root.style.setProperty("--navbar-bg", "rgba(12, 12, 20, 0.65)");
+    root.style.setProperty("--navbar-bg", "rgba(16, 18, 21, 0.65)");
+    root.style.setProperty("--navbar-bg", "rgba(16, 18, 21, 0.49)");
     root.style.setProperty("--navbar-text-color", "white");
-    // root.style.setProperty("--navbar-text-color", "#f0f0f0");
-    root.style.setProperty("--section-bg", "rgba(0, 0, 0, 0.6)");
-    // root.style.setProperty("--section-bg", "rgba(10, 10, 20, 0.7)");
 
     // toggle apagado
     // root.style.setProperty("--toggle-bg", "#0040ff75");
     root.style.setProperty("--toggle-bg", "#4d5c894b");
-    // root.style.setProperty("--toggle-ball", "#fff");
-    root.style.setProperty("--toggle-ball", "#fff5eedd");
+    // root.style.setProperty("--toggle-ball", "#9EC8FF"); // celeste pálido (resalta)
+    root.style.setProperty("--toggle-ball", "#fff");
 
     // links
     root.style.setProperty("--link-color", "white");
     root.style.setProperty("--link-hover-color", "#57B4FF");
-    // root.style.setProperty("--link-hover-color", "#03a9f4");
-    root.style.setProperty("--link-card-color", "#03a9f4");
-    // root.style.setProperty("--link-card-color", "#80C4FF");
+    root.style.setProperty("--link-hover-color", "#82c3f8bf");
 
     // botones principal - descargar cv
     root.style.setProperty("--btn-bg", "#03a9f4");
@@ -99,43 +102,39 @@ export function applyThemeColors(theme) {
     // root.style.setProperty("--btn-secondary-color", "#57B4FF");
 
     // // botones formulario
-    root.style.setProperty("--btn-form-bg", "#3568ffba");
-    // root.style.setProperty("--btn-form-bg", "#2B3C8D");
-    root.style.setProperty("--btn-form-hover-bg", "#188efde6");
-    // root.style.setProperty("--btn-form-hover-bg", "#3C5FE0");
+    root.style.setProperty("--btn-form-bg", "#003489e2");
+    root.style.setProperty("--btn-form-bg", "#004c89bf");
+    root.style.setProperty("--btn-form-bg", "#2B3C8D");
+    root.style.setProperty("--btn-form-hover-bg", "#188efdb4");
     root.style.setProperty("--btn-form-hover-text", "#fff");
 
     // Tarjetas proyectos - fondo/background
-    root.style.setProperty("--card-bg", "rgba(255, 255, 255, 0.1)");
-    // root.style.setProperty("--card-bg", "rgba(255, 255, 255, 0.05)");
-    root.style.setProperty("--card-hover-bg", "rgba(255, 255, 255, 0.2)");
-    // root.style.setProperty("--card-hover-bg", "rgba(255, 255, 255, 0.1)");
+    root.style.setProperty("--card-bg", "rgba(255, 255, 255, 0.07)");
+    root.style.setProperty("--card-hover-bg", "rgba(57, 54, 63, 0.15)");
     root.style.setProperty("--bg-color", "#020210");
-    // root.style.setProperty("--bg-color", "#0A0A1A");
 
     // Tarjetas proyectos - botones/btn
-    // root.style.setProperty("--proyect-btn-color", "#4d5c8969");
-    root.style.setProperty("--proyect-btn-color", "#4d5c898f");
-    root.style.setProperty("--proyect-btn-hover-color", "#0057b3db");
+    root.style.setProperty("--proyect-btn-color", "rgba(255, 255, 255, 0.1)");
+    // root.style.setProperty("--proyect-btn-hover-color", "#17518fca");
+    root.style.setProperty("--proyect-btn-hover-color", "#17518fd9");
     root.style.setProperty("--proyect-text-color", "rgba(255, 255, 255, 1)");
-    root.style.setProperty(
-      "--proyect-text-hover-color",
-      "rgba(255, 255, 255, 1)"
-    );
+    root.style.setProperty("--proyect-text-hover-color", "rgba(255, 255, 255, 1)");
+    root.style.setProperty("--btn-vermas-text", "rgba(255, 255, 255, 1)");
 
     // modal color - background y texto
-    // root.style.setProperty("--modal-bg", "#1e1e2f");
-    // root.style.setProperty("--modal-bg", "#12181feb");
-    root.style.setProperty("--modal-bg", "#13121feb");
-    root.style.setProperty("--modal-bg", "#110f21eb");
-    root.style.setProperty("--modal-text", "#e0e6f1");
+    root.style.setProperty("--modal-background", "#0d0e0f63");
+    // root.style.setProperty("--modal-bg", "#0d0e0ef5");
+    root.style.setProperty("--modal-bg", "#0d0e0efb");
+    root.style.setProperty("--modal-text", "#f9f9f9ff");
+    root.style.setProperty("--flechas", "#f9f9f9ff");
 
     // texto
     root.style.setProperty("--text-color", "white");
-    // root.style.setProperty("--text-color", "#f0f0f0");
+
+    // Contenedor de Contacto
+    root.style.setProperty("--section-bg", "rgba(0, 0, 0, 0.6)");
 
     //footer
     root.style.setProperty("--footer", "rgba(255, 255, 255, 0.5)");
-
   }
 }
