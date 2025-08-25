@@ -53,7 +53,8 @@ a[href="https://neat.firecms.co"] {
     --modal-text: #ffffff;
     --flechas: #ffffff;
 
-
+    /* Tecnonologias */
+    --background-tecn-card: rgba(255, 255, 255, 0.033);
 
     /* botones contacto */
     --btn-form-bg: #3568ffba;

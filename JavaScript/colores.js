@@ -34,10 +34,11 @@ export function applyThemeColors(theme) {
     root.style.setProperty("--btn-secondary-color", "#BFA47A"); 
     
     // --- Tarjetas/Proyectos - Background ---
-    // root.style.setProperty("--card-bg", "rgba(255, 255, 255, 0.35)"); // gris arena suave
-    // root.style.setProperty("--card-hover-bg", "rgba(255, 252, 246, 0.44)"); // gris-beige elegante
-    root.style.setProperty("--card-bg", "rgba(255, 255, 255, 0.35)"); // gris arena suave
-    root.style.setProperty("--card-hover-bg", "rgba(238, 238, 238, 0.48)"); // gris-beige elegante
+    // root.style.setProperty("--card-bg", "rgba(255, 255, 255, 0.35)"); 
+    // root.style.setProperty("--card-hover-bg", "rgba(255, 255, 255, 0.35)");
+    root.style.setProperty("--card-bg", "rgba(185, 174, 154, 0.3)"); 
+    root.style.setProperty("--card-bg", "rgba(185, 174, 154, 0.23)"); 
+    root.style.setProperty("--card-hover-bg", "rgba(238, 238, 238, 0.35)"); 
 
     // --- Tarjetas/Proyectos - Botones ---
     root.style.setProperty("--proyect-btn-color", "#23150688"); 
@@ -46,6 +47,9 @@ export function applyThemeColors(theme) {
     root.style.setProperty("--btn-vermas-text", "#231506c9");
     root.style.setProperty("--proyect-text-hover-color", "white");
     
+    // --- Tarjetas Tecnologias
+    root.style.setProperty("--background-tecn-card", "rgba(185, 174, 154, 0.25)");
+
     // --- Contacto - Background ---
     // root.style.setProperty("--section-bg", "rgba(250, 241, 231, 0.77)"); // gris topo suave, sobrio
     root.style.setProperty("--section-bg", "rgba(185, 174, 154, 0.39)"); // gris topo suave, sobrio
@@ -120,6 +124,9 @@ export function applyThemeColors(theme) {
     root.style.setProperty("--proyect-text-color", "rgba(255, 255, 255, 1)");
     root.style.setProperty("--proyect-text-hover-color", "rgba(255, 255, 255, 1)");
     root.style.setProperty("--btn-vermas-text", "rgba(255, 255, 255, 1)");
+
+    // --- Tarjetas Tecnologias
+    root.style.setProperty("--background-tecn-card", "rgba(255, 255, 255, 0.033)");
 
     // modal color - background y texto
     root.style.setProperty("--modal-background", "#0d0e0f63");

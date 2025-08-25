@@ -10,14 +10,6 @@ const gradientCanvas = document.getElementById("gradient");
 const toggle = document.getElementById("theme-toggle");
 const navbar = document.querySelector(".navbar");
 //****************************************************************************************************************************//
-// Navbar (muestra al mover mouse arriba)
-document.addEventListener("mousemove", (e) => {
-  const triggerZone = window.innerHeight * 0.25;
-  // const triggerZone = window.innerHeight * 0.20;
-  navbar.classList.toggle("show", e.clientY < triggerZone);
-});
-
-//****************************************************************************************************************************//
 // Tema: Gradiente + colores + íconos
 let gradient;
 const savedTheme = localStorage.getItem("theme") || "dark";
@@ -59,25 +51,59 @@ function toggleTheme() {
 toggle.addEventListener("change", toggleTheme);
 
 //****************************************************************************************************************************//
-// Modales de proyectos (abrir/cerrar)
+// ===== Navbar por hover (guarda última Y) =====
+let lastMouseY = window.innerHeight; // empieza oculto
+function updateNavbar(y) {
+  const triggerZone = window.innerHeight * 0.25;
+  navbar.classList.toggle("show", y < triggerZone);
+}
+
+document.addEventListener("mousemove", (e) => {
+  lastMouseY = e.clientY;
+  if (!document.body.classList.contains("modal-open")) {
+    updateNavbar(lastMouseY);
+  }
+});
+
+// ===== Utilidad para cerrar modal =====
+function closeModal(modalEl) {
+  if (!modalEl) return;
+  modalEl.classList.add("hidden");
+  document.body.classList.remove("modal-open");
+  updateNavbar(lastMouseY); // re-evalúa navbar con la última Y real
+}
+
+// ===== Abrir modal =====
 document.querySelectorAll(".open-modal").forEach((btn) => {
   btn.addEventListener("click", () => {
     const modal = document.getElementById(btn.dataset.id);
-    modal.classList.remove("hidden");
+    modal?.classList.remove("hidden");
+    document.body.classList.add("modal-open");
+    navbar.classList.remove("show"); // esconder mientras el modal está abierto
   });
 });
 
+// ===== Cerrar por botón X =====
 document.querySelectorAll(".close-modal").forEach((close) => {
   close.addEventListener("click", () => {
-    close.closest(".project-modal").classList.add("hidden");
+    closeModal(close.closest(".project-modal"));
   });
 });
 
+// ===== Cerrar clic en overlay =====
 window.addEventListener("click", (e) => {
-  document.querySelectorAll(".project-modal").forEach((modal) => {
-    if (e.target === modal) modal.classList.add("hidden");
-  });
+  const modal = e.target.classList?.contains("project-modal") ? e.target : null;
+  if (modal) closeModal(modal);
 });
+
+// ===== Cerrar con ESC =====
+window.addEventListener("keydown", (e) => {
+  if (e.key === "Escape") {
+    const openModal = document.querySelector(".project-modal:not(.hidden)");
+    if (openModal) closeModal(openModal);
+  }
+});
+
 
 //****************************************************************************************************************************//
 // Galerías reutilizables para cada proyecto
@@ -159,6 +185,13 @@ function setupGallery(modalId, images) {
 
 //****************************************************************************************************************************//
 // Fotos de cada modal-galería
+setupGallery("modal3", [
+  "Imagenes/GestorEmpleados/MenuEscritorio.png",
+  "Imagenes/GestorEmpleados/GestionOperaciones.png",
+  "Imagenes/GestorEmpleados/MenuConsola.png",
+  "Imagenes/GestorEmpleados/GestionEmpleadosDB.png",
+]);
+
 setupGallery("modal1", [
   "Imagenes/CatalogoWeb/CatalogoWeb.png",
   "Imagenes/CatalogoWeb/CatalogoWeb_Lista.png",
@@ -168,16 +201,9 @@ setupGallery("modal1", [
 
 setupGallery("modal2", [
   "Imagenes/WebBook/index.jpg",
-  "Imagenes/WebBook/default.jpg",
   "Imagenes/WebBook/tapa.jpg",
-  "Imagenes/WebBook/tapa2.jpg",
 ]);
 
-setupGallery("modal3", [
-  "Imagenes/GestorEmpleados/MenuConsola.png",
-  "Imagenes/GestorEmpleados/VideoConsola_Prueba.mp4",
-  "Imagenes/GestorEmpleados/GestionEmpleadosDB.png",
-]);
 
 //****************************************************************************************************************************//
 // Imagen ampliada al hacer clic

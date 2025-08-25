@@ -6,9 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
-
-
 
     <!-- <link rel="stylesheet" href="style.css"> -->
     <link rel="stylesheet" href="/css/main.css" />
@@ -20,6 +17,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&display=swap" rel="stylesheet" />
     <!-- Roboto -->
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+
+    <!-- Iconos -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
 
     <title>Portafolio | Franco Wagenhöfer</title>
 
@@ -81,10 +81,90 @@
             <h2>Proyectos destacados</h2>
             <div class="projects-grid">
 
+                <!-- PROYECTO 3 -------------------->
+                <article class="project-card">
+                    <h3>Gestor Pyme</h3>
+                    <p>
+                        App de escritorio en C# .NET para gestión integral de una pyme.
+                    </p>
+                    <div class="tech-icons">
+                        <img src="Iconos/csharp.svg" alt="C#" />
+                        <img src="Iconos/dotnet2.svg" alt=".NET" />
+                        <img src="Iconos/sql-server.svg" alt="SQL Server" />
+                        <img src="Iconos/sqlite-color.svg" alt="SQLite" />
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/francowagenhofer/Gestion-Pyme-SQLite/releases/download/v1.0.0/AppGestionPyme_Portable.zip"
+                            download target="_blank">Descargar app</a>
+                        <button class="open-modal" data-id="modal3">Ver más</button>
+                    </div>
+                </article>
+
+                <div id="modal3" class="project-modal hidden">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>Gestor Pyme</h3>
+
+                        <div class="modal-body">
+                            <div class="modal-gallery">
+                                <div class="modal-gallery-slider">
+                                    <button class="gallery-prev">&#10094;</button>
+                                    <img src="img/proyecto3.png" alt="Vista proyecto" class="gallery-image" />
+                                    <button class="gallery-next">&#10095;</button>
+                                </div>
+                            </div>
+                            <div class="modal-info">
+                                <p>
+                                    <strong>App C# .NET para gestión de PYME.</strong> Inicialmente desarrollada como
+                                    app de consola,
+                                    evolucionó a una versión con interfaz gráfica (WinForms) para cubrir las necesidades
+                                    de
+                                    una empresa. Permite gestionar datos de empleados, proyectos, salarios y más, con
+                                    todas
+                                    las funcionalidades CRUD implementadas.
+                                </p>
+
+                                <p style="margin-top: 1rem;">
+                                    <strong>Versiones independientes:</strong><br>
+                                    <strong>- SQLite:</strong> portable, ejecutable directo tras descargar (no requiere
+                                    instalación).<br>
+                                    <strong>- SQL Server:</strong> completa con multiusuario, procedimientos
+                                    almacenados, interfaz de consola y WinForms.
+                                </p>
+
+                                <div class="tech-methods-container">
+                                    <ul class="tech-list">
+                                        <li><strong>Frontend:</strong> WinForms / Consola</li>
+                                        <li><strong>Backend:</strong> C#</li>
+                                        <li><strong>Base de datos:</strong> SQL Server / SQLite</li>
+                                    </ul>
+                                    <ul class="methods-list">
+                                        <li><strong>Lógica:</strong> POO</li>
+                                        <li><strong>Consultas:</strong> T-SQL, joins / SQLite</li>
+                                        <li><strong>Gestión:</strong> CRUD</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/francowagenhofer/Gestion-Pyme-SQLite/releases/download/v1.0.0/AppGestionPyme_Portable.zip"
+                                download target="_blank">Descargar App</a>
+
+                            <a href="https://github.com/francowagenhofer/Gestion-Pyme-SQLite.git" target="_blank">SQLite
+                                <img src="Iconos/GitHub_dark.svg" alt="GitHub1" class="icon" /></a>
+
+                            <a href="https://github.com/francowagenhofer/app-gestion-empleados-csharp.git"
+                                target="_blank">SQL Server<img src="Iconos/GitHub_dark.svg" alt="GitHub2"
+                                    class="icon" /></a>
+                        </div>
+                    </div>
+                </div>
+
+
                 <!-- PROYECTO 1 ----------------------->
                 <article class="project-card">
                     <h3>Catálogo Web</h3>
-                    <p>App web en C# con .NET para gestión de artículos.</p>
+                    <p>App web en C# con .NET para gestión de catálogo de artículos.</p>
                     <div class="tech-icons">
                         <img src="Iconos/csharp.svg" alt="C#" />
                         <img src="Iconos/dotnet2.svg" alt=".NET" />
@@ -111,11 +191,15 @@
                             </div>
                             <div class="modal-info">
                                 <p>
-                                    Aplicación web desarrollada como trabajo práctico para la facultad,
-                                    utilizando ASP.NET Web Forms en .NET Framework. Permite la gestión
-                                    completa de artículos (CRUD), filtrado por categorías y administración
-                                    de usuarios con distintos roles. Se enfocó en implementar buenas
-                                    prácticas de arquitectura y seguridad básica.
+                                    <strong> App web en C# con ASP.NET Web Forms para gestión de artículos. </strong>
+                                    Permite administrar
+                                    productos con todas las operaciones CRUD, filtrarlos por
+                                    categorías y gestionar usuarios con roles diferenciados.
+                                </p>
+                                <p style="margin-top: 1rem; margin-bottom: 1rem;">
+                                    El proyecto está orientado a simular escenarios de inventario y gestión de usuarios,
+                                    aplicando
+                                    buenas prácticas de arquitectura, seguridad básica, patrones de diseño y usabilidad.
                                 </p>
                                 <div class="tech-methods-container">
                                     <ul class="tech-list">
@@ -136,89 +220,27 @@
                         <div class="project-links">
                             <a href="http://webcatalog.somee.com/" target="_blank">Ver sitio web</a>
                             <a href="https://github.com/francowagenhofer/tp-final-nivel3-Wagenhofer-Franco.git"
-                                target="_blank">Ver repositorio en GitHub</a>
+                                target="_blank">Ver repositorio <img src="Iconos/GitHub_dark.svg" alt="GitHub2" class="icon" /></a>
                         </div>
                     </div>
                 </div>
 
-                <!-- PROYECTO 3 -------------------->
-                <article class="project-card">
-                    <h3>Gestor Pyme</h3>
-                    <p>
-                        App de escritorio en C# .NET para gestión de una pyme.
-                    </p>
-                    <div class="tech-icons">
-                        <img src="Iconos/csharp.svg" alt="C#" />
-                        <img src="Iconos/dotnet2.svg" alt=".NET" />
-                        <img src="Iconos/sql-server.svg" alt="SQL Server" />
-                    </div>
-                    <div class="project-links">
-                        <!-- <a href="https://github.com/francowagenhofer/app-gestion-empleados-csharp.git"
-                            target="_blank">Repositorio</a> -->
-                        <a href="https://github.com/francowagenhofer/app-gestion-empleados-csharp.git"
-                            target="_blank">Descargar app</a>
-                        <button class="open-modal" data-id="modal3">Ver más</button>
-                    </div>
-                </article>
-
-                <div id="modal3" class="project-modal hidden">
-                    <div class="modal-content">
-                        <span class="close-modal">&times;</span>
-                        <h3>Gestor Pyme</h3>
-
-                        <div class="modal-body">
-                            <div class="modal-gallery">
-                                <div class="modal-gallery-slider">
-                                    <button class="gallery-prev">&#10094;</button>
-                                    <img src="img/proyecto3.png" alt="Vista proyecto" class="gallery-image" />
-                                    <button class="gallery-next">&#10095;</button>
-                                </div>
-                            </div>
-                            <div class="modal-info">
-                                <p>
-                                    Aplicación para gestión de empleados desarrollada inicialmente
-                                    como app de consola en C# .NET para practicar lógica de
-                                    programación. Luego evolucionó a una versión con interfaz
-                                    gráfica (WinForms), orientada a cubrir necesidades de una PyME.
-                                    Permite gestionar datos del personal, proyectos, tareas,
-                                    salarios y más, con almacenamiento en SQL Server y
-                                    funcionalidades CRUD completas.
-                                </p>
-                                <div class="tech-methods-container">
-                                    <ul class="tech-list">
-                                        <li><strong>Frontend:</strong> WinForms</li>
-                                        <li><strong>Backend:</strong> C#</li>
-                                        <li><strong>Base de datos:</strong> SQL Server</li>
-                                    </ul>
-                                    <ul class="methods-list">
-                                        <li><strong>Lógica:</strong> POO</li>
-                                        <li><strong>Consultas:</strong> T-SQL, joins</li>
-                                        <li><strong>Gestión:</strong> CRUD</li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="project-links">
-                            <a href="https://github.com/francowagenhofer/app-gestion-empleados-csharp.git"
-                                target="_blank">Descargar aplicación</a>
-                            <a href="https://github.com/francowagenhofer/app-gestion-empleados-csharp.git"
-                                target="_blank">Ver repositorio en GitHub</a>
-                        </div>
-                    </div>
-                </div>
 
                 <!-- PROYECTO 2 -------------------->
                 <article class="project-card">
                     <h3>WebBook</h3>
-                    <p>App web con Angular y Node.js para explorar libros.</p>
+                    <p>App web con Angular y Node.js para explorar libros. <strong>En proceso...</strong></p>
                     <div class="tech-icons">
-                        <img src="Iconos/typescript.svg" alt="TS" />
+                        <!-- <img src="Iconos/typescript.svg" alt="TS" />
                         <img src="Iconos/angular.svg" alt="Angular" />
                         <img src="Iconos/nodejs.svg" alt="Node.js" />
-                        <img src="Iconos/mongodb.svg" alt="MongoDB" />
+                        <img src="Iconos/mongodb.svg" alt="MongoDB" /> -->
+                        <img src="Iconos/javascript.svg" alt="js" />
+                        <img src="Iconos/html5.svg" alt="html5" />
+                        <img src="Iconos/css_old.svg" alt="css" />
                     </div>
                     <div class="project-links">
-                        <a href="#" target="_blank">Sitio Web</a>
+                        <a target="_blank">Sitio Web</a>
                         <button class="open-modal" data-id="modal2">Ver más</button>
                     </div>
                 </article>
@@ -244,6 +266,9 @@
                                     MongoDB como base de datos. Pensado como práctica integral de
                                     desarrollo fullstack moderno.
                                 </p>
+                                <p style="margin-top: 1rem;">
+                                    <strong>En proceso...</strong>
+                                </p>
                                 <div class="tech-methods-container">
                                     <ul class="tech-list">
                                         <li><strong>Frontend:</strong> Angular</li>
@@ -261,8 +286,8 @@
                             </div>
                         </div>
                         <div class="project-links">
-                            <a href="#" target="_blank">Ver sitio web</a>
-                            <a href="https://github.com/..." target="_blank">Ver repositorio en GitHub</a>
+                            <a target="_blank">Ver sitio web</a>
+                            <a target="_blank">Ver repositorio<img src="Iconos/GitHub_dark.svg" alt="GitHub2" class="icon" /></a>
                         </div>
                     </div>
                 </div>
@@ -272,71 +297,94 @@
 
         <section id="skills" class="section">
             <h2>Aptitudes & Tecnologías</h2>
-            <p class="skills-intro">
-                Tecnologías y herramientas que utilizo para desarrollar:
-            </p>
-            <div class="skills-grid">
-                <div class="skill iconos">
-                    <!-- <i class="devicon-csharp-plain colored"></i> -->
-                    <img  src="Iconos/csharp.svg" alt="csharp" />
-                    <span>C#</span>
-                </div>
-                <div class="skill iconos">
-                    <!-- <i class="devicon-dotnetcore-plain colored"></i> -->
-                    <!-- <img  src="Iconos/dotnet.svg" alt=".net" /> -->
-                    <img  src="Iconos/dotnet2.svg" alt=".net" />
-                    <span>.NET</span>
-                </div>
-                <div class="skill iconos">
-                    <i class="devicon-microsoftsqlserver-plain colored"></i>
-                    <span>SQL Server</span>
-                </div>
-            </div>
-            <div class="skills-grid">
-                <div class="skill iconos">
-                    <i class="devicon-html5-plain colored"></i>
-                    <span>HTML</span>
-                </div>
-                <div class="skill iconos">
-                    <i class="devicon-css3-plain colored"></i>
-                    <span>CSS</span>
-                </div>
-                <div class="skill iconos">
-                    <i class="devicon-javascript-plain colored"></i>
-                    <span>JavaScript</span>
-                </div>
-                <div class="skill iconos">
-                    <i class="devicon-bootstrap-plain colored"></i>
-                    <span>Bootstrap</span>
-                </div>
-            </div>
-            <div class="skills-grid">
-                <div class="skill iconos">
-                    <i class="devicon-github-original colored"></i>
-                    <span>GitHub</span>
-                </div>
-                <div class="skill iconos">
-                    <i class="devicon-visualstudio-plain colored"></i>
-                    <span>Visual Studio</span>
-                </div>
-                <div class="skill iconos">
-                    <i class="devicon-vscode-plain colored"></i>
-                    <span>VS Code</span>
-                </div>
-            </div>
+
+            <!-- <p class="skills-intro">
+    Tecnologías y herramientas que utilizo para desarrollar:
+  </p> -->
+
+            <div class="skills-grid-cards">
+                <!-- BACKEND -->
+                <article class="skill-card">
+                    <h3>Backend</h3>
+                    <div class="skills-icons">
+                        <div class="skill iconos">
+                            <img src="Iconos/csharp.svg" alt="csharp" />
+                            <span>C#</span>
+                        </div>
+                        <div class="skill iconos">
+                            <img src="Iconos/dotnet2.svg" alt=".net" />
+                            <span>.NET</span>
+                        </div>
+                        <div class="skill iconos">
+                            <i class="devicon-microsoftsqlserver-plain colored"></i>
+                            <span>SQL Server</span>
+                        </div>
+                        <div class="skill iconos">
+                            <img src="Iconos/sqlite-color.svg" alt="SQLite" />
+                            <span>SQLite</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- FRONTEND -->
+                <article class="skill-card">
+                    <h3>Frontend</h3>
+                    <div class="skills-icons">
+                        <div class="skill iconos">
+                            <i class="devicon-html5-plain colored"></i>
+                            <span>HTML</span>
+                        </div>
+                        <div class="skill iconos">
+                            <i class="devicon-css3-plain colored"></i>
+                            <span>CSS</span>
+                        </div>
+                        <div class="skill iconos">
+                            <i class="devicon-javascript-plain colored"></i>
+                            <span>JavaScript</span>
+                        </div>
+                        <div class="skill iconos">
+                            <i class="devicon-bootstrap-plain colored"></i>
+                            <span>Bootstrap</span>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- HERRAMIENTAS -->
+                <article class="skill-card">
+                    <h3>Herramientas</h3>
+                    <div class="skills-icons">
+                        <div class="skill iconos">
+                            <img src="Iconos/git.svg" alt="git" />
+                            <span>Git</span>
+                        </div>
+                        <div class="skill iconos">
+                            <i class="devicon-github-original colored"></i>
+                            <span>GitHub</span>
+                        </div>
+                        <div class="skill iconos">
+                            <i class="devicon-visualstudio-plain colored"></i>
+                            <span>Visual Studio</span>
+                        </div>
+                        <div class="skill iconos">
+                            <i class="devicon-vscode-plain colored"></i>
+                            <span>VS Code</span>
+                        </div>
+                    </div>
+                </article>
             </div>
         </section>
+
+
 
         <!-- Seccion About ------------------------------------------>
         <section id="about" class="section">
             <h2>Sobre mí</h2>
             <p class="about-text">
-                Soy estudiante de programación con fuerte interés en el desarrollo de
-                software. Vengo aprendiendo tanto por mi cuenta como en una
-                tecnicatura, complementando con cursos formales. Tuve la oportunidad
-                de desarrollar proyectos en escritorio y web con .NET y bases de datos
-                SQL. Actualmente sigo formándome con entusiasmo, con ganas de crecer,
-                sumar experiencia y aportar valor en cada nuevo desafío.
+                Soy estudiante de Programación en la UTN y complemento la carrera con cursos y práctica constante.
+                Desarrollé proyectos de escritorio y web en C# .NET con SQL Server y SQLite, tanto académicos como
+                personales, y también los llevé a la práctica en situaciones reales. Me apasiona el desarrollo de
+                software y busco seguir creciendo como profesional, aportando valor en cada desafío y sumando
+                experiencia en aplicaciones de escritorio y web.
             </p>
         </section>
 
@@ -401,7 +449,7 @@
     </main>
 
     <footer>
-        <p>© 2025 Franco Wagenhöfer. Todos los derechos reservados.</p>
+        <p>© 2025 Franco Wagenhöfer.</p>
     </footer>
 
     <!-- Imagen ampliada -->

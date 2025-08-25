@@ -19,7 +19,7 @@
     flex-direction: column;
     gap: 0.5rem;
     transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    cursor: pointer;
+    /* cursor: pointer; */
 }
 
 .project-card:hover {
@@ -181,6 +181,14 @@
     position: relative;
 }
 
+.close-modal {
+    position: absolute;
+    top: 1rem;
+    right: 2rem;
+    font-size: 2rem;
+    cursor: pointer;
+}
+
 .modal-content h3 {
     font-size: 2rem;
     margin-top: 1.5rem;
@@ -189,21 +197,10 @@
 
 .modal-content p {
     text-align: justify;
-    padding-bottom: 0.5rem;
-    padding-left: 1rem;
-    padding-right: 1rem;
     margin: 1rem;
-    min-height: 80px;
+    min-height: 60px;
 }
 
-
-.close-modal {
-    position: absolute;
-    top: 1rem;
-    right: 2rem;
-    font-size: 2rem;
-    cursor: pointer;
-}
 
 
 .modal-body {
@@ -281,30 +278,38 @@ video.gallery-image:hover {
 }
 
 .gallery-prev {
-    left: -1rem;
+    left: 0.30rem;
 }
 
 .gallery-next {
-    right: -1rem;
+    right: 0.30rem;
 }
 
 /* Info a la derecha */
 .modal-info p {
     text-align: justify;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
 }
+
+
+
 
 /* Listas más compactas */
 .tech-methods-container{
     display: flex;
     justify-content: space-evenly;
     margin-inline: 1rem;
+    margin: 0;
 }
 
 ul {
     list-style: none;
     text-align: justify;
-    font-size: 1.1rem;
+    font-size: 1rem;
+    padding: 0;
 }
 
 /* Botones abajo centrados */
@@ -324,13 +329,22 @@ ul {
     display: inline-flex;      
     justify-content: center;    
     align-items: center;        
-    min-width: 230px;              
+    min-width: 180px;              
     padding: 0.85rem 1.5rem;    
 }
+
+.project-links a .icon {
+    width: 20px;         
+    height: 20px;
+    margin-left: 0.5rem;  
+    object-fit: contain;
+}
+
 
 .modal-content .project-links a:hover {
     transform: scale(1.01);
 }
+
 
 /* ------------------------------------------------------------------------------------------------------------------- */
 
