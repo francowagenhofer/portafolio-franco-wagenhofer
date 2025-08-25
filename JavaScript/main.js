@@ -208,23 +208,25 @@ function setupGallery(modalId, images) {
 
 // vite externo
 
+const base = import.meta.env.BASE_URL;
+
 setupGallery("modal3", [
-  "/portafolio-franco-wagenhofer/Imagenes/GestorEmpleados/MenuEscritorio.png",
-  "/portafolio-franco-wagenhofer/Imagenes/GestorEmpleados/GestionOperaciones.png",
-  "/portafolio-franco-wagenhofer/Imagenes/GestorEmpleados/MenuConsola.png",
-  "/portafolio-franco-wagenhofer/Imagenes/GestorEmpleados/GestionEmpleadosDB.png",
+  `${base}Imagenes/GestorEmpleados/MenuEscritorio.png`,
+  `${base}Imagenes/GestorEmpleados/GestionOperaciones.png`,
+  `${base}Imagenes/GestorEmpleados/MenuConsola.png`,
+  `${base}Imagenes/GestorEmpleados/GestionEmpleadosDB.png`,
 ]);
 
 setupGallery("modal1", [
-  "/portafolio-franco-wagenhofer/Imagenes/CatalogoWeb/CatalogoWeb.png",
-  "/portafolio-franco-wagenhofer/Imagenes/CatalogoWeb/CatalogoWeb_Lista.png",
-  "/portafolio-franco-wagenhofer/Imagenes/CatalogoWeb/CatalogoWeb_Articulo.png",
-  "/portafolio-franco-wagenhofer/Imagenes/CatalogoWeb/CatalogoWebDB.png",
+  `${base}Imagenes/CatalogoWeb/CatalogoWeb.png`,
+  `${base}Imagenes/CatalogoWeb/CatalogoWeb_Lista.png`,
+  `${base}Imagenes/CatalogoWeb/CatalogoWeb_Articulo.png`,
+  `${base}Imagenes/CatalogoWeb/CatalogoWebDB.png`,
 ]);
 
 setupGallery("modal2", [
-  "/portafolio-franco-wagenhofer/Imagenes/WebBook/index.jpg",
-  "/portafolio-franco-wagenhofer/Imagenes/WebBook/tapa.jpg",
+  `${base}Imagenes/WebBook/index.jpg`,
+  `${base}Imagenes/WebBook/tapa.jpg`,
 ]);
 
 
