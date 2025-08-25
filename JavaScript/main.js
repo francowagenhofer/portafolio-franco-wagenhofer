@@ -185,23 +185,46 @@ function setupGallery(modalId, images) {
 
 //****************************************************************************************************************************//
 // Fotos de cada modal-galería
+
+// vite local
+// setupGallery("modal3", [
+//   "Imagenes/GestorEmpleados/MenuEscritorio.png",
+//   "Imagenes/GestorEmpleados/GestionOperaciones.png",
+//   "Imagenes/GestorEmpleados/MenuConsola.png",
+//   "Imagenes/GestorEmpleados/GestionEmpleadosDB.png",
+// ]);
+
+// setupGallery("modal1", [
+//   "Imagenes/CatalogoWeb/CatalogoWeb.png",
+//   "Imagenes/CatalogoWeb/CatalogoWeb_Lista.png",
+//   "Imagenes/CatalogoWeb/CatalogoWeb_Articulo.png",
+//   "Imagenes/CatalogoWeb/CatalogoWebDB.png",
+// ]);
+
+// setupGallery("modal2", [
+//   "Imagenes/WebBook/index.jpg",
+//   "Imagenes/WebBook/tapa.jpg",
+// ]);
+
+// vite externo
+
 setupGallery("modal3", [
-  "Imagenes/GestorEmpleados/MenuEscritorio.png",
-  "Imagenes/GestorEmpleados/GestionOperaciones.png",
-  "Imagenes/GestorEmpleados/MenuConsola.png",
-  "Imagenes/GestorEmpleados/GestionEmpleadosDB.png",
+  "/portafolio-franco-wagenhofer/Imagenes/GestorEmpleados/MenuEscritorio.png",
+  "/portafolio-franco-wagenhofer/Imagenes/GestorEmpleados/GestionOperaciones.png",
+  "/portafolio-franco-wagenhofer/Imagenes/GestorEmpleados/MenuConsola.png",
+  "/portafolio-franco-wagenhofer/Imagenes/GestorEmpleados/GestionEmpleadosDB.png",
 ]);
 
 setupGallery("modal1", [
-  "Imagenes/CatalogoWeb/CatalogoWeb.png",
-  "Imagenes/CatalogoWeb/CatalogoWeb_Lista.png",
-  "Imagenes/CatalogoWeb/CatalogoWeb_Articulo.png",
-  "Imagenes/CatalogoWeb/CatalogoWebDB.png",
+  "/portafolio-franco-wagenhofer/Imagenes/CatalogoWeb/CatalogoWeb.png",
+  "/portafolio-franco-wagenhofer/Imagenes/CatalogoWeb/CatalogoWeb_Lista.png",
+  "/portafolio-franco-wagenhofer/Imagenes/CatalogoWeb/CatalogoWeb_Articulo.png",
+  "/portafolio-franco-wagenhofer/Imagenes/CatalogoWeb/CatalogoWebDB.png",
 ]);
 
 setupGallery("modal2", [
-  "Imagenes/WebBook/index.jpg",
-  "Imagenes/WebBook/tapa.jpg",
+  "/portafolio-franco-wagenhofer/Imagenes/WebBook/index.jpg",
+  "/portafolio-franco-wagenhofer/Imagenes/WebBook/tapa.jpg",
 ]);
 
 
