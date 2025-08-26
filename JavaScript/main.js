@@ -269,70 +269,129 @@ overlay.addEventListener("click", (e) => {
 //   alerta.textContent = "Enviando tu mensaje...";
 //   alerta.className = "alerta show";
 
-//   try {
-//     const response = await fetch(form.action, {
-//       method: "POST",
-//       body: formData,
-//       headers: {
-//         Accept: "application/json", // para que FormSubmit responda con JSON
-//       },
-//     });
+  // try {
+  //   const response = await fetch(form.action, {
+  //     method: "POST",
+  //     body: formData,
+  //     headers: {
+  //       Accept: "application/json", 
+  //     },
+  //   });
 
-//     if (response.ok) {
-//       alerta.textContent =
-//         "¡Gracias por tu mensaje! Me comunicaré contigo pronto.";
-//       alerta.className = "alerta success show";
-//       form.reset();
-//     } else {
-//       const data = await response.json();
-//       alerta.textContent = data.message || "Error al enviar el mensaje.";
-//       alerta.className = "alerta error show";
-//     }
-//   } catch (error) {
-//     alerta.textContent = "Error al enviar el mensaje. Intenta nuevamente.";
-//     alerta.className = "alerta error show";
-//     console.error(error);
-//   }
+  //   if (response.ok) {
+  //     alerta.textContent =
+  //       "¡Gracias por tu mensaje! Me comunicaré contigo pronto.";
+  //     alerta.className = "alerta success show";
+  //     form.reset();
+  //   } else {
+  //     const data = await response.json();
+  //     alerta.textContent = data.message || "Error al enviar el mensaje.";
+  //     alerta.className = "alerta error show";
+  //   }
+  // } catch (error) {
+  //   alerta.textContent = "Error al enviar el mensaje. Intenta nuevamente.";
+  //   alerta.className = "alerta error show";
+  //   console.error(error);
 
-//   // Ocultar alerta después de 7 segundos
-//   setTimeout(() => {
-//     alerta.classList.remove("show");
-//   }, 6000);
-// });
 
-// # SIMULACION PARA PROBAR ENVIO DE FORMULARIO
+  // }
+
 const form = document.getElementById("contactForm");
 const alerta = document.getElementById("alertaGracias");
+
+// Cambiá esto para probar en local 👇
+// const MODO_SIMULADO = true; // true = no llama a FormSubmit
+const MODO_SIMULADO = false; // false = llama a FormSubmit
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-  // Simulamos que se está enviando...
-  alerta.textContent = "Enviando...";
+  const formData = new FormData(form);
+
+  alerta.textContent = "Enviando tu mensaje...";
   alerta.className = "alerta show";
 
-  // Simulación de espera de red
-  setTimeout(() => {
-    // Simular éxito o error
-    const exito = true; // Cambialo a false para simular error
-    // const exito = false; // Cambialo a false para simular error
+  if (MODO_SIMULADO) {
+    // 🔹 SIMULACIÓN LOCAL
+    setTimeout(() => {
+      alerta.textContent = "¡Gracias por tu mensaje! (simulado)";
+      alerta.className = "alerta success show";
+      form.reset();
 
-    if (exito) {
+      setTimeout(() => alerta.classList.remove("show"), 6000);
+    }, 2000);
+
+    return; 
+  }
+
+  // 🔹 ENVÍO REAL A FORMSUBMIT
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: formData,
+      headers: {
+        Accept: "application/json", // 🔑 necesario
+      },
+    });
+
+    console.log("Status:", response.status);
+    console.log("URL:", form.action);
+
+    if (response.ok) {
       alerta.textContent =
         "¡Gracias por tu mensaje! Me comunicaré contigo pronto.";
       alerta.className = "alerta success show";
       form.reset();
     } else {
-      alerta.textContent = "Error al enviar el mensaje. Intenta nuevamente.";
+      const text = await response.text();
+      console.error("Respuesta completa:", text);
+      alerta.textContent = "Error al enviar el mensaje.";
       alerta.className = "alerta error show";
     }
+  } catch (error) {
+    console.error("Catch error:", error);
+    alerta.textContent = "Error al enviar el mensaje. Intenta nuevamente.";
+    alerta.className = "alerta error show";
+  }
 
-    // Ocultar después de unos segundos
-    setTimeout(() => {
-      alerta.classList.remove("show");
-    }, 6000);
-  }, 2000); // Simula 2 segundo de espera
+  setTimeout(() => {
+    alerta.classList.remove("show");
+  }, 6000);
 });
+
+// # SIMULACION PARA PROBAR ENVIO DE FORMULARIO
+// const form = document.getElementById("contactForm");
+// const alerta = document.getElementById("alertaGracias");
+
+// form.addEventListener("submit", async (e) => {
+//   e.preventDefault();
+
+//   // Simulamos que se está enviando...
+//   alerta.textContent = "Enviando...";
+//   alerta.className = "alerta show";
+
+//   // Simulación de espera de red
+//   setTimeout(() => {
+//     // Simular éxito o error
+//     const exito = true; // Cambialo a false para simular error
+//     // const exito = false; // Cambialo a false para simular error
+
+//     if (exito) {
+//       alerta.textContent =
+//         "¡Gracias por tu mensaje! Me comunicaré contigo pronto.";
+//       alerta.className = "alerta success show";
+//       form.reset();
+//     } else {
+//       alerta.textContent = "Error al enviar el mensaje. Intenta nuevamente.";
+//       alerta.className = "alerta error show";
+//     }
+
+//     // Ocultar después de unos segundos
+//     setTimeout(() => {
+//       alerta.classList.remove("show");
+//     }, 6000);
+//   }, 2000); // Simula 2 segundo de espera
+// });
 
 //****************************************************************************************************************************//
 //****************************************************************************************************************************//
