@@ -27,7 +27,7 @@
             document.documentElement.setAttribute("data-theme", savedTheme);
         })();
     </script>
-  <script type="module" crossorigin src="/portafolio-franco-wagenhofer/assets/index-BRnRjTap.js"></script>
+  <script type="module" crossorigin src="/portafolio-franco-wagenhofer/assets/index-CzOmeol2.js"></script>
   <link rel="stylesheet" crossorigin href="/portafolio-franco-wagenhofer/assets/index-BoHvVFkm.css">
 </head>
 
@@ -403,10 +403,15 @@
             <h2>Contacto</h2>
             <div class="contact-container">
 
-                <!-- <form id="contactForm" class="contact-form" action="#" method="POST"> -->
-                <!-- <form id="contactForm" class="contact-form" method="POST"> -->
 
-                <form id="contactForm" class="contact-form" action="https://formsubmit.co/el/pihujo" method="POST">
+                <!-- <form id="contactForm" class="contact-form" action="https://formsubmit.co/el/pihujo" method="POST">
+                    <input type="hidden" name="_next"
+                    value="https://tusitio.github.io/portafolio-franco-wagenhofer/gracias.html"> -->
+
+
+
+                <form id="contactForm" class="contact-form">
+
                     <label for="name">Nombre</label>
                     <input type="text" id="name" name="name" placeholder="Tu nombre" required autocomplete="name" />
 
@@ -465,6 +470,14 @@
         <span id="close-overlay">&times;</span>
         <img id="overlay-image" src="" alt="Imagen ampliada" />
     </div>
+
+    <!-- Envio de formulario -->
+    <script type="text/javascript" src="https://cdn.emailjs.com/dist/email.min.js"></script>
+    <script type="text/javascript">
+        (function () {
+            emailjs.init("uWi6YuvGoxMA-TSfo"); 
+        })();
+    </script>
 </body>
 
 </html>
