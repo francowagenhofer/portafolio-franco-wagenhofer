@@ -150,7 +150,6 @@ function setupGallery(modalId, images) {
       img.alt = "Captura del proyecto";
       img.classList.add("gallery-image");
 
-      // 👉 Evento para ampliar imagen
       img.addEventListener("click", () => {
         overlayImage.src = img.src;
         overlay.classList.remove("hidden");
@@ -207,7 +206,6 @@ function setupGallery(modalId, images) {
 // ]);
 
 // vite externo
-
 const base = import.meta.env.BASE_URL;
 
 setupGallery("modal3", [
