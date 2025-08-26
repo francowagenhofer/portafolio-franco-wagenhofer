@@ -260,35 +260,27 @@ overlay.addEventListener("click", (e) => {
 const form = document.getElementById("contactForm");
 const alerta = document.getElementById("alertaGracias");
 
-form.addEventListener("submit", (e) => {
-  e.preventDefault(); 
+form.addEventListener("submit", function(e) {
+  e.preventDefault(); // evitar que recargue la página
 
   alerta.textContent = "Enviando tu mensaje...";
   alerta.className = "alerta show";
 
-  fetch(form.action, {
-    method: "POST",
-    body: new FormData(form),
-    headers: { Accept: "application/json" },
-  })
-    .then(response => {
-      if (response.ok) {
-        alerta.textContent = "¡Gracias por tu mensaje! Me comunicaré contigo pronto.";
-        alerta.className = "alerta success show";
-        form.reset();
-      } else {
-        alerta.textContent = "Error al enviar el mensaje. Intenta nuevamente.";
-        alerta.className = "alerta error show";
-      }
-    })
-    .catch(error => {
+  emailjs.sendForm("service_fz2pgho", "template_l9yc0yb", this)
+    .then(() => {
+      alerta.textContent = "¡Gracias por tu mensaje! Me comunicaré contigo pronto.";
+      alerta.className = "alerta success show";
+      form.reset();
+    }, (error) => {
+      console.error("Error:", error);
       alerta.textContent = "Error al enviar el mensaje. Intenta nuevamente.";
       alerta.className = "alerta error show";
-      console.error(error);
     });
 
-  // Ocultar la alerta después de unos segundos
-  setTimeout(() => alerta.classList.remove("show"), 6000);
+  // Ocultar el mensaje después de 6 segundos
+  setTimeout(() => {
+    alerta.classList.remove("show");
+  }, 6000);
 });
 
 
