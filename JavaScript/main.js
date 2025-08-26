@@ -261,23 +261,36 @@ const form = document.getElementById("contactForm");
 const alerta = document.getElementById("alertaGracias");
 
 form.addEventListener("submit", (e) => {
-  // Mostrar mensaje de "Enviando..."
+  e.preventDefault(); 
+
   alerta.textContent = "Enviando tu mensaje...";
   alerta.className = "alerta show";
 
-  // Dejamos que el form se envíe normalmente a FormSubmit
-  // no usamos fetch para evitar errores CORS
-  setTimeout(() => {
-    alerta.textContent = "¡Gracias por tu mensaje! Me comunicaré contigo pronto.";
-    alerta.className = "alerta success show";
-    form.reset();
+  fetch(form.action, {
+    method: "POST",
+    body: new FormData(form),
+    headers: { Accept: "application/json" },
+  })
+    .then(response => {
+      if (response.ok) {
+        alerta.textContent = "¡Gracias por tu mensaje! Me comunicaré contigo pronto.";
+        alerta.className = "alerta success show";
+        form.reset();
+      } else {
+        alerta.textContent = "Error al enviar el mensaje. Intenta nuevamente.";
+        alerta.className = "alerta error show";
+      }
+    })
+    .catch(error => {
+      alerta.textContent = "Error al enviar el mensaje. Intenta nuevamente.";
+      alerta.className = "alerta error show";
+      console.error(error);
+    });
 
-    // Ocultar la alerta después de 6 segundos
-    setTimeout(() => {
-      alerta.classList.remove("show");
-    }, 6000);
-  }, 2000); // Simula 1 segundo de "enviando"
+  // Ocultar la alerta después de unos segundos
+  setTimeout(() => alerta.classList.remove("show"), 6000);
 });
+
 
 
 //****************************************************************************************************************************//
