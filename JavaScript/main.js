@@ -1,15 +1,18 @@
-//****************************************************************************************************************************//
+
 import { NeatGradient } from "@firecms/neat";
 import { darkThemeConfig, lightThemeConfig } from "./backgrounds.js";
 import { applyThemeColors } from "./colores.js";
 
 //****************************************************************************************************************************//
+
 // Variables globales
 let currentTheme = "dark";
 const gradientCanvas = document.getElementById("gradient");
 const toggle = document.getElementById("theme-toggle");
 const navbar = document.querySelector(".navbar");
+
 //****************************************************************************************************************************//
+
 // Tema: Gradiente + colores + íconos
 let gradient;
 const savedTheme = localStorage.getItem("theme") || "dark";
@@ -83,20 +86,20 @@ document.querySelectorAll(".open-modal").forEach((btn) => {
   });
 });
 
-// ===== Cerrar por botón X =====
+// Cerrar por botón X 
 document.querySelectorAll(".close-modal").forEach((close) => {
   close.addEventListener("click", () => {
     closeModal(close.closest(".project-modal"));
   });
 });
 
-// ===== Cerrar clic en overlay =====
+// Cerrar clic en overlay 
 window.addEventListener("click", (e) => {
   const modal = e.target.classList?.contains("project-modal") ? e.target : null;
   if (modal) closeModal(modal);
 });
 
-// ===== Cerrar con ESC =====
+// Cerrar con ESC
 window.addEventListener("keydown", (e) => {
   if (e.key === "Escape") {
     const openModal = document.querySelector(".project-modal:not(.hidden)");
@@ -109,12 +112,6 @@ window.addEventListener("keydown", (e) => {
 // Galerías reutilizables para cada proyecto
 function setupGallery(modalId, images) {
   const modal = document.getElementById(modalId);
-
-  // const imageElement = modal.querySelector(".gallery-image");
-  // const prevBtn = modal.querySelector(".gallery-prev");
-  // const nextBtn = modal.querySelector(".gallery-next");
-
-  // if (!imageElement || !prevBtn || !nextBtn || !modal) return;
 
   const galleryContainer = modal.querySelector(".modal-gallery-slider");
   const prevBtn = modal.querySelector(".gallery-prev");
