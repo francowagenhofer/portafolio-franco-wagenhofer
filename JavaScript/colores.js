@@ -9,16 +9,16 @@ export function applyThemeColors(theme) {
   if (theme === "light") {
 
     // --- Colores título ---
-    root.style.setProperty("--blend-title-color", "rgba(55, 39, 19, 0.6)"); // marrón grisáceo sobrio
+    root.style.setProperty("--blend-title-color", "rgba(55, 39, 19, 0.6)"); 
 
     // --- Navbar ---
-    root.style.setProperty("--navbar-bg", "rgba(192, 165, 149, 0.16)"); // crema grisácea clara
-    root.style.setProperty("--navbar-text-color", "#3C2F22"); // marrón-gris sobrio
+    root.style.setProperty("--navbar-bg", "rgba(192, 165, 149, 0.16)"); 
+    root.style.setProperty("--navbar-text-color", "#3C2F22"); 
 
     // --- Toggle (interruptor) ---
-    root.style.setProperty("--toggle-bg", "#BFA47A"); // miel grisácea sobria
-    root.style.setProperty("--toggle-bg", "#6a5025a7"); // miel grisácea sobria
-    root.style.setProperty("--toggle-ball", "#F8F6F2"); // marfil muy claro
+    root.style.setProperty("--toggle-bg", "#BFA47A"); 
+    root.style.setProperty("--toggle-bg", "#6a5025a7"); 
+    root.style.setProperty("--toggle-ball", "#F8F6F2"); 
 
     // --- Links ---
     root.style.setProperty("--link-card-color", "#3C2F22cc"); 
@@ -51,9 +51,9 @@ export function applyThemeColors(theme) {
     root.style.setProperty("--background-tecn-card", "rgba(185, 174, 154, 0.25)");
 
     // --- Contacto - Background ---
-    // root.style.setProperty("--section-bg", "rgba(250, 241, 231, 0.77)"); // gris topo suave, sobrio
-    root.style.setProperty("--section-bg", "rgba(185, 174, 154, 0.39)"); // gris topo suave, sobrio
-    root.style.setProperty("--section-bg", "rgba(185, 174, 154, 0.29)"); // gris topo suave, sobrio
+    // root.style.setProperty("--section-bg", "rgba(250, 241, 231, 0.77)"); 
+    root.style.setProperty("--section-bg", "rgba(185, 174, 154, 0.39)"); 
+    root.style.setProperty("--section-bg", "rgba(185, 174, 154, 0.29)"); 
 
     // --- Contacto - Botones ---
     root.style.setProperty("--btn-form-bg", "#272219e4"); 
@@ -86,7 +86,7 @@ export function applyThemeColors(theme) {
     // toggle apagado
     // root.style.setProperty("--toggle-bg", "#0040ff75");
     root.style.setProperty("--toggle-bg", "#4d5c894b");
-    // root.style.setProperty("--toggle-ball", "#9EC8FF"); // celeste pálido (resalta)
+    // root.style.setProperty("--toggle-ball", "#9EC8FF"); 
     root.style.setProperty("--toggle-ball", "#fff");
 
     // links

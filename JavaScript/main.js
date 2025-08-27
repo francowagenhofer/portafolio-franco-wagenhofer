@@ -8,16 +8,16 @@ import emailjs from '@emailjs/browser';
 emailjs.init("uWi6YuvGoxMA-TSfo");
 
 //****************************************************************************************************************************//
-
 // Variables globales
+
 let currentTheme = "dark";
 const gradientCanvas = document.getElementById("gradient");
 const toggle = document.getElementById("theme-toggle");
 const navbar = document.querySelector(".navbar");
 
 //****************************************************************************************************************************//
-
 // Tema: Gradiente + colores + íconos
+
 let gradient;
 const savedTheme = localStorage.getItem("theme") || "dark";
 currentTheme = savedTheme;
@@ -58,7 +58,7 @@ function toggleTheme() {
 toggle.addEventListener("change", toggleTheme);
 
 //****************************************************************************************************************************//
-// ===== Navbar por hover (guarda última Y) =====
+// Navbar por hover (guarda última Y)
 let lastMouseY = window.innerHeight; // empieza oculto
 function updateNavbar(y) {
   const triggerZone = window.innerHeight * 0.25;
@@ -72,21 +72,21 @@ document.addEventListener("mousemove", (e) => {
   }
 });
 
-// ===== Utilidad para cerrar modal =====
+// Utilidad para cerrar modal 
 function closeModal(modalEl) {
   if (!modalEl) return;
   modalEl.classList.add("hidden");
   document.body.classList.remove("modal-open");
-  updateNavbar(lastMouseY); // re-evalúa navbar con la última Y real
+  updateNavbar(lastMouseY); 
 }
 
-// ===== Abrir modal =====
+// Abrir modal
 document.querySelectorAll(".open-modal").forEach((btn) => {
   btn.addEventListener("click", () => {
     const modal = document.getElementById(btn.dataset.id);
     modal?.classList.remove("hidden");
     document.body.classList.add("modal-open");
-    navbar.classList.remove("show"); // esconder mientras el modal está abierto
+    navbar.classList.remove("show"); 
   });
 });
 
@@ -186,27 +186,6 @@ function setupGallery(modalId, images) {
 //****************************************************************************************************************************//
 // Fotos de cada modal-galería
 
-// vite local
-// setupGallery("modal3", [
-//   "Imagenes/GestorEmpleados/MenuEscritorio.png",
-//   "Imagenes/GestorEmpleados/GestionOperaciones.png",
-//   "Imagenes/GestorEmpleados/MenuConsola.png",
-//   "Imagenes/GestorEmpleados/GestionEmpleadosDB.png",
-// ]);
-
-// setupGallery("modal1", [
-//   "Imagenes/CatalogoWeb/CatalogoWeb.png",
-//   "Imagenes/CatalogoWeb/CatalogoWeb_Lista.png",
-//   "Imagenes/CatalogoWeb/CatalogoWeb_Articulo.png",
-//   "Imagenes/CatalogoWeb/CatalogoWebDB.png",
-// ]);
-
-// setupGallery("modal2", [
-//   "Imagenes/WebBook/index.jpg",
-//   "Imagenes/WebBook/tapa.jpg",
-// ]);
-
-// vite externo
 const base = import.meta.env.BASE_URL;
 
 setupGallery("modal3", [
@@ -227,7 +206,6 @@ setupGallery("modal2", [
   `${base}Imagenes/WebBook/index.jpg`,
   `${base}Imagenes/WebBook/tapa.jpg`,
 ]);
-
 
 //****************************************************************************************************************************//
 // Imagen ampliada al hacer clic
@@ -262,7 +240,7 @@ const form = document.getElementById("contactForm");
 const alerta = document.getElementById("alertaGracias");
 
 form.addEventListener("submit", function(e) {
-  e.preventDefault(); // evitar que recargue la página
+  e.preventDefault(); 
 
   alerta.textContent = "Enviando tu mensaje...";
   alerta.className = "alerta show";
@@ -278,7 +256,6 @@ form.addEventListener("submit", function(e) {
       alerta.className = "alerta error show";
     });
 
-  // Ocultar el mensaje después de 6 segundos
   setTimeout(() => {
     alerta.classList.remove("show");
   }, 6000);
@@ -287,7 +264,8 @@ form.addEventListener("submit", function(e) {
 
 
 //****************************************************************************************************************************//
-// # SIMULACION PARA PROBAR ENVIO DE FORMULARIO
+// # SIMULACION para probar envio de formulario con FormSubmit
+
 // const form = document.getElementById("contactForm");
 // const alerta = document.getElementById("alertaGracias");
 

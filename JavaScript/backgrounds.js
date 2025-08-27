@@ -5,6 +5,7 @@
 // *********************************************************************************** //
 // Background oscuro
 
+// # 1
 // export const darkThemeConfig = {
 //   colors: [
 //     { color: "#552626", enabled: true },
@@ -25,8 +26,8 @@
 //   colorSaturation: 6,
 //   wireframe: false,
 //   colorBlending: 7,
-//   // backgroundColor: "#003FFF",
-//   backgroundColor: "#000000ff",
+//   backgroundColor: "#003FFF",
+//   // backgroundColor: "#000000ff",
 //   backgroundAlpha: 1,
 //   grainScale: 2,
 //   grainSparsity: 0,
@@ -36,13 +37,14 @@
 //   yOffset: 0,
 // };
 
+// # 2
 export const darkThemeConfig = {
   colors: [
-    { color: "#1A1C20", enabled: true }, // gris muy oscuro base
-    { color: "#22252B", enabled: true }, // gris azulado profundo
-    { color: "#2B2E34", enabled: true }, // gris medio frío
-    { color: "#2E3240", enabled: true }, // gris con tinte azul violáceo
-    { color: "#1E222C", enabled: true }, // azul negruzco
+    { color: "#1A1C20", enabled: true }, 
+    { color: "#22252B", enabled: true }, 
+    { color: "#2B2E34", enabled: true },
+    { color: "#2E3240", enabled: true }, 
+    { color: "#1E222C", enabled: true }, 
   ],
 
   speed: 1,
@@ -57,7 +59,7 @@ export const darkThemeConfig = {
   colorSaturation: 2,
   wireframe: false,
   colorBlending: 7,
-  backgroundColor: "#141516", // Negro aterciopelado base
+  backgroundColor: "#141516", 
   backgroundAlpha: 1,
   grainScale: 2,
   grainSparsity: 0,
@@ -70,16 +72,15 @@ export const darkThemeConfig = {
 // *************************************************************************************************** //
 // Backgorund claro
 
-
-// 111111111111111111
+// # 1
 // export const lightThemeConfig = {
 //   colors: [
 
-//   { color: "#FDFDFC", enabled: true }, // Blanco cálido neutro
-//   { color: "#F5F3EF", enabled: true }, // Gris perla muy claro
-//   { color: "#E9E4DA", enabled: true }, // Beige grisáceo suave (tono elegante)
-//   { color: "#D9CBB8", enabled: true }, // Arena clara con matiz miel tenue
-//   { color: "#C9B8A4", enabled: true }, // Gris cálido tostado (aporta contraste sutil)
+//   { color: "#FDFDFC", enabled: true }, 
+//   { color: "#F5F3EF", enabled: true }, 
+//   { color: "#E9E4DA", enabled: true }, 
+//   { color: "#D9CBB8", enabled: true }, 
+//   { color: "#C9B8A4", enabled: true }, 
 //   ],
 //   speed: 1.5,
 //   horizontalPressure: 3,
@@ -103,26 +104,25 @@ export const darkThemeConfig = {
 //   yOffset: 0,
 // };
 
-
-// 22222222222222222
+// // # 2
 // export const lightThemeConfig = {
 //   colors: [
 //     { color: "#FFFFFF", enabled: true },
 //     { color: "#EFE2CE", enabled: true },
 //     {
-//       color: "#D5ECEB",
+//       color: "#ecd5d5ff",
 //       enabled: true,
 //     },
 //     {
-//       color: "#E4E4E4",
+//       color: "#e4e4e4ff",
 //       enabled: true,
 //     },
 //     {
-//       color: "#F6FFFF",
+//       color: "#fffbf6ff",
 //       enabled: true,
 //     },
 //   ],
-//   speed: 2,
+//   speed: 3,
 //   horizontalPressure: 4,
 //   verticalPressure: 5,
 //   waveFrequencyX: 4,
@@ -132,7 +132,6 @@ export const darkThemeConfig = {
 //   highlights: 7,
 //   colorBrightness: 1,
 //   colorSaturation: 0,
-//   // colorSaturation: 2,
 //   wireframe: false,
 //   colorBlending: 7,
 //   backgroundColor: "#00A2FF",
@@ -145,28 +144,27 @@ export const darkThemeConfig = {
 //   yOffset: 0,
 // };
 
-
-// 333333333333333333333333
+// # 3
 // export const lightThemeConfig = {
 //   colors: [
 //     {
-//       color: '#FFFFFF', // blanco puro
+//       color: "#FFFFFF", 
 //       enabled: true,
 //     },
 //     {
-//       color: '#FBF9F5', // beige muy muy claro
+//       color: "#FBF9F5", 
 //       enabled: true,
 //     },
 //     {
-//       color: '#EEE9E0', // gris topo claro
+//       color: "#EEE9E0", 
 //       enabled: true,
 //     },
 //     {
-//       color: '#E3DCC8', // marrón-beige suave
+//       color: "#E3DCC8", 
 //       enabled: true,
 //     },
 //     {
-//       color: '#DAD1B3', // miel grisácea muy suave
+//       color: "#DAD1B3", 
 //       enabled: true,
 //     },
 //   ],
@@ -179,31 +177,28 @@ export const darkThemeConfig = {
 //   shadows: 5,
 //   highlights: 8,
 //   colorBrightness: 1,
-//   colorSaturation: 4, // tonos más suaves
+//   colorSaturation: 4, 
 //   wireframe: false,
 //   colorBlending: 12,
-//   backgroundColor: '#FCFAF5', // base beige casi blanca
+//   backgroundColor: "#FCFAF5",
 //   backgroundAlpha: 1,
 //   grainScale: 3,
 //   grainSparsity: 0,
-//   grainIntensity: 0.15, // más sutil todavía
-//   grainSpeed: 1,
+//   grainIntensity: 0.15, 
 //   resolution: 0.05,
 //   yOffset: 0,
 // };
 
-
-// // 44444444444444444444444444444
+// # 4
 export const lightThemeConfig = {
   colors: [
-    { color: "#FFFFFF", enabled: true },      
-    { color: "#FDF9F3", enabled: true },       
-    { color: "#E9E4DA", enabled: true },       
-    { color: "#FFFFFF", enabled: true },      
-    { color: "#FDF9F3", enabled: true },          
-    // { color: "#7b705f69", enabled: true },          
-    // { color: "#f6e2c1ff", enabled: true }, 
-
+    { color: "#FFFFFF", enabled: true },
+    { color: "#FDF9F3", enabled: true },
+    { color: "#E9E4DA", enabled: true },
+    { color: "#FFFFFF", enabled: true },
+    { color: "#FDF9F3", enabled: true },
+    // { color: "#7b705f69", enabled: true },
+    // { color: "#f6e2c1ff", enabled: true },
   ],
   speed: 5,
   horizontalPressure: 7,
@@ -214,10 +209,10 @@ export const lightThemeConfig = {
   shadows: 4,
   highlights: 6,
   colorBrightness: 0.95,
-  colorSaturation: 2,      // tonos suaves, no tan saturados
+  colorSaturation: 2,     
   wireframe: false,
   colorBlending: 10,
-  backgroundColor: "#FDF9F3", // beige muy claro de base
+  backgroundColor: "#FDF9F3",
   backgroundAlpha: 1,
   grainScale: 4,
   grainSparsity: 0,
