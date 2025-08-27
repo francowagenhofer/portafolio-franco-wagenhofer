@@ -2,6 +2,10 @@
 import { NeatGradient } from "@firecms/neat";
 import { darkThemeConfig, lightThemeConfig } from "./backgrounds.js";
 import { applyThemeColors } from "./colores.js";
+import emailjs from '@emailjs/browser';
+
+// Inicializar EmailJS
+emailjs.init("uWi6YuvGoxMA-TSfo");
 
 //****************************************************************************************************************************//
 

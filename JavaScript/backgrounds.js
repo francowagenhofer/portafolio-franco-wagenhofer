@@ -37,13 +37,6 @@
 // };
 
 export const darkThemeConfig = {
-  // colors: [
-  //   { color: "#1A1B1D", enabled: true }, // Greyish Black
-  //   { color: "#1C1E22", enabled: true }, // Bluish Black
-  //   { color: "#1B1F1C", enabled: true }, // Greenish Black
-  //   { color: "#1D1818", enabled: true }, // Reddish Black (sutil toque rojo)
-  //   { color: "#141516", enabled: true }, // Ink Black / Velvet Black
-  // ],
   colors: [
     { color: "#1A1C20", enabled: true }, // gris muy oscuro base
     { color: "#22252B", enabled: true }, // gris azulado profundo
@@ -64,7 +57,7 @@ export const darkThemeConfig = {
   colorSaturation: 2,
   wireframe: false,
   colorBlending: 7,
-  backgroundColor: "#14151689", // Negro aterciopelado base
+  backgroundColor: "#141516", // Negro aterciopelado base
   backgroundAlpha: 1,
   grainScale: 2,
   grainSparsity: 0,
@@ -206,8 +199,11 @@ export const lightThemeConfig = {
     { color: "#FFFFFF", enabled: true },      
     { color: "#FDF9F3", enabled: true },       
     { color: "#E9E4DA", enabled: true },       
-    { color: "#7b705f69", enabled: true },       
-    { color: "#f6e2c1ff", enabled: true },      
+    { color: "#FFFFFF", enabled: true },      
+    { color: "#FDF9F3", enabled: true },          
+    // { color: "#7b705f69", enabled: true },          
+    // { color: "#f6e2c1ff", enabled: true }, 
+
   ],
   speed: 5,
   horizontalPressure: 7,
