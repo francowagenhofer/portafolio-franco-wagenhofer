@@ -52,7 +52,6 @@ export function applyThemeColors(theme) {
 
     // --- Contacto - Background ---
     // root.style.setProperty("--section-bg", "rgba(250, 241, 231, 0.77)"); 
-    root.style.setProperty("--section-bg", "rgba(185, 174, 154, 0.39)"); 
     root.style.setProperty("--section-bg", "rgba(185, 174, 154, 0.29)"); 
 
     // --- Contacto - Botones ---
@@ -72,6 +71,8 @@ export function applyThemeColors(theme) {
 
     // --- Footer ---
     root.style.setProperty("--footer", "#2C241D");  
+    root.style.setProperty("--footer-background", "rgba(185, 174, 154, 0.17)");
+
 
 
   } else {
@@ -142,6 +143,7 @@ export function applyThemeColors(theme) {
     root.style.setProperty("--section-bg", "rgba(0, 0, 0, 0.6)");
 
     //footer
-    root.style.setProperty("--footer", "rgba(255, 255, 255, 0.5)");
+    root.style.setProperty("--footer", "rgba(255, 255, 255, 0.85)");
+    root.style.setProperty("--footer-background", "rgba(0, 0, 0, 0.25)");
   }
 }

@@ -1,4 +1,9 @@
 /* Contacto */
+
+#contact {
+  scroll-margin-top: 6rem;
+}
+
 .contact-section {
     padding: 3rem 3rem;
     margin-top: 6rem;
