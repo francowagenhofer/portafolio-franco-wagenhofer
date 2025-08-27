@@ -4,7 +4,7 @@ footer {
     text-align: center;
     font-size: 0.9rem;
     color: var(--footer);
-    margin-top: 4rem;
+    margin-top: 6rem;
     padding: 2.5rem 0;
     background-color:  var(--footer-background);
 }
