@@ -10,7 +10,7 @@
     "predeploy": "npm run build",
     "deploy": "gh-pages -d dist"
   },
-  "homepage": "https://francowagenhofer.github.io/portafolio-franco-wagenhofer",
+  "homepage": "https://francowagenhofer.github.io/portafolio-franco-wagenhofer/",
   "keywords": [],
   "author": "",
   "license": "ISC",
