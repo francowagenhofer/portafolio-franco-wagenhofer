@@ -1,14 +1,14 @@
-
 import { NeatGradient } from "@firecms/neat";
 import { darkThemeConfig, lightThemeConfig } from "./backgrounds.js";
 import { applyThemeColors } from "./colores.js";
-import emailjs from '@emailjs/browser';
+import { proyectos } from "./proyectos.js";
+import emailjs from "@emailjs/browser";
+import "../css/main.css";
 
-// Inicializar EmailJS
-emailjs.init("uWi6YuvGoxMA-TSfo");
+emailjs.init("uWi6YuvGoxMA-TSfo"); // Inicializar EmailJS
 
 //****************************************************************************************************************************//
-// Variables globales
+// VARIABLES GLOBALES
 
 let currentTheme = "dark";
 const gradientCanvas = document.getElementById("gradient");
@@ -18,46 +18,106 @@ const navbar = document.querySelector(".navbar");
 //****************************************************************************************************************************//
 // Tema: Gradiente + colores + íconos
 
+// version 1 - no funciona el cambio de color en github
+// let gradient;
+// const savedTheme = localStorage.getItem("theme") || "dark";
+// currentTheme = savedTheme;
+// applyThemeColors(currentTheme);
+
+// gradient = new NeatGradient({
+//   ref: gradientCanvas,
+//   ...(currentTheme === "dark" ? darkThemeConfig : lightThemeConfig),
+// });
+
+// toggle.checked = currentTheme === "dark";
+
+// const githubIcon = document.querySelector('img[alt="GitHub"]');
+// if (githubIcon) {
+//   githubIcon.src =
+//     currentTheme === "dark" ? "Iconos/GitHub_dark.svg" : "Iconos/github.svg";
+// }
+
+// // Cambiar tema con toggle
+// function toggleTheme() {
+//   currentTheme = toggle.checked ? "dark" : "light";
+
+//   gradient.destroy();
+//   gradient = new NeatGradient({
+//     ref: gradientCanvas,
+//     ...(currentTheme === "dark" ? darkThemeConfig : lightThemeConfig),
+//   });
+
+//   applyThemeColors(currentTheme);
+
+//   if (githubIcon) {
+//     githubIcon.src =
+//       currentTheme === "dark" ? "Iconos/GitHub_dark.svg" : "Iconos/github.svg";
+//   }
+
+//   localStorage.setItem("theme", currentTheme);
+// }
+
+// toggle.addEventListener("change", toggleTheme);
+
+// (function () {
+//   const savedTheme = localStorage.getItem("theme") || "dark";
+//   document.documentElement.setAttribute("data-theme", savedTheme);
+// })();
+
+// version 2
 let gradient;
+const githubIcons = document.querySelectorAll('[data-icon="github"]');
+
+function updateGithubIcons(theme) {
+  const src =
+    theme === "dark"
+      ? "Public/Iconos/GitHub_dark.svg"
+      : "Public/Iconos/github.svg";
+
+  githubIcons.forEach((img) => (img.src = src));
+}
+
 const savedTheme = localStorage.getItem("theme") || "dark";
 currentTheme = savedTheme;
+
+// Aplicar colores CSS
 applyThemeColors(currentTheme);
 
+// Aplicar íconos
+updateGithubIcons(currentTheme);
+
+// Marcar toggle
+toggle.checked = currentTheme === "dark";
+
+// Crear gradiente inicial
 gradient = new NeatGradient({
   ref: gradientCanvas,
   ...(currentTheme === "dark" ? darkThemeConfig : lightThemeConfig),
 });
 
-toggle.checked = currentTheme === "dark";
-
-const githubIcon = document.querySelector('img[alt="GitHub"]');
-if (githubIcon) {
-  githubIcon.src =
-    currentTheme === "dark" ? "Iconos/GitHub_dark.svg" : "Iconos/github.svg";
-}
-
-// Cambiar tema con toggle
 function toggleTheme() {
   currentTheme = toggle.checked ? "dark" : "light";
 
+  // Regenerar gradiente
   gradient.destroy();
   gradient = new NeatGradient({
     ref: gradientCanvas,
     ...(currentTheme === "dark" ? darkThemeConfig : lightThemeConfig),
   });
 
+  // Colores CSS
   applyThemeColors(currentTheme);
 
-  if (githubIcon) {
-    githubIcon.src =
-      currentTheme === "dark" ? "Iconos/GitHub_dark.svg" : "Iconos/github.svg";
-  }
+  // Cambiar íconos
+  updateGithubIcons(currentTheme);
 
+  // Guardar preferencia
   localStorage.setItem("theme", currentTheme);
 }
+
 toggle.addEventListener("change", toggleTheme);
 
-//****************************************************************************************************************************//
+//*****************************************************************************************//
 // Navbar por hover (guarda última Y)
 let lastMouseY = window.innerHeight; // empieza oculto
 function updateNavbar(y) {
@@ -72,230 +132,262 @@ document.addEventListener("mousemove", (e) => {
   }
 });
 
-// Utilidad para cerrar modal 
-function closeModal(modalEl) {
-  if (!modalEl) return;
-  modalEl.classList.add("hidden");
-  document.body.classList.remove("modal-open");
-  updateNavbar(lastMouseY); 
-}
+//*******************************************************************************************//
+//*******************************************************************************************//
+// # RENDERIZACION DE PROYECTOS - card y modal
 
-// Abrir modal
-document.querySelectorAll(".open-modal").forEach((btn) => {
-  btn.addEventListener("click", () => {
-    const modal = document.getElementById(btn.dataset.id);
-    modal?.classList.remove("hidden");
-    document.body.classList.add("modal-open");
-    navbar.classList.remove("show"); 
+const container = document.getElementById("projects-container");
+const cardTemplate = document.getElementById("project-template");
+const modalTemplate = document.getElementById("modal-template");
+
+proyectos.forEach((p) => {
+  // ---------------------------
+  // CARD
+  // ---------------------------
+  const cardFragment = cardTemplate.content.cloneNode(true);
+  const card = cardFragment.querySelector(".project-card");
+
+  card.classList.remove("hidden");
+  card.querySelector(".card-title").textContent = p.titulo;
+  card.querySelector(".card-desc").textContent = p.descripcion;
+
+  // iconos del proyecto
+  const icons = card.querySelectorAll(".card-icons img");
+  p.iconos.forEach((src, i) => {
+    if (icons[i]) icons[i].src = src;
   });
-});
 
-// Cerrar por botón X 
-document.querySelectorAll(".close-modal").forEach((close) => {
-  close.addEventListener("click", () => {
-    closeModal(close.closest(".project-modal"));
-  });
-});
+  // botón de descarga
+  const dl = card.querySelector(".card-download");
 
-// Cerrar clic en overlay 
-window.addEventListener("click", (e) => {
-  const modal = e.target.classList?.contains("project-modal") ? e.target : null;
-  if (modal) closeModal(modal);
-});
-
-// Cerrar con ESC
-window.addEventListener("keydown", (e) => {
-  if (e.key === "Escape") {
-    const openModal = document.querySelector(".project-modal:not(.hidden)");
-    if (openModal) closeModal(openModal);
+  if (p.boton.link) {
+    dl.textContent = p.boton.texto;
+    dl.href = p.boton.link;
+  } else {
+    dl.remove();
   }
+
+  // botón abrir modal
+  const btnModal = card.querySelector(".card-open");
+  btnModal.dataset.id = p.id;
+
+  container.appendChild(card);
+
+  // ---------------------------
+  // MODAL
+  // ---------------------------
+  const modalFrag = modalTemplate.content.cloneNode(true);
+  const modal = modalFrag.querySelector(".project-modal");
+
+  modal.id = p.id;
+
+  modal.querySelector(".modal-title").textContent = p.titulo;
+
+  // textos
+  modal.querySelector(".modal-text").innerHTML = p.modalTexto;
+
+  // tech list
+  const techList = modal.querySelector(".tech-list");
+  techList.innerHTML = "";
+  p.techList.forEach((t) => {
+    techList.innerHTML += `<li>${t}</li>`;
+  });
+
+  // methods list
+  const methods = modal.querySelector(".methods-list");
+  methods.innerHTML = "";
+  p.methodsList.forEach((m) => {
+    methods.innerHTML += `<li>${m}</li>`;
+  });
+
+  // links repos
+  const linksContainer = modal.querySelector(".modal-links");
+
+  p.repos.forEach((r) => {
+    linksContainer.innerHTML += `
+            <a class="btn-glow" href="${r.link}" target="_blank">${r.label}</a>
+        `;
+  });
+
+  // descarga
+  const modalDl = modal.querySelector(".modal-download");
+
+  if (p.boton.link) {
+    modalDl.textContent = p.boton.texto;
+    modalDl.href = p.boton.link;
+  } else {
+    modalDl.remove();
+  }
+
+  // insertar modal
+
+  document.body.appendChild(modal);
 });
 
 
-//****************************************************************************************************************************//
-// Galerías reutilizables para cada proyecto
-function setupGallery(modalId, images) {
-  const modal = document.getElementById(modalId);
 
-  const galleryContainer = modal.querySelector(".modal-gallery-slider");
-  const prevBtn = modal.querySelector(".gallery-prev");
-  const nextBtn = modal.querySelector(".gallery-next");
 
-  if (!galleryContainer || !prevBtn || !nextBtn || !modal) return;
 
-  let currentIndex = 0;
 
-  // const updateImage = () => {
-  //   imageElement.src = images[currentIndex];
-  // };
 
-  const updateImage = () => {
-    galleryContainer.innerHTML = ""; // Limpiar el contenido actual
 
-    const currentSrc = images[currentIndex];
-    const isVideo = currentSrc.endsWith(".mp4") || currentSrc.endsWith(".webm");
 
-    if (isVideo) {
-      const video = document.createElement("video");
-      video.src = currentSrc;
-      video.controls = true;
-      video.classList.add("gallery-image");
-      video.style.maxHeight = "250px";
-      video.style.borderRadius = "0.5rem";
-      galleryContainer.appendChild(prevBtn);
-      galleryContainer.appendChild(video);
-      galleryContainer.appendChild(nextBtn);
-    } else {
-      const img = document.createElement("img");
-      img.src = currentSrc;
-      img.alt = "Captura del proyecto";
-      img.classList.add("gallery-image");
 
-      img.addEventListener("click", () => {
-        overlayImage.src = img.src;
-        overlay.classList.remove("hidden");
-      });
 
-      galleryContainer.appendChild(prevBtn);
-      galleryContainer.appendChild(img);
-      galleryContainer.appendChild(nextBtn);
-    }
-  };
 
-  prevBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex - 1 + images.length) % images.length;
-    updateImage();
-  });
 
-  nextBtn.addEventListener("click", () => {
-    currentIndex = (currentIndex + 1) % images.length;
-    updateImage();
-  });
 
-  const openModalBtn = document.querySelector(`[data-id="${modalId}"]`);
-  if (openModalBtn) {
-    openModalBtn.addEventListener("click", () => {
-      currentIndex = 0;
-      updateImage();
+
+
+//*****************************************************************************//
+//*****************************************************************************//
+//*****************************************************************************//
+//*****************************************************************************//
+
+// SCROLL
+
+// Todas las secciones excepto el hero
+const reveals = document.querySelectorAll(
+  "section, article, .skill-card, .project-card, .contact-container"
+);
+
+reveals.forEach((el) => el.classList.add("reveal-item"));
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry, i) => {
+      if (entry.isIntersecting) {
+        entry.target.style.transitionDelay = `${i * 0.05}s`;
+        entry.target.classList.add("visible");
+      } else {
+        entry.target.classList.remove("visible");
+      }
     });
-  }
+  },
+  { threshold: 0.1 }
+);
 
-  updateImage();
-}
+reveals.forEach((el) => observer.observe(el));
 
-//****************************************************************************************************************************//
-// Fotos de cada modal-galería
+// ------------------------------
+// REVEAL PARA EL HEADER
+// ------------------------------
 
-const base = import.meta.env.BASE_URL;
+const hero = document.querySelector("#home");
+const heroItems = [
+  hero.querySelector(".blend-title"),
+  hero.querySelector(".subtitle"),
+  hero.querySelector(".hero-buttons"),
+];
 
-setupGallery("modal3", [
-  `${base}Imagenes/GestorEmpleados/MenuEscritorio.png`,
-  `${base}Imagenes/GestorEmpleados/GestionOperaciones.png`,
-  `${base}Imagenes/GestorEmpleados/MenuConsola.png`,
-  `${base}Imagenes/GestorEmpleados/GestionEmpleadosDB.png`,
-]);
+heroItems.forEach((el, i) => {
+  el.classList.add("hero-reveal");
+  el.style.transitionDelay = `${i * 0.1}s`;
+  observer.observe(el);
+});
 
-setupGallery("modal1", [
-  `${base}Imagenes/CatalogoWeb/CatalogoWeb.png`,
-  `${base}Imagenes/CatalogoWeb/CatalogoWeb_Lista.png`,
-  `${base}Imagenes/CatalogoWeb/CatalogoWeb_Articulo.png`,
-  `${base}Imagenes/CatalogoWeb/CatalogoWebDB.png`,
-]);
+// ------------------------------
+//  DESVANECIMIENTO HEADER - falta arreglarlo - pierde el color el titulo
+// ------------------------------
 
-setupGallery("modal2", [
-  `${base}Imagenes/WebBook/index.jpg`,
-  `${base}Imagenes/WebBook/tapa.jpg`,
-]);
+// const heroSection = document.getElementById("home");
 
-//****************************************************************************************************************************//
-// Imagen ampliada al hacer clic
-const overlay = document.getElementById("image-overlay");
-const overlayImage = document.getElementById("overlay-image");
-const closeOverlay = document.getElementById("close-overlay");
+// window.addEventListener("scroll", () => {
+//   const scrollY = window.scrollY;
+//   const max = window.innerHeight * 0.35; // hasta donde desaparece
+//   const t = Math.min(scrollY / max, 1); // de 0 a 1
 
-// // Abrir imagen al hacer clic
-// document.querySelectorAll(".gallery-image").forEach((img) => {
-//   img.addEventListener("click", () => {
-//     overlayImage.src = img.src;
-//     overlay.classList.remove("hidden");
-//   });
+//   // animación suave
+//   const opacity = 1 - t;
+//   const translate = -t * 40; // -40px suave
+
+//   heroSection.style.opacity = opacity;
+//   heroSection.style.transform = `translateY(${translate}px)`;
 // });
 
-// Cerrar overlay
-closeOverlay.addEventListener("click", () => {
-  overlay.classList.add("hidden");
+//****************************************************************************************************************************//
+//****************************************************************************************************************************//
+
+// EFECTO CLICK EN BOTONES
+document.querySelectorAll("button, .btn, .contact-btn-902").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    btn.classList.add("btn-click");
+
+    // Lo quitamos cuando termina la animación, para poder repetirla
+    setTimeout(() => btn.classList.remove("btn-click"), 250);
+  });
 });
 
-// Cerrar al hacer clic fuera de la imagen
-overlay.addEventListener("click", (e) => {
-  if (e.target === overlay) {
-    overlay.classList.add("hidden");
-  }
-});
-
+//****************************************************************************************************************************//
 //****************************************************************************************************************************//
 // # ENVIO DE FOMLARIO Y CARTEL DE RESPUESTA
 
 const form = document.getElementById("contactForm");
 const alerta = document.getElementById("alertaGracias");
 
-form.addEventListener("submit", function(e) {
-  e.preventDefault(); 
+form.addEventListener("submit", function (e) {
+  e.preventDefault();
 
   alerta.textContent = "Enviando tu mensaje...";
   alerta.className = "alerta show";
 
-  emailjs.sendForm("service_fz2pgho", "template_l9yc0yb", this)
-    .then(() => {
-      alerta.textContent = "¡Gracias por tu mensaje! Me comunicaré contigo pronto.";
+  emailjs.sendForm("service_fz2pgho", "template_l9yc0yb", this).then(
+    () => {
+      alerta.textContent =
+        "¡Gracias por tu mensaje! Me comunicaré contigo pronto.";
       alerta.className = "alerta success show";
       form.reset();
-    }, (error) => {
+    },
+    (error) => {
       console.error("Error:", error);
       alerta.textContent = "Error al enviar el mensaje. Intenta nuevamente.";
       alerta.className = "alerta error show";
-    });
+    }
+  );
 
   setTimeout(() => {
     alerta.classList.remove("show");
   }, 6000);
 });
 
+//****************************************************************************************************************************//
+//****************************************************************************************************************************//
+// BOTON FOOTER
 
+const backToTop = document.getElementById("backToTop");
+
+window.addEventListener("scroll", () => {
+  if (window.scrollY > 400) {
+    backToTop.classList.add("show");
+  } else {
+    backToTop.classList.remove("show");
+  }
+});
+
+backToTop.addEventListener("click", () => {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+});
+
+// posicion del boton = al toggle navar
+function alignBackToTop() {
+  const navbar = document.querySelector(".navbar .container");
+  const btn = document.getElementById("backToTop");
+
+  if (!navbar || !btn) return;
+
+  const rect = navbar.getBoundingClientRect();
+
+  // distancia desde el borde derecho del contenido del navbar y el viewport
+  const offset = window.innerWidth - rect.right;
+
+  btn.style.right = offset + 8 + "px"; // 8px pequeño margen
+}
+
+window.addEventListener("resize", alignBackToTop);
+window.addEventListener("DOMContentLoaded", alignBackToTop);
 
 //****************************************************************************************************************************//
-// # SIMULACION para probar envio de formulario con FormSubmit
-
-// const form = document.getElementById("contactForm");
-// const alerta = document.getElementById("alertaGracias");
-
-// form.addEventListener("submit", async (e) => {
-//   e.preventDefault();
-
-//   // Simulamos que se está enviando...
-//   alerta.textContent = "Enviando...";
-//   alerta.className = "alerta show";
-
-//   // Simulación de espera de red
-//   setTimeout(() => {
-//     // Simular éxito o error
-//     const exito = true; // Cambialo a false para simular error
-//     // const exito = false; // Cambialo a false para simular error
-
-//     if (exito) {
-//       alerta.textContent =
-//         "¡Gracias por tu mensaje! Me comunicaré contigo pronto.";
-//       alerta.className = "alerta success show";
-//       form.reset();
-//     } else {
-//       alerta.textContent = "Error al enviar el mensaje. Intenta nuevamente.";
-//       alerta.className = "alerta error show";
-//     }
-
-//     // Ocultar después de unos segundos
-//     setTimeout(() => {
-//       alerta.classList.remove("show");
-//     }, 6000);
-//   }, 2000); // Simula 2 segundo de espera
-// });
 //****************************************************************************************************************************//

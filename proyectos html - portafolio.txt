@@ -1,0 +1,206 @@
+        <section id="projects" class="section">
+            <h2>Proyectos destacados</h2>
+            <div class="projects-grid">
+
+                <!-- Proyecto 3 --->
+                <article class="project-card">
+                    <h3>Gestor Pyme</h3>
+                    <p>
+                        App de escritorio en C# .NET para gestión integral de una pyme.
+                    </p>
+
+                    <div class="tech-icons">
+                        <img src="/Public/Iconos/csharp.svg" alt="C#" />
+                        <img src="/Public/Iconos/dotnet2.svg" alt=".NET" />
+                        <img src="/Public/Iconos/sql-server.svg" alt="SQL Server" />
+                        <img src="/Public/Iconos/sqlite-color.svg" alt="SQLite" />
+                    </div>
+                    <div class="project-links">
+                        <a href="https://github.com/francowagenhofer/Gestion-Pyme-SQLite/releases/download/v1.0.0/AppGestionPyme_Portable.zip"
+                            download target="_blank" class="btn-glow">Descargar app</a>
+                        <button class="open-modal btn-glow" data-id="modal3">Ver más</button>
+                    </div>
+                </article>
+
+                <div id="modal3" class="project-modal hidden">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>Gestor Pyme</h3>
+
+                        <div class="modal-body">
+                            <div class="modal-gallery">
+                                <div class="modal-gallery-slider">
+                                    <button class="gallery-prev">&#10094;</button>
+                                    <button class="gallery-next">&#10095;</button>
+                                </div>
+                            </div>
+                            <div class="modal-info">
+                                <p>
+                                    <strong>App C# .NET para gestión de PYME.</strong> Inicialmente desarrollada como
+                                    app de consola,
+                                    evolucionó a una versión con interfaz gráfica (WinForms) para cubrir las necesidades
+                                    de
+                                    una empresa. Permite gestionar datos de empleados, proyectos, salarios y más, con
+                                    todas
+                                    las funcionalidades CRUD implementadas.
+                                </p>
+                                <p style="margin-top: 1rem;">
+                                    <strong>Versiones independientes:</strong><br>
+                                    <strong>- SQLite:</strong> portable, ejecutable directo tras descargar (no requiere
+                                    instalación).<br>
+                                    <strong>- SQL Server:</strong> completa con multiusuario, procedimientos
+                                    almacenados, interfaz de consola y WinForms.
+                                </p>
+
+                                <div class="tech-methods-container">
+                                    <ul class="tech-list">
+                                        <li><strong>Frontend:</strong> WinForms / Consola</li>
+                                        <li><strong>Backend:</strong> C#</li>
+                                        <li><strong>Base de datos:</strong> SQL Server / SQLite</li>
+                                        <li><strong>IDE:</strong> Visual Studio</li>
+                                    </ul>
+                                    <ul class="methods-list">
+                                        <li><strong>Lógica:</strong> POO</li>
+                                        <li><strong>Arquitectura:</strong> Capas</li>
+                                        <li><strong>Consultas:</strong> T-SQL, joins / SQLite</li>
+                                        <li><strong>Gestión:</strong> CRUD con validaciones</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="https://github.com/francowagenhofer/Gestion-Pyme-SQLite/releases/download/v1.0.0/AppGestionPyme_Portable.zip"
+                                download target="_blank">Descargar App</a>
+
+                            <a href="https://github.com/francowagenhofer/Gestion-Pyme-SQLite.git" target="_blank">SQLite
+                                <img src="/Public/Iconos/GitHub_dark.svg" alt="GitHub1" class="icon" /></a>
+
+                            <a href="https://github.com/francowagenhofer/app-gestion-empleados-csharp.git"
+                                target="_blank">SQL Server<img src="/Public/Iconos/GitHub_dark.svg" alt="GitHub2"
+                                    class="icon" /></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 1 -->
+                <article class="project-card">
+                    <h3>Catálogo Web</h3>
+                    <p>App web en C# con .NET para gestión de catálogo de artículos.</p>
+                    <div class="tech-icons">
+                        <img src="/Public/Iconos/csharp.svg" alt="C#" />
+                        <img src="/Public/Iconos/dotnet2.svg" alt=".NET" />
+                        <img src="/Public/Iconos/sql-server.svg" alt="SQL Server" />
+                        <img src="/Public/Iconos/bootstrap.svg" alt="Bootstrap" />
+                    </div>
+                    <div class="project-links">
+                        <a href="http://webcatalog.somee.com/" target="_blank" class="btn-glow">Sitio Web</a>
+                        <button class="open-modal btn-glow" data-id="modal1">Ver más</button>
+                    </div>
+                </article>
+
+                <div id="modal1" class="project-modal hidden">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>Catálogo Web</h3>
+                        <div class="modal-body">
+                            <div class="modal-gallery">
+                                <div class="modal-gallery-slider">
+                                    <button class="gallery-prev">&#10094;</button>
+                                
+                                    <button class="gallery-next">&#10095;</button>
+                                </div>
+                            </div>
+                            <div class="modal-info">
+                                <p>
+                                    <strong> App web en C# con ASP.NET Web Forms para gestión de artículos. </strong>
+                                    Permite administrar
+                                    productos con todas las operaciones CRUD, filtrarlos por
+                                    categorías y gestionar usuarios con roles diferenciados.
+                                </p>
+                                <p style="margin-top: 1rem; margin-bottom: 1rem;">
+                                    El proyecto está orientado a simular escenarios de inventario y gestión de usuarios,
+                                    aplicando
+                                    buenas prácticas de arquitectura, seguridad básica, patrones de diseño y usabilidad.
+                                </p>
+                                <div class="tech-methods-container">
+                                    <ul class="tech-list">
+                                        <li><strong>Backend:</strong> C#, ASP.NET</li>
+                                        <li><strong>Frontend:</strong> Bootstrap</li>
+                                        <li><strong>Base de datos:</strong> SQL Server</li>
+                                        <li><strong>IDE:</strong> Visual Studio</li>
+                                        <li><strong>Host:</strong> Somee</li>
+                                    </ul>
+                                    <ul class="methods-list">
+                                        <li><strong>Lógica:</strong> POO</li>
+                                        <li><strong>Arquitectura:</strong> Capas (UI, dominio, negocio)</li>
+                                        <li><strong>Gestión:</strong> CRUD con validaciones</li>
+                                        <li><strong>Consultas:</strong> T-SQL, joins</li>
+                                        <li><strong>Seguridad:</strong> Roles y login</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a href="http://webcatalog.somee.com/" target="_blank">Ver sitio web</a>
+                            <a href="https://github.com/francowagenhofer/tp-final-nivel3-Wagenhofer-Franco.git"
+                                target="_blank">Ver repositorio <img src="/Public/Iconos/GitHub_dark.svg" alt="GitHub2"
+                                    class="icon" /></a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Proyecto 2 -->
+                <article class="project-card">
+                    <h3>WebBook</h3>
+                    <p style="text-align:start;">Próximamente... App web para una biblioteca personalizada.</p>
+
+                    <div class="tech-icons">
+                        <img src="/Public/Iconos/csharp.svg" alt="C#" />
+                        <img src="/Public/Iconos/dotnet2.svg" alt=".NET" />
+                        <img src="/Public/Iconos/angular.svg" alt="Angular" />
+                    </div>
+                    <div class="project-links">
+                        <button class="open-modal btn-glow" data-id="modal2">Ver más</button>
+                    </div>
+                </article>
+                <div id="modal2" class="project-modal hidden">
+                    <div class="modal-content">
+                        <span class="close-modal">&times;</span>
+                        <h3>WebBook</h3>
+
+                        <div class="modal-body">
+                            <div class="modal-gallery">
+                                <div class="modal-gallery-slider">
+                                    <button class="gallery-prev">&#10094;</button>
+                                    <button class="gallery-next">&#10095;</button>
+                                </div>
+                            </div>
+                            <div class="modal-info">
+                                <p><strong>En proceso....</strong> Proyecto personal diseñado para explorar libros,
+                                    autores y
+                                    géneros en un entorno web interactivo. Permite a los usuarios
+                                    registrarse, guardar favoritos y escribir reseñas. Desarrollado
+                                    como SPA con Angular en el frontend, Node.js en el backend y
+                                    MongoDB como base de datos. Pensado como práctica integral de
+                                    desarrollo fullstack moderno.</p>
+                                <div class="tech-methods-container">
+                                    <ul class="tech-list">
+                                        <li><strong>Frontend:</strong> Angular</li>
+                                        <li><strong>Backend:</strong> Node.js, Express</li>
+                                        <li><strong>Base de datos:</strong> MongoDB</li>
+                                    </ul>
+                                    <ul class="methods-list">
+                                        <li><strong>Lógica:</strong> POO</li>
+                                        <li><strong>Consultas:</strong> Mongo queries</li>
+                                        <li><strong>Gestión:</strong> CRUD</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="project-links">
+                            <a target="_blank">Ver repositorio<img src="/Public/Iconos/GitHub_dark.svg" alt="GitHub2"
+                                    class="icon" /></a>
+                        </div>
+                    </div>
+                </div>
+        </section>

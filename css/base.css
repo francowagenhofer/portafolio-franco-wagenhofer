@@ -15,26 +15,39 @@ a[href="https://neat.firecms.co"] {
     /*Body*/
     --bg-color: #020210;
     --text-color: white;
-    --navbar-bg: rgba(0, 0, 0, 0.5);
     --section-bg: rgba(0, 0, 0, 0.6);
+    
+    /* navbar */
+    --navbar-bg: rgba(0, 0, 0, 0.5);
+    --navbar-border:rgba(255,255,255,0.08);
+    /* --navbar-link-hover: #57B4FF; */
+    --navbar-link-hover: #03a9f4;
 
     /*Toggle*/
     --toggle-bg: #4d5c894b;
+    --toggle-bg-hover: #5c678889;
     --toggle-ball: #fff5eedd;
+    --toggle-glow: 0 0 6px rgba(120, 170, 255, 0.45);
 
     /* todos los links */
     --link-color: rgb(255, 255, 255);
     --link-hover-color: #03a9f4;
     --link-card-color: #03a9f4;
 
-    /* boton descargar cv*/
+    /* links contacto */
+    --link-contacto: #d6d6d6; 
+    --link-contacto-hover: #ffffff; 
+    --link-contacto-bg-hover: rgba(255, 255, 255, 0.08);
+    
+    /* links contacto - sombra */
+    --contact-link-shadow: 0 1px 4px rgba(255,255,255,0.08);
+    --contact-link-shadow-hover: 0 3px 8px rgba(255, 255, 255, 0.058);
+
+    /* boton descargar cv , linkedin y github*/
     --btn-bg: #03a9f4;
-    --btn-hover-bg: #0288d1;
-
-    /* boton linkedin */
-    --btn-secondary-bg: transparent;
-    --btn-secondary-color: #03a9f4;
-
+    --btn-hover-bg: rgb(8, 64, 117);
+    --btn-transparent: transparent;
+    
     /* transfondo de las tarjetas */
     --card-bg: rgba(255, 255, 255, 0.1);
     --card-hover-bg: rgba(255, 255, 255, 0.15);
@@ -47,11 +60,17 @@ a[href="https://neat.firecms.co"] {
     --proyect-text-hover-color: white; 
     --btn-vermas-text: white;
 
+
+
     /* modal */
     --modal-background:  rgba(51, 51, 54, 0.508);
     --modal-bg: rgba(25, 25, 35, 0.95);
     --modal-text: #ffffff;
     --flechas: #ffffff;
+
+    /* modal - contenedor botones */
+    --modal-chip-bg :  rgba(255,255,255,0.08);
+    --modal-chip-border: 1px solid rgba(255,255,255,0.15);
 
     /* Tecnonologias */
     --background-tecn-card: rgba(255, 255, 255, 0.033);
@@ -65,6 +84,8 @@ a[href="https://neat.firecms.co"] {
     /* footer */
     --footer: rgba(255, 255, 255, 0.858);
     --footer-background:  rgba(0, 0, 0, 0.303);
+    --footer-border:rgba(0, 0, 0, 0.25);
+    --footer-hover: rgba(255, 255, 255, 0.10);
 }
 
 body,
@@ -74,9 +95,6 @@ html {
     height: 100%;
 
     font-family: "Segoe UI", sans-serif;
-    /* font-family: 'Poppins', sans-serif; */
-    /* font-family: 'Inter', sans-serif;  */
-    /* font-family: "Roboto", sans-serif; */
 
     color: var(--text-color);
     /* overflow-x: hidden; */
@@ -93,3 +111,36 @@ html {
     z-index: -1;
     display: block;
 }
+
+/* -------------------------------- */
+
+.reveal-item {
+  will-change: transform, opacity, filter;
+}
+
+/* -------------------------------- */
+
+
+/* Animación al hacer click */
+.btn-click {
+    animation: click-compress 0.15s cubic-bezier(0.4, 0, 0.3, 1);
+}
+
+@keyframes click-compress {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        filter: brightness(1);
+    }
+    45% {
+        transform: scale(0.92); /* compresión elegante */
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.20);
+        filter: brightness(0.94);
+    }
+    100% {
+        transform: scale(1);
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.25);
+        filter: brightness(1);
+    }
+}
+
