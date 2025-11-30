@@ -71,8 +71,8 @@ const githubIcons = document.querySelectorAll('[data-icon="github"]');
 function updateGithubIcons(theme) {
   const src =
     theme === "dark"
-      ? "Public/Iconos/GitHub_dark.svg"
-      : "Public/Iconos/github.svg";
+      ? "Iconos/GitHub_dark.svg"
+      : "Iconos/github.svg";
 
   githubIcons.forEach((img) => (img.src = src));
 }
@@ -94,6 +94,10 @@ gradient = new NeatGradient({
   ref: gradientCanvas,
   ...(currentTheme === "dark" ? darkThemeConfig : lightThemeConfig),
 });
+
+if (window.innerWidth < 1300) {
+  gradient.stop();
+}
 
 function toggleTheme() {
   currentTheme = toggle.checked ? "dark" : "light";

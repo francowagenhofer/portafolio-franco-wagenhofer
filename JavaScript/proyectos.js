@@ -7,10 +7,10 @@ export const proyectos = [
     descripcion:
       "App de escritorio en C# .NET para gestión integral de una pyme.",
     iconos: [
-      `${base}Public/Iconos/csharp.svg`,
-      `${base}Public/Iconos/dotnet2.svg`,
-      `${base}Public/Iconos/sql-server.svg`,
-      `${base}Public/Iconos/sqlite-color.svg`,
+      `${base}Iconos/csharp.svg`,
+      `${base}Iconos/dotnet2.svg`,
+      `${base}Iconos/sql-server.svg`,
+      `${base}Iconos/sqlite-color.svg`,
     ],
     boton: {
       texto: "Descargar app",
@@ -59,10 +59,10 @@ export const proyectos = [
     descripcion:
       "App web en C# con .NET para gestión de catálogo de artículos.",
     iconos: [
-      `${base}Public/Iconos/csharp.svg`,
-      `${base}Public/Iconos/dotnet2.svg`,
-      `${base}Public/Iconos/bootstrap.svg`,
-      `${base}Public/Iconos/sql-server.svg`,
+      `${base}Iconos/csharp.svg`,
+      `${base}Iconos/dotnet2.svg`,
+      `${base}Iconos/bootstrap.svg`,
+      `${base}Iconos/sql-server.svg`,
     ],
     boton: {
       texto: "Sitio Web",
@@ -108,10 +108,10 @@ export const proyectos = [
     titulo: "WebBook",
     descripcion: "Próximamente - App web para una biblioteca personalizada.",
     iconos: [
-      `${base}Public/Iconos/csharp.svg`,
-      `${base}Public/Iconos/dotnet2.svg`,
-      `${base}Public/Iconos/angular.svg`,
-      `${base}Public/Iconos/sql-server.svg`,
+      `${base}Iconos/csharp.svg`,
+      `${base}Iconos/dotnet2.svg`,
+      `${base}Iconos/angular.svg`,
+      `${base}Iconos/sql-server.svg`,
     ],
     boton: {
       texto: "boton para redirigir o descargar..",
