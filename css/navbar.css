@@ -42,11 +42,16 @@
     gap: 2rem;
 }
 
-.logo img {
-    height: 32px;
+.navbar .logo img {
+    height: 30px;
     width: auto;
     display: block;
+
+    transform: scale(2.5); 
+    transform-origin: left center;
 }
+
+
 
 .nav-links {
     list-style: none;

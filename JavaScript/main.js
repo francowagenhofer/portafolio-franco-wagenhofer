@@ -18,64 +18,33 @@ const navbar = document.querySelector(".navbar");
 //****************************************************************************************************************************//
 // Tema: Gradiente + colores + íconos
 
-// version 1 - no funciona el cambio de color en github
-// let gradient;
-// const savedTheme = localStorage.getItem("theme") || "dark";
-// currentTheme = savedTheme;
-// applyThemeColors(currentTheme);
-
-// gradient = new NeatGradient({
-//   ref: gradientCanvas,
-//   ...(currentTheme === "dark" ? darkThemeConfig : lightThemeConfig),
-// });
-
-// toggle.checked = currentTheme === "dark";
-
-// const githubIcon = document.querySelector('img[alt="GitHub"]');
-// if (githubIcon) {
-//   githubIcon.src =
-//     currentTheme === "dark" ? "Iconos/GitHub_dark.svg" : "Iconos/github.svg";
-// }
-
-// // Cambiar tema con toggle
-// function toggleTheme() {
-//   currentTheme = toggle.checked ? "dark" : "light";
-
-//   gradient.destroy();
-//   gradient = new NeatGradient({
-//     ref: gradientCanvas,
-//     ...(currentTheme === "dark" ? darkThemeConfig : lightThemeConfig),
-//   });
-
-//   applyThemeColors(currentTheme);
-
-//   if (githubIcon) {
-//     githubIcon.src =
-//       currentTheme === "dark" ? "Iconos/GitHub_dark.svg" : "Iconos/github.svg";
-//   }
-
-//   localStorage.setItem("theme", currentTheme);
-// }
-
-// toggle.addEventListener("change", toggleTheme);
-
-// (function () {
-//   const savedTheme = localStorage.getItem("theme") || "dark";
-//   document.documentElement.setAttribute("data-theme", savedTheme);
-// })();
-
-// version 2
 let gradient;
 const githubIcons = document.querySelectorAll('[data-icon="github"]');
 
 function updateGithubIcons(theme) {
-  const src =
-    theme === "dark"
-      ? "Iconos/GitHub_dark.svg"
-      : "Iconos/github.svg";
+  const src = theme === "dark" ? "Iconos/GitHub_dark.svg" : "Iconos/github.svg";
 
   githubIcons.forEach((img) => (img.src = src));
 }
+
+// **************************************************************
+// ⚡ FUNCIÓN CLAVE: optimizar el gradiente en pantallas chicas
+// **************************************************************
+function optimizeGradientConfig(config) {
+  if (window.innerWidth < 1300) {
+    console.log("⚡ Configuración optimizada para pantallas chicas");
+
+    config.resolution = 0.55;
+    config.grainIntensity = config.grainIntensity * 0.5;
+    config.speed = config.speed * 0.75;
+    config.waveAmplitude = config.waveAmplitude * 0.75;
+  } else {
+    config.resolution = 1;
+  }
+
+  return config;
+}
+// *************************************************************
 
 const savedTheme = localStorage.getItem("theme") || "dark";
 currentTheme = savedTheme;
@@ -89,14 +58,44 @@ updateGithubIcons(currentTheme);
 // Marcar toggle
 toggle.checked = currentTheme === "dark";
 
-// Crear gradiente inicial
-gradient = new NeatGradient({
-  ref: gradientCanvas,
-  ...(currentTheme === "dark" ? darkThemeConfig : lightThemeConfig),
-});
+// Creacionde gradien con configuracion de optimizacion para pantallas chicas
+function createGradient() {
+  const baseConfig =
+    currentTheme === "dark" ? darkThemeConfig : lightThemeConfig;
 
-if (window.innerWidth < 1300) {
-  gradient.stop();
+  const optimizedConfig = optimizeGradientConfig({ ...baseConfig });
+
+  gradient = new NeatGradient({
+    ref: gradientCanvas,
+    ...optimizedConfig,
+  });
+}
+createGradient();
+
+function updateNavLogo(theme) {
+  const navLogo = document.getElementById("navLogo");
+  navLogo.src =
+    theme === "dark"
+      ? "Logos/logo_transparente_blaco.webp"
+      : "Logos/logo_transparente_negro.webp";
+
+  // ? "dist/Logo/Logo_FW_circulo_oscuro.png"
+  // : "dist/Logo/Logo_FW_circulo_claro.png";
+  // ? "dist/Logo/Logo_FW_circulo_claro.png"
+  // : "dist/Logo/Logo_FW_circulo_oscuro.png";
+}
+
+function updateFooterLogo(theme) {
+  const footerLogo = document.getElementById("footerLogo");
+  footerLogo.src =
+    theme === "dark"
+      ? "Logos/logo_transparente_blaco.webp"
+      : "Logos/logo_transparente_negro.webp";
+
+  // ? "dist/Logo/Logo_FW_circulo_oscuro.png"
+  // : "dist/Logo/Logo_FW_circulo_claro.png";
+  // ? "dist/Logo/Logo_FW_circulo_claro.png"
+  // : "dist/Logo/Logo_FW_circulo_oscuro.png";
 }
 
 function toggleTheme() {
@@ -117,6 +116,9 @@ function toggleTheme() {
 
   // Guardar preferencia
   localStorage.setItem("theme", currentTheme);
+
+  updateNavLogo(currentTheme);
+  updateFooterLogo(currentTheme);
 }
 
 toggle.addEventListener("change", toggleTheme);
@@ -228,21 +230,6 @@ proyectos.forEach((p) => {
   document.body.appendChild(modal);
 });
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //*****************************************************************************//
 //*****************************************************************************//
 //*****************************************************************************//
@@ -313,7 +300,13 @@ heroItems.forEach((el, i) => {
 //****************************************************************************************************************************//
 
 // EFECTO CLICK EN BOTONES
-document.querySelectorAll("button, .btn, .contact-btn-902").forEach((btn) => {
+// document.querySelectorAll("button, .btn, .contact-btn-902").forEach((btn) => {
+
+const clickables = document.querySelectorAll(
+  "button, a.btn, a.btn-glow, .card-open, .card-download, .modal-download, .gallery-prev, .gallery-next, .contact-btn-902"
+);
+
+clickables.forEach((btn) => {
   btn.addEventListener("click", () => {
     btn.classList.add("btn-click");
 
@@ -375,6 +368,7 @@ backToTop.addEventListener("click", () => {
   });
 });
 
+// Alineaciones para el footer
 // posicion del boton = al toggle navar
 function alignBackToTop() {
   const navbar = document.querySelector(".navbar .container");
@@ -390,8 +384,31 @@ function alignBackToTop() {
   btn.style.right = offset + 8 + "px"; // 8px pequeño margen
 }
 
-window.addEventListener("resize", alignBackToTop);
-window.addEventListener("DOMContentLoaded", alignBackToTop);
+// posicion logo = logo ----- NO hace falta porque ya esta ubicado por un conainer
+function alignFooterLogo() {
+  const navbarContainer = document.querySelector(".navbar .container");
+  const footerLogo = document.getElementById("footerLogo");
+
+  if (!navbarContainer || !footerLogo) return;
+
+  const rect = navbarContainer.getBoundingClientRect();
+
+  // distancia del borde izquierdo del viewport al NAV
+  const offsetLeft = rect.left;
+
+  // aplicar la misma distancia al logo del footer
+  footerLogo.style.marginLeft = offsetLeft + "px";
+}
+
+window.addEventListener("resize", () => {
+  alignBackToTop();
+  // alignFooterLogo();
+});
+
+window.addEventListener("DOMContentLoaded", () => {
+  alignBackToTop();
+  // alignFooterLogo();
+});
 
 //****************************************************************************************************************************//
 //****************************************************************************************************************************//

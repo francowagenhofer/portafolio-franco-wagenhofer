@@ -1,14 +1,9 @@
-/* Footer */
-
-/* footer {
-    text-align: center;
-    font-size: 0.9rem;
-    color: var(--footer);
-    margin-top: 6rem;
-    padding: 2.5rem 0;
-    background-color:  var(--footer-background);
-} */
-
+/* ------------------------------------- */
+/* ------------------------------------- */
+/* FOOTER */ /* FOOTER */
+/* ------------------------------------- */
+/* ------------------------------------- */
+/* TEXTO */
 
 footer {
     text-align: center;
@@ -20,22 +15,66 @@ footer {
     background-color: var(--footer-background);
     border-top: 1px solid var(--footer-border);
 
-
+    position: relative;
     backdrop-filter: blur(6px);
     transition: background 0.2s ease, border-color 0.2s ease;
 }
 
-footer p {
-    transition: transform 0.10s ease, color 0.10s ease;
+.footer-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: relative;
 }
 
-footer p:hover {
+/* LOGO */
+
+.footer-left {
+    display: flex;
+    align-items: center;
+}
+
+.footer-left img {
+    width: 55px;
+    height: auto;
+    opacity: .85;
+    transition: opacity .2s ease;
+}
+.footer-left img:hover {
+    opacity: 1;
+}
+
+/* TEXTO */
+.footer-text {
+    flex: 1;
+    text-align: center;
+    margin: 0;
+    color: var(--footer);
+    opacity: .8;
+    transition: color .2s ease, opacity .2s ease;
+}
+.footer-text:hover {
+    opacity: 1;
     color: var(--footer-hover);
 }
 
-/* ---------------------------------------------- */
+.neat-gradient{
+    text-decoration: none;
+    color: var(--footer);
+}
+.neat-gradient:hover{
+    color: var(--footer-hover);
+}
+
+/* FLECHA */
 
 .back-to-top {
+    position: fixed;
     position: fixed;
     bottom: 42px;
     right: 34px;
@@ -65,10 +104,9 @@ footer p:hover {
 .back-to-top:hover {
     opacity: 1;
     transform: translateY(-3px) scale(1.09);
-
     /* color: var(--toggle-bg-hover);
     color: var(--navbar-link-hover); */
     color: var(--footer-hover);
     color: var(--navbar-link-hover);
-    
+
 }
