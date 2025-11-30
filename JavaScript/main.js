@@ -402,12 +402,12 @@ function alignFooterLogo() {
 
 window.addEventListener("resize", () => {
   alignBackToTop();
-  // alignFooterLogo();
+  alignFooterLogo();
 });
 
 window.addEventListener("DOMContentLoaded", () => {
   alignBackToTop();
-  // alignFooterLogo();
+  alignFooterLogo();
 });
 
 //****************************************************************************************************************************//
