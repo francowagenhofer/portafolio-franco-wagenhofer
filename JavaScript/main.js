@@ -27,8 +27,7 @@ function updateGithubIcons(theme) {
   githubIcons.forEach((img) => (img.src = src));
 }
 
-// **************************************************************
-// ⚡ FUNCIÓN CLAVE: optimizar el gradiente en pantallas chicas
+// Optimizar el gradiente en pantallas chicas
 // **************************************************************
 function optimizeGradientConfig(config) {
   if (window.innerWidth < 1300) {

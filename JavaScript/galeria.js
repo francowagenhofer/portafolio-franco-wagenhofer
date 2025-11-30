@@ -73,16 +73,21 @@ window.addEventListener("keydown", (e) => {
 //   let index = 0;
 
 //   const update = () => {
-//     container.innerHTML = "";
+//     // borrar solo imágenes y videos, NO las flechas
+//     container.querySelectorAll("img, video").forEach(el => el.remove());
 
 //     const src = images[index];
 //     const isVideo = src.endsWith(".mp4") || src.endsWith(".webm");
 
-//     const el = isVideo ? document.createElement("video") : new Image();
-//     el.loading = "lazy"; // 👈 clave para mejorar carga
-//     el.src = src;
-
-//     if (!isVideo) {
+//     let el;
+//     if (isVideo) {
+//       el = document.createElement("video");
+//       el.src = src;
+//       el.controls = true;
+//     } else {
+//       el = new Image();
+//       el.loading = "lazy";
+//       el.src = src;
 //       el.classList.add("gallery-image");
 //       el.addEventListener("click", () => {
 //         overlayImage.src = src;
@@ -90,9 +95,7 @@ window.addEventListener("keydown", (e) => {
 //       });
 //     }
 
-//     container.appendChild(prev);
 //     container.appendChild(el);
-//     container.appendChild(next);
 //   };
 
 //   prev.onclick = () => {
@@ -105,77 +108,101 @@ window.addEventListener("keydown", (e) => {
 //     update();
 //   };
 
+//   // Cuando se abre ese modal, resetear galería
 //   document.addEventListener("click", (e) => {
-//     const btn = e.target.closest(`[data-id="${modalId}"]`);
+//     const btn = e.target.closest(".open-modal");
 //     if (!btn) return;
+//     if (btn.dataset.id !== modalId) return;
 //     index = 0;
 //     update();
 //   });
 
+//   // primer render
 //   update();
 // }
 
 
 function setupGallery(modalId, images) {
-  const modal = document.getElementById(modalId);
-  if (!modal) return;
+    const modal = document.getElementById(modalId);
+    if (!modal) return;
 
-  const container = modal.querySelector(".modal-gallery-slider");
-  const prev = modal.querySelector(".gallery-prev");
-  const next = modal.querySelector(".gallery-next");
+    const container = modal.querySelector(".modal-gallery-slider");
+    const prev = modal.querySelector(".gallery-prev");
+    const next = modal.querySelector(".gallery-next");
+    const dotsContainer = modal.querySelector(".gallery-dots");
 
-  if (!container || !prev || !next) return;
+    if (!container || !prev || !next || !dotsContainer) return;
 
-  let index = 0;
+    let index = 0;
 
-  const update = () => {
-    // borrar solo imágenes y videos, NO las flechas
-    container.querySelectorAll("img, video").forEach(el => el.remove());
+    // Crear los dots
+    dotsContainer.innerHTML = "";
+    images.forEach((_, i) => {
+        const dot = document.createElement("div");
+        dot.classList.add("gallery-dot");
+        dot.addEventListener("click", () => {
+            index = i;
+            update();
+        });
+        dotsContainer.appendChild(dot);
+    });
 
-    const src = images[index];
-    const isVideo = src.endsWith(".mp4") || src.endsWith(".webm");
+    const updateDots = () => {
+        dotsContainer.querySelectorAll(".gallery-dot").forEach((dot, i) => {
+            dot.classList.toggle("active", i === index);
+        });
+    };
 
-    let el;
-    if (isVideo) {
-      el = document.createElement("video");
-      el.src = src;
-      el.controls = true;
-    } else {
-      el = new Image();
-      el.loading = "lazy";
-      el.src = src;
-      el.classList.add("gallery-image");
-      el.addEventListener("click", () => {
-        overlayImage.src = src;
-        overlay.classList.remove("hidden");
-      });
-    }
+    const update = () => {
+        // borrar solo imágenes y videos
+        container.querySelectorAll("img, video").forEach(el => el.remove());
 
-    container.appendChild(el);
-  };
+        const src = images[index];
+        const isVideo = src.endsWith(".mp4") || src.endsWith(".webm");
+        let el;
 
-  prev.onclick = () => {
-    index = (index - 1 + images.length) % images.length;
+        if (isVideo) {
+            el = document.createElement("video");
+            el.src = src;
+            el.controls = true;
+        } else {
+            el = new Image();
+            el.loading = "lazy";
+            el.src = src;
+            el.classList.add("gallery-image");
+            el.addEventListener("click", () => {
+                overlayImage.src = src;
+                overlay.classList.remove("hidden");
+            });
+        }
+
+        container.appendChild(el);
+        updateDots();
+    };
+
+    prev.onclick = () => {
+        index = (index - 1 + images.length) % images.length;
+        update();
+    };
+
+    next.onclick = () => {
+        index = (index + 1) % images.length;
+        update();
+    };
+
+    // Cuando se abre el modal
+    document.addEventListener("click", (e) => {
+        const btn = e.target.closest(".open-modal");
+        if (!btn) return;
+        if (btn.dataset.id !== modalId) return;
+
+        index = 0;
+        update();
+    });
+
     update();
-  };
-
-  next.onclick = () => {
-    index = (index + 1) % images.length;
-    update();
-  };
-
-  // Cuando se abre ese modal, resetear galería
-  document.addEventListener("click", (e) => {
-    const btn = e.target.closest(".open-modal");
-    if (!btn) return;
-    if (btn.dataset.id !== modalId) return;
-    index = 0;
-    update();
-  });
-
-  // primer render
-  update();
 }
+
 
 
 // ======================================================

@@ -1,19 +1,12 @@
 ✅ Tareas pendientes para terminar tu portfolio
-📝 1. Mejorar títulos y textos
-Revisá ortografía, claridad y tono profesional.
 
-Verificá que los títulos (como “Contacto”, “Sobre mí”, etc.) sean descriptivos y llamativos.
+1. Mejorar títulos y textos
 
 Asegurate de que tu descripción personal cuente bien quién sos, qué hacés y qué ofrecés.
 
-📱 2. Testear en distintos dispositivos
-Probar en:
 
-Computadora (pantallas grandes)
-
-Celulares (iPhone, Android)
-
-Tablets
+2. Testear en distintos dispositivos
+Probar en: Computadora (pantallas grandes), Celulares (iPhone, Android), Tablets
 
 Usá la herramienta de inspección del navegador (Ctrl+Shift+I) para simular varios tamaños.
 
@@ -27,38 +20,3 @@ Navegación y botones
 
 Formularios
 
-☁️ 3. Hostear en GitHub Pages
-Asegurate de tener todo en una carpeta lista para subir.
-
-Subí tu código a un repo de GitHub.
-
-Activá GitHub Pages desde la pestaña "Pages" del repo.
-
-Elegí la rama main y carpeta /root o /docs.
-
-Si querés, te guío paso a paso cuando estés listo.
-
-📄 4. Actualizar tu CV
-Verificá que:
-
-Tu CV tenga el mismo estilo/tono que tu web.
-
-Los datos de contacto estén actualizados.
-
-Esté enlazado en tu portfolio (¡lo tenés bien puesto!).
-
-🌐 5. Alinear CV y LinkedIn con tu portfolio
-Usá una descripción coherente entre:
-
-Tu portfolio
-
-Tu perfil de LinkedIn
-
-Tu CV
-
-Mismo correo, mismos proyectos, mismo enfoque profesional.
-
-📊 6. (Opcional) Agregar analytics sin rastreo invasivo
-Podés usar Umami o Plausible (alternativas a Google Analytics).
-
-Te permiten ver cuántas personas visitan tu sitio, desde qué países y qué secciones.
