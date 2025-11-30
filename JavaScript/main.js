@@ -76,7 +76,7 @@ function updateNavLogo(theme) {
   const navLogo = document.getElementById("navLogo");
   navLogo.src =
     theme === "dark"
-      ? "Logos/logo_transparente_blaco.webp"
+      ? "Logos/logo_transparente_blanco.webp"
       : "Logos/logo_transparente_negro.webp";
 
   // ? "dist/Logo/Logo_FW_circulo_oscuro.png"
@@ -89,7 +89,7 @@ function updateFooterLogo(theme) {
   const footerLogo = document.getElementById("footerLogo");
   footerLogo.src =
     theme === "dark"
-      ? "Logos/logo_transparente_blaco.webp"
+      ? "Logos/logo_transparente_blanco.webp"
       : "Logos/logo_transparente_negro.webp";
 
   // ? "dist/Logo/Logo_FW_circulo_oscuro.png"
