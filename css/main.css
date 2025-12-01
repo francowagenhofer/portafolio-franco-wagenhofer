@@ -5,3 +5,5 @@
 @import './proyectos.css';
 @import './contacto.css';
 @import './footer.css';
+
+@import "responsive.css";

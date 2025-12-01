@@ -67,6 +67,7 @@ a[href="https://neat.firecms.co"] {
     --modal-bg: rgba(25, 25, 35, 0.95);
     --modal-text: #ffffff;
     --flechas: #ffffff;
+    --fondo-modal: transparent;
 
     /* modal - contenedor botones */
     --modal-chip-bg :  rgba(255,255,255,0.08);

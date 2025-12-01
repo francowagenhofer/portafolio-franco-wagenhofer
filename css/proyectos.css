@@ -43,7 +43,7 @@
     padding-right: 1rem;
     padding-left: 1rem;
     padding-bottom: 1rem;
-    text-align: justify;
+    text-align: left;
     font-size: 1rem;
     font-size: 1.1rem;
 }
@@ -80,7 +80,7 @@
 }
 
 
-/* ##### botones de tarjetas-proyectos ####*/
+/* ##### botones de tarjetas ####*/
 .project-links {
     display: flex;
     gap: 0.5rem;
@@ -147,17 +147,22 @@
 
 /* --------------------------------------------------------- */
 /* --------------------------------------------------------- */
+/* ---------------------------------- MODAL ---------------- */
+/* --------------------------------------------------------- */
+/* ----- MODAL --------------------------------------------- */
+/* --------------------------------------------------------- */
+/* --------------------------------------------------------- */
+/* ----------------- MODAL --------------------------------- */
 /* --------------------------------------------------------- */
 /* --------------------------------------------------------- */
 /* --------------------------------------------------------- */
+/* -------------------------------------------- MODAL ------ */
 /* --------------------------------------------------------- */
 /* --------------------------------------------------------- */
+/* ------------ MODAL--------------------------------------- */
 /* --------------------------------------------------------- */
 /* --------------------------------------------------------- */
-/* --------------------------------------------------------- */
-/* --------------------------------------------------------- */
-/* --------------------------------------------------------- */
-/* --------------------------------------------------------- */
+/* --------------------------------------------------- MODAL */
 
 /* ==================================
    OVERLAY
@@ -169,7 +174,10 @@
     justify-content: center;
     align-items: center;
 
-    background: rgba(0, 0, 0, 0.55);
+    /* background: rgba(0, 0, 0, 0.55); */
+
+    background: var(--fondo-modal);
+    background: transparent;
     backdrop-filter: blur(10px);
 
     padding: 2rem;
@@ -177,6 +185,7 @@
 
     animation: fadeIn 0.25s ease-out;
 }
+
 
 .project-modal.hidden {
     display: none;
@@ -207,7 +216,6 @@
     padding-left: 4rem;
     padding-right: 4rem;
 
-
     overflow-y: auto;
     border-radius: 0.7rem;
     clip-path: inset(0 round 0.7rem);
@@ -217,9 +225,45 @@
 
     box-shadow: 0 25px 45px rgba(0, 0, 0, 0.45);
     position: relative;
-
-
 }
+
+
+/* ENTRADA */
+.modal-animate-in {
+    animation: modalIn 0.16s ease-out forwards;
+}
+
+@keyframes modalIn {
+    from {
+        opacity: 0;
+        transform: scale(0.97) translateY(4px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* SALIDA */
+.modal-animate-out {
+    animation: modalOut 0.14s ease-in forwards;
+}
+
+@keyframes modalOut {
+    from {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+
+    to {
+        opacity: 0;
+        transform: scale(0.95) translateY(3px);
+    }
+}
+
+
+
 
 /* Scrollbar elegante */
 .modal-content::-webkit-scrollbar {
@@ -236,31 +280,38 @@
 /* ==================================
    HEADER
 ================================== */
-.close-modal {
-    position: absolute;
-    top: 1rem;
-    right: 1.5rem;
 
+
+.close-modal {
+    position: sticky;
+    top: 0;
+    align-self: flex-end;
+
+    margin-left: auto;
+    transform: translateX(3rem);
+
+    font-size: 1.9rem;
     background: none;
     border: none;
-
-    font-size: 2rem;
     cursor: pointer;
-    opacity: 0.8;
+
     color: var(--modal-text);
-    transition: 0.15s ease;
+    opacity: 0.85;
+    transition: opacity 0.15s, transform 0.15s;
+    z-index: 10;
 }
 
 .close-modal:hover {
     opacity: 1;
-    transform: scale(1.1);
+    transform: translateX(3rem) scale(1.12);
 }
+
 
 .modal-title {
     text-align: center;
     font-size: 2rem;
     margin-top: 0;
-    margin-top: 0.5rem;
+    margin-top: 0.1rem;
     margin-bottom: 2rem;
     font-weight: 650;
 }

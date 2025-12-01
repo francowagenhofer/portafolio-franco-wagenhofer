@@ -77,11 +77,6 @@ function updateNavLogo(theme) {
     theme === "dark"
       ? "Logos/logo_transparente_blanco.webp"
       : "Logos/logo_transparente_negro.webp";
-
-  // ? "dist/Logo/Logo_FW_circulo_oscuro.png"
-  // : "dist/Logo/Logo_FW_circulo_claro.png";
-  // ? "dist/Logo/Logo_FW_circulo_claro.png"
-  // : "dist/Logo/Logo_FW_circulo_oscuro.png";
 }
 
 function updateFooterLogo(theme) {
@@ -90,11 +85,6 @@ function updateFooterLogo(theme) {
     theme === "dark"
       ? "Logos/logo_transparente_blanco.webp"
       : "Logos/logo_transparente_negro.webp";
-
-  // ? "dist/Logo/Logo_FW_circulo_oscuro.png"
-  // : "dist/Logo/Logo_FW_circulo_claro.png";
-  // ? "dist/Logo/Logo_FW_circulo_claro.png"
-  // : "dist/Logo/Logo_FW_circulo_oscuro.png";
 }
 
 function toggleTheme() {

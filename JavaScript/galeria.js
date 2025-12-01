@@ -7,6 +7,18 @@ let lastMouseY = window.innerHeight;
 // MODALES
 // ======================================================
 
+// document.addEventListener("click", (e) => {
+//   const btn = e.target.closest(".open-modal");
+//   if (!btn) return;
+
+//   const modal = document.getElementById(btn.dataset.id);
+//   if (!modal) return;
+
+//   modal.classList.remove("hidden");
+//   document.body.classList.add("modal-open");
+//   navbar.classList.remove("show");
+// });
+
 document.addEventListener("click", (e) => {
   const btn = e.target.closest(".open-modal");
   if (!btn) return;
@@ -14,18 +26,58 @@ document.addEventListener("click", (e) => {
   const modal = document.getElementById(btn.dataset.id);
   if (!modal) return;
 
+  const content = modal.querySelector(".modal-content");
+
+  // Reset de clases antes de abrir
+  content.classList.remove("modal-animate-out");
+  content.classList.remove("modal-animate-in");
+
   modal.classList.remove("hidden");
   document.body.classList.add("modal-open");
   navbar.classList.remove("show");
+
+  // Forzar reflow → permite reproducir animación siempre
+  void content.offsetWidth;
+
+  // Animación de entrada
+  content.classList.add("modal-animate-in");
 });
 
+
 // cerrar modal
+// function closeModal(modalEl) {
+//   if (!modalEl) return;
+//   modalEl.classList.add("hidden");
+//   document.body.classList.remove("modal-open");
+//   // updateNavbar(lastMouseY);
+// }
+
+
 function closeModal(modalEl) {
   if (!modalEl) return;
-  modalEl.classList.add("hidden");
-  document.body.classList.remove("modal-open");
-  // updateNavbar(lastMouseY);
+
+  const content = modalEl.querySelector(".modal-content");
+
+  // Reset previo
+  content.classList.remove("modal-animate-in");
+  content.classList.remove("modal-animate-out");
+
+  // Forzar reflow para poder animar la salida
+  void content.offsetWidth;
+
+  // Animación salida
+  content.classList.add("modal-animate-out");
+
+  content.addEventListener(
+    "animationend",
+    () => {
+      modalEl.classList.add("hidden");
+      document.body.classList.remove("modal-open");
+    },
+    { once: true }
+  );
 }
+
 
 // Cerrar por botón X
 // document.querySelectorAll(".close-modal").forEach((close) => {

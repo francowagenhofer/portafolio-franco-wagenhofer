@@ -95,6 +95,7 @@ export function applyThemeColors(theme) {
     root.style.setProperty("--btn-form-hover-text", "#fff");
 
     // --- Modal ---
+    root.style.setProperty("--fondo-modal", "rgba(0, 0, 0, 0.55)");
     root.style.setProperty("--modal-background", "#897f7d65");
     root.style.setProperty("--modal-bg", "#fffffff6");
     root.style.setProperty("--modal-text", "#3C2F22");
@@ -194,10 +195,11 @@ export function applyThemeColors(theme) {
     );
 
     // modal color - background y texto
+    root.style.setProperty("--fondo-modal", "transparent");
     root.style.setProperty("--modal-background", "#0d0e0f63");
+    
     // root.style.setProperty("--modal-bg", "#0d0e0ef5");
     root.style.setProperty("--modal-bg", "#0d0e0efb");
-    
     root.style.setProperty("--modal-bg", "#3a3f4eb0");
 
     root.style.setProperty("--modal-text", "#f9f9f9ff");
