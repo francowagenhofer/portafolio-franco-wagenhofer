@@ -285,7 +285,6 @@
     align-self: flex-end;
 
     margin-left: auto;
-    transform: translateX(3rem);
     transform: translateX(1.9rem);
 
     font-size: 1.8rem;
@@ -299,7 +298,7 @@
     z-index: 10;
 }
 
-.close-modal:hover{
+.close-modal:hover {
     opacity: 1;
 }
 
@@ -307,7 +306,6 @@
     transform: translateX(1.9rem) scale(1.12);
     opacity: 1;
 }
-
 
 .modal-title {
     text-align: center;
@@ -370,6 +368,8 @@
     justify-content: center;
 
     pointer-events: auto;
+
+    background: transparent;
 }
 
 /* En móviles lo bajamos un poco */
@@ -404,34 +404,42 @@
     filter: blur(4px);
     transform: translateX(100%);
     opacity: 0;
+    z-index: 1;
 }
 
 .slide.from-left {
     filter: blur(4px);
     transform: translateX(-100%);
     opacity: 0;
+    z-index: 1;
 }
 
 .slide.to-left {
     transform: translateX(-100%);
-    opacity: 0;
+    opacity: 0  !important;
+    z-index: 1;
 }
 
 .slide.to-right {
     transform: translateX(100%);
-    opacity: 0;
+    opacity: 0 !important;
+    z-index: 1;
 }
 
-
 .slide {
-    z-index: 1;
+    z-index: 0;
 }
 
 .slide.is-active {
     transform: translateX(0);
     opacity: 1;
-    z-index: 2;
+    z-index: 10;
     filter: blur(0);
+}
+
+.slide:not(.is-active) img,
+.slide:not(.is-active) video {
+    opacity: 0 !important;
 }
 
 

@@ -293,7 +293,7 @@ heroItems.forEach((el, i) => {
 // document.querySelectorAll("button, .btn, .contact-btn-902").forEach((btn) => {
 
 const clickables = document.querySelectorAll(
-  "button, a.btn, a.btn-glow, .card-open, .card-download, .modal-download, .gallery-prev, .gallery-next, .contact-btn-902"
+  "button:not(.close-modal), a.btn, a.btn-glow, .card-open, .card-download, .modal-download, .gallery-prev, .gallery-next, .contact-btn-902"
 );
 
 clickables.forEach((btn) => {
