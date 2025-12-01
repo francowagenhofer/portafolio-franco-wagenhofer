@@ -305,6 +305,20 @@ clickables.forEach((btn) => {
   });
 });
 
+
+// cerrar modal
+document.addEventListener("click", (e) => {
+  const btn = e.target.closest(".close-modal");
+  if (!btn) return;
+
+  btn.classList.add("clicked");
+
+  setTimeout(() => btn.classList.remove("clicked"), 200);
+
+  const modal = btn.closest(".project-modal");
+  closeModal(modal);
+});
+
 //****************************************************************************************************************************//
 //****************************************************************************************************************************//
 // # ENVIO DE FOMLARIO Y CARTEL DE RESPUESTA

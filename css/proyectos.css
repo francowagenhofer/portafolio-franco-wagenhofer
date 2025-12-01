@@ -263,8 +263,6 @@
 }
 
 
-
-
 /* Scrollbar elegante */
 .modal-content::-webkit-scrollbar {
     width: 10px;
@@ -280,7 +278,6 @@
 /* ==================================
    HEADER
 ================================== */
-
 
 .close-modal {
     position: sticky;
@@ -302,9 +299,13 @@
     z-index: 10;
 }
 
-.close-modal:hover {
+.close-modal:hover{
     opacity: 1;
+}
+
+.close-modal.clicked {
     transform: translateX(1.9rem) scale(1.12);
+    opacity: 1;
 }
 
 
@@ -357,21 +358,18 @@
     gap: 1rem;
 }
 
-/* SLIDER */
-/* SLIDER */
-/* SLIDER */
-/* SLIDER */
-
 /* CONTENEDOR DEL SLIDER */
 .modal-gallery-slider {
     position: relative;
     width: 100%;
-    height: 340px;             
+    height: 340px;
     overflow: hidden;
     border-radius: 0.7rem;
     display: flex;
     align-items: center;
     justify-content: center;
+
+    pointer-events: auto;
 }
 
 /* En móviles lo bajamos un poco */
@@ -397,16 +395,19 @@
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    /* border-radius: 0.5rem; */
+    cursor: zoom-in;
+    position: relative;
 }
 
 /* Estados para animación de deslizamiento */
 .slide.from-right {
+    filter: blur(4px);
     transform: translateX(100%);
     opacity: 0;
 }
 
 .slide.from-left {
+    filter: blur(4px);
     transform: translateX(-100%);
     opacity: 0;
 }
@@ -421,9 +422,16 @@
     opacity: 0;
 }
 
+
+.slide {
+    z-index: 1;
+}
+
 .slide.is-active {
     transform: translateX(0);
     opacity: 1;
+    z-index: 2;
+    filter: blur(0);
 }
 
 
@@ -437,8 +445,6 @@
 .slide.is-active video {
     opacity: 1;
 }
-
-/* ----------------------------------------------- */
 
 .gallery-controls {
     display: flex;
@@ -494,6 +500,7 @@
 .gallery-dot.active {
     background: var(--flechas);
 }
+
 
 /* ==================================
    TITULOS H4
@@ -551,8 +558,6 @@
     font-size: 1rem;
 }
 
-
-
 /* ==================================
    BOTONES
 ================================== */
@@ -593,10 +598,6 @@
 
 }
 
-
-
-/* --------------------------------------------------------- */
-/* --------------------------------------------------------- */
 /* --------------------------------------------------------- */
 /* --------------------------------------------------------- */
 
@@ -610,6 +611,13 @@
     justify-content: center;
     z-index: 10000;
 
+    opacity: 0;
+    transition: opacity .25s ease;
+
+}
+
+#image-overlay:not(.hidden) {
+    opacity: 1;
 }
 
 #image-overlay.hidden {

@@ -243,42 +243,45 @@ function setupGallery(modalId, images) {
       el = document.createElement("img");
       el.src = src;
       el.loading = "lazy";
+
+      el.addEventListener("click", () => {
+        overlayImage.src = src;
+        overlay.classList.remove("hidden");
+      });
     }
 
     slide.appendChild(el);
     return slide;
   }
 
-function showSlide(direction = "next") {
+  function showSlide(direction = "next") {
     const src = images[index];
     const newSlide = createSlide(src);
 
-    newSlide.classList.add(
-        direction === "next" ? "from-right" : "from-left"
-    );
+    newSlide.classList.add(direction === "next" ? "from-right" : "from-left");
 
     container.appendChild(newSlide);
 
     requestAnimationFrame(() => {
-        if (currentSlide) {
-            currentSlide.classList.add(
-                direction === "next" ? "to-left" : "to-right"
-            );
+      if (currentSlide) {
+        currentSlide.classList.add(
+          direction === "next" ? "to-left" : "to-right"
+        );
 
-            currentSlide.addEventListener(
-                "transitionend",
-                () => currentSlide.remove(),
-                { once: true }
-            );
-        }
+        currentSlide.addEventListener(
+          "transitionend",
+          () => currentSlide.remove(),
+          { once: true }
+        );
+      }
 
-        newSlide.classList.remove("from-right", "from-left");
-        newSlide.classList.add("is-active");
-        currentSlide = newSlide;
+      newSlide.classList.remove("from-right", "from-left");
+      newSlide.classList.add("is-active");
+      currentSlide = newSlide;
     });
 
     updateDots();
-}
+  }
 
   // ----- CONTROLES PREV / NEXT -----
   prev.type = "button";
