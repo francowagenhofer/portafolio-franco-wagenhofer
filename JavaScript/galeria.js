@@ -43,7 +43,6 @@ document.addEventListener("click", (e) => {
   content.classList.add("modal-animate-in");
 });
 
-
 // cerrar modal
 // function closeModal(modalEl) {
 //   if (!modalEl) return;
@@ -51,7 +50,6 @@ document.addEventListener("click", (e) => {
 //   document.body.classList.remove("modal-open");
 //   // updateNavbar(lastMouseY);
 // }
-
 
 function closeModal(modalEl) {
   if (!modalEl) return;
@@ -77,7 +75,6 @@ function closeModal(modalEl) {
     { once: true }
   );
 }
-
 
 // Cerrar por botón X
 // document.querySelectorAll(".close-modal").forEach((close) => {
@@ -112,87 +109,206 @@ window.addEventListener("keydown", (e) => {
 // GALERÍA REUTILIZABLE
 // ======================================================
 
+// function setupGallery(modalId, images) {
+//     const modal = document.getElementById(modalId);
+//     if (!modal) return;
+
+//     const container = modal.querySelector(".modal-gallery-slider");
+//     const prev = modal.querySelector(".gallery-prev");
+//     const next = modal.querySelector(".gallery-next");
+//     const dotsContainer = modal.querySelector(".gallery-dots");
+
+//     if (!container || !prev || !next || !dotsContainer) return;
+
+//     let index = 0;
+
+//     // Crear los dots
+//     dotsContainer.innerHTML = "";
+//     images.forEach((_, i) => {
+//         const dot = document.createElement("div");
+//         dot.classList.add("gallery-dot");
+//         dot.addEventListener("click", () => {
+//             index = i;
+//             update();
+//         });
+//         dotsContainer.appendChild(dot);
+//     });
+
+//     const updateDots = () => {
+//         dotsContainer.querySelectorAll(".gallery-dot").forEach((dot, i) => {
+//             dot.classList.toggle("active", i === index);
+//         });
+//     };
+
+//     const update = () => {
+//         // borrar solo imágenes y videos
+//         container.querySelectorAll("img, video").forEach(el => el.remove());
+
+//         const src = images[index];
+//         const isVideo = src.endsWith(".mp4") || src.endsWith(".webm");
+//         let el;
+
+//         if (isVideo) {
+//             el = document.createElement("video");
+//             el.src = src;
+//             el.controls = true;
+//         } else {
+//             el = new Image();
+//             el.loading = "lazy";
+//             el.src = src;
+//             el.classList.add("gallery-image");
+//             el.addEventListener("click", () => {
+//                 overlayImage.src = src;
+//                 overlay.classList.remove("hidden");
+//             });
+//         }
+
+//         container.appendChild(el);
+//         updateDots();
+//     };
+
+//     prev.onclick = () => {
+//         index = (index - 1 + images.length) % images.length;
+//         update();
+//     };
+
+//     next.onclick = () => {
+//         index = (index + 1) % images.length;
+//         update();
+//     };
+
+//     // Cuando se abre el modal
+//     document.addEventListener("click", (e) => {
+//         const btn = e.target.closest(".open-modal");
+//         if (!btn) return;
+//         if (btn.dataset.id !== modalId) return;
+
+//         index = 0;
+//         update();
+//     });
+
+//     update();
+// }
+
 function setupGallery(modalId, images) {
-    const modal = document.getElementById(modalId);
-    if (!modal) return;
+  const modal = document.getElementById(modalId);
+  if (!modal) return;
 
-    const container = modal.querySelector(".modal-gallery-slider");
-    const prev = modal.querySelector(".gallery-prev");
-    const next = modal.querySelector(".gallery-next");
-    const dotsContainer = modal.querySelector(".gallery-dots");
+  const container = modal.querySelector(".modal-gallery-slider");
+  const prev = modal.querySelector(".gallery-prev");
+  const next = modal.querySelector(".gallery-next");
+  const dotsContainer = modal.querySelector(".gallery-dots");
 
-    if (!container || !prev || !next || !dotsContainer) return;
+  if (!container || !prev || !next || !dotsContainer) return;
 
-    let index = 0;
+  let index = 0;
+  let currentSlide = null;
 
-    // Crear los dots
-    dotsContainer.innerHTML = "";
-    images.forEach((_, i) => {
-        const dot = document.createElement("div");
-        dot.classList.add("gallery-dot");
-        dot.addEventListener("click", () => {
-            index = i;
-            update();
-        });
-        dotsContainer.appendChild(dot);
+  // ----- DOTS -----
+  dotsContainer.innerHTML = "";
+  images.forEach((_, i) => {
+    const dot = document.createElement("div");
+    dot.classList.add("gallery-dot");
+
+    dot.addEventListener("click", () => {
+      if (i === index) return;
+
+      const direction = i > index ? "next" : "prev";
+      index = i;
+      showSlide(direction);
     });
 
-    const updateDots = () => {
-        dotsContainer.querySelectorAll(".gallery-dot").forEach((dot, i) => {
-            dot.classList.toggle("active", i === index);
-        });
-    };
+    dotsContainer.appendChild(dot);
+  });
 
-    const update = () => {
-        // borrar solo imágenes y videos
-        container.querySelectorAll("img, video").forEach(el => el.remove());
+  const updateDots = () => {
+    dotsContainer.querySelectorAll(".gallery-dot").forEach((dot, i) => {
+      dot.classList.toggle("active", i === index);
+    });
+  };
 
-        const src = images[index];
-        const isVideo = src.endsWith(".mp4") || src.endsWith(".webm");
-        let el;
+  // ----- CREAR Y ANIMAR SLIDE -----
+  function createSlide(src) {
+    const slide = document.createElement("div");
+    slide.classList.add("slide");
 
-        if (isVideo) {
-            el = document.createElement("video");
-            el.src = src;
-            el.controls = true;
-        } else {
-            el = new Image();
-            el.loading = "lazy";
-            el.src = src;
-            el.classList.add("gallery-image");
-            el.addEventListener("click", () => {
-                overlayImage.src = src;
-                overlay.classList.remove("hidden");
-            });
+    const isVideo = src.endsWith(".mp4") || src.endsWith(".webm");
+
+    let el;
+    if (isVideo) {
+      el = document.createElement("video");
+      el.src = src;
+      el.controls = true;
+    } else {
+      el = document.createElement("img");
+      el.src = src;
+      el.loading = "lazy";
+    }
+
+    slide.appendChild(el);
+    return slide;
+  }
+
+function showSlide(direction = "next") {
+    const src = images[index];
+    const newSlide = createSlide(src);
+
+    newSlide.classList.add(
+        direction === "next" ? "from-right" : "from-left"
+    );
+
+    container.appendChild(newSlide);
+
+    requestAnimationFrame(() => {
+        if (currentSlide) {
+            currentSlide.classList.add(
+                direction === "next" ? "to-left" : "to-right"
+            );
+
+            currentSlide.addEventListener(
+                "transitionend",
+                () => currentSlide.remove(),
+                { once: true }
+            );
         }
 
-        container.appendChild(el);
-        updateDots();
-    };
-
-    prev.onclick = () => {
-        index = (index - 1 + images.length) % images.length;
-        update();
-    };
-
-    next.onclick = () => {
-        index = (index + 1) % images.length;
-        update();
-    };
-
-    // Cuando se abre el modal
-    document.addEventListener("click", (e) => {
-        const btn = e.target.closest(".open-modal");
-        if (!btn) return;
-        if (btn.dataset.id !== modalId) return;
-
-        index = 0;
-        update();
+        newSlide.classList.remove("from-right", "from-left");
+        newSlide.classList.add("is-active");
+        currentSlide = newSlide;
     });
 
-    update();
+    updateDots();
 }
 
+  // ----- CONTROLES PREV / NEXT -----
+  prev.type = "button";
+  next.type = "button";
+
+  prev.addEventListener("click", (e) => {
+    e.preventDefault();
+    index = (index - 1 + images.length) % images.length;
+    showSlide("prev");
+  });
+
+  next.addEventListener("click", (e) => {
+    e.preventDefault();
+    index = (index + 1) % images.length;
+    showSlide("next");
+  });
+
+  // Al abrir el modal, siempre arrancamos desde la primera imagen
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".open-modal");
+    if (!btn) return;
+    if (btn.dataset.id !== modalId) return;
+
+    index = 0;
+    showSlide("next");
+  });
+
+  // Inicializa por si acaso
+  showSlide("next");
+}
 
 // ======================================================
 // IMÁGENES POR PROYECTO (automático)

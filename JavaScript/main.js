@@ -76,6 +76,7 @@ function updateNavLogo(theme) {
   navLogo.src =
     theme === "dark"
       ? "Logos/logo_transparente_blanco.webp"
+      // : "Logos/logo_transparente_blanco.webp"
       : "Logos/logo_transparente_negro.webp";
 }
 

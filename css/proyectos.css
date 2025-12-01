@@ -304,8 +304,7 @@
 
 .close-modal:hover {
     opacity: 1;
-    transform: translateX(3rem) scale(1.12);
-    transform: translateX(2.5rem) scale(1.12);
+    transform: translateX(1.9rem) scale(1.12);
 }
 
 
@@ -348,6 +347,9 @@
     /* min-height: 320px;  */
 }
 
+/* ==================================
+    GALERIA: SLIDER + DOTS
+================================== */
 .modal-gallery {
     display: flex;
     flex-direction: column;
@@ -355,25 +357,89 @@
     gap: 1rem;
 }
 
-/* Imagen */
+/* SLIDER */
+/* SLIDER */
+/* SLIDER */
+/* SLIDER */
+
+/* CONTENEDOR DEL SLIDER */
 .modal-gallery-slider {
+    position: relative;
     width: 100%;
-    max-height: 360px;
-    border-radius: 0.3rem;
+    height: 340px;             
     overflow: hidden;
-
-    margin-top: 1.5rem;
-}
-
-.gallery-image,
-.modal-gallery-slider video {
-    width: 100%;
-    max-height: 480px;
-    object-fit: contain;
     border-radius: 0.7rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-/* Controles inferiores */
+/* En móviles lo bajamos un poco */
+@media (max-width: 768px) {
+    .modal-gallery-slider {
+        height: 260px;
+    }
+}
+
+/* Cada slide (img o video) va ABSOLUTO dentro del slider */
+.modal-gallery-slider .slide {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.35s ease, opacity 0.35s ease;
+}
+
+/* Contenido interno de la slide */
+.modal-gallery-slider .slide img,
+.modal-gallery-slider .slide video {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    /* border-radius: 0.5rem; */
+}
+
+/* Estados para animación de deslizamiento */
+.slide.from-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.slide.from-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.slide.to-left {
+    transform: translateX(-100%);
+    opacity: 0;
+}
+
+.slide.to-right {
+    transform: translateX(100%);
+    opacity: 0;
+}
+
+.slide.is-active {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+.slide img,
+.slide video {
+    opacity: 0;
+    transition: opacity .25s ease;
+}
+
+.slide.is-active img,
+.slide.is-active video {
+    opacity: 1;
+}
+
+/* ----------------------------------------------- */
+
 .gallery-controls {
     display: flex;
     align-items: center;
@@ -384,21 +450,17 @@
     margin-top: 0.15rem;
 }
 
-
-/* Botones de navegación */
 .gallery-prev,
 .gallery-next {
     background: none;
     border: none;
-    padding: 0;
     cursor: pointer;
-
     display: flex;
     align-items: center;
     justify-content: center;
-
     opacity: 0.75;
     transition: opacity 0.15s ease, transform 0.15s ease;
+    padding: .3rem;
 }
 
 .gallery-prev svg,
@@ -414,7 +476,7 @@
     transform: scale(1.12);
 }
 
-/* Paginador de puntos */
+
 .gallery-dots {
     display: flex;
     gap: 0.4rem;
@@ -432,8 +494,6 @@
 .gallery-dot.active {
     background: var(--flechas);
 }
-
-
 
 /* ==================================
    TITULOS H4
