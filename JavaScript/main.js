@@ -292,9 +292,21 @@ heroItems.forEach((el, i) => {
 // EFECTO CLICK EN BOTONES
 // document.querySelectorAll("button, .btn, .contact-btn-902").forEach((btn) => {
 
-const clickables = document.querySelectorAll(
-  "button:not(.close-modal), a.btn, a.btn-glow, .card-open, .card-download, .modal-download, .gallery-prev, .gallery-next, .contact-btn-902"
-);
+// const clickables = document.querySelectorAll(
+//   "button:not(.close-modal), a.btn, a.btn-glow, .card-open, .card-download, .modal-download, .gallery-prev, .gallery-next, .contact-btn-902"
+// );
+
+const clickables = document.querySelectorAll(`
+  button:not(.close-modal):not(.gallery-prev):not(.gallery-next),
+  a.btn,
+  a.btn-glow,
+  .card-open,
+  .card-download,
+  .modal-download,
+  .contact-btn-902
+`);
+
+
 
 clickables.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -306,7 +318,7 @@ clickables.forEach((btn) => {
 });
 
 
-// cerrar modal
+// cerrar 
 document.addEventListener("click", (e) => {
   const btn = e.target.closest(".close-modal");
   if (!btn) return;

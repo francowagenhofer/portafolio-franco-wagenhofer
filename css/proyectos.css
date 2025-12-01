@@ -490,6 +490,12 @@
     transform: scale(1.12);
 }
 
+.gallery-prev:active,
+.gallery-next:active {
+  transform: scale(0.92);
+  opacity: 0.8;
+}
+
 
 .gallery-dots {
     display: flex;
