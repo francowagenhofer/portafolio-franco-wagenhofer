@@ -112,68 +112,6 @@ window.addEventListener("keydown", (e) => {
 // GALERÍA REUTILIZABLE
 // ======================================================
 
-// function setupGallery(modalId, images) {
-//   const modal = document.getElementById(modalId);
-//   if (!modal) return;
-
-//   const container = modal.querySelector(".modal-gallery-slider");
-//   const prev = modal.querySelector(".gallery-prev");
-//   const next = modal.querySelector(".gallery-next");
-
-//   if (!container || !prev || !next) return;
-
-//   let index = 0;
-
-//   const update = () => {
-//     // borrar solo imágenes y videos, NO las flechas
-//     container.querySelectorAll("img, video").forEach(el => el.remove());
-
-//     const src = images[index];
-//     const isVideo = src.endsWith(".mp4") || src.endsWith(".webm");
-
-//     let el;
-//     if (isVideo) {
-//       el = document.createElement("video");
-//       el.src = src;
-//       el.controls = true;
-//     } else {
-//       el = new Image();
-//       el.loading = "lazy";
-//       el.src = src;
-//       el.classList.add("gallery-image");
-//       el.addEventListener("click", () => {
-//         overlayImage.src = src;
-//         overlay.classList.remove("hidden");
-//       });
-//     }
-
-//     container.appendChild(el);
-//   };
-
-//   prev.onclick = () => {
-//     index = (index - 1 + images.length) % images.length;
-//     update();
-//   };
-
-//   next.onclick = () => {
-//     index = (index + 1) % images.length;
-//     update();
-//   };
-
-//   // Cuando se abre ese modal, resetear galería
-//   document.addEventListener("click", (e) => {
-//     const btn = e.target.closest(".open-modal");
-//     if (!btn) return;
-//     if (btn.dataset.id !== modalId) return;
-//     index = 0;
-//     update();
-//   });
-
-//   // primer render
-//   update();
-// }
-
-
 function setupGallery(modalId, images) {
     const modal = document.getElementById(modalId);
     if (!modal) return;
@@ -254,7 +192,6 @@ function setupGallery(modalId, images) {
 
     update();
 }
-
 
 
 // ======================================================

@@ -289,8 +289,9 @@
 
     margin-left: auto;
     transform: translateX(3rem);
+    transform: translateX(1.9rem);
 
-    font-size: 1.9rem;
+    font-size: 1.8rem;
     background: none;
     border: none;
     cursor: pointer;
@@ -304,6 +305,7 @@
 .close-modal:hover {
     opacity: 1;
     transform: translateX(3rem) scale(1.12);
+    transform: translateX(2.5rem) scale(1.12);
 }
 
 
