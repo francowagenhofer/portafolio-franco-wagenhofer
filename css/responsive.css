@@ -1,12 +1,56 @@
-/* =========================================
-   📱 BASE — móviles
-========================================= */
+/* <=480px  (teléfonos chicos)
+<=768px  (teléfonos grandes)
+<=1024px (tablets)
+<=1440px (laptops)
+>1440px  (desktop grande) */
+
+/* ============================*/
+/* ========== 480px ===========*/
+/* ============================*/
+@media (max-width: 480px) {
+
+    .modal-content {
+        width: calc(100% - 0.2rem);
+        padding-left: 0.15rem !important;
+        padding-right: 0.15rem !important;
+    }
+
+    .section {
+        padding: 1rem 0.8rem;
+    }
+}
+
+/* ============================*/
+/* ========== 576px ===========*/
+/* ============================*/
+@media (max-width: 576px) {
+
+    .modal-content {
+        width: 100%;
+        max-width: none;
+        padding-left: 0.2rem !important;
+        padding-right: 0.2rem !important;
+        border-radius: 0.2rem;
+    }
+
+    .modal-block {
+        padding: 0.8rem !important;
+    }
+
+    .modal-title {
+        font-size: 1.3rem !important;
+    }
+}
+
+
+/* ============================*/
+/* ========== 768px ===========*/
+/* ============================*/
 @media (max-width: 768px) {
 
     html,
     body {
         overflow-x: hidden;
-        /* evita scroll lateral en móviles */
     }
 
     #gradient {
@@ -19,159 +63,107 @@
         font-size: 1.4rem;
     }
 
-    /* Evita desbordes en padding grande */
     * {
         max-width: 100%;
     }
-}
 
 
+    /* ======================== */
+    /*         NAVBAR           */
+    /* ======================== */
 
-/* NAVBAR — móviles */
-@media (max-width: 768px) {
-
-    /* Navbar más baja y visible siempre */
     .navbar {
         padding: 0.6rem 1rem;
         top: 0 !important;
         opacity: 1 !important;
     }
 
-    /* Contenedor centrado */
     .navbar .container {
         max-width: 100%;
         padding: 0 0.5rem;
     }
 
-    /* Logo más chico pero legible */
     .navbar .logo img {
         transform: scale(1.8);
     }
 
-    /* SACAMOS el menú horizontal */
     .nav-links {
         display: none;
     }
 
-    /* Alineamos toggle a la derecha */
     .navbar-right {
         gap: 1rem;
     }
-}
 
-/* NAVBAR + HERO — tablets */
 
-@media (max-width: 1024px) {
-
-    .navbar .logo img {
-        transform: scale(2);
-    }
-
-    .nav-links {
-        gap: 1rem;
-        font-size: 1.05rem;
-    }
+    /* ======================== */
+    /*          HEADER          */
+    /* ======================== */
 
     .hero-section {
-        padding: 7rem 1rem;
-    }
-
-    .hero-buttons {
-        justify-content: center;
-        margin-top: 1.5rem;
-    }
-
-
-    .blend-title {
-        font-size: clamp(2.5rem, 4vw, 3.6rem);
-    }
-
-    .subtitle {
-        font-size: 1.25rem;
-        max-width: 80%;
-    }
-}
-
-/* HERO / HEADER — móviles */
-
-@media (max-width: 768px) {
-
-    .hero-section {
-        height: auto;
-        padding: 5rem 1rem 4rem;
+        padding-top: 8rem !important;
     }
 
     .blend-title {
-        font-size: clamp(2.2rem, 6vw, 3rem);
-        line-height: 1.1;
+        white-space: nowrap !important;
+        font-size: clamp(2.25rem, 6vw, 3rem) !important;
     }
 
     .subtitle {
-        font-size: 1.1rem;
-        max-width: 90%;
+        font-size: clamp(0.3rem, 6vw, 1rem) !important;
+        margin-top: 0.4rem;
+        margin-bottom: 1.2rem;
+        max-width: 100%;
         margin-inline: auto;
     }
 
     .hero-buttons {
         flex-direction: column;
-        gap: 0.8rem;
+        gap: 0.7rem;
         width: 100%;
-    }
+        margin-top: 1.2rem;
 
-    .btn {
-        width: 100%;
-        max-width: 330px;
-        padding: 0.9rem 1.2rem;
-    }
-}
-
-@media (max-width: 1024px) {
-    .hero-buttons {
-        display: flex;
-        justify-content: center;
         align-items: center;
-        margin-top: 2.2rem !important;
+        justify-content: center;
     }
 
-    .subtitle {
-        margin-top: 1rem;
+    .hero-buttons .btn {
+        width: 80%;
+        max-width: 330px;
+        padding: 0.9rem 1rem;
     }
-}
 
+    /* ======================== */
+    /*        PROYECTOS         */
+    /* ======================== */
 
-/* PROYECTOS */
-
-@media (max-width: 768px) {
-
-    /* GRID de proyectos → 1 columna */
     .projects-grid {
         grid-template-columns: 1fr;
         gap: 1.2rem;
         padding: 0 0.6rem;
     }
 
-    /* Card más compacta */
     .project-card {
-        padding: 1rem;
+        padding: 0.7rem;
         border-radius: 6px;
+        gap: 0.1rem;
     }
 
     .project-card h3 {
         font-size: 1.3rem;
+        margin-bottom: 0.2rem;
     }
 
     .project-card p {
         font-size: 1rem;
-        padding: 0 0.4rem 1rem;
+        padding: 0 0.4rem 0.5rem;
     }
 
-    /* Íconos más chicos */
     .tech-icons img {
         width: 22px;
         height: 22px;
     }
 
-    /* Botones → columna */
     .project-links {
         flex-direction: column;
         gap: 0.6rem;
@@ -185,58 +177,51 @@
         padding: 0.7rem 1rem;
     }
 
-    /* Contenedor principal */
-    .modal-content {
-        width: 95%;
-        max-height: 92vh;
-        padding-left: 1rem !important;
-        padding-right: 1rem !important;
+    /* ======================== */
+    /*          MODAL           */
+    /* ======================== */
 
-        padding: 1.2rem;
-        padding-top: 3rem;
-        /* espacio para la X */
+    .project-modal {
+        padding: 0.7rem;
+    }
+
+    .modal-content {
+        max-width: none !important;
+        margin-inline: auto !important;
+        max-height: 90vh;
+        overflow-x: hidden !important;
+
+        width: calc(100% - 0.00005rem) !important;
+        padding-left: 0.05rem !important;
+        padding-right: 0.05rem !important;
+        padding-top: 0.5rem !important;
+        padding-bottom: 0.5rem !important;
 
         border-radius: 0.6rem;
     }
 
-    /* Botón Cerrar */
-    .close-modal {
-        position: sticky;
-        top: 0.4rem;
-
-        font-size: 1.6rem;
-        transform: translateX(1rem);
-        /* ya no rompe nada */
-
-        margin-left: auto;
-        z-index: 50;
+    /* Chrome, Edge, Safari: oculta scrollbar */
+    .modal-content::-webkit-scrollbar {
+        display: none;
     }
 
-    .close-modal:hover {
-        transform: translateX(1rem) scale(1.1);
+    .modal-block {
+        padding: 0.6rem !important;
     }
 
-    /* Título */
     .modal-title {
-        font-size: 1.45rem;
+        font-size: 1.35rem;
         margin-bottom: 1.3rem;
         line-height: 1.2;
     }
 
-    /* GRID → UNA COLUMNA */
     .modal-grid {
-        display: grid;
         grid-template-columns: 1fr;
         grid-auto-rows: auto;
         gap: 1rem;
     }
 
-    /* Bloques */
-    .modal-block {
-        padding: 1rem;
-    }
 
-    /* Galería */
     .modal-gallery-slider {
         max-height: 240px;
     }
@@ -246,7 +231,6 @@
         max-height: 260px;
     }
 
-    /* Controles */
     .gallery-prev svg,
     .gallery-next svg {
         width: 24px;
@@ -258,7 +242,6 @@
         height: 8px;
     }
 
-    /* Botón de descarga */
     .modal-links {
         flex-direction: column;
         gap: 0.8rem;
@@ -271,31 +254,232 @@
         padding: 1rem;
         font-size: 1rem;
     }
-}
+
+    .close-modal {
+        position: sticky;
+        top: 0.2rem;
+        margin-left: auto;
+        font-size: 1.2rem;
+        transform: translateX(1.3rem);
+        z-index: 50;
+    }
+
+    .close-modal:hover {
+        transform: translateX(1rem) scale(1.1);
+    }
 
 
-/* Modal más ancho y menos padding en móviles */
-@media (max-width: 576px) {
+    /* ======================== */
+    /*         SECTIONS         */
+    /* ======================== */
 
-    .modal-content {
+    .container {
+        padding: 1.5rem 1rem;
+    }
+
+    .section {
+        padding: 1.4rem 1rem;
+    }
+
+    .about-text {
+        font-size: 1.05rem;
+        max-width: 95%;
+        line-height: 1.65;
+        padding: 0 0.5rem;
+    }
+
+    .skills-grid-cards {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+        padding: 0 0.6rem;
+    }
+
+    .skill-card {
+        min-height: auto;
+        padding: 1.2rem;
+        border-radius: 6px;
+    }
+
+    .skills-icons {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+
+    .skill img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .card {
+        min-height: 320px;
+    }
+
+    .card-back ul {
+        margin-left: 1rem;
+        gap: 0.6rem;
+    }
+
+    .card-back ul li {
+        font-size: 0.92rem;
+    }
+
+
+    /* ======================== */
+    /*         CONTACTO         */
+    /* ======================== */
+
+    .contact-section {
+        padding: 2.5rem 1.6rem !important;
+    }
+
+    .contact-container {
+        gap: 2.4rem !important;
+    }
+
+    .contact-form input,
+    .contact-form textarea,
+    .contact-btn-902,
+    .contact-form label {
+        width: 90%;
+        max-width: 420px !important;
+        margin-inline: auto;
+        font-size: 1rem;
+    }
+
+    .contact-form,
+    .contact-info {
+        width: 90%;
+        max-width: 420px !important;
+        margin-inline: auto;
+        font-size: 1rem;
+    }
+
+    .contact-link {
+        width: 90%;
+        font-size: 0.9rem;
+    }
+
+    .contact-list {
+        align-items: center;
+        padding-top: 0.5rem;
+    }
+
+    .contact-link a {
+        display: inline-block;
         width: 100%;
-        padding-left: 0.6rem !important;
-        padding-right: 0.6rem !important;
-        border-radius: 0.4rem;
+        font-size: 1rem;
+
+        padding-top: 0.5rem;
+        padding-bottom: 0.5rem;
     }
 
-    .modal-block {
-        padding: 0.8rem !important;
+    .contact-link .icon {
+        width: 18px;
+        height: 18px;
     }
 
-    .modal-title {
-        font-size: 1.3rem !important;
+    h3 {
+        text-align: center;
+    }
+
+
+    /* ======================== */
+    /*          FOOTER          */
+    /* ======================== */
+
+    .footer-container {
+        padding: 0 0.5rem;
+        display: grid !important;
+        grid-template-columns: auto 1fr auto !important;
+        align-items: center !important;
+        gap: 0.3rem !important;
+        text-align: center !important;
+    }
+
+    .footer-left {
+        justify-content: center;
+        justify-content: left;
+    }
+
+    #footerLogo {
+        width: 26px;
+        transform: scale(1.15);
+    }
+
+    .footer-text {
+        font-size: 0.75rem !important;
+        opacity: 1;
+        max-width: 100%;
+        margin: 0;
+        white-space: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: block;
+        text-align: center;
+    }
+
+    .footer-text::before {
+        content: " © 2025 • Franco Wagenhöfer — Portafolio";
+        display: block;
+    }
+
+    .footer-text>* {
+        display: none;
+    }
+
+    .footer-text .footer-original {
+        display: none !important;
+    }
+
+    .back-to-top {
+        position: static !important;
+        margin-left: auto;
+        font-size: 1rem !important;
+        width: 26px !important;
+        height: 26px !important;
+        display: grid;
+        place-items: center;
+        padding: 4px;
+        cursor: pointer;
+        opacity: 1;
     }
 }
 
+/* ============================*/
+/* ========== 1024 px =========*/
+/* ============================*/
 
 @media (max-width: 1024px) {
 
+    /*----- HEADER + NAVBAR -----*/
+    .navbar .logo img {
+        transform: scale(2);
+    }
+
+    .nav-links {
+        gap: 1rem;
+        font-size: 1.05rem;
+    }
+
+    .hero-section {
+        padding: 7rem 1rem;
+    }
+
+    .blend-title {
+        font-size: clamp(2.5rem, 4vw, 3.6rem);
+    }
+
+    .hero-buttons {
+        justify-content: center;
+        margin-top: 1.5rem;
+    }
+
+    .subtitle {
+        font-size: 1.25rem;
+        max-width: 80%;
+    }
+
+    /* ----- PROYECTOS ----- */
     .modal-content {
         width: 90%;
         padding: 2rem;
@@ -312,96 +496,8 @@
     .modal-gallery-slider {
         max-height: 300px;
     }
-}
 
-/* =========================================
-   📱 SECCIONES GENERALES — móviles
-========================================= */
-
-@media (max-width: 480px) {
-    .section {
-        padding: 1rem 0.8rem;
-    }
-}
-
-@media (max-width: 768px) {
-
-    .container {
-        padding: 1.5rem 1rem;
-    }
-
-    .section {
-        padding: 1.4rem 1rem;
-    }
-
-    h2 {
-        font-size: 1.7rem;
-        margin: 1.5rem 0;
-    }
-
-    .about-text {
-        font-size: 1.05rem;
-        max-width: 95%;
-        line-height: 1.65;
-        padding: 0 0.5rem;
-    }
-
-    /* Grilla → 1 columna */
-    .skills-grid-cards {
-        grid-template-columns: 1fr;
-        gap: 1.2rem;
-        padding: 0 0.6rem;
-    }
-
-    .skill-card {
-        min-height: auto;
-        padding: 1.2rem;
-        border-radius: 6px;
-    }
-
-    .skill-card h3 {
-        font-size: 1.25rem;
-    }
-
-    /* Íconos más chicos */
-    .skills-icons {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.8rem;
-    }
-
-    .skill img {
-        width: 32px;
-        height: 32px;
-    }
-
-    /* FLIP FIX — más espacio vertical */
-    .card {
-        min-height: 320px;
-    }
-
-    .card-back ul {
-        margin-left: 1rem;
-        gap: 0.6rem;
-    }
-
-    .card-back ul li {
-        font-size: 0.92rem;
-    }
-
-    /* SOBRE MI */
-    #about h2 {
-        margin-bottom: 1rem;
-    }
-
-    .about-text {
-        font-size: 1.07rem;
-        max-width: 95%;
-        line-height: 1.6;
-    }
-}
-
-@media (max-width: 1024px) {
-
+    /* ----- SECTIONS----- */
     .skills-grid-cards {
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     }
@@ -417,71 +513,8 @@
     .card-back ul {
         margin-left: 1.2rem;
     }
-}
 
-/* CONTACTO */
-@media (max-width: 768px) {
-
-    .contact-section {
-        padding: 2rem 1.2rem;
-        margin-top: 3rem;
-    }
-
-    .contact-section h2 {
-        font-size: 1.7rem;
-        margin-bottom: 1.5rem;
-    }
-
-    /* Grilla → una columna */
-    .contact-container {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-    }
-
-
-    .contact-form,
-    .contact-info {
-        max-width: 380px;
-        margin-inline: auto;
-    }
-
-    h3{
-        text-align: center;
-    }
-    /* Inputs full-width */
-    .contact-form input,
-    .contact-form textarea,
-    .contact-btn-902 {
-        /* max-width: 100%;
-        width: 100%;
-        font-size: 1rem; */
-        width: 100%;
-        max-width: 380px;
-        margin-inline: auto;
-    }
-
-    .contact-link {
-        max-width: 380px;    /* mismo ancho que el form */
-        margin-inline: auto; /* centrado */
-        width: 100%;
-    }
-
-    .contact-list {
-        align-items: center; /* centra cada item */
-    }
-
-    .contact-link a {
-        display: inline-block;
-        width: 100%; /* evita saltos raros */
-    }
-    .contact-link .icon {
-        width: 18px;
-        height: 18px;
-    }
-}
-
-@media (max-width: 1024px) {
-
+    /* ----- CONTACTO ----- */
     .contact-section {
         padding: 3rem 2rem;
     }
@@ -494,45 +527,69 @@
     .contact-form textarea {
         max-width: 100%;
     }
-}
 
-/* FOOTER */
+    /* ----- FOOTER ---- */
 
-/* =========================================
-   📱 FOOTER — móviles
-========================================= */
-@media (max-width: 768px) {
-
-    /* La grilla pasa de 3 columnas → 1 columna */
     .footer-container {
-        grid-template-columns: 1fr;
-        text-align: center;
+        display: grid;
+        grid-template-columns: auto 1fr;
+        align-items: center;
         gap: 1.2rem;
-        padding: 0 1rem;
-    }
-
-    /* Logo centrado */
-    .footer-left {
-        justify-content: center;
+        padding: 0 1.2rem;
     }
 
     #footerLogo {
-        transform: scale(1.15);
+        transform: scale(1.2);
     }
 
-    /* Texto ya no es absolute — queda debajo alineado */
     .footer-text {
         position: static;
         transform: none;
+        text-align: center;
         white-space: normal;
-        font-size: 0.93rem;
-        opacity: 0.85;
-        margin-top: 0.2rem;
+        margin: 0;
+        font-size: 0.95rem;
     }
 
     .back-to-top {
-        bottom: 22px;
-        right: 20px;
-        font-size: 1.4rem;
+        position: absolute;
+        right: 1rem;
+        top: -12px;
+        transform: scale(0.9);
+    }
+}
+
+/* ============================*/
+/* ========== 1440 px =========*/
+/* ============================*/
+@media (min-width: 1440px) {
+
+    .container,
+    .section {
+        max-width: 1240px;
+        margin-inline: auto;
+    }
+
+    .blend-title {
+        font-size: clamp(3rem, 4vw, 4.4rem);
+    }
+
+    .subtitle {
+        font-size: 1.35rem;
+        max-width: 70%;
+    }
+
+    .hero-section {
+        padding: 8rem 1rem;
+    }
+
+    .projects-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+    }
+
+    .modal-content {
+        width: 1100px;
+        padding: 2.2rem 2rem;
     }
 }
