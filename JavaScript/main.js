@@ -57,7 +57,7 @@ function applyThemeAssets(theme) {
   applyThemeColors(theme);
   updateGithubIcons(theme);
   updateLogos(theme);
-  updateFavicon(theme);
+  // updateFavicon(theme);
 }
 
 //***************************************************************//
