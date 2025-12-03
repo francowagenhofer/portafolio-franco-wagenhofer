@@ -4,9 +4,6 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <link rel="stylesheet" href="./responsive.css">
-
     <meta name="description"
         content="Portafolio de Franco Wagenhöfer: desarrollador .NET especializado en C#, SQL Server y aplicaciones desktop/web.">
     <meta property="og:title" content="Franco Wagenhöfer | Portafolio .NET">
@@ -15,9 +12,18 @@
         content="Desarrollador .NET con experiencia en C#, SQL Server y aplicaciones desktop/web.">
 
     <title>Franco Wagenhöfer | Portafolio</title>
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", savedTheme);
+        })();
+    </script>
     <link id="favicon" rel="icon" href="Logos/logo_blanco.webp">
-  <script type="module" crossorigin src="/portafolio-franco-wagenhofer/assets/index-dq1D4tmp.js"></script>
-  <link rel="stylesheet" crossorigin href="/portafolio-franco-wagenhofer/assets/index-Ce6C_63M.css">
+
+    <link rel="preload" href="./responsive.css" as="style" />
+    <link rel="stylesheet" href="./responsive.css">
+  <script type="module" crossorigin src="/portafolio-franco-wagenhofer/assets/index-DWnqrZNG.js"></script>
+  <link rel="stylesheet" crossorigin href="/portafolio-franco-wagenhofer/assets/index-CmztegZU.css">
 </head>
 
 <body>
