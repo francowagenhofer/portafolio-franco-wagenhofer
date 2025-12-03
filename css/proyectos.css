@@ -173,19 +173,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
-
-    /* background: rgba(0, 0, 0, 0.55); */
-
-    background: var(--fondo-modal);
     background: transparent;
     backdrop-filter: blur(10px);
-
     padding: 2rem;
     z-index: 9999;
-
     animation: fadeIn 0.25s ease-out;
 }
-
 
 .project-modal.hidden {
     display: none;
@@ -199,6 +192,43 @@
     to {
         opacity: 1;
     }
+}
+
+
+/* BOTONES DE NAVEGACION ENTRE MODALES */
+
+/* Navegación entre PROYECTOS */
+.modal-nav {
+    position: absolute;
+    top: 50%;
+    font-size: 2.4rem;
+    background: none;
+    border: none;
+    color: var(--modal-text);
+    opacity: 0.65;
+    cursor: pointer;
+    z-index: 9999;
+    transition: opacity .18s ease, transform .18s ease;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+.modal-nav:hover {
+    opacity: 0.9;
+}
+
+.prev-project {
+    left: 1.5rem;
+}
+
+.next-project {
+    right: 1.5rem;
+}
+
+.prev-project:active, 
+.next-project:active{
+  transform: scale(0.9);
+  opacity: 0.7;
 }
 
 /* ==================================
@@ -217,8 +247,9 @@
     padding-right: 4rem;
 
     overflow-y: auto;
-    border-radius: 0.7rem;
-    clip-path: inset(0 round 0.7rem);
+
+    /* border-radius: 0.5rems; */
+    clip-path: inset(0 round 0.5rem);
 
     display: flex;
     flex-direction: column;
@@ -316,6 +347,63 @@
     font-weight: 650;
 }
 
+
+
+/* NUEVO */
+
+.modal-close-top {
+    position: absolute;
+    top: 1.2rem;
+    right: 1.7rem;
+    font-size: 1.9rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+
+    color: var(--modal-text);
+    opacity: 0.75;
+    transition: opacity .15s, transform .15s;
+    z-index: 9999; /* igual que nav buttons */
+}
+
+.modal-close-top:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.modal-close-top:active {
+    transform: scale(0.9);
+    opacity: 0.6;
+}
+
+
+.close-inside {
+    display: none;
+}
+
+
+@media (max-width: 768px) {
+
+  /* Ocultamos nav entre proyectos */
+  .modal-nav {
+      display: none;
+  }
+
+  /* Ocultamos el botón superior */
+  .modal-close-top {
+      display: none;
+  }
+
+  /* Mostramos el botón close dentro del modal */
+  .close-inside {
+      display: block;
+  }
+}
+
+
+
+
+
 /* ==================================
    GRID 2×2 — CUATRO BLOQUES
 ================================== */
@@ -334,6 +422,7 @@
 .modal-block {
     background: rgba(255, 255, 255, 0.03);
     border-radius: 0.6rem;
+    border-radius: 0.5rem;
     padding: 1.1rem;
 
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);

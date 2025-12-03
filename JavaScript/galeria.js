@@ -69,12 +69,80 @@ function closeModal(modalEl) {
 }
 
 document.addEventListener("click", (e) => {
-  const btn = e.target.closest(".close-modal");
+  // const btn = e.target.closest(".close-modal");
+  const btn = e.target.closest(".close-modal") || e.target.closest(".modal-close-top");
   if (!btn) return;
 
   const modal = btn.closest(".project-modal");
   closeModal(modal);
 });
+
+
+
+
+
+// NUEVO
+// Navegación entre PROYECTOS desde el modal
+document.addEventListener("click", (e) => {
+  const modal = e.target.closest(".project-modal");
+  if (!modal) return;
+
+  const modalId = modal.id;
+
+  if (e.target.closest(".next-project")) {
+    navigateProject(modalId, "next");
+  }
+
+  if (e.target.closest(".prev-project")) {
+    navigateProject(modalId, "prev");
+  }
+});
+
+// NUEVO
+function navigateProject(currentModalId, direction) {
+  const currentIndex = proyectos.findIndex((p) => p.id === currentModalId);
+  if (currentIndex === -1) return;
+
+  let nextIndex = direction === "next" ? currentIndex + 1 : currentIndex - 1;
+
+  // loop circular
+  if (nextIndex < 0) nextIndex = proyectos.length - 1;
+  if (nextIndex >= proyectos.length) nextIndex = 0;
+
+  const nextId = proyectos[nextIndex].id;
+
+  const currentModal = document.getElementById(currentModalId);
+  const nextModal = document.getElementById(nextId);
+
+  // cerrar actual
+  closeModal(currentModal);
+
+  // esperar fin de animación de salida
+  setTimeout(() => {
+    nextModal.classList.remove("hidden");
+    document.body.classList.add("modal-open");
+
+    const content = nextModal.querySelector(".modal-content");
+    content.classList.remove("modal-animate-out");
+
+    // reflow para reiniciar animación
+    void content.offsetWidth;
+    content.classList.add("modal-animate-in");
+
+    // reiniciar galería interna
+    setupGallery(nextId, proyectos[nextIndex].imagenes);
+  }, 180);
+}
+
+
+
+
+
+
+
+
+
+
 
 // Cerrar clic en overlay
 window.addEventListener("click", (e) => {
@@ -89,6 +157,23 @@ window.addEventListener("keydown", (e) => {
     if (openModal) closeModal(openModal);
   }
 });
+
+// NUEVO
+// Navegación con flechas del TECLADO
+window.addEventListener("keydown", (e) => {
+  const modal = document.querySelector(".project-modal:not(.hidden)");
+  if (!modal) return;
+
+  if (e.key === "ArrowRight") {
+    navigateProject(modal.id, "next");
+  }
+
+  if (e.key === "ArrowLeft") {
+    navigateProject(modal.id, "prev");
+  }
+});
+
+
 
 // ======================================================
 // GALERÍA REUTILIZABLE

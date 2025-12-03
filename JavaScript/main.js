@@ -289,9 +289,8 @@ heroItems.forEach((el, i) => {
 //**********************************************************************//
 
 // EFECTO CLICK EN BOTONES
-
 const clickables = document.querySelectorAll(`
-  button:not(.close-modal):not(.gallery-prev):not(.gallery-next),
+  button:not(.close-modal):not(.gallery-prev):not(.gallery-next):not(.prev-project):not(.next-project):not(.modal-close-top),
   a.btn,
   a.btn-glow,
   .card-open,

@@ -180,6 +180,9 @@
     /* ======================== */
     /*          MODAL           */
     /* ======================== */
+    .modal-nav {
+        display: none !important;
+    }
 
     .project-modal {
         padding: 0.7rem;

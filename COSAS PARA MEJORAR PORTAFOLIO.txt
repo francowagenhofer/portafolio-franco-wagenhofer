@@ -1,0 +1,28 @@
+COSAS PARA MEJORAR PORTAFOLIO
+
+PENDIENTE
+- cuando se esta en las habilidades, la parte de proyectos se buggea un toque
+
+LISTO
+- mejorar el slider de fotos, se bugguea - listo
+- hacer la app responsive - listo
+- achicar márgenes de modal - listo
+- transición cuando abre y cierra modal - listo
+- mejorar la galería de fotos - listo
+- mejorar posición de footer - listo 
+- tener logo - listo
+- hacer efecto click en botones de la card y modal - listo  
+- dar créditos en el footer - listo
+- arreglar iconos - listo
+- que aparezca el modal.. se rompió eso. - listo
+- corregir altura de contenido en contacto - listp
+- arreglar icono de GitHub - listo
+- arreglar lista de links - listo
+- mejorar el footer - listo
+- mejorar links de contacto - listo
+- mejorar botones de contacto -- listo
+- mejorar hover de las cartas de proyecto - listo
+- mejorar sombras de botones: header y proyectos - listo
+- dar efecto en el scroll - listo 
+- no funciona el enlace proyectos del navbar - listo
+
