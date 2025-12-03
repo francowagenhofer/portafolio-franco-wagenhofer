@@ -34,9 +34,6 @@ export function applyThemeColors(theme) {
     // Hover de la raya subrayada
     root.style.setProperty("--link-hover-color", "#bd955d60");
 
-
-
-
     // --- Toggle (interruptor) ---
     root.style.setProperty("--toggle-bg", "#6a5025a7");
     root.style.setProperty("--toggle-bg", "#584321a7");

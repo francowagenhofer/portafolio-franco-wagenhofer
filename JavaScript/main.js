@@ -21,46 +21,64 @@ const navbar = document.querySelector(".navbar");
 let gradient;
 const githubIcons = document.querySelectorAll('[data-icon="github"]');
 
+function updateLogos(theme) {
+  const navLogo = document.getElementById("navLogo");
+  const footerLogo = document.getElementById("footerLogo");
+
+  const logoSrc =
+    theme === "dark"
+      ? "Logos/logo_transparente_blanco.webp"
+      : "Logos/logo_transparente_negro.webp";
+
+  if (navLogo) navLogo.src = logoSrc;
+  if (footerLogo) footerLogo.src = logoSrc;
+}
+
+function updateFavicon(theme) {
+  const favicon = document.getElementById("favicon");
+  if (!favicon) return;
+
+  favicon.href =
+    theme === "dark"
+      ? "Logos/logo_blanco.webp"
+      : "Logos/logo_negro.webp";
+}
+
 function updateGithubIcons(theme) {
-  const src = theme === "dark" ? "Iconos/GitHub_dark.svg" : "Iconos/github.svg";
+  const src =
+    theme === "dark" ? "Iconos/GitHub_dark.svg" : "Iconos/github.svg";
 
   githubIcons.forEach((img) => (img.src = src));
 }
 
-// Optimizar el gradiente en pantallas chicas
-// **************************************************************
+//***************************************************************//
+// APLICA TODOS LOS RECURSOS DE TEMA
+function applyThemeAssets(theme) {
+  applyThemeColors(theme);
+  updateGithubIcons(theme);
+  updateLogos(theme);
+  updateFavicon(theme);
+}
+
+//***************************************************************//
+// GRADIENT OPTIMIZADO
+
 function optimizeGradientConfig(config) {
   if (window.innerWidth < 1300) {
     console.log("⚡ Configuración optimizada para pantallas chicas");
-
     config.resolution = 0.55;
-    config.grainIntensity = config.grainIntensity * 0.5;
-    config.speed = config.speed * 0.75;
-    config.waveAmplitude = config.waveAmplitude * 0.75;
+    config.grainIntensity *= 0.5;
+    config.speed *= 0.75;
+    config.waveAmplitude *= 0.75;
   } else {
     config.resolution = 1;
   }
-
   return config;
 }
-// *************************************************************
 
-const savedTheme = localStorage.getItem("theme") || "dark";
-currentTheme = savedTheme;
-
-// Aplicar colores CSS
-applyThemeColors(currentTheme);
-
-// Aplicar íconos
-updateGithubIcons(currentTheme);
-
-// Marcar toggle
-toggle.checked = currentTheme === "dark";
-
-// Creacionde gradien con configuracion de optimizacion para pantallas chicas
-function createGradient() {
+function createGradient(theme) {
   const baseConfig =
-    currentTheme === "dark" ? darkThemeConfig : lightThemeConfig;
+    theme === "dark" ? darkThemeConfig : lightThemeConfig;
 
   const optimizedConfig = optimizeGradientConfig({ ...baseConfig });
 
@@ -69,49 +87,38 @@ function createGradient() {
     ...optimizedConfig,
   });
 }
-createGradient();
 
-function updateNavLogo(theme) {
-  const navLogo = document.getElementById("navLogo");
-  navLogo.src =
-    theme === "dark"
-      ? "Logos/logo_transparente_blanco.webp"
-      // : "Logos/logo_transparente_blanco.webp"
-      : "Logos/logo_transparente_negro.webp";
-}
+//*************************************************************//
+// INICIALIZACIÓN
 
-function updateFooterLogo(theme) {
-  const footerLogo = document.getElementById("footerLogo");
-  footerLogo.src =
-    theme === "dark"
-      ? "Logos/logo_transparente_blanco.webp"
-      : "Logos/logo_transparente_negro.webp";
-}
+const savedTheme = localStorage.getItem("theme") || "dark";
+currentTheme = savedTheme;
+
+// Aplicar theme completo (colores, logos, github, favicon)
+applyThemeAssets(currentTheme);
+
+// Marcar toggle
+toggle.checked = currentTheme === "dark";
+
+// Crear gradient inicial
+createGradient(currentTheme);
+
+//*************************************************************//
+// CAMBIO DE TEMA
 
 function toggleTheme() {
   currentTheme = toggle.checked ? "dark" : "light";
 
-  // Regenerar gradiente
+  applyThemeAssets(currentTheme);
+
   gradient.destroy();
-  gradient = new NeatGradient({
-    ref: gradientCanvas,
-    ...(currentTheme === "dark" ? darkThemeConfig : lightThemeConfig),
-  });
+  createGradient(currentTheme);
 
-  // Colores CSS
-  applyThemeColors(currentTheme);
-
-  // Cambiar íconos
-  updateGithubIcons(currentTheme);
-
-  // Guardar preferencia
   localStorage.setItem("theme", currentTheme);
-
-  updateNavLogo(currentTheme);
-  updateFooterLogo(currentTheme);
 }
 
 toggle.addEventListener("change", toggleTheme);
+
 
 //************************************************************//
 //************************************************************//
@@ -308,8 +315,7 @@ clickables.forEach((btn) => {
   });
 });
 
-
-// cerrar 
+// cerrar
 document.addEventListener("click", (e) => {
   const btn = e.target.closest(".close-modal");
   if (!btn) return;

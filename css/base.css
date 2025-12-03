@@ -7,87 +7,165 @@ a[href="https://neat.firecms.co"] {
     display: none !important;
 }
 
-/* Tema oscuro (por defecto) */
-:root {
-    /* Titulo h1*/
-    --blend-title-color: rgb(202, 228, 233);
 
-    /*Body*/
-    --bg-color: #020210;
-    --text-color: white;
-    --section-bg: rgba(0, 0, 0, 0.6);
-    
-    /* navbar */
-    --navbar-bg: rgba(0, 0, 0, 0.5);
-    --navbar-border:rgba(255,255,255,0.08);
-    /* --navbar-link-hover: #57B4FF; */
-    --navbar-link-hover: #03a9f4;
+/* ROOT - DARK THEME */
+:root[data-theme="dark"] {
+  /* Title */
+  --blend-title-color: rgb(202, 228, 233);
+  --blend-title-color: rgba(105, 229, 254, 0.781);
 
-    /*Toggle*/
-    --toggle-bg: #4d5c894b;
-    --toggle-bg-hover: #5c678889;
-    --toggle-ball: #fff5eedd;
-    --toggle-glow: 0 0 6px rgba(120, 170, 255, 0.45);
+  /* Background principal */
+  --bg-color: #020210;
+  --text-color: white;
+  --section-bg: rgba(0, 0, 0, 0.6);
 
-    /* todos los links */
-    --link-color: rgb(255, 255, 255);
-    --link-hover-color: #03a9f4;
-    --link-card-color: #03a9f4;
+  /* Navbar */
+  --navbar-bg: rgba(12, 12, 14, 0.57);
+  --navbar-border: rgba(168, 168, 168, 0.06);
+  --navbar-link-hover: #8fe6f4ff;
 
-    /* links contacto */
-    --link-contacto: #d6d6d6; 
-    --link-contacto-hover: #ffffff; 
-    --link-contacto-bg-hover: rgba(255, 255, 255, 0.08);
-    
-    /* links contacto - sombra */
-    --contact-link-shadow: 0 1px 4px rgba(255,255,255,0.08);
-    --contact-link-shadow-hover: 0 3px 8px rgba(255, 255, 255, 0.058);
+  /* Links */
+  --link-color: #ffffffff;
+  --link-hover-color: #8fe7f4c2;
+  --link-card-color: #03a9f4;
 
-    /* boton descargar cv , linkedin y github*/
-    --btn-bg: #03a9f4;
-    --btn-hover-bg: rgb(8, 64, 117);
-    --btn-transparent: transparent;
-    
-    /* transfondo de las tarjetas */
-    --card-bg: rgba(255, 255, 255, 0.1);
-    --card-hover-bg: rgba(255, 255, 255, 0.15);
+  /* Contacto links */
+  --link-contacto: #d6d6d6;
+  --link-contacto-hover: #ffffff;
+  --link-contacto-bg-hover: rgba(255, 255, 255, 0.08);
 
-    /* Colores botones tarjeta*/
-    /* --proyect-btn-color: #4d5c8969; */
-    --proyect-btn-color: rgba(255, 255, 255, 0.1);
-    --proyect-btn-hover-color: #0057b3db;
-    --proyect-text-color: white;
-    --proyect-text-hover-color: white; 
-    --btn-vermas-text: white;
+  --contact-link-shadow: 0 1px 4px rgba(255,255,255,0.08);
+  --contact-link-shadow-hover: 0 3px 8px rgba(255,255,255,0.12);
 
+  /* Toggle */
+  --toggle-bg: #4d58795a;
+  --toggle-bg-hover: #4c557089;
+  --toggle-ball: #fff;
+  --toggle-glow: 0 0 6px rgba(120, 170, 255, 0.28);
 
+  /* Botones */
+  --btn-bg: #03a9f4;
+  --btn-hover-bg: #0288d1;
 
-    /* modal */
-    --modal-background:  rgba(51, 51, 54, 0.508);
-    --modal-bg: rgba(25, 25, 35, 0.95);
-    --modal-text: #ffffff;
-    --flechas: #ffffff;
-    --fondo-modal: transparent;
+  /* Secundarios (Linkedin / Github) */
+  --btn-secondary-bg: transparent;
+  --btn-secondary-color: #03a9f4;
 
-    /* modal - contenedor botones */
-    --modal-chip-bg :  rgba(255,255,255,0.08);
-    --modal-chip-border: 1px solid rgba(255,255,255,0.15);
+  /* Formulario contacto */
+  --btn-form-bg: #2B3C8D;
+  --btn-form-hover-bg: #188efdb4;
+  --btn-form-hover-text: #fff;
+  --btn-form-text: white;
 
-    /* Tecnonologias */
-    --background-tecn-card: rgba(255, 255, 255, 0.033);
+  /* Tarjetas Proyectos */
+  --card-bg: rgba(255, 255, 255, 0.07);
+  --card-hover-bg: rgba(57, 54, 63, 0.15);
 
-    /* botones contacto */
-    --btn-form-bg: #3568ffba;
-    --btn-form-hover-bg: #36a7d7;
-    --btn-form-hover-text: #000000;
-    --btn-form-text: white;
+  --proyect-btn-color: rgba(255, 255, 255, 0.1);
+  --proyect-btn-hover-color: #17518fd9;
+  --proyect-text-color: rgba(255, 255, 255, 1);
+  --proyect-text-hover-color: rgba(255, 255, 255, 1);
+  --btn-vermas-text: rgba(255, 255, 255, 1);
 
-    /* footer */
-    --footer: rgba(255, 255, 255, 0.858);
-    --footer-background:  rgba(0, 0, 0, 0.303);
-    --footer-border:rgba(0, 0, 0, 0.25);
-    --footer-hover: rgba(255, 255, 255, 0.10);
+  /* Tecnologías */
+  --background-tecn-card: rgba(255, 255, 255, 0.033);
+
+  /* Modal */
+  --fondo-modal: transparent;
+  --modal-background: #0d0e0f63;
+  --modal-bg: #3a3f4eb0;
+  --modal-text: #f9f9f9ff;
+  --flechas: #f9f9f9ff;
+
+  --modal-chip-bg: rgba(255,255,255,0.08);
+  --modal-chip-border: rgba(255,255,255,0.15);
+
+  /* Footer */
+  --footer: rgba(255, 255, 255, 0.82);
+  --footer-hover: rgba(255, 255, 255, 1);
+  --footer-background: rgba(0, 0, 0, 0.25);
+  --footer-border: rgba(255, 255, 255, 0.06);
 }
+
+/* ROOT - LIGHT THEME */
+
+:root[data-theme="light"] {
+  /* Title */
+  --blend-title-color: rgba(55, 39, 19, 0.6);
+
+  /* Background general */
+  --bg-color: #f6f4ed;
+  --text-color: #3C2F22;
+  --section-bg: rgba(185, 174, 154, 0.29);
+
+  /* Navbar */
+  --navbar-bg: rgba(192, 165, 149, 0.16);
+  --navbar-border: rgba(77, 77, 77, 0.07);
+  --navbar-link-hover: #a87c3eff;
+
+  /* Links */
+  --link-color: #3C2F22;
+  --link-card-color: #3C2F22cc;
+  --link-hover-color: #bd955d60;
+
+  /* Contacto links */
+  --link-contacto: #444;
+  --link-contacto-hover: #111;
+  --link-contacto-bg-hover: rgba(0, 0, 0, 0.05);
+
+  --contact-link-shadow: 0 1px 3px rgba(0,0,0,0.10);
+  --contact-link-shadow-hover: 0 2px 6px rgba(0,0,0,0.16);
+
+  /* Toggle */
+  --toggle-bg: #584321a7;
+  --toggle-bg-hover: #BFA47A;
+  --toggle-ball: #F8F6F2;
+  --toggle-glow: 0 0 6px rgba(255, 230, 180, 0.45);
+
+  /* Botones principales */
+  --btn-bg: #bfa57add;
+  --btn-hover-bg: #6a5025a7;
+
+  --btn-secondary-bg: transparent;
+  --btn-secondary-color: #BFA47A;
+
+  /* Tarjetas Proyectos */
+  --card-bg: rgba(185, 174, 154, 0.23);
+  --card-hover-bg: rgba(238, 238, 238, 0.35);
+
+  --proyect-btn-color: #23150688;
+  --proyect-btn-hover-color: #bfa57a98;
+  --proyect-text-color: #ffffffff;
+  --btn-vermas-text: #231506c9;
+  --proyect-text-hover-color: white;
+
+  /* Tarjetas tecnologías */
+  --background-tecn-card: rgba(185, 174, 154, 0.25);
+
+  /* Form Contacto */
+  --btn-form-bg: #272219e4;
+  --btn-form-hover-bg: #2a1f15b9;
+  --btn-form-text: #fff;
+  --btn-form-hover-text: #fff;
+
+  /* Modal */
+  --fondo-modal: rgba(0, 0, 0, 0.55);
+  --modal-background: #897f7d65;
+  --modal-bg: #fffffff6;
+  --modal-text: #3C2F22;
+  --flechas: #3C2F22;
+
+  --modal-chip-bg: rgba(0,0,0,0.06);
+  --modal-chip-border: rgba(0,0,0,0.15);
+
+  /* Footer */
+  --footer: #2C241D;
+  --footer-hover: #1A1612;
+  --footer-background: rgba(185, 174, 154, 0.17);
+  --footer-border: rgba(215, 183, 154, 0.18);
+}
+
+
 
 body,
 html {
@@ -103,6 +181,17 @@ html {
     transition: background-color 0.4s ease, color 0.4s ease;
 }
 
+html[data-theme="dark"],
+body[data-theme="dark"] {
+  background: #07070d8d;
+}
+
+html[data-theme="light"],
+body[data-theme="light"] {
+  background: #f0e8cddd;
+}
+
+
 #gradient {
     position: fixed;
     top: 0;
@@ -114,14 +203,18 @@ html {
 }
 
 /* -------------------------------- */
+:root[data-theme="light"] #gradient {
+  background: #f6f4ed;
+}
 
+:root[data-theme="dark"] #gradient {
+  background: #0d0d14e9;
+}
+/* -------------------------------- */
 .reveal-item {
   will-change: transform, opacity, filter;
 }
-
 /* -------------------------------- */
-
-
 /* Animación al hacer click */
 .btn-click {
     animation: click-compress 0.15s cubic-bezier(0.4, 0, 0.3, 1);
