@@ -3,6 +3,14 @@
 
 <head>
     <meta charset="UTF-8" />
+
+    <script>
+        (function () {
+            const savedTheme = localStorage.getItem("theme") || "dark";
+            document.documentElement.setAttribute("data-theme", savedTheme);
+        })();
+    </script>
+
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <link rel="stylesheet" href="./responsive.css">
@@ -15,9 +23,9 @@
         content="Desarrollador .NET con experiencia en C#, SQL Server y aplicaciones desktop/web.">
 
     <title>Franco Wagenhöfer | Portafolio</title>
-    <link id="favicon" rel="icon" href="Logos/logo_blanco.webp">
     <!-- <link id="favicon" rel="icon" href="Logos/logo_negro.webp"> -->
-  <script type="module" crossorigin src="/portafolio-franco-wagenhofer/assets/index-NG_bOAFv.js"></script>
+    <link id="favicon" rel="icon" href="Logos/logo_blanco.webp">
+  <script type="module" crossorigin src="/portafolio-franco-wagenhofer/assets/index-_j3cBeq3.js"></script>
   <link rel="stylesheet" crossorigin href="/portafolio-franco-wagenhofer/assets/index-Ce6C_63M.css">
 </head>
 
@@ -26,10 +34,9 @@
 
     <nav class="navbar" role="navigation">
         <div class="container">
-            <!-- <a href="#home" class="logo" alt="Logo Franco Wagenhöfer">FW.</a> -->
             <a href="#home" class="logo">
-                <img src="Logos/logo_transparente_blanco.webp" id="navLogo">
-                <!-- <img src="Logos/ciervo.png" id="navLogo"> -->
+                <!-- <img src="Logos/logo_transparente_blanco.webp" id="navLogo"> -->
+                <img src="Logos/logo_transparente_negro.webp" id="navLogo">
             </a>
             <div class="navbar-right">
                 <ul class="nav-links">
@@ -83,33 +90,21 @@
                 </article>
             </template>
             <template id="modal-template">
-
-
                 <div class="project-modal hidden" role="dialog" aria-modal="true">
 
-                     <button class="modal-close-top" aria-label="Cerrar">&times;</button>
+                    <button class="modal-close-top" aria-label="Cerrar">&times;</button>
                     <button class="modal-nav prev-project" aria-label="Proyecto anterior">‹</button>
                     <button class="modal-nav next-project" aria-label="Proyecto siguiente">›</button>
 
                     <div class="modal-content">
-
-                        <!-- <button class="close-modal" aria-label="Cerrar">&times;</button> -->
                         <button class="close-modal close-inside" aria-label="Cerrar">&times;</button>
-
                         <h3 class="modal-title"></h3>
-
-                        <!-- <h4>Imagen</h4> -->
                         <div class="modal-body modal-grid">
-
                             <div class="modal-block gallery-block">
-
                                 <h4>Imagenes</h4>
                                 <div class="modal-gallery">
                                     <div class="modal-gallery-slider"></div>
-
                                     <div class="gallery-controls">
-
-                                        <!-- <button class="gallery-prev">&#10094;</button> -->
                                         <button class="gallery-prev" type="button" aria-label="Imagen anterior">
                                             <svg height="22px" viewBox="0 -960 960 960" width="22px"
                                                 fill="currentColor">
@@ -117,12 +112,7 @@
                                                     d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z" />
                                             </svg>
                                         </button>
-
-                                        <!-- PAGINADOR -->
                                         <div class="gallery-dots"></div>
-
-                                        <!-- <button class="gallery-next">&#10095;</button> -->
-
                                         <button class="gallery-next" type="button" aria-label="Imagen siguiente">
                                             <svg height="22px" viewBox="0 -960 960 960" width="22px"
                                                 fill="currentColor">
@@ -390,9 +380,8 @@
         <div class="footer-container">
 
             <div class="footer-left">
-                <!-- <a href="#home" class="logo footerLogo">FW.</a> -->
-                <!-- <img src="Logos/logo_transparente_blanco.webp"  alt="Logo FW"> -->
-                <img src="Logos/logo_transparente_blanco.webp" id="footerLogo" alt="Logo FW">
+                <!-- <img src="Logos/logo_transparente_blanco.webp" id="footerLogo" alt="Logo FW"> -->
+                <img src="Logos/logo_transparente_negro.webp" id="footerLogo" alt="Logo FW">
             </div>
             <p class="footer-text">
                 <span class="footer-original">
