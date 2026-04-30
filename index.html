@@ -1,274 +1,498 @@
 <!DOCTYPE html>
-<html lang="es" data-theme="light" data-lang="es">
+<html lang="es" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- 
   <title>Franco Wagenhöfer — Desarrollador .NET</title>
- 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
-  
+
   <link rel="stylesheet" href="css/styles.css" />
   <script src="js/main.js" defer></script>
 
 </head>
 <body>
 
-  <!-- NAV -->
-  <nav id="navbar">
-    <div class="nav-left">
-      <a href="#home" class="nav-logo">
-        FW<span class="nav-logo-dot"></span>
-      </a>
-      <ul class="nav-links">
-        <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
-        <li><a href="#skills" data-i18n="nav.skills">Tecnologías</a></li>
-        <li><a href="#about" data-i18n="nav.about">Sobre mí</a></li>
-        <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
-      </ul>
-    </div>
+<!-- ════════════ NAV ════════════ -->
+<nav id="navbar">
+  <div class="nav-left">
+    <a href="#home" class="nav-logo">
+      FW<span class="nav-logo-dot"></span>
+    </a>
+    <ul class="nav-links">
+      <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
+      <li><a href="#skills"    data-i18n="nav.skills">Tecnologías</a></li>
+      <li><a href="#about"     data-i18n="nav.about">Sobre mí</a></li>
+      <li><a href="#contact"   data-i18n="nav.contact">Contacto</a></li>
+    </ul>
+  </div>
+  <div class="nav-right">
+    <button class="icon-btn" id="lang-btn" aria-label="Cambiar idioma">
+      <span id="lang-label">EN</span>
+    </button>
+    <button class="icon-btn" id="theme-btn" aria-label="Cambiar tema">
+      <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <svg id="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+    </button>
+    <a href="CV/cv-franco-wagenhofer.pdf" class="nav-cv" target="_blank" data-i18n="nav.cv">Descargar CV</a>
+  </div>
+</nav>
 
-    <div class="nav-right">
-      <!-- Language toggle -->
-      <button class="icon-btn lang-btn" id="lang-btn" aria-label="Cambiar idioma">
-        <span id="lang-label">EN</span>
-      </button>
+<!-- ════════════ HERO ════════════ -->
+<section class="hero" id="home">
+  <div class="hero-inner">
 
-      <!-- Dark mode toggle -->
-      <button class="icon-btn" id="theme-btn" aria-label="Cambiar tema">
-        <!-- moon shown in light mode -->
-        <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-        <!-- sun shown in dark mode -->
-        <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-      </button>
-
-      <a href="cv/CvFrancoWagenhöfer.pdf" class="nav-cv" target="_blank" data-i18n="nav.cv">Descargar CV</a>
-    </div>
-  </nav>
-
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-inner">
+    <!-- Izquierda: copy + botones -->
+    <div class="hero-left">
       <span class="hero-tag" data-i18n="hero.tag">Desarrollador .NET · Buenos Aires, Argentina</span>
       <h1>Franco<br><em>Wagenhöfer</em></h1>
       <span class="hero-accent"></span>
       <p class="hero-desc" data-i18n="hero.desc">
         Desarrollo aplicaciones web, de escritorio y soluciones de manejo de datos con C# .NET y SQL Server. Formado en la UTN, orientado a código limpio y soluciones reales.
       </p>
-      <div class="hero-links">
-        <a href="#proyectos" class="btn-primary" data-i18n="hero.cta">Ver proyectos</a>
-        <a href="https://linkedin.com/in/franco-wagenhöfer" class="btn-ghost" target="_blank">LinkedIn</a>
-        <a href="https://github.com/francowagenhofer" class="btn-ghost" target="_blank">GitHub</a>
+      <div class="hero-btns">
+        <!-- Botón principal → contacto -->
+        <a href="#contact" class="btn-fill" data-i18n="hero.ctaContact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          Contactarme
+        </a>
+        <!-- Descarga de CV -->
+        <a href="CV/cv-franco-wagenhofer.pdf" class="btn-outline" target="_blank" data-i18n="hero.ctaCV">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Descargar CV
+        </a>
+        <!-- Proyectos -->
+        <a href="#proyectos" class="btn-outline" data-i18n="hero.ctaProjects">Ver proyectos</a>
       </div>
     </div>
-  </section>
 
-  <!-- PROYECTOS -->
-  <section id="proyectos">
-    <div class="section-inner">
-      <div class="section-header reveal">
-        <span class="section-num">01</span>
-        <h2 class="section-title" data-i18n="projects.title">Proyectos<br>destacados</h2>
+
+  </div>
+</section>
+
+<!-- ════════════ PROYECTOS ════════════ -->
+<section id="proyectos">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">01</span>
+      <h2 class="section-title" data-i18n="projects.title">Proyectos<br>destacados</h2>
+    </div>
+
+    <div class="projects-grid" id="projects-grid">
+
+      <!-- PROYECTO 1 — .MovieApp -->
+      <div class="project-card reveal" data-project="0">
+        <div class="project-card-img">
+          <img src="Imagenes/MovieApp/home.webp" alt=".MovieApp"
+               onerror="this.parentElement.innerHTML='<div class=&quot;project-card-img-placeholder&quot;>Screenshot próximamente</div>'" />
+          <div class="project-card-overlay">
+            <button class="project-card-overlay-btn" data-open="0" data-i18n="projects.viewDetail">Ver detalle</button>
+          </div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-card-meta">
+            <div class="project-tags">
+              <span class="tag">C#</span>
+              <span class="tag">ASP.NET MVC</span>
+              <span class="tag">SQL Server</span>
+            </div>
+            <span class="project-type" data-i18n="projects.p1.type">App web</span>
+          </div>
+          <h3 class="project-name">.MovieApp</h3>
+          <p class="project-desc-short" data-i18n="projects.p1.desc">
+            Catálogo de películas con sistema de reseñas, favoritos, calificaciones y autenticación por roles.
+          </p>
+          <div class="project-card-footer">
+            <div class="project-quick-links">
+              <a href="https://github.com/francowagenhofer/movieapp-mvc-dotnet" class="project-link" target="_blank" data-i18n="projects.code">Ver código</a>
+            </div>
+            <button class="btn-vermas" data-open="0">
+              <span data-i18n="projects.viewDetail">Ver detalle</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
       </div>
-      <div class="projects-grid">
 
-        <div class="project-card reveal">
-          <div class="project-img">
-            <img src="screenshots/proyecto1.png" alt="Proyecto 1" onerror="this.parentElement.innerHTML='<div class=&quot;project-img-placeholder&quot;>Screenshot próximamente</div>'" />
-          </div>
-          <div class="project-tags">
-            <span class="tag">C#</span><span class="tag">.NET</span><span class="tag">SQL Server</span>
-          </div>
-          <h3 class="project-name">Nombre del proyecto</h3>
-          <p class="project-desc" data-i18n="projects.desc">Descripción breve del proyecto. Qué problema resuelve, qué tecnologías usaste y cuál fue tu rol en el desarrollo.</p>
-          <div class="project-links">
-            <a href="#" class="project-link" target="_blank" data-i18n="projects.demo">Ver demo</a>
-            <a href="https://github.com/francowagenhofer" class="project-link secondary" target="_blank" data-i18n="projects.code">Ver código</a>
+      <!-- PROYECTO 2 — CatálogoWeb -->
+      <div class="project-card reveal" data-project="1">
+        <div class="project-card-img">
+          <img src="Imagenes/CatalogoWeb/CatalogoWeb.webp" alt="CatálogoWeb"
+               onerror="this.parentElement.innerHTML='<div class=&quot;project-card-img-placeholder&quot;>Screenshot próximamente</div>'" />
+          <div class="project-card-overlay">
+            <button class="project-card-overlay-btn" data-open="1" data-i18n="projects.viewDetail">Ver detalle</button>
           </div>
         </div>
-
-        <div class="project-card reveal">
-          <div class="project-img">
-            <img src="screenshots/proyecto2.png" alt="Proyecto 2" onerror="this.parentElement.innerHTML='<div class=&quot;project-img-placeholder&quot;>Screenshot próximamente</div>'" />
+        <div class="project-card-body">
+          <div class="project-card-meta">
+            <div class="project-tags">
+              <span class="tag">C#</span>
+              <span class="tag">Web Forms</span>
+              <span class="tag">SQL Server</span>
+            </div>
+            <span class="project-type" data-i18n="projects.p2.type">App web</span>
           </div>
-          <div class="project-tags">
-            <span class="tag">C#</span><span class="tag">WPF</span><span class="tag">SQLite</span>
-          </div>
-          <h3 class="project-name">Nombre del proyecto</h3>
-          <p class="project-desc" data-i18n="projects.desc">Descripción breve del proyecto. Qué problema resuelve, qué tecnologías usaste y cuál fue tu rol en el desarrollo.</p>
-          <div class="project-links">
-            <a href="#" class="project-link" target="_blank" data-i18n="projects.demo">Ver demo</a>
-            <a href="https://github.com/francowagenhofer" class="project-link secondary" target="_blank" data-i18n="projects.code">Ver código</a>
-          </div>
-        </div>
-
-        <div class="project-card reveal">
-          <div class="project-img">
-            <img src="screenshots/proyecto3.png" alt="Proyecto 3" onerror="this.parentElement.innerHTML='<div class=&quot;project-img-placeholder&quot;>Screenshot próximamente</div>'" />
-          </div>
-          <div class="project-tags">
-            <span class="tag">ASP.NET</span><span class="tag">Bootstrap</span><span class="tag">SQL Server</span>
-          </div>
-          <h3 class="project-name">Nombre del proyecto</h3>
-          <p class="project-desc" data-i18n="projects.desc">Descripción breve del proyecto. Qué problema resuelve, qué tecnologías usaste y cuál fue tu rol en el desarrollo.</p>
-          <div class="project-links">
-            <a href="#" class="project-link" target="_blank" data-i18n="projects.demo">Ver demo</a>
-            <a href="https://github.com/francowagenhofer" class="project-link secondary" target="_blank" data-i18n="projects.code">Ver código</a>
+          <h3 class="project-name">CatálogoWeb</h3>
+          <p class="project-desc-short" data-i18n="projects.p2.desc">
+            Plataforma para administrar y filtrar productos con control de acceso y roles diferenciados. Deployada online.
+          </p>
+          <div class="project-card-footer">
+            <div class="project-quick-links">
+              <a href="http://webcatalog.somee.com/" class="project-link" target="_blank" data-i18n="projects.demo">Sitio web</a>
+              <a href="https://github.com/francowagenhofer/tp-final-nivel3-Wagenhofer-Franco.git" class="project-link" target="_blank" data-i18n="projects.code">Ver código</a>
+            </div>
+            <button class="btn-vermas" data-open="1">
+              <span data-i18n="projects.viewDetail">Ver detalle</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
           </div>
         </div>
+      </div>
 
-        <div class="project-card reveal">
-          <div class="project-img">
-            <img src="screenshots/proyecto4.png" alt="Proyecto 4" onerror="this.parentElement.innerHTML='<div class=&quot;project-img-placeholder&quot;>Screenshot próximamente</div>'" />
-          </div>
-          <div class="project-tags">
-            <span class="tag">C#</span><span class="tag">.NET</span><span class="tag">JavaScript</span>
-          </div>
-          <h3 class="project-name">Nombre del proyecto</h3>
-          <p class="project-desc" data-i18n="projects.desc">Descripción breve del proyecto. Qué problema resuelve, qué tecnologías usaste y cuál fue tu rol en el desarrollo.</p>
-          <div class="project-links">
-            <a href="#" class="project-link" target="_blank" data-i18n="projects.demo">Ver demo</a>
-            <a href="https://github.com/francowagenhofer" class="project-link secondary" target="_blank" data-i18n="projects.code">Ver código</a>
+      <!-- PROYECTO 3 — Gestor Pyme -->
+      <div class="project-card reveal" data-project="2">
+        <div class="project-card-img">
+          <img src="Imagenes/GestorEmpleados/MenuEscritorio.webp" alt="Gestor Pyme"
+               onerror="this.parentElement.innerHTML='<div class=&quot;project-card-img-placeholder&quot;>Screenshot próximamente</div>'" />
+          <div class="project-card-overlay">
+            <button class="project-card-overlay-btn" data-open="2" data-i18n="projects.viewDetail">Ver detalle</button>
           </div>
         </div>
+        <div class="project-card-body">
+          <div class="project-card-meta">
+            <div class="project-tags">
+              <span class="tag">C#</span>
+              <span class="tag">WinForms</span>
+              <span class="tag">SQL Server</span>
+              <span class="tag">SQLite</span>
+            </div>
+            <span class="project-type" data-i18n="projects.p3.type">App escritorio</span>
+          </div>
+          <h3 class="project-name">Gestor Pyme</h3>
+          <p class="project-desc-short" data-i18n="projects.p3.desc">
+            Gestión integral de empleados, proyectos y sueldos para PyMEs. Versiones SQLite y SQL Server disponibles.
+          </p>
+          <div class="project-card-footer">
+            <div class="project-quick-links">
+              <a href="https://github.com/francowagenhofer/Gestion-Pyme-SQLite/releases/download/v1.0.0/AppGestionPyme_Portable.zip" class="project-link" target="_blank" data-i18n="projects.download">Descargar app</a>
+            </div>
+            <button class="btn-vermas" data-open="2">
+              <span data-i18n="projects.viewDetail">Ver detalle</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </button>
+          </div>
+        </div>
+      </div>
 
+      <!-- PROYECTO 4 — placeholder para siguiente proyecto -->
+      <div class="project-card reveal" data-project="3">
+        <div class="project-card-img">
+          <div class="project-card-img-placeholder">Próximamente</div>
+        </div>
+        <div class="project-card-body">
+          <div class="project-card-meta">
+            <div class="project-tags">
+              <span class="tag">C#</span>
+              <span class="tag">.NET</span>
+            </div>
+            <span class="project-type">En desarrollo</span>
+          </div>
+          <h3 class="project-name">Próximo proyecto</h3>
+          <p class="project-desc-short" data-i18n="projects.p4.desc">
+            Nuevo proyecto en desarrollo. Próximamente con todos los detalles.
+          </p>
+          <div class="project-card-footer">
+            <div class="project-quick-links"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ MODAL DE PROYECTO ════════════ -->
+<div class="project-modal-overlay" id="project-modal-overlay" role="dialog" aria-modal="true">
+  <div class="project-modal" id="project-modal">
+
+    <!-- columna galería -->
+    <div class="modal-gallery">
+      <div class="modal-gallery-main" id="modal-gallery-main">
+        <img id="modal-gallery-img" src="" alt="" />
+        <button class="gallery-arrow prev" id="gallery-prev" aria-label="Anterior">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <button class="gallery-arrow next" id="gallery-next" aria-label="Siguiente">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+      <div class="modal-gallery-thumbs" id="modal-gallery-thumbs"></div>
+    </div>
+
+    <!-- columna info -->
+    <div class="modal-info" id="modal-info">
+      <div class="modal-header">
+        <div>
+          <div class="modal-type" id="modal-type"></div>
+          <h2 class="modal-title" id="modal-title"></h2>
+        </div>
+        <button class="modal-close" id="modal-close" aria-label="Cerrar">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+
+      <hr class="modal-divider" />
+
+      <div>
+        <div class="modal-section-label" data-i18n="modal.description">Descripción</div>
+        <div class="modal-desc" id="modal-desc"></div>
+      </div>
+
+      <div>
+        <div class="modal-section-label" data-i18n="modal.technologies">Tecnologías</div>
+        <div class="modal-chips" id="modal-techs"></div>
+      </div>
+
+      <div>
+        <div class="modal-section-label" data-i18n="modal.details">Detalles</div>
+        <div class="modal-detail-grid" id="modal-details"></div>
+      </div>
+
+      <div class="modal-links" id="modal-links"></div>
+
+      <div class="modal-nav">
+        <button class="modal-nav-btn" id="modal-prev">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+          <span data-i18n="modal.prev">Anterior</span>
+        </button>
+        <span class="modal-nav-counter" id="modal-counter"></span>
+        <button class="modal-nav-btn" id="modal-next">
+          <span data-i18n="modal.next">Siguiente</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
       </div>
     </div>
-  </section>
 
-  <!-- TECNOLOGÍAS -->
-  <section id="skills">
-    <div class="section-inner">
-      <div class="section-header reveal">
-        <span class="section-num">02</span>
-        <h2 class="section-title" data-i18n="skills.title">Tecnologías<br>& herramientas</h2>
+  </div>
+</div>
+
+<!-- ════════════ TECNOLOGÍAS — 4 grupos ════════════ -->
+<section id="skills">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">02</span>
+      <h2 class="section-title" data-i18n="skills.title">Tecnologías<br>& herramientas</h2>
+    </div>
+
+    <div class="skills-grid">
+
+      <!-- Backend -->
+      <div class="skill-group reveal">
+        <div class="skill-group-label" data-i18n="skills.backend">Backend</div>
+        <div class="skill-list">
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/csharp.svg" alt="C#" onerror="this.style.display='none'"/>
+            <span class="skill-name">C#</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/dotnet2.svg" alt=".NET" onerror="this.style.display='none'"/>
+            <span class="skill-name">.NET</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/java.svg" alt="Java" onerror="this.style.display='none'"/>
+            <span class="skill-name">Java</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/cplusplus.svg" alt="C++" onerror="this.style.display='none'"/>
+            <span class="skill-name">C++</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/api.svg" alt="REST API" onerror="this.style.display='none'"/>
+            <span class="skill-name">REST APIs</span>
+          </div>
+        </div>
       </div>
-      <div class="skills-grid">
-        <div class="skill-group reveal">
-          <div class="skill-group-label" data-i18n="skills.backend">Backend</div>
-          <div class="skill-list">
-            <div class="skill-item"><img class="skill-icon" src="Iconos/csharp.svg" alt="C#"/><span class="skill-name">C#</span></div>
-            <div class="skill-item"><img class="skill-icon" src="Iconos/dotnet2.svg" alt=".NET"/><span class="skill-name">.NET</span></div>
-            <div class="skill-item"><img class="skill-icon" src="Iconos/sql-server.svg" alt="SQL Server"/><span class="skill-name">SQL Server</span></div>
-            <div class="skill-item"><img class="skill-icon" src="Iconos/sqlite-color.svg" alt="SQLite"/><span class="skill-name">SQLite</span></div>
+
+      <!-- Frontend -->
+      <div class="skill-group reveal">
+        <div class="skill-group-label" data-i18n="skills.frontend">Frontend</div>
+        <div class="skill-list">
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/html5.svg" alt="HTML5" onerror="this.style.display='none'"/>
+            <span class="skill-name">HTML5</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/css_old.svg" alt="CSS3" onerror="this.style.display='none'"/>
+            <span class="skill-name">CSS3</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/javascript.svg" alt="JavaScript" onerror="this.style.display='none'"/>
+            <span class="skill-name">JavaScript</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/typescript.svg" alt="TypeScript" onerror="this.style.display='none'"/>
+            <span class="skill-name">TypeScript</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/tailwind.svg" alt="Tailwind CSS" onerror="this.style.display='none'"/>
+            <span class="skill-name">Tailwind CSS</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/bootstrap.svg" alt="Bootstrap" onerror="this.style.display='none'"/>
+            <span class="skill-name">Bootstrap</span>
           </div>
         </div>
-        <div class="skill-group reveal">
-          <div class="skill-group-label" data-i18n="skills.frontend">Frontend</div>
-          <div class="skill-list">
-            <div class="skill-item"><img class="skill-icon" src="Iconos/html5.svg" alt="HTML5"/><span class="skill-name">HTML5</span></div>
-            <div class="skill-item"><img class="skill-icon" src="Iconos/css_old.svg" alt="CSS3"/><span class="skill-name">CSS3</span></div>
-            <div class="skill-item"><img class="skill-icon" src="Iconos/javascript.svg" alt="JavaScript"/><span class="skill-name">JavaScript</span></div>
-            <div class="skill-item"><img class="skill-icon" src="Iconos/bootstrap.svg" alt="Bootstrap"/><span class="skill-name">Bootstrap</span></div>
+      </div>
+
+      <!-- Base de datos -->
+      <div class="skill-group reveal">
+        <div class="skill-group-label" data-i18n="skills.databases">Base de datos</div>
+        <div class="skill-list">
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/sql-server.svg" alt="SQL Server" onerror="this.style.display='none'"/>
+            <span class="skill-name">SQL Server</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/sqlite-color.svg" alt="SQLite" onerror="this.style.display='none'"/>
+            <span class="skill-name">SQLite</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/mongodb.svg" alt="MongoDB" onerror="this.style.display='none'"/>
+            <span class="skill-name">MongoDB</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/postgresql.svg" alt="PostgreSQL" onerror="this.style.display='none'"/>
+            <span class="skill-name">PostgreSQL</span>
           </div>
         </div>
-        <div class="skill-group reveal">
-          <div class="skill-group-label" data-i18n="skills.tools">Herramientas</div>
-          <div class="skill-list">
-            <div class="skill-item"><img class="skill-icon" src="Iconos/git.svg" alt="Git"/><span class="skill-name">Git</span></div>
-            <div class="skill-item"><img class="skill-icon" src="Iconos/GitHub_dark.svg" alt="GitHub"/><span class="skill-name">GitHub</span></div>
-            <div class="skill-item"><img class="skill-icon" src="Iconos/visual-studio.svg" alt="Visual Studio"/><span class="skill-name">Visual Studio</span></div>
-            <div class="skill-item"><img class="skill-icon" src="Iconos/vscode.svg" alt="VS Code"/><span class="skill-name">VS Code</span></div>
+      </div>
+
+      <!-- Herramientas -->
+      <div class="skill-group reveal">
+        <div class="skill-group-label" data-i18n="skills.tools">Herramientas</div>
+        <div class="skill-list">
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/git.svg" alt="Git" onerror="this.style.display='none'"/>
+            <span class="skill-name">Git</span>
           </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/GitHub_dark.svg" alt="GitHub" onerror="this.style.display='none'"/>
+            <span class="skill-name">GitHub</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/docker.svg" alt="Docker" onerror="this.style.display='none'"/>
+            <span class="skill-name">Docker</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/postman.svg" alt="Postman" onerror="this.style.display='none'"/>
+            <span class="skill-name">Postman</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/swagger.svg" alt="Swagger" onerror="this.style.display='none'"/>
+            <span class="skill-name">Swagger</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/github-copilot.svg" alt="GitHub Copilot" onerror="this.style.display='none'"/>
+            <span class="skill-name">GitHub Copilot</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ════════════ SOBRE MÍ ════════════ -->
+<section id="about">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">03</span>
+      <h2 class="section-title" data-i18n="about.title">Sobre<br>mí</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <p data-i18n="about.p1">Soy desarrollador .NET formado en la Tecnicatura Universitaria en Programación de la UTN, con práctica constante en proyectos reales usando C#, .NET y SQL Server.</p>
+        <p data-i18n="about.p2">Me apasiona construir software que resuelva problemas concretos — desde aplicaciones de escritorio hasta soluciones web y manejo de datos. Trabajo con foco en código limpio, legible y mantenible.</p>
+        <p data-i18n="about.p3">Busco seguir creciendo profesionalmente, ampliar mis capacidades técnicas y aportar valor real en cada proyecto que enfrento.</p>
+      </div>
+      <div class="about-details reveal">
+        <div class="about-detail-item">
+          <div class="about-detail-label" data-i18n="about.education.label">Formación</div>
+          <div class="about-detail-value" data-i18n="about.education.value">Tec. Universitaria en Programación · UTN</div>
+        </div>
+        <div class="about-detail-item">
+          <div class="about-detail-label" data-i18n="about.specialty.label">Especialidad</div>
+          <div class="about-detail-value" data-i18n="about.specialty.value">Aplicaciones web, desktop y datos (.NET)</div>
+        </div>
+        <div class="about-detail-item">
+          <div class="about-detail-label" data-i18n="about.location.label">Ubicación</div>
+          <div class="about-detail-value" data-i18n="about.location.value">Buenos Aires, Argentina</div>
+        </div>
+        <div class="about-detail-item">
+          <div class="about-detail-label" data-i18n="about.languages.label">Idiomas</div>
+          <div class="about-detail-value" data-i18n="about.languages.value">Español · Inglés técnico</div>
+        </div>
+        <div class="about-detail-item">
+          <div class="about-detail-label" data-i18n="about.availability.label">Disponibilidad</div>
+          <div class="about-detail-value" data-i18n="about.availability.value">Abierto a oportunidades</div>
         </div>
       </div>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- SOBRE MÍ -->
-  <section id="about">
-    <div class="section-inner">
-      <div class="section-header reveal">
-        <span class="section-num">03</span>
-        <h2 class="section-title" data-i18n="about.title">Sobre<br>mí</h2>
-      </div>
-      <div class="about-grid">
-        <div class="about-text reveal">
-          <p data-i18n="about.p1">Soy desarrollador .NET formado en la Tecnicatura Universitaria en Programación de la UTN, con práctica constante en proyectos reales usando C#, .NET y SQL Server.</p>
-          <p data-i18n="about.p2">Me apasiona construir software que resuelva problemas concretos — desde aplicaciones de escritorio hasta soluciones web y manejo de datos. Trabajo con foco en código limpio, legible y mantenible.</p>
-          <p data-i18n="about.p3">Busco seguir creciendo profesionalmente, ampliar mis capacidades técnicas y aportar valor real en cada proyecto que enfrento.</p>
-        </div>
-        <div class="about-details reveal">
-          <div class="about-detail-item">
-            <div class="about-detail-label" data-i18n="about.education.label">Formación</div>
-            <div class="about-detail-value" data-i18n="about.education.value">Tec. Universitaria en Programación · UTN</div>
-          </div>
-          <div class="about-detail-item">
-            <div class="about-detail-label" data-i18n="about.specialty.label">Especialidad</div>
-            <div class="about-detail-value" data-i18n="about.specialty.value">Aplicaciones web, desktop y datos (.NET)</div>
-          </div>
-          <div class="about-detail-item">
-            <div class="about-detail-label" data-i18n="about.location.label">Ubicación</div>
-            <div class="about-detail-value" data-i18n="about.location.value">Buenos Aires, Argentina</div>
-          </div>
-          <div class="about-detail-item">
-            <div class="about-detail-label" data-i18n="about.languages.label">Idiomas</div>
-            <div class="about-detail-value" data-i18n="about.languages.value">Español · Inglés técnico</div>
-          </div>
-          <div class="about-detail-item">
-            <div class="about-detail-label" data-i18n="about.availability.label">Disponibilidad</div>
-            <div class="about-detail-value" data-i18n="about.availability.value">Abierto a oportunidades</div>
-          </div>
-        </div>
-      </div>
+<!-- ════════════ CONTACTO ════════════ -->
+<section id="contact">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">04</span>
+      <h2 class="section-title" data-i18n="contact.title">Hablemos</h2>
     </div>
-  </section>
-
-  <!-- CONTACTO -->
-  <section id="contact">
-    <div class="section-inner">
-      <div class="section-header reveal">
-        <span class="section-num">04</span>
-        <h2 class="section-title" data-i18n="contact.title">Hablemos</h2>
-      </div>
-      <div class="contact-grid">
-        <div class="contact-text reveal">
-          <h3 data-i18n="contact.heading">¿Tenés un proyecto<br>o propuesta?</h3>
-          <p data-i18n="contact.sub">Estoy disponible para trabajo freelance, relación de dependencia o colaboración en proyectos. Escribime y hablamos.</p>
-          <div class="contact-socials">
-            <a href="https://linkedin.com/in/franco-wagenhöfer" class="contact-social-link" target="_blank">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-              linkedin.com/in/franco-wagenhöfer
-            </a>
-            <a href="https://github.com/francowagenhofer" class="contact-social-link" target="_blank">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-              github.com/francowagenhofer
-            </a>
-            <a href="mailto:tu@email.com" class="contact-social-link">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-              tu@email.com
-            </a>
-          </div>
+    <div class="contact-grid">
+      <div class="contact-text reveal">
+        <h3 data-i18n="contact.heading">¿Tenés un proyecto<br>o propuesta?</h3>
+        <p data-i18n="contact.sub">Estoy disponible para trabajo freelance, relación de dependencia o colaboración en proyectos. Escribime y hablamos.</p>
+        <div class="contact-socials">
+          <a href="https://linkedin.com/in/franco-wagenhöfer" class="contact-social-link" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+            linkedin.com/in/franco-wagenhöfer
+          </a>
+          <a href="https://github.com/francowagenhofer" class="contact-social-link" target="_blank">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+            github.com/francowagenhofer
+          </a>
+          <a href="mailto:tu@email.com" class="contact-social-link">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+            tu@email.com
+          </a>
         </div>
-
-        <form class="contact-form reveal" action="https://formspree.io/f/TU_FORM_ID" method="POST">
-          <div class="form-field">
-            <label for="nombre" data-i18n="contact.name">Nombre</label>
-            <input type="text" id="nombre" name="nombre" data-i18n-ph="contact.namePh" placeholder="Tu nombre" required />
-          </div>
-          <div class="form-field">
-            <label for="email" data-i18n="contact.email">Correo electrónico</label>
-            <input type="email" id="email" name="email" placeholder="tu@email.com" required />
-          </div>
-          <div class="form-field">
-            <label for="mensaje" data-i18n="contact.message">Mensaje</label>
-            <textarea id="mensaje" name="mensaje" data-i18n-ph="contact.messagePh" placeholder="Contame sobre tu proyecto o consulta…" required></textarea>
-          </div>
-          <button type="submit" class="form-submit" data-i18n="contact.send">Enviar mensaje</button>
-        </form>
       </div>
+
+      <form class="contact-form reveal" action="https://formspree.io/f/TU_FORM_ID" method="POST">
+        <div class="form-field">
+          <label for="nombre" data-i18n="contact.name">Nombre</label>
+          <input type="text" id="nombre" name="nombre" data-i18n-ph="contact.namePh" placeholder="Tu nombre" required />
+        </div>
+        <div class="form-field">
+          <label for="email" data-i18n="contact.email">Correo electrónico</label>
+          <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+        </div>
+        <div class="form-field">
+          <label for="mensaje" data-i18n="contact.message">Mensaje</label>
+          <textarea id="mensaje" name="mensaje" data-i18n-ph="contact.messagePh" placeholder="Contame sobre tu proyecto o consulta…" required></textarea>
+        </div>
+        <button type="submit" class="form-submit" data-i18n="contact.send">Enviar mensaje</button>
+      </form>
     </div>
-  </section>
+  </div>
+</section>
 
-  <!-- FOOTER -->
-  <footer>
-    <div class="footer-left">© 2025 Franco Wagenhöfer</div>
-    <div class="footer-right" data-i18n="footer.role">Desarrollador .NET · Buenos Aires</div>
-  </footer>
-  
-
+<!-- ════════════ FOOTER ════════════ -->
+<footer>
+  <div class="footer-left">© 2025 Franco Wagenhöfer</div>
+  <div class="footer-right" data-i18n="footer.role">Desarrollador .NET · Buenos Aires</div>
+</footer>
 
 </body>
 </html>
