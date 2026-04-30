@@ -1,0 +1,23 @@
+# Node (por si después usás Tailwind o build tools)
+node_modules/
+
+# Logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Env files (por si después agregás config)
+.env
+
+# Vercel
+.vercel
+
+# Mac
+.AppleDouble
+.LSOverride
