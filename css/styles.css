@@ -143,8 +143,7 @@
       align-items: flex-start;
     }
 
-    /* columna izquierda */
-    .hero-left {}
+
 
     .hero-tag {
       display: inline-flex;
@@ -664,7 +663,7 @@
       grid-template-columns: 1fr 1fr;
       gap: .75rem 1.5rem;
     }
-    .modal-detail-item {}
+
     .modal-detail-label {
       font-size: .67rem; font-weight: 500;
       letter-spacing: .1em; text-transform: uppercase;
