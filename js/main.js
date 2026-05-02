@@ -1,4 +1,4 @@
-/* ═══════════════════════════════════════════════════
+  /* ═══════════════════════════════════════════════════
    DATOS DE PROYECTOS
    Editá este objeto para actualizar todo el modal.
 ═══════════════════════════════════════════════════ */
@@ -140,6 +140,7 @@ const T = {
     "hero.stat1Label":"Especialidad","hero.stat2Label":"Formación","hero.stat3Label":"Stack principal",
     "hero.stat4Label":"Disponibilidad","hero.stat5Label":"Ubicación",
     "projects.title":"Proyectos\ndestacados",
+    "exp.title":"Experiencia","exp.present":"Presente",
     "projects.p1.type":"App web","projects.p2.type":"App web","projects.p3.type":"App escritorio",
     "projects.p1.desc":"Catálogo de películas con sistema de reseñas, favoritos, calificaciones y autenticación por roles.",
     "projects.p2.desc":"Plataforma para administrar y filtrar productos con control de acceso y roles diferenciados. Deployada online.",
@@ -174,6 +175,7 @@ const T = {
     "hero.stat1Label":"Specialty","hero.stat2Label":"Education","hero.stat3Label":"Main stack",
     "hero.stat4Label":"Availability","hero.stat5Label":"Location",
     "projects.title":"Featured\nprojects",
+    "exp.title":"Experience","exp.present":"Present",
     "projects.p1.type":"Web app","projects.p2.type":"Web app","projects.p3.type":"Desktop app",
     "projects.p1.desc":"Movie catalog with review system, favorites, ratings and role-based authentication.",
     "projects.p2.desc":"Platform to manage and filter products with access control and roles. Deployed online.",
@@ -401,6 +403,186 @@ const revealObserver = new IntersectionObserver((entries) => {
 }, { threshold: 0.08 });
 document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
 
+/* ═══════════════════════════════════════════════════════════════
+   HERO GRADIENT ANIMATION — "Alejandra"
+   ────────────────────────────────────────────────────────────
+   HOW IT WORKS
+   Four large radial "blobs" drift slowly across the canvas on
+   independent sinusoidal paths. Each blob is a radial gradient
+   that fades to transparent at its edge, so they blend softly.
+   The canvas opacity is driven by scroll position, creating a
+   smooth fade-out as the user scrolls away from the hero.
+   The animation loop pauses automatically when the hero is
+   fully off-screen, saving CPU.
+
+   ── TUNE THESE TO ADJUST THE FEEL ──────────────────────────
+   SPEED        lower  → slower drift          (default 0.00025)
+   BLOB_RADIUS  higher → larger, softer blobs  (default 0.60)
+   ALPHA_LIGHT  higher → more visible light-mode (default 0.60)
+   ALPHA_DARK   higher → more visible dark-mode  (default 0.50)
+   FADE_START   scroll px where fade begins    (default 60)
+   FADE_END     scroll px where fully gone     (default heroH)
+═══════════════════════════════════════════════════════════════ */
+(function heroGradient() {
+  'use strict';
+
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  /* ── tuneable ────────────────────────────────────────────── */
+  const BLOB_COUNT   = 4;
+  // const SPEED        = 0.00025;
+  const SPEED        = 0.0003;
+  const BLOB_RADIUS  = 0.60;   /* fraction of canvas width     */
+  const ALPHA_LIGHT  = 0.75;   /* peak opacity, light mode     */
+  const ALPHA_DARK   = 0.50;   /* peak opacity, dark mode      */
+  const FADE_START   = 60;     /* px scrolled → start fade     */
+
+  /* ── palettes ────────────────────────────────────────────── */
+  const PAL = {
+    light: [
+      [200, 200, 198], // gris muy claro
+      [230, 230, 230], // gris suave
+      [245, 245, 245], // casi blanco
+      [235, 235, 235], // gris perla claro
+    ],
+    dark: [
+      [58, 28, 98] /* deep violet    */,
+      [38, 18, 78] /* indigo shadow  */,
+      [18, 38, 80] /* midnight blue  */,
+      [78, 28, 118] /* plum           */,
+    ],
+  };
+
+  /* ── state ───────────────────────────────────────────────── */
+  let W = 0, H = 0;
+  let rafId      = null;
+  let offScreen  = false;   /* IntersectionObserver flag        */
+  let scrollAlpha = 1;      /* driven by scroll, 0..1           */
+
+  /* ── blobs: each wanders on its own sinusoidal path ──────── */
+  const blobs = Array.from({ length: BLOB_COUNT }, (_, i) => ({
+    phaseX : Math.random() * Math.PI * 2,
+    phaseY : Math.random() * Math.PI * 2,
+    freqX  : 0.65 + Math.random() * 0.55,
+    freqY  : 0.65 + Math.random() * 0.55,
+    ampX   : 0.16 + Math.random() * 0.16,
+    ampY   : 0.12 + Math.random() * 0.14,
+    baseX  : 0.12 + (i / (BLOB_COUNT - 1)) * 0.76,
+    baseY  : 0.18 + Math.random() * 0.64,
+    ci     : i,   /* color index */
+  }));
+
+  /* ── helpers ─────────────────────────────────────────────── */
+  function isDark() {
+    return document.documentElement.getAttribute('data-theme') === 'dark';
+  }
+
+  function resize() {
+    const r = canvas.parentElement.getBoundingClientRect();
+    W = canvas.width  = Math.round(r.width);
+    H = canvas.height = Math.round(r.height);
+  }
+
+  /* ── scroll → opacity ────────────────────────────────────── */
+  function updateScrollAlpha() {
+    const heroH    = canvas.parentElement.offsetHeight;
+    const fadeEnd  = heroH * 0.65;          /* fully gone at 65% scroll */
+    const y        = window.scrollY;
+    if (y <= FADE_START) {
+      scrollAlpha = 1;
+    } else if (y >= fadeEnd) {
+      scrollAlpha = 0;
+    } else {
+      scrollAlpha = 1 - (y - FADE_START) / (fadeEnd - FADE_START);
+    }
+    /* apply directly to canvas element — no layout impact */
+    canvas.style.opacity = scrollAlpha;
+  }
+
+  /* ── main draw loop ──────────────────────────────────────── */
+  function draw(ts) {
+    rafId = requestAnimationFrame(draw);
+
+    /* skip painting when invisible (saves GPU/CPU) */
+    if (offScreen || scrollAlpha <= 0.01) {
+      ctx.clearRect(0, 0, W, H);
+      return;
+    }
+
+    ctx.clearRect(0, 0, W, H);
+
+    const t      = ts * SPEED;
+    const dark   = isDark();
+    const alpha  = dark ? ALPHA_DARK : ALPHA_LIGHT;
+    const pal    = dark ? PAL.dark : PAL.light;
+    const radius = W * BLOB_RADIUS;
+
+    blobs.forEach(b => {
+      const x  = (b.baseX + Math.sin(t * b.freqX + b.phaseX) * b.ampX) * W;
+      const y  = (b.baseY + Math.cos(t * b.freqY + b.phaseY) * b.ampY) * H;
+      const [r, g, bl] = pal[b.ci];
+
+      const grd = ctx.createRadialGradient(x, y, 0, x, y, radius);
+      grd.addColorStop(0,   `rgba(${r},${g},${bl},${alpha})`);
+      grd.addColorStop(0.5, `rgba(${r},${g},${bl},${alpha * 0.3})`);
+      grd.addColorStop(1,   `rgba(${r},${g},${bl},0)`);
+
+      ctx.fillStyle = grd;
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fill();
+    });
+  }
+
+  /* ── pause when hero leaves viewport (IntersectionObserver) ─ */
+  new IntersectionObserver(entries => {
+    offScreen = !entries[0].isIntersecting;
+  }, { threshold: 0 }).observe(canvas.parentElement);
+
+  /* ── responsive: redraw canvas size on resize ────────────── */
+  new ResizeObserver(resize).observe(canvas.parentElement);
+
+  /* ── scroll listener (throttled with rAF flag) ───────────── */
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(() => { updateScrollAlpha(); scrollTicking = false; });
+  }, { passive: true });
+
+  /* ── boot ────────────────────────────────────────────────── */
+  resize();
+  updateScrollAlpha();
+  rafId = requestAnimationFrame(draw);
+})();
+
+/* ═══════════════════════════════════════════════════
+   DIVIDER FADE — líneas divisoras se desvanecen
+   cuando la sección ya pasó por el viewport
+═══════════════════════════════════════════════════ */
+(function dividerFade() {
+  /* observamos todas las secciones excepto hero */
+  const sections = document.querySelectorAll('section:not(.hero)');
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      /* cuando la sección sale por ARRIBA (ya pasó) → fade la línea */
+      if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+        entry.target.classList.add('divider-faded');
+      } else {
+        entry.target.classList.remove('divider-faded');
+      }
+    });
+  }, {
+    threshold: 0,
+    rootMargin: '0px 0px 0px 0px'
+  });
+
+  sections.forEach(s => obs.observe(s));
+})();
+
 /* ═══════════════════════════════════════════════════
    BOOT
 ═══════════════════════════════════════════════════ */
@@ -409,4 +591,3 @@ setLang(lang);
 
 document.getElementById('lang-btn' ).addEventListener('click', () => setLang(lang   === 'es' ? 'en' : 'es'));
 document.getElementById('theme-btn').addEventListener('click', () => setTheme(theme === 'light' ? 'dark' : 'light'));
-

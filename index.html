@@ -3,7 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Franco Wagenhöfer — Desarrollador .NET</title>
+  
+  <title>Franco Wagenhöfer</title>
+  
+  <!-- <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23fafaf8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia%2Cserif' font-style='italic' font-weight='400' font-size='17' fill='%230a0a0a'%3EF%3C/text%3E%3Ccircle cx='22' cy='22' r='4' fill='%237c3aed'/%3E%3C/svg%3E" /> -->
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
@@ -41,6 +45,7 @@
 
 <!-- ════════════ HERO ════════════ -->
 <section class="hero" id="home">
+  <canvas id="hero-canvas" aria-hidden="true"></canvas>
   <div class="hero-inner">
 
     <!-- Izquierda: copy + botones -->
@@ -57,19 +62,49 @@
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
           Contactarme
         </a>
-        <!-- Descarga de CV -->
-        <a href="CV/cv-franco-wagenhofer.pdf" class="btn-outline" target="_blank" data-i18n="hero.ctaCV">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Descargar CV
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/in/franco-wagenhöfer" target="_blank" rel="noopener noreferrer" class="btn-outline">
+          LinkedIn
         </a>
-        <!-- Proyectos -->
-        <a href="#proyectos" class="btn-outline" data-i18n="hero.ctaProjects">Ver proyectos</a>
+        <!-- Github -->
+        <a href="https://github.com/francowagenhofer" target="_blank" rel="noopener noreferrer" class="btn-outline" data-i18n="header.github">GitHub</a>
       </div>
     </div>
 
-
   </div>
 </section>
+
+<!-- ════════════ EXPERIENCIA ════════════ -->
+<!-- <section id="experiencia">
+  <div class="section-inner">
+    <div class="section-header reveal">
+      <span class="section-num">00</span>
+      <h2 class="section-title" data-i18n="exp.title">Experiencia</h2>
+    </div>
+    <div class="exp-timeline">
+      <div class="exp-item reveal">
+        <div class="exp-date">
+          <span class="exp-year">2024</span>
+          <span class="exp-period" data-i18n="exp.present">Presente</span>
+        </div>
+        <div class="exp-line-col">
+          <span class="exp-dot"></span>
+          <span class="exp-vline"></span>
+        </div>
+        <div class="exp-content">
+          <h3 class="exp-role">Nombre del cargo</h3>
+          <span class="exp-company">Empresa · Ciudad · Modalidad</span>
+          <p class="exp-desc">Describí tus responsabilidades y logros. Qué tecnologías usaste, qué problemas resolviste y qué aportaste al equipo.</p>
+          <div class="exp-tags">
+            <span class="tag">C#</span>
+            <span class="tag">.NET</span>
+            <span class="tag">SQL Server</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section> -->
 
 <!-- ════════════ PROYECTOS ════════════ -->
 <section id="proyectos">
@@ -341,6 +376,10 @@
           <div class="skill-item">
             <img class="skill-icon" src="Iconos/bootstrap.svg" alt="Bootstrap" onerror="this.style.display='none'"/>
             <span class="skill-name">Bootstrap</span>
+          </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="Iconos/angular.svg" alt="Angular" onerror="this.style.display='none'"/>
+            <span class="skill-name">Angular</span>
           </div>
         </div>
       </div>
