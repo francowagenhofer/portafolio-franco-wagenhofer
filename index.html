@@ -4,27 +4,1068 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   
-  <title>Franco Wagenhöfer</title>
-  
-  <!-- <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23fafaf8'/%3E%3Ctext x='50%25' y='50%25' dominant-baseline='central' text-anchor='middle' font-family='Georgia%2Cserif' font-style='italic' font-weight='400' font-size='17' fill='%230a0a0a'%3EF%3C/text%3E%3Ccircle cx='22' cy='22' r='4' fill='%237c3aed'/%3E%3C/svg%3E" /> -->
-
+  <!-- el title esta en js -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23fafaf8'/%3E%3Ctext x='6' y='22' font-family='Georgia, serif' font-size='16' font-style='italic' font-weight='600' letter-spacing='-1.8' fill='%230a0a0a'%3Efw%3C/text%3E%3Ccircle cx='25' cy='22' r='1.6' fill='%237c3aed'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="css/styles.css" />
-  <script src="js/main.js" defer></script>
+  <!-- <link rel="stylesheet" href="css/styles.css" /> -->
+  <!-- <script src="js/main.js" defer></script> -->
+
+<style>
+  /* ════════════════════════════════════════
+       RESET & TOKENS
+    ════════════════════════════════════════ */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --violet: #7c3aed;
+      --violet-dim: rgba(124,58,237,.08);
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans: 'DM Sans', system-ui, sans-serif;
+      /* light */
+      --bg: #fafaf8;
+      --surface: #fafaf8;
+      --surface-alt: #f2f2f0;
+      --border: #d4d4d2;
+      --text: #0a0a0a;
+      --muted: #666;
+      --nav-bg: rgba(250,250,248,.93);
+      --modal-bg: rgba(250,250,248,.98);
+      --overlay: rgba(10,10,10,.6);
+    }
+    [data-theme="dark"] {
+      --bg: #0e0e0e;
+      --surface: #141414;
+      --surface-alt: #1e1e1e;
+      --border: #2a2a2a;
+      --text: #f0f0ee;
+      --muted: #888;
+      --nav-bg: rgba(14,14,14,.93);
+      --modal-bg: rgba(18,18,18,.99);
+      --overlay: rgba(0,0,0,.75);
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background .35s, color .35s;
+    }
+
+    /* ════════════════════════════════════════
+       NAV
+    ════════════════════════════════════════ */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 200;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem 4rem;
+      background: var(--nav-bg);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s, background .35s;
+    }
+    nav.scrolled { border-color: var(--border); }
+
+    .nav-left { display: flex; align-items: center; gap: 2.5rem; }
+
+    .nav-logo {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      letter-spacing: -.02em;
+      color: var(--text);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    
+    .nav-logo-dot {
+      width: 6px; height: 6px;
+      background: var(--violet);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-bottom: 10px;
+    } 
+
+    .nav-logo-svg {
+      width: 52px;
+      height: 52px;
+      display: block;
+      flex-shrink: 0;
+    }
+
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      text-decoration: none;
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      color: var(--muted);
+      transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--text); }
+
+    .nav-right { display: flex; align-items: center; gap: .55rem; }
+
+    .icon-btn {
+      height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1.5px solid var(--border);
+      border-radius: 2px;
+      background: none;
+      cursor: pointer;
+      color: var(--muted);
+      transition: border-color .2s, color .2s;
+      padding: 0 .55rem;
+      font-family: var(--sans);
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+    }
+    .icon-btn:hover { border-color: var(--text); color: var(--text); }
+    .icon-btn svg { width: 14px; height: 14px; }
+
+    .nav-cv {
+      font-size: .8rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      text-decoration: none; color: var(--text);
+      border: 1.5px solid var(--text);
+      padding: .38rem 1rem;
+      border-radius: 2px;
+      transition: background .2s, color .2s;
+      margin-left: .3rem;
+    }
+    .nav-cv:hover { background: var(--text); color: var(--bg); }
+
+    /* ════════════════════════════════════════
+       HERO — layout en dos columnas
+    ════════════════════════════════════════ */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 9rem 4rem 6rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .hero-inner {
+      max-width: 780px;
+      margin: 0 auto;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+    }
+
+
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+    .hero-tag::before {
+      content: '';
+      display: inline-block;
+      width: 18px; height: 1px;
+      background: var(--violet);
+    }
+
+    .hero h1 {
+      font-family: var(--serif);
+      font-size: clamp(3rem, 6vw, 5.5rem);
+      line-height: 1.0;
+      letter-spacing: -.03em;
+      color: var(--text);
+      margin-bottom: 1.5rem;
+    }
+    .hero h1 em { font-style: italic; color: var(--muted); }
+
+    .hero-accent {
+      display: block;
+      width: 44px; height: 2.5px;
+      background: var(--violet);
+      border-radius: 2px;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
+
+    .btn-fill {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--text); color: var(--bg);
+      padding: .75rem 1.75rem;
+      border-radius: 2px;
+      font-size: .82rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid var(--text);
+      cursor: pointer;
+      transition: opacity .2s;
+    }
+    .btn-fill:hover { opacity: .75; }
+
+    .btn-outline {
+      display: inline-flex; align-items: center; gap: .5rem;
+      color: var(--text);
+      padding: .75rem 1.75rem;
+      border-radius: 2px;
+      font-size: .82rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      text-decoration: none;
+      border: 1.5px solid var(--border);
+      transition: border-color .2s;
+    }
+    .btn-outline:hover { border-color: var(--text); }
+    .btn-outline svg, .btn-fill svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    .hero-stat {
+      background: var(--surface);
+      padding: 1.75rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: .3rem;
+      transition: background .2s;
+    }
+    .hero-stat:hover { background: var(--surface-alt); }
+
+    .hero-stat-label {
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+    .hero-stat-value {
+      font-family: var(--serif);
+      font-size: 1.1rem;
+      letter-spacing: -.01em;
+      color: var(--text);
+    }
+    .hero-stat-value span {
+      color: var(--violet);
+    }
+
+    /* ════════════════════════════════════════
+       SHARED SECTION LAYOUT
+    ════════════════════════════════════════ */
+    section {
+      padding: 7rem 4rem;
+      position: relative;
+    }
+    /* secciones de proyectos y skills más compactas */
+    #proyectos, #skills {
+      padding-top: 4.5rem;
+      padding-bottom: 4.5rem;
+    }
+    /* línea divisora como pseudo-elemento para poder animarla */
+    section::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 4rem; right: 4rem;
+      height: 1px;
+      background: var(--border);
+      opacity: 1;
+      transition: opacity .6s ease;
+    }
+    section.divider-faded::after {
+      opacity: 0;
+    }
+    /* hero ya tiene su propia lógica, no necesita el pseudo */
+    .hero::after { display: none; }
+    .section-inner { max-width: 1200px; margin: 0 auto; }
+
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.25rem;
+      margin-bottom: 3rem;
+    }
+    .section-num {
+      font-size: .7rem; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--violet); flex-shrink: 0;
+    }
+    .section-title {
+      font-family: var(--serif);
+      font-size: clamp(1.9rem, 3.5vw, 3rem);
+      letter-spacing: -.03em; line-height: 1.1;
+      color: var(--text);
+    }
+
+    /* ════════════════════════════════════════
+       PROJECTS — cards mejoradas + modal
+    ════════════════════════════════════════ */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      background: transparent;
+      border: none;
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      transition: background .2s, border-color .2s;
+      position: relative;
+      overflow: hidden;
+    }
+    .project-card:hover { border-color: var(--muted); }
+
+    /* imagen con overlay en hover */
+    .project-card-img {
+      position: relative;
+      width: 100%;
+      aspect-ratio: 16/7;
+      overflow: hidden;
+      background: var(--surface-alt);
+      flex-shrink: 0;
+    }
+    .project-card-img img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform .45s ease;
+    }
+    .project-card:hover .project-card-img img { transform: scale(1.04); }
+
+    .project-card-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(10,10,10,.55);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity .3s;
+    }
+    .project-card:hover .project-card-overlay { opacity: 1; }
+
+    .project-card-overlay-btn {
+      background: var(--bg);
+      color: var(--text);
+      border: none;
+      border-radius: 2px;
+      padding: .45rem 1rem;
+      font-family: var(--sans);
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transform: translateY(6px);
+      transition: transform .3s, opacity .3s;
+      opacity: 0;
+    }
+    .project-card:hover .project-card-overlay-btn {
+      transform: none;
+      opacity: 1;
+      transition-delay: .05s;
+    }
+
+    .project-card-img-placeholder {
+      width: 100%; aspect-ratio: 16/7;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--surface-alt);
+      color: var(--border);
+      font-size: .68rem;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    /* body de la card */
+    .project-card-body {
+      padding: .85rem 1rem 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+      flex: 1;
+    }
+
+    .project-card-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: .4rem;
+    }
+
+    .project-tags { display: flex; gap: .3rem; flex-wrap: wrap; }
+    .tag {
+      font-size: .6rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      padding: .15rem .4rem;
+      border: 1px solid var(--border);
+      border-radius: 1px;
+      color: var(--muted);
+    }
+
+    /* badge tipo (App web / escritorio) */
+    .project-type {
+      font-size: .6rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      color: var(--violet);
+      border: 1px solid var(--violet-dim);
+      background: var(--violet-dim);
+      padding: .15rem .4rem;
+      border-radius: 1px;
+      white-space: nowrap;
+    }
+
+    .project-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      letter-spacing: -.02em;
+      line-height: 1.2;
+      color: var(--text);
+    }
+
+    .project-desc-short {
+      font-size: .78rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .project-card-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: auto;
+      padding-top: .6rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .project-quick-links { display: flex; gap: .6rem; }
+
+    .project-link {
+      font-size: .65rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      text-decoration: none;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1px;
+      transition: color .2s, border-color .2s;
+    }
+    .project-link:hover { color: var(--text); border-color: var(--text); }
+
+    .btn-vermas {
+      font-size: .65rem; font-weight: 500;
+      letter-spacing: .06em; text-transform: uppercase;
+      background: none; border: none;
+      color: var(--text);
+      cursor: pointer;
+      display: flex; align-items: center; gap: .25rem;
+      padding: 0;
+      transition: opacity .2s;
+    }
+    .btn-vermas:hover { opacity: .6; }
+    .btn-vermas svg { width: 11px; height: 11px; transition: transform .2s; }
+    .btn-vermas:hover svg { transform: translateX(3px); }
+
+    /* ════════════════════════════════════════
+       MODAL DE PROYECTO
+    ════════════════════════════════════════ */
+    .project-modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: var(--overlay);
+      z-index: 300;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .3s;
+      backdrop-filter: blur(4px);
+    }
+    .project-modal-overlay.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+
+    .project-modal {
+      background: var(--modal-bg);
+      border: 1.5px solid var(--border);
+      border-radius: 3px;
+      width: 100%;
+      max-width: 1060px;
+      height: 86vh;
+      overflow: hidden;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      transform: translateY(20px);
+      transition: transform .35s cubic-bezier(.22,.68,0,1.2);
+    }
+    .project-modal-overlay.open .project-modal {
+      transform: none;
+    }
+
+    /* columna galería — fija, sin scroll */
+    .modal-gallery {
+      position: relative;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      background: var(--surface-alt);
+      border-right: 1.5px solid var(--border);
+      overflow: hidden;
+    }
+
+    .modal-gallery-main {
+      flex: 1 1 auto;
+      position: relative;
+      overflow: hidden;
+      background: var(--surface-alt);
+      margin-bottom: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-gallery-main img {
+      position: absolute;
+      inset: 0;
+      width: 100%; height: 100%;
+      object-fit: contain;
+      background: var(--surface);
+      transition: opacity .3s;
+    }
+    .modal-gallery-main img.fade-out { opacity: 0; }
+
+    .gallery-arrow {
+      position: absolute;
+      bottom: 48px;
+      top: auto;
+      transform: none;
+      background: var(--modal-bg);
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      width: 28px; height: 28px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      color: var(--text);
+      z-index: 2;
+      transition: background .2s;
+    }
+    .gallery-arrow:hover { background: var(--surface-alt); }
+    .gallery-arrow.prev { left: 50%; margin-left: -32px; }
+    .gallery-arrow.next { left: 50%; margin-left: 4px; }
+    .gallery-arrow svg { width: 13px; height: 13px; }
+
+    .modal-gallery-thumbs {
+      display: flex;
+      gap: 3px;
+      padding: .35rem .5rem;
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .modal-gallery-thumbs::-webkit-scrollbar { display: none; }
+
+    .gallery-thumb {
+      width: 46px; height: 32px;
+      flex-shrink: 0;
+      border-radius: 1px;
+      overflow: hidden;
+      border: 1.5px solid transparent;
+      cursor: pointer;
+      transition: border-color .2s;
+    }
+    .gallery-thumb.active { border-color: var(--violet); }
+    .gallery-thumb img {
+      width: 100%; height: 100%;
+      object-fit: cover; display: block;
+    }
+
+    /* columna info — scroll independiente */
+    .modal-info {
+      padding: 2rem 1.75rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+      overflow-y: auto;
+      height: 100%;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .modal-close {
+      width: 30px; height: 30px;
+      display: flex; align-items: center; justify-content: center;
+      border: 1.5px solid var(--border);
+      border-radius: 2px;
+      background: none;
+      cursor: pointer;
+      color: var(--muted);
+      flex-shrink: 0;
+      transition: color .2s, border-color .2s;
+    }
+    .modal-close:hover { color: var(--text); border-color: var(--text); }
+    .modal-close svg { width: 14px; height: 14px; }
+
+    .modal-title {
+      font-family: var(--serif);
+      font-size: 1.6rem;
+      letter-spacing: -.02em;
+      line-height: 1.15;
+      color: var(--text);
+    }
+
+    .modal-type {
+      font-size: .68rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--violet);
+    }
+
+    .modal-divider {
+      width: 100%; height: 1px;
+      background: var(--border);
+      border: none;
+    }
+
+    .modal-section-label {
+      font-size: .68rem; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted);
+      margin-bottom: .6rem;
+    }
+
+    .modal-desc {
+      font-size: .92rem;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+    .modal-desc p + p { margin-top: .75rem; }
+    .modal-desc strong { color: var(--text); font-weight: 500; }
+
+    .modal-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .35rem;
+    }
+    .modal-chip {
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .05em;
+      padding: .28rem .65rem;
+      border: 1px solid var(--border);
+      border-radius: 1px;
+      color: var(--muted);
+      background: var(--surface-alt);
+    }
+
+    .modal-detail-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem 1.5rem;
+    }
+
+    .modal-detail-label {
+      font-size: .67rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .modal-detail-value {
+      font-size: .88rem;
+      color: var(--text);
+      margin-top: .15rem;
+    }
+
+    .modal-links {
+      display: flex;
+      gap: .6rem;
+      flex-wrap: wrap;
+      margin-top: auto;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border);
+    }
+
+    .modal-btn-fill {
+      display: inline-flex; align-items: center; gap: .4rem;
+      background: var(--text); color: var(--bg);
+      border: 1.5px solid var(--text);
+      padding: .55rem 1.25rem;
+      border-radius: 2px;
+      font-family: var(--sans);
+      font-size: .75rem; font-weight: 500;
+      letter-spacing: .07em; text-transform: uppercase;
+      text-decoration: none; cursor: pointer;
+      transition: opacity .2s;
+    }
+    .modal-btn-fill:hover { opacity: .72; }
+    .modal-btn-outline {
+      display: inline-flex; align-items: center; gap: .4rem;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+      padding: .55rem 1.25rem;
+      border-radius: 2px;
+      font-family: var(--sans);
+      font-size: .75rem; font-weight: 500;
+      letter-spacing: .07em; text-transform: uppercase;
+      text-decoration: none; cursor: pointer;
+      transition: border-color .2s;
+    }
+    .modal-btn-outline:hover { border-color: var(--text); }
+    .modal-btn-fill svg, .modal-btn-outline svg { width: 13px; height: 13px; }
+
+    /* nav entre proyectos en modal */
+    .modal-nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding-top: 1rem;
+    }
+    .modal-nav-btn {
+      background: none; border: none; cursor: pointer;
+      font-family: var(--sans);
+      font-size: .72rem; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--muted);
+      display: flex; align-items: center; gap: .35rem;
+      transition: color .2s;
+    }
+    .modal-nav-btn:hover { color: var(--text); }
+    .modal-nav-btn svg { width: 13px; height: 13px; }
+    .modal-nav-counter {
+      font-size: .72rem; color: var(--muted);
+      letter-spacing: .06em;
+    }
+
+    /* ════════════════════════════════════════
+       SKILLS — 4 grupos en grilla 2×2
+    ════════════════════════════════════════ */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+      background: var(--border);
+      border: 2px solid var(--border);
+    }
+
+    .skill-group {
+      background: var(--surface);
+      padding: 1.75rem 2rem;
+    }
+
+    .skill-group-label {
+      font-size: .68rem; font-weight: 500;
+      letter-spacing: .14em; text-transform: uppercase;
+      color: var(--violet);
+      margin-bottom: 1.75rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .skill-group-label::after {
+      content: '';
+      flex: 1; height: 1px;
+      background: var(--border);
+    }
+
+    .skill-list {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: .75rem;
+    }
+
+    .skill-item {
+      display: flex;
+      align-items: center;
+      gap: .65rem;
+      padding: .6rem .75rem;
+      border-radius: 2px;
+      border: 1px solid transparent;
+      transition: background .2s, border-color .2s;
+      cursor: default;
+    }
+    .skill-item:hover {
+      background: var(--surface-alt);
+      border-color: var(--border);
+    }
+
+    .skill-icon {
+      width: 22px; height: 22px;
+      flex-shrink: 0; object-fit: contain;
+    }
+    .skill-name {
+      font-size: .85rem; color: var(--text);
+      white-space: nowrap;
+    }
+
+    /* ════════════════════════════════════════
+       ABOUT
+    ════════════════════════════════════════ */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+      align-items: start;
+    }
+    .about-text p { font-size: 1rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.5rem; }
+    .about-text p:last-child { margin-bottom: 0; }
+
+    .about-details { display: flex; flex-direction: column; }
+    .about-detail-item {
+      padding: 1.25rem 0;
+      border-bottom: 1px solid var(--border);
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 1rem;
+      align-items: baseline;
+    }
+    .about-detail-item:first-child { padding-top: 0; }
+    .about-detail-item:last-child { border-bottom: none; }
+
+    .about-detail-label {
+      font-size: .68rem; font-weight: 500;
+      letter-spacing: .12em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .about-detail-value { font-size: .92rem; color: var(--text); }
+
+    /* ════════════════════════════════════════
+       CONTACT
+    ════════════════════════════════════════ */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; }
+
+    .contact-text h3 {
+      font-family: var(--serif);
+      font-size: 1.9rem; letter-spacing: -.03em;
+      margin-bottom: .9rem; color: var(--text);
+    }
+    .contact-text p { color: var(--muted); font-size: .95rem; line-height: 1.75; margin-bottom: 2rem; }
+
+    .contact-socials { display: flex; flex-direction: column; }
+    .contact-social-link {
+      display: flex; align-items: center; gap: .75rem;
+      text-decoration: none; color: var(--text);
+      font-size: .87rem;
+      padding: .9rem 0;
+      border-bottom: 1px solid var(--border);
+      transition: gap .2s, color .2s;
+    }
+    .contact-social-link:hover { gap: 1.1rem; color: var(--violet); }
+    .contact-social-link svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+    .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
+    .form-field { display: flex; flex-direction: column; gap: .45rem; }
+    .form-field label {
+      font-size: .68rem; font-weight: 500;
+      letter-spacing: .1em; text-transform: uppercase;
+      color: var(--muted);
+    }
+    .form-field input, .form-field textarea {
+      font-family: var(--sans); font-size: .92rem;
+      color: var(--text); background: transparent;
+      border: none; border-bottom: 1.5px solid var(--border);
+      padding: .55rem 0; outline: none;
+      transition: border-color .2s; resize: none;
+    }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--violet); }
+    .form-field textarea { min-height: 95px; }
+    .form-submit {
+      display: inline-block; background: var(--text); color: var(--bg);
+      padding: .8rem 2.25rem; border: none; border-radius: 2px;
+      font-family: var(--sans); font-size: .82rem; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase;
+      cursor: pointer; transition: opacity .2s; align-self: flex-start;
+    }
+    .form-submit:hover { opacity: .72; }
+
+    /* ════════════════════════════════════════
+       EXPERIENCIA — timeline
+    ════════════════════════════════════════ */
+    .exp-timeline { display: flex; flex-direction: column; }
+
+    .exp-item {
+      display: grid;
+      grid-template-columns: 100px 1px 1fr;
+      gap: 0 2.5rem;
+      padding-bottom: 3.5rem;
+    }
+    .exp-item:last-child { padding-bottom: 0; }
+
+    .exp-date {
+      display: flex; flex-direction: column;
+      align-items: flex-end; padding-top: .1rem; gap: .2rem;
+    }
+    .exp-year {
+      font-family: var(--serif); font-size: 1.15rem;
+      letter-spacing: -.02em; color: var(--text); line-height: 1;
+    }
+    .exp-period {
+      font-size: .68rem; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase; color: var(--violet);
+    }
+
+    .exp-line-col {
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .exp-dot {
+      width: 9px; height: 9px; border-radius: 50%;
+      background: var(--violet); flex-shrink: 0; margin-top: .18rem;
+    }
+    .exp-vline {
+      width: 1px; flex: 1; background: var(--border); margin-top: .4rem;
+    }
+    .exp-item:last-child .exp-vline { display: none; }
+
+    .exp-content { display: flex; flex-direction: column; gap: .8rem; }
+    .exp-role {
+      font-family: var(--serif); font-size: 1.25rem;
+      letter-spacing: -.02em; color: var(--text); line-height: 1.2;
+    }
+    .exp-company {
+      font-size: .75rem; font-weight: 500;
+      letter-spacing: .08em; text-transform: uppercase;
+      color: var(--muted); margin-top: -.4rem;
+    }
+    .exp-desc {
+      font-size: .92rem; color: var(--muted);
+      line-height: 1.78; max-width: 540px;
+    }
+    .exp-tags { display: flex; gap: .35rem; flex-wrap: wrap; }
+
+    /* ════════════════════════════════════════
+       FOOTER
+    ════════════════════════════════════════ */
+    footer {
+      padding: 2.25rem 4rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .footer-left, .footer-right { font-size: .78rem; color: var(--muted); }
+
+    /* ════════════════════════════════════════
+       HERO GRADIENT CANVAS
+    ════════════════════════════════════════ */
+    .hero {
+      position: relative; /* needed for canvas positioning */
+      overflow: hidden;
+    }
+
+    #hero-canvas {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;               /* behind all hero content */
+      pointer-events: none;     /* never intercept clicks */
+      display: block;
+    }
+
+    /* hero content must sit above the canvas */
+    .hero-inner {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* hero ya tiene ::after para el canvas mask — no necesita línea */
+    .hero { border-bottom: none; }
+    .hero::after {
+      /* overrides the section::after divider rule — canvas mask goes here */
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 160px;
+      background: linear-gradient(to bottom, transparent, var(--bg));
+      z-index: 2;
+      pointer-events: none;
+      opacity: 1 !important; /* never fade this one */
+    }
+
+    /* ════════════════════════════════════════
+       SCROLL REVEAL
+    ════════════════════════════════════════ */
+    .reveal {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .65s ease, transform .65s ease;
+    }
+    .reveal.visible { opacity: 1; transform: none; }
+
+    /* ════════════════════════════════════════
+       RESPONSIVE
+    ════════════════════════════════════════ */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero { padding: 7rem 1.5rem 4rem; }
+      /* hero-inner ya es flex columna, no necesita override */
+      section { padding: 5rem 1.5rem; }
+      .projects-grid { grid-template-columns: 1fr; }
+      .skills-grid { grid-template-columns: 1fr; }
+      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
+      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
+      footer { padding: 2rem 1.5rem; flex-direction: column; gap: .4rem; text-align: center; }
+      .nav-cv { display: none; }
+
+      .project-modal {
+        grid-template-columns: 1fr;
+        max-width: 500px;
+        max-height: 88vh;
+      }
+      .modal-gallery {
+        position: static;
+        height: 200px;
+      }
+    }
+</style>
 
 </head>
 <body>
 
 <!-- ════════════ NAV ════════════ -->
-<nav id="navbar">
+<nav id="navbar">         
   <div class="nav-left">
-    <a href="#home" class="nav-logo">
-      FW<span class="nav-logo-dot"></span>
+    
+    <a href="#home" class="nav-logo" aria-label="Ir al inicio">
+      <svg id="nav-logo-svg" class="nav-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="FW">
+        <rect width="32" height="32" rx="7" fill="#fafaf8"/>
+        <text x="6" y="22"
+          font-family="Georgia, serif"
+          font-size="16"
+          font-style="italic"
+          font-weight="600"
+          letter-spacing="-1.8"
+          fill="#0a0a0a">fw</text>
+        <circle cx="25" cy="22" r="1.6" fill="#7c3aed"/>
+      </svg>
     </a>
+
     <ul class="nav-links">
+      <!-- <li><a href="#experiencia" data-i18n="nav.experience">Experiencia</a></li> -->
       <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
       <li><a href="#skills"    data-i18n="nav.skills">Tecnologías</a></li>
       <li><a href="#about"     data-i18n="nav.about">Sobre mí</a></li>
@@ -53,9 +1094,11 @@
       <span class="hero-tag" data-i18n="hero.tag">Desarrollador .NET · Buenos Aires, Argentina</span>
       <h1>Franco<br><em>Wagenhöfer</em></h1>
       <span class="hero-accent"></span>
-      <p class="hero-desc" data-i18n="hero.desc">
+      <!-- <p class="hero-desc" data-i18n="hero.desc">
         Desarrollo aplicaciones web, de escritorio y soluciones de manejo de datos con C# .NET y SQL Server. Formado en la UTN, orientado a código limpio y soluciones reales.
-      </p>
+      </p> -->
+      <p class="hero-desc" data-i18n="hero.desc">
+Desarrollo aplicaciones web y de escritorio, y soluciones de gestión de datos con C# .NET y SQL Server. Formado en la UTN, con foco en código limpio y resolución de problemas reales.      </p>
       <div class="hero-btns">
         <!-- Botón principal → contacto -->
         <a href="#contact" class="btn-fill" data-i18n="hero.ctaContact">
@@ -119,7 +1162,7 @@
       <!-- PROYECTO 1 — .MovieApp -->
       <div class="project-card reveal" data-project="0">
         <div class="project-card-img">
-          <img src="Imagenes/MovieApp/home.webp" alt=".MovieApp"
+          <img src="assets/Imagenes/MovieApp/home.webp" alt=".MovieApp"
                onerror="this.parentElement.innerHTML='<div class=&quot;project-card-img-placeholder&quot;>Screenshot próximamente</div>'" />
           <div class="project-card-overlay">
             <button class="project-card-overlay-btn" data-open="0" data-i18n="projects.viewDetail">Ver detalle</button>
@@ -153,7 +1196,7 @@
       <!-- PROYECTO 2 — CatálogoWeb -->
       <div class="project-card reveal" data-project="1">
         <div class="project-card-img">
-          <img src="Imagenes/CatalogoWeb/CatalogoWeb.webp" alt="CatálogoWeb"
+          <img src="assets/Imagenes/CatalogoWeb/CatalogoWeb.webp" alt="CatálogoWeb"
                onerror="this.parentElement.innerHTML='<div class=&quot;project-card-img-placeholder&quot;>Screenshot próximamente</div>'" />
           <div class="project-card-overlay">
             <button class="project-card-overlay-btn" data-open="1" data-i18n="projects.viewDetail">Ver detalle</button>
@@ -188,7 +1231,7 @@
       <!-- PROYECTO 3 — Gestor Pyme -->
       <div class="project-card reveal" data-project="2">
         <div class="project-card-img">
-          <img src="Imagenes/GestorEmpleados/MenuEscritorio.webp" alt="Gestor Pyme"
+          <img src="assets/Imagenes/GestorEmpleados/MenuEscritorio.webp" alt="Gestor Pyme"
                onerror="this.parentElement.innerHTML='<div class=&quot;project-card-img-placeholder&quot;>Screenshot próximamente</div>'" />
           <div class="project-card-overlay">
             <button class="project-card-overlay-btn" data-open="2" data-i18n="projects.viewDetail">Ver detalle</button>
@@ -221,7 +1264,7 @@
       </div>
 
       <!-- PROYECTO 4 — placeholder para siguiente proyecto -->
-      <div class="project-card reveal" data-project="3">
+      <!-- <div class="project-card reveal" data-project="3">
         <div class="project-card-img">
           <div class="project-card-img-placeholder">Próximamente</div>
         </div>
@@ -241,7 +1284,7 @@
             <div class="project-quick-links"></div>
           </div>
         </div>
-      </div>
+      </div> -->
 
     </div>
   </div>
@@ -327,26 +1370,27 @@
         <div class="skill-group-label" data-i18n="skills.backend">Backend</div>
         <div class="skill-list">
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/csharp.svg" alt="C#" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/csharp.svg" alt="C#" onerror="this.style.display='none'"/>
             <span class="skill-name">C#</span>
           </div>
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/dotnet2.svg" alt=".NET" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/dotnet2.svg" alt=".NET" onerror="this.style.display='none'"/>
             <span class="skill-name">.NET</span>
           </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="Iconos/java.svg" alt="Java" onerror="this.style.display='none'"/>
-            <span class="skill-name">Java</span>
-          </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="Iconos/cplusplus.svg" alt="C++" onerror="this.style.display='none'"/>
+          <!-- <div class="skill-item">
+                      <img class="skill-icon" src="assets/Iconos/java.svg" alt="Java" onerror="this.style.display='none'"/>
+                      <span class="skill-name">Java</span>
+                    </div> -->
+          <!-- <div class="skill-item">
+            <img class="skill-icon" src="assets/Iconos/c-plusplus.svg" alt="C++" onerror="this.style.display='none'"/>
             <span class="skill-name">C++</span>
-          </div>
+          </div> -->
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/api.svg" alt="REST API" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/api.svg" alt="REST API" onerror="this.style.display='none'"/>
             <span class="skill-name">REST APIs</span>
           </div>
         </div>
+
       </div>
 
       <!-- Frontend -->
@@ -354,32 +1398,32 @@
         <div class="skill-group-label" data-i18n="skills.frontend">Frontend</div>
         <div class="skill-list">
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/html5.svg" alt="HTML5" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/html5.svg" alt="HTML5" onerror="this.style.display='none'"/>
             <span class="skill-name">HTML5</span>
           </div>
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/css_old.svg" alt="CSS3" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/css_old.svg" alt="CSS3" onerror="this.style.display='none'"/>
             <span class="skill-name">CSS3</span>
           </div>
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/javascript.svg" alt="JavaScript" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/javascript.svg" alt="JavaScript" onerror="this.style.display='none'"/>
             <span class="skill-name">JavaScript</span>
           </div>
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/typescript.svg" alt="TypeScript" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/typescript.svg" alt="TypeScript" onerror="this.style.display='none'"/>
             <span class="skill-name">TypeScript</span>
           </div>
+          <!-- <div class="skill-item">
+            <img class="skill-icon" src="assets/Iconos/angular.svg" alt="Angular" onerror="this.style.display='none'"/>
+            <span class="skill-name">Angular</span>
+          </div> -->
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/tailwind.svg" alt="Tailwind CSS" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/tailwindcss.svg" alt="Tailwind CSS" onerror="this.style.display='none'"/>
             <span class="skill-name">Tailwind CSS</span>
           </div>
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/bootstrap.svg" alt="Bootstrap" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/bootstrap.svg" alt="Bootstrap" onerror="this.style.display='none'"/>
             <span class="skill-name">Bootstrap</span>
-          </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="Iconos/angular.svg" alt="Angular" onerror="this.style.display='none'"/>
-            <span class="skill-name">Angular</span>
           </div>
         </div>
       </div>
@@ -389,20 +1433,20 @@
         <div class="skill-group-label" data-i18n="skills.databases">Base de datos</div>
         <div class="skill-list">
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/sql-server.svg" alt="SQL Server" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/sql-server.svg" alt="SQL Server" onerror="this.style.display='none'"/>
             <span class="skill-name">SQL Server</span>
           </div>
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/sqlite-color.svg" alt="SQLite" onerror="this.style.display='none'"/>
-            <span class="skill-name">SQLite</span>
-          </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="Iconos/mongodb.svg" alt="MongoDB" onerror="this.style.display='none'"/>
-            <span class="skill-name">MongoDB</span>
-          </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="Iconos/postgresql.svg" alt="PostgreSQL" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/postgresql.svg" alt="PostgreSQL" onerror="this.style.display='none'"/>
             <span class="skill-name">PostgreSQL</span>
+          </div>
+          <!-- <div class="skill-item">
+            <img class="skill-icon" src="assets/Iconos/mongodb.svg" alt="MongoDB" onerror="this.style.display='none'"/>
+            <span class="skill-name">MongoDB</span>
+          </div> -->
+          <div class="skill-item">
+            <img class="skill-icon" src="assets/Iconos/sqlite-color.svg" alt="SQLite" onerror="this.style.display='none'"/>
+            <span class="skill-name">SQLite</span>
           </div>
         </div>
       </div>
@@ -412,32 +1456,62 @@
         <div class="skill-group-label" data-i18n="skills.tools">Herramientas</div>
         <div class="skill-list">
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/git.svg" alt="Git" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/git.svg" alt="Git" onerror="this.style.display='none'"/>
             <span class="skill-name">Git</span>
           </div>
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/GitHub_dark.svg" alt="GitHub" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/github.svg" alt="GitHub" onerror="this.style.display='none'"/>
             <span class="skill-name">GitHub</span>
           </div>
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/docker.svg" alt="Docker" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/docker.svg" alt="Docker" onerror="this.style.display='none'"/>
             <span class="skill-name">Docker</span>
           </div>
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/postman.svg" alt="Postman" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/postman.svg" alt="Postman" onerror="this.style.display='none'"/>
             <span class="skill-name">Postman</span>
           </div>
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/swagger.svg" alt="Swagger" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/swagger.svg" alt="Swagger" onerror="this.style.display='none'"/>
             <span class="skill-name">Swagger</span>
           </div>
           <div class="skill-item">
-            <img class="skill-icon" src="Iconos/github-copilot.svg" alt="GitHub Copilot" onerror="this.style.display='none'"/>
+            <img class="skill-icon" src="assets/Iconos/copilot.svg" alt="GitHub Copilot" onerror="this.style.display='none'"/>
             <span class="skill-name">GitHub Copilot</span>
           </div>
         </div>
       </div>
-
+      
+          <!-- Otros lenguajes -->
+      <div class="skill-group reveal">
+        <div class="skill-group-label" data-i18n="skills.additional">Lenguajes adicionales</div>
+        <div class="skill-list">
+          <div class="skill-item">
+            <img class="skill-icon" src="assets/Iconos/c-plusplus.svg" alt="C++" onerror="this.style.display='none'"/>
+            <span class="skill-name">C++</span>
+          </div>
+          <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/java.svg" alt="Java" onerror="this.style.display='none'"/>
+              <span class="skill-name">Java</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Aprendiendo -->
+      <div class="skill-group reveal">
+        <div class="skill-group-label" data-i18n="skills.learning">Aprendiendo</div>
+        <div class="skill-list">
+          <div class="skill-item">
+          <img class="skill-icon" src="assets/Iconos/angular.svg" alt="Angular" onerror="this.style.display='none'"/>
+          <span class="skill-name">Angular</span>
+        </div>
+          <div class="skill-item">
+            <img class="skill-icon" src="assets/Iconos/mongodb.svg" alt="MongoDB" onerror="this.style.display='none'"/>
+            <span class="skill-name">MongoDB</span>
+          </div>
+        </div>
+      </div>
+      
     </div>
   </div>
 </section>
@@ -501,9 +1575,9 @@
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
             github.com/francowagenhofer
           </a>
-          <a href="mailto:tu@email.com" class="contact-social-link">
+          <a href="mailto:francowagenhofer@gmail.com" class="contact-social-link">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            tu@email.com
+            francowagenhofer@gmail.com
           </a>
         </div>
       </div>
@@ -529,9 +1603,642 @@
 
 <!-- ════════════ FOOTER ════════════ -->
 <footer>
-  <div class="footer-left">© 2025 Franco Wagenhöfer</div>
+  <div class="footer-left">© 2026 Franco Wagenhöfer</div>
   <div class="footer-right" data-i18n="footer.role">Desarrollador .NET · Buenos Aires</div>
 </footer>
+
+
+<script>
+    /* ═══════════════════════════════════════════════════
+   LOGO VERSIONS
+═══════════════════════════════════════════════════ */
+const LOGO_LIGHT = `<text x="6" y="22"
+  font-family="Georgia, serif"
+  font-size="16"
+  font-style="italic"
+  font-weight="600"
+  letter-spacing="-1.8"
+  fill="#0a0a0a">fw</text>
+<circle cx="25" cy="22" r="1.6" fill="#7c3aed"/>`;
+
+const LOGO_DARK = `<text x="6" y="22"
+  font-family="Georgia, serif"
+  font-size="16"
+  font-style="italic"
+  font-weight="600"
+  letter-spacing="-1.8"
+  fill="#fafaf8">fw</text>
+<circle cx="25" cy="22" r="1.6" fill="#7c3aed"/>`;
+
+/* ═══════════════════════════════════════════════════
+   DATOS DE PROYECTOS
+   Editá este objeto para actualizar todo el modal.
+═══════════════════════════════════════════════════ */
+const PROJECTS = [
+  {
+    id: 0,
+    type: { es: "App web · MVC", en: "Web App · MVC" },
+    name: ".MovieApp",
+    desc: {
+      es: `<p><strong>App web ASP.NET MVC</strong> para gestión completa de películas. Catálogo con CRUD, sistema de reviews con calificaciones de 1–5 estrellas, favoritos por usuario y autenticación con roles diferenciados (admin/usuario).</p>
+           <p><strong>Problema que resuelve:</strong> centralizar la gestión de un catálogo de contenido con experiencia de usuario moderna, seguridad por roles y datos persistentes en SQL Server.</p>`,
+      en: `<p><strong>ASP.NET MVC web app</strong> for full movie management. Catalog with CRUD, review system with 1–5 star ratings, per-user favorites and role-based authentication (admin/user).</p>
+           <p><strong>Problem it solves:</strong> centralize content catalog management with modern UX, role-based security and SQL Server persistence.</p>`
+    },
+    techs: ["C#", ".NET 9", "ASP.NET MVC", "Entity Framework Core", "SQL Server", "ASP.NET Identity", "Bootstrap", "Razor Views"],
+    details: {
+      es: [
+        { label: "Rol", value: "Desarrollador full-stack" },
+        { label: "Arquitectura", value: "MVC · separación de responsabilidades" },
+        { label: "Autenticación", value: "ASP.NET Identity · roles" },
+        { label: "IDE", value: "Visual Studio 2022" },
+      ],
+      en: [
+        { label: "Role", value: "Full-stack developer" },
+        { label: "Architecture", value: "MVC · separation of concerns" },
+        { label: "Authentication", value: "ASP.NET Identity · roles" },
+        { label: "IDE", value: "Visual Studio 2022" },
+      ]
+    },
+    links: {
+      es: [{ label: "Ver repositorio", href: "https://github.com/francowagenhofer/movieapp-mvc-dotnet", primary: true }],
+      en: [{ label: "View repository", href: "https://github.com/francowagenhofer/movieapp-mvc-dotnet", primary: true }]
+    },
+    images: [
+      "assets/Imagenes/MovieApp/home.webp",
+      "assets/Imagenes/MovieApp/movie.webp",
+      "assets/Imagenes/MovieApp/favoritos.webp",
+      "assets/Imagenes/MovieApp/reseñas.webp",
+      "assets/Imagenes/MovieApp/admin.webp",
+    ]
+  },
+  {
+    id: 1,
+    type: { es: "App web · Web Forms", en: "Web App · Web Forms" },
+    name: "CatálogoWeb",
+    desc: {
+      es: `<p><strong>App web en C# con ASP.NET Web Forms</strong> para gestión de artículos. CRUD completo, filtros por categoría/marca, búsqueda dinámica, gestión de usuarios con autenticación y roles.</p>
+           <p><strong>Problema que resuelve:</strong> simular un sistema de inventario real con arquitectura en capas, seguridad mediante roles y buenas prácticas de usabilidad. <strong>Proyecto deployado y accesible online.</strong></p>`,
+      en: `<p><strong>C# web app with ASP.NET Web Forms</strong> for product management. Full CRUD, category/brand filters, dynamic search, user management with authentication and roles.</p>
+           <p><strong>Problem it solves:</strong> simulate a real inventory system with layered architecture, role-based security and usability best practices. <strong>Project deployed and accessible online.</strong></p>`
+    },
+    techs: ["C#", "ASP.NET Web Forms", "SQL Server", "Bootstrap", "JavaScript", "HTML5", "CSS3"],
+    details: {
+      es: [
+        { label: "Rol", value: "Desarrollador full-stack" },
+        { label: "Arquitectura", value: "Capas (dominio, negocio, UI)" },
+        { label: "Deploy", value: "Somee (online)" },
+        { label: "Seguridad", value: "Sistema de roles y login" },
+      ],
+      en: [
+        { label: "Role", value: "Full-stack developer" },
+        { label: "Architecture", value: "Layers (domain, business, UI)" },
+        { label: "Deploy", value: "Somee (online)" },
+        { label: "Security", value: "Role system and login" },
+      ]
+    },
+    links: {
+      es: [
+        { label: "Sitio web", href: "http://webcatalog.somee.com/", primary: true },
+        { label: "Repositorio", href: "https://github.com/francowagenhofer/tp-final-nivel3-Wagenhofer-Franco.git", primary: false }
+      ],
+      en: [
+        { label: "Website", href: "http://webcatalog.somee.com/", primary: true },
+        { label: "Repository", href: "https://github.com/francowagenhofer/tp-final-nivel3-Wagenhofer-Franco.git", primary: false }
+      ]
+    },
+    images: [
+      "assets/Imagenes/CatalogoWeb/CatalogoWeb.webp",
+      "assets/Imagenes/CatalogoWeb/CatalogoWeb_Lista.webp",
+      "assets/Imagenes/CatalogoWeb/CatalogoWeb_Articulo.webp",
+      "assets/Imagenes/CatalogoWeb/CatalogoWebDB.webp",
+    ]
+  },
+  {
+    id: 2,
+    type: { es: "App escritorio · WinForms", en: "Desktop App · WinForms" },
+    name: "Gestor Pyme",
+    desc: {
+      es: `<p><strong>App C# .NET para gestión de PYME.</strong> Comenzó como consola y evolucionó a WinForms. Gestiona empleados, proyectos y salarios con CRUD completo.</p>
+           <p><strong>Dos versiones independientes:</strong> SQLite (portable, sin instalación) y SQL Server (multiusuario, procedimientos almacenados, consola + WinForms).</p>`,
+      en: `<p><strong>C# .NET app for SME management.</strong> Started as a console app, evolved to WinForms. Manages employees, projects and salaries with full CRUD.</p>
+           <p><strong>Two independent versions:</strong> SQLite (portable, no install needed) and SQL Server (multiuser, stored procedures, console + WinForms).</p>`
+    },
+    techs: ["C#", ".NET", "WinForms", "SQL Server", "SQLite", "Stored Procedures"],
+    details: {
+      es: [
+        { label: "Rol", value: "Desarrollador full-stack" },
+        { label: "Arquitectura", value: "Capas (dominio, negocio, UI)" },
+        { label: "Versiones", value: "SQLite · SQL Server" },
+        { label: "Distribución", value: "Portable · sin instalación" },
+      ],
+      en: [
+        { label: "Role", value: "Full-stack developer" },
+        { label: "Architecture", value: "Layers (domain, business, UI)" },
+        { label: "Versions", value: "SQLite · SQL Server" },
+        { label: "Distribution", value: "Portable · no install" },
+      ]
+    },
+    links: {
+      es: [
+        { label: "Descargar app", href: "https://github.com/francowagenhofer/Gestion-Pyme-SQLite/releases/download/v1.0.0/AppGestionPyme_Portable.zip", primary: true },
+        { label: "SQLite repo", href: "https://github.com/francowagenhofer/Gestion-Pyme-SQLite.git", primary: false },
+        { label: "SQL Server repo", href: "https://github.com/francowagenhofer/app-gestion-empleados-csharp.git", primary: false }
+      ],
+      en: [
+        { label: "Download app", href: "https://github.com/francowagenhofer/Gestion-Pyme-SQLite/releases/download/v1.0.0/AppGestionPyme_Portable.zip", primary: true },
+        { label: "SQLite repo", href: "https://github.com/francowagenhofer/Gestion-Pyme-SQLite.git", primary: false },
+        { label: "SQL Server repo", href: "https://github.com/francowagenhofer/app-gestion-empleados-csharp.git", primary: false }
+      ]
+    },
+    images: [
+      "assets/Imagenes/GestorEmpleados/MenuEscritorio.webp",
+      "assets/Imagenes/GestorEmpleados/GestionOperaciones.webp",
+      "assets/Imagenes/GestorEmpleados/MenuConsola.webp",
+      "assets/Imagenes/GestorEmpleados/GestionEmpleadosDB.webp",
+    ]
+  }
+];
+
+/* ═══════════════════════════════════════════════════
+   i18n
+═══════════════════════════════════════════════════ */
+const T = {
+  es: {
+    "nav.projects":"Proyectos","nav.skills":"Tecnologías","nav.about":"Sobre mí","nav.contact":"Contacto","nav.cv":"Descargar CV",
+    "hero.tag":"Desarrollador .NET · Buenos Aires, Argentina",
+    // "hero.desc":"Desarrollo aplicaciones web, de escritorio y soluciones de manejo de datos con C# .NET y SQL Server. Formado en la UTN, orientado a código limpio y soluciones reales.",
+    "hero.desc":"Desarrollo aplicaciones web y de escritorio, y soluciones de gestión de datos con C# .NET y SQL Server. Formado en la UTN, con foco en código limpio y resolución de problemas reales.",
+    "hero.ctaContact":"Contactarme","hero.ctaCV":"Descargar CV","hero.ctaProjects":"Ver proyectos",
+    "hero.stat1Label":"Especialidad","hero.stat2Label":"Formación","hero.stat3Label":"Stack principal",
+    "hero.stat4Label":"Disponibilidad","hero.stat5Label":"Ubicación",
+    "projects.title":"Proyectos\ndestacados",
+    "exp.title":"Experiencia","exp.present":"Presente",
+    "projects.p1.type":"App web","projects.p2.type":"App web","projects.p3.type":"App escritorio",
+    "projects.p1.desc":"Catálogo de películas con sistema de reseñas, favoritos, calificaciones y autenticación por roles.",
+    "projects.p2.desc":"Plataforma para administrar y filtrar productos con control de acceso y roles diferenciados. Disponible online.",
+    "projects.p3.desc":"Gestión integral de empleados, proyectos y sueldos para PyMEs. Versiones SQLite y SQL Server disponibles.",
+    "projects.p4.desc":"Nuevo proyecto en desarrollo. Próximamente con todos los detalles.",
+    "projects.demo":"Ver demo","projects.code":"Ver código","projects.download":"Descargar app","projects.viewDetail":"Ver detalle",
+    "skills.title":"Tecnologías\n& herramientas",
+    "skills.backend":"Backend","skills.frontend":"Frontend","skills.databases":"Base de datos","skills.tools":"Herramientas", "skills.learning":"Aprendiendo","skills.additional":"Lenguajes adicionales",
+    "about.title":"Sobre\nmí",
+    "about.p1":"Soy desarrollador .NET formado en la Tecnicatura Universitaria en Programación de la UTN, con práctica constante en proyectos reales usando C#, .NET y SQL Server.",
+    "about.p2":"Me apasiona construir software que resuelva problemas concretos — desde aplicaciones de escritorio hasta soluciones web y manejo de datos. Trabajo con foco en código limpio, legible y mantenible.",
+    "about.p3":"Busco seguir creciendo profesionalmente, ampliar mis capacidades técnicas y aportar valor real en cada proyecto que enfrento.",
+    "about.education.label":"Formación","about.education.value":"Tec. Universitaria en Programación · UTN",
+    "about.specialty.label":"Especialidad","about.specialty.value":"Aplicaciones web, desktop y datos (.NET)",
+    "about.location.label":"Ubicación","about.location.value":"Buenos Aires, Argentina",
+    "about.languages.label":"Idiomas","about.languages.value":"Español · Inglés técnico",
+    "about.availability.label":"Disponibilidad","about.availability.value":"Abierto a oportunidades",
+    "contact.title":"Hablemos","contact.heading":"¿Tenés un proyecto\no propuesta?",
+    "contact.sub":"Estoy disponible para trabajo freelance, relación de dependencia o colaboración en proyectos. Escribime y hablamos.",
+    "contact.name":"Nombre","contact.namePh":"Tu nombre",
+    "contact.email":"Correo electrónico","contact.message":"Mensaje","contact.messagePh":"Contame sobre tu proyecto o consulta…",
+    "contact.send":"Enviar mensaje",
+    "modal.description":"Descripción","modal.technologies":"Tecnologías","modal.details":"Detalles",
+    "modal.prev":"Anterior","modal.next":"Siguiente",
+    "footer.role":"Desarrollador .NET · Buenos Aires",
+  },
+  en: {
+    "nav.projects":"Projects","nav.skills":"Skills","nav.about":"About","nav.contact":"Contact","nav.cv":"Download CV",
+    "hero.tag":".NET Developer · Buenos Aires, Argentina",
+    // "hero.desc":"I build web apps, desktop applications and data solutions using C# .NET and SQL Server. Trained at UTN, focused on clean code and real-world results.",
+    "hero.desc":"I build web and desktop applications, as well as data solutions using C# .NET and SQL Server. I studied at UTN and focus on clean code and solving real-world problems.",
+    "hero.ctaContact":"Contact me","hero.ctaCV":"Download CV","hero.ctaProjects":"View projects",
+    "hero.stat1Label":"Specialty","hero.stat2Label":"Education","hero.stat3Label":"Main stack",
+    "hero.stat4Label":"Availability","hero.stat5Label":"Location",
+    "projects.title":"Featured\nprojects",
+    "exp.title":"Experience","exp.present":"Present",
+    "projects.p1.type":"Web app","projects.p2.type":"Web app","projects.p3.type":"Desktop app",
+    "projects.p1.desc":"Movie catalog with review system, favorites, ratings and role-based authentication.",
+    // "projects.p2.desc":"Platform to manage and filter products with access control and roles. Deployed online.",
+    "projects.p2.desc":"Platform for managing and filtering products with role-based access control. Deployed online.",
+    // "projects.p3.desc":"Comprehensive management of employees, projects and salaries for SMEs. SQLite and SQL Server versions available.",
+    "projects.p3.desc":"Full management system for employees, projects and salaries for SMEs. SQLite and SQL Server versions available.",
+    "projects.p4.desc":"New project in development. Details coming soon.",
+    "projects.demo":"Live demo","projects.code":"View code","projects.download":"Download app","projects.viewDetail":"View details",
+    "skills.title":"Technologies\n& tools",
+    "skills.backend":"Backend","skills.frontend":"Frontend","skills.databases":"Databases","skills.tools":"Tools", "skills.learning":"Learning","skills.additional":"Additional languages",
+    "about.title":"About\nme",
+    // "about.p1":"I'm a .NET developer trained at UTN's University Technical Degree in Programming, with ongoing practice building real-world projects in C#, .NET and SQL Server.",
+    "about.p1":"I'm a .NET developer with a University Technical Degree in Programming from UTN, with hands-on experience building real-world projects using C#, .NET and SQL Server.",
+    "about.p2":"I'm passionate about crafting software that solves concrete problems — from desktop apps to web solutions and data management. I focus on clean, readable and maintainable code.",
+    "about.p3":"I'm looking to keep growing professionally, expand my technical capabilities and bring real value to every challenge I take on.",
+    "about.education.label":"Education","about.education.value":"Univ. Tech. Degree in Programming · UTN",
+    "about.specialty.label":"Specialty","about.specialty.value":"Web, desktop & data apps (.NET)",
+    "about.location.label":"Location","about.location.value":"Buenos Aires, Argentina",
+    "about.languages.label":"Languages","about.languages.value":"Spanish (native) · Technical English",
+    "about.availability.label":"Availability","about.availability.value":"Open to opportunities",
+    "contact.title":"Let's talk","contact.heading":"Have a project\nor proposal?",
+    // "contact.sub":"Available for freelance work, full-time roles or project collaboration. Reach out and let's chat.",
+    "contact.sub":"Available for freelance work, full-time positions or project collaborations. Feel free to reach out.",
+    "contact.name":"Name","contact.namePh":"Your name",
+    "contact.email":"Email address","contact.message":"Message","contact.messagePh":"Tell me about your project or inquiry…",
+    "contact.send":"Send message",
+    "modal.description":"Description","modal.technologies":"Technologies","modal.details":"Details",
+    // "modal.prev":"Previous","modal.next":"Next",
+    "modal.prev":"Prev","modal.next":"Next",
+    "footer.role":".NET Developer · Buenos Aires",
+  }
+};
+
+/* ═══════════════════════════════════════════════════
+   STATE
+═══════════════════════════════════════════════════ */
+let lang  = localStorage.getItem('fw-lang')  || 'es';
+let theme = localStorage.getItem('fw-theme') || 'light';
+let modalIndex = 0;
+let galleryIndex = 0;
+
+/* ═══════════════════════════════════════════════════
+   i18n APPLY
+═══════════════════════════════════════════════════ */
+function setLang(l) {
+  lang = l;
+  localStorage.setItem('fw-lang', l);
+  document.documentElement.setAttribute('lang', l);
+  document.getElementById('lang-label').textContent = l === 'es' ? 'EN' : 'ES';
+  const t = T[l];
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const v = t[el.getAttribute('data-i18n')];
+    if (v !== undefined) el.innerHTML = v.replace(/\n/g, '<br>');
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    const v = t[el.getAttribute('data-i18n-ph')];
+    if (v !== undefined) el.placeholder = v;
+  });
+  document.title = l === 'es'
+  // ? 'Franco Wagenhöfer — Desarrollador .NET'
+  // : 'Franco Wagenhöfer — .NET Developer';
+    ? 'Franco Wagenhöfer'
+    : 'Franco Wagenhöfer';
+}
+
+/* ═══════════════════════════════════════════════════
+   THEME
+═══════════════════════════════════════════════════ */
+function setTheme(t) {
+  theme = t;
+  localStorage.setItem('fw-theme', t);
+  document.documentElement.setAttribute('data-theme', t);
+  document.getElementById('icon-moon').style.display = t === 'dark' ? 'none'  : 'block';
+  document.getElementById('icon-sun' ).style.display = t === 'dark' ? 'block' : 'none';
+  
+  /* actualizar logo del navbar según tema (sincronizado) */
+  const navLogoSvg = document.getElementById('nav-logo-svg');
+  if (navLogoSvg) {
+    navLogoSvg.innerHTML = t === 'dark' ? LOGO_DARK : LOGO_LIGHT;
+  }
+}
+
+/* ═══════════════════════════════════════════════════
+   MODAL — galería + info
+═══════════════════════════════════════════════════ */
+const overlay    = document.getElementById('project-modal-overlay');
+const modalImg   = document.getElementById('modal-gallery-img');
+const thumbsCont = document.getElementById('modal-gallery-thumbs');
+
+function renderGallery(images) {
+  thumbsCont.innerHTML = '';
+  galleryIndex = 0;
+
+  if (!images || images.length === 0) {
+    modalImg.src = '';
+    return;
+  }
+
+  modalImg.src = images[0];
+  modalImg.alt = '';
+
+  images.forEach((src, i) => {
+    const th = document.createElement('div');
+    th.className = 'gallery-thumb' + (i === 0 ? ' active' : '');
+    const img = document.createElement('img');
+    img.src = src; img.alt = '';
+    th.appendChild(img);
+    th.addEventListener('click', () => setGalleryIndex(i, images));
+    thumbsCont.appendChild(th);
+  });
+}
+
+function setGalleryIndex(i, images) {
+  if (!images || i < 0 || i >= images.length) return;
+  galleryIndex = i;
+
+  modalImg.classList.add('fade-out');
+  setTimeout(() => {
+    modalImg.src = images[i];
+    modalImg.classList.remove('fade-out');
+  }, 150);
+
+  thumbsCont.querySelectorAll('.gallery-thumb').forEach((t, idx) => {
+    t.classList.toggle('active', idx === i);
+  });
+}
+
+function openModal(projectIdx) {
+  const p = PROJECTS[projectIdx];
+  if (!p) return;
+  modalIndex = projectIdx;
+
+  // tipo + título
+  document.getElementById('modal-type').textContent  = p.type[lang];
+  document.getElementById('modal-title').textContent = p.name;
+
+  // descripción
+  document.getElementById('modal-desc').innerHTML = p.desc[lang];
+
+  // chips de tecnologías
+  const techsCont = document.getElementById('modal-techs');
+  techsCont.innerHTML = p.techs.map(t => `<span class="modal-chip">${t}</span>`).join('');
+
+  // detalles
+  const detailsCont = document.getElementById('modal-details');
+  detailsCont.innerHTML = (p.details[lang] || []).map(d =>
+    `<div class="modal-detail-item">
+       <div class="modal-detail-label">${d.label}</div>
+       <div class="modal-detail-value">${d.value}</div>
+     </div>`
+  ).join('');
+
+  // links
+  const linksCont = document.getElementById('modal-links');
+  linksCont.innerHTML = (p.links[lang] || []).map(l =>
+    `<a href="${l.href}" target="_blank" rel="noopener noreferrer"
+        class="${l.primary ? 'modal-btn-fill' : 'modal-btn-outline'}">${l.label}</a>`
+  ).join('');
+
+  // galería
+  renderGallery(p.images);
+
+  // contador
+  document.getElementById('modal-counter').textContent =
+    `${projectIdx + 1} / ${PROJECTS.length}`;
+
+  // abrir overlay
+  overlay.classList.add('open');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeModal() {
+  overlay.classList.remove('open');
+  document.body.style.overflow = '';
+}
+
+function navigateModal(dir) {
+  let next = modalIndex + dir;
+  if (next < 0) next = PROJECTS.length - 1;
+  if (next >= PROJECTS.length) next = 0;
+  openModal(next);
+}
+
+// abrir con botón "Ver detalle" o overlay hover btn
+document.addEventListener('click', e => {
+  const btn = e.target.closest('[data-open]');
+  if (!btn) return;
+  const idx = parseInt(btn.dataset.open, 10);
+  if (!isNaN(idx) && PROJECTS[idx]) openModal(idx);
+});
+
+// cerrar
+document.getElementById('modal-close').addEventListener('click', closeModal);
+overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
+
+// flechas galería
+document.getElementById('gallery-prev').addEventListener('click', e => {
+  e.stopPropagation();
+  const imgs = PROJECTS[modalIndex].images;
+  setGalleryIndex((galleryIndex - 1 + imgs.length) % imgs.length, imgs);
+});
+document.getElementById('gallery-next').addEventListener('click', e => {
+  e.stopPropagation();
+  const imgs = PROJECTS[modalIndex].images;
+  setGalleryIndex((galleryIndex + 1) % imgs.length, imgs);
+});
+
+// nav entre proyectos
+document.getElementById('modal-prev').addEventListener('click', () => navigateModal(-1));
+document.getElementById('modal-next').addEventListener('click', () => navigateModal(1));
+
+// teclado
+window.addEventListener('keydown', e => {
+  if (!overlay.classList.contains('open')) return;
+  if (e.key === 'Escape')      closeModal();
+  if (e.key === 'ArrowRight')  setGalleryIndex((galleryIndex + 1) % PROJECTS[modalIndex].images.length, PROJECTS[modalIndex].images);
+  if (e.key === 'ArrowLeft')   setGalleryIndex((galleryIndex - 1 + PROJECTS[modalIndex].images.length) % PROJECTS[modalIndex].images.length, PROJECTS[modalIndex].images);
+});
+
+/* ═══════════════════════════════════════════════════
+   NAV SCROLL
+═══════════════════════════════════════════════════ */
+const navbar = document.getElementById('navbar');
+window.addEventListener('scroll', () => {
+  navbar.classList.toggle('scrolled', window.scrollY > 20);
+}, { passive: true });
+
+/* ═══════════════════════════════════════════════════
+   SCROLL REVEAL
+═══════════════════════════════════════════════════ */
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 70);
+      revealObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.08 });
+document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+/* ═══════════════════════════════════════════════════════════════
+   HERO GRADIENT ANIMATION — "Alejandra"
+   ────────────────────────────────────────────────────────────
+   HOW IT WORKS
+   Four large radial "blobs" drift slowly across the canvas on
+   independent sinusoidal paths. Each blob is a radial gradient
+   that fades to transparent at its edge, so they blend softly.
+   The canvas opacity is driven by scroll position, creating a
+   smooth fade-out as the user scrolls away from the hero.
+   The animation loop pauses automatically when the hero is
+   fully off-screen, saving CPU.
+
+   ── TUNE THESE TO ADJUST THE FEEL ──────────────────────────
+   SPEED        lower  → slower drift          (default 0.00025)
+   BLOB_RADIUS  higher → larger, softer blobs  (default 0.60)
+   ALPHA_LIGHT  higher → more visible light-mode (default 0.60)
+   ALPHA_DARK   higher → more visible dark-mode  (default 0.50)
+   FADE_START   scroll px where fade begins    (default 60)
+   FADE_END     scroll px where fully gone     (default heroH)
+═══════════════════════════════════════════════════════════════ */
+(function heroGradient() {
+  'use strict';
+
+  const canvas = document.getElementById('hero-canvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  /* ── tuneable ────────────────────────────────────────────── */
+  const BLOB_COUNT   = 4;
+  // const SPEED        = 0.00025;
+  const SPEED        = 0.0003;
+  const BLOB_RADIUS  = 0.60;   /* fraction of canvas width     */
+  const ALPHA_LIGHT  = 0.75;   /* peak opacity, light mode     */
+  const ALPHA_DARK   = 0.50;   /* peak opacity, dark mode      */
+  const FADE_START   = 60;     /* px scrolled → start fade     */
+
+  /* ── palettes ────────────────────────────────────────────── */
+  const PAL = {
+    light: [
+      [200, 200, 198], // gris muy claro
+      [230, 230, 230], // gris suave
+      [245, 245, 245], // casi blanco
+      [235, 235, 235], // gris perla claro
+    ],
+    dark: [
+      [58, 28, 98] /* deep violet    */,
+      [38, 18, 78] /* indigo shadow  */,
+      [18, 38, 80] /* midnight blue  */,
+      [78, 28, 118] /* plum           */,
+    ],
+  };
+
+  /* ── state ───────────────────────────────────────────────── */
+  let W = 0, H = 0;
+  let rafId      = null;
+  let offScreen  = false;   /* IntersectionObserver flag        */
+  let scrollAlpha = 1;      /* driven by scroll, 0..1           */
+
+  /* ── blobs: each wanders on its own sinusoidal path ──────── */
+  const blobs = Array.from({ length: BLOB_COUNT }, (_, i) => ({
+    phaseX : Math.random() * Math.PI * 2,
+    phaseY : Math.random() * Math.PI * 2,
+    freqX  : 0.65 + Math.random() * 0.55,
+    freqY  : 0.65 + Math.random() * 0.55,
+    ampX   : 0.16 + Math.random() * 0.16,
+    ampY   : 0.12 + Math.random() * 0.14,
+    baseX  : 0.12 + (i / (BLOB_COUNT - 1)) * 0.76,
+    baseY  : 0.18 + Math.random() * 0.64,
+    ci     : i,   /* color index */
+  }));
+
+  /* ── helpers ─────────────────────────────────────────────── */
+  function isDark() {
+    return document.documentElement.getAttribute('data-theme') === 'dark';
+  }
+
+  function resize() {
+    const r = canvas.parentElement.getBoundingClientRect();
+    W = canvas.width  = Math.round(r.width);
+    H = canvas.height = Math.round(r.height);
+  }
+
+  /* ── scroll → opacity ────────────────────────────────────── */
+  function updateScrollAlpha() {
+    const heroH    = canvas.parentElement.offsetHeight;
+    const fadeEnd  = heroH * 0.65;          /* fully gone at 65% scroll */
+    const y        = window.scrollY;
+    if (y <= FADE_START) {
+      scrollAlpha = 1;
+    } else if (y >= fadeEnd) {
+      scrollAlpha = 0;
+    } else {
+      scrollAlpha = 1 - (y - FADE_START) / (fadeEnd - FADE_START);
+    }
+    /* apply directly to canvas element — no layout impact */
+    canvas.style.opacity = scrollAlpha;
+  }
+
+  /* ── main draw loop ──────────────────────────────────────── */
+  function draw(ts) {
+    rafId = requestAnimationFrame(draw);
+
+    /* skip painting when invisible (saves GPU/CPU) */
+    if (offScreen || scrollAlpha <= 0.01) {
+      ctx.clearRect(0, 0, W, H);
+      return;
+    }
+
+    ctx.clearRect(0, 0, W, H);
+
+    const t      = ts * SPEED;
+    const dark   = isDark();
+    const alpha  = dark ? ALPHA_DARK : ALPHA_LIGHT;
+    const pal    = dark ? PAL.dark : PAL.light;
+    const radius = W * BLOB_RADIUS;
+
+    blobs.forEach(b => {
+      const x  = (b.baseX + Math.sin(t * b.freqX + b.phaseX) * b.ampX) * W;
+      const y  = (b.baseY + Math.cos(t * b.freqY + b.phaseY) * b.ampY) * H;
+      const [r, g, bl] = pal[b.ci];
+
+      const grd = ctx.createRadialGradient(x, y, 0, x, y, radius);
+      grd.addColorStop(0,   `rgba(${r},${g},${bl},${alpha})`);
+      grd.addColorStop(0.5, `rgba(${r},${g},${bl},${alpha * 0.3})`);
+      grd.addColorStop(1,   `rgba(${r},${g},${bl},0)`);
+
+      ctx.fillStyle = grd;
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fill();
+    });
+  }
+
+  /* ── pause when hero leaves viewport (IntersectionObserver) ─ */
+  new IntersectionObserver(entries => {
+    offScreen = !entries[0].isIntersecting;
+  }, { threshold: 0 }).observe(canvas.parentElement);
+
+  /* ── responsive: redraw canvas size on resize ────────────── */
+  new ResizeObserver(resize).observe(canvas.parentElement);
+
+  /* ── scroll listener (throttled with rAF flag) ───────────── */
+  let scrollTicking = false;
+  window.addEventListener('scroll', () => {
+    if (scrollTicking) return;
+    scrollTicking = true;
+    requestAnimationFrame(() => { updateScrollAlpha(); scrollTicking = false; });
+  }, { passive: true });
+
+  /* ── boot ────────────────────────────────────────────────── */
+  resize();
+  updateScrollAlpha();
+  rafId = requestAnimationFrame(draw);
+})();
+
+/* ═══════════════════════════════════════════════════
+   DIVIDER FADE — líneas divisoras se desvanecen
+   cuando la sección ya pasó por el viewport
+═══════════════════════════════════════════════════ */
+(function dividerFade() {
+  /* observamos todas las secciones excepto hero */
+  const sections = document.querySelectorAll('section:not(.hero)');
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      /* cuando la sección sale por ARRIBA (ya pasó) → fade la línea */
+      if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+        entry.target.classList.add('divider-faded');
+      } else {
+        entry.target.classList.remove('divider-faded');
+      }
+    });
+  }, {
+    threshold: 0,
+    rootMargin: '0px 0px 0px 0px'
+  });
+
+  sections.forEach(s => obs.observe(s));
+})();
+
+/* ═══════════════════════════════════════════════════
+   BOOT
+═══════════════════════════════════════════════════ */
+setTheme(theme);
+setLang(lang);
+
+document.getElementById('lang-btn' ).addEventListener('click', () => setLang(lang   === 'es' ? 'en' : 'es'));
+document.getElementById('theme-btn').addEventListener('click', () => setTheme(theme === 'light' ? 'dark' : 'light'));
+</script>
 
 </body>
 </html>
