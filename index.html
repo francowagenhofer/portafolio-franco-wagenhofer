@@ -556,6 +556,7 @@
       object-fit: contain;
       background: var(--surface);
       transition: opacity .3s;
+      cursor: zoom-in;
     }
     .modal-gallery-main img.fade-out { opacity: 0; }
 
@@ -1041,6 +1042,110 @@
         height: 200px;
       }
     }
+
+    /* ── Lightbox ── */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      z-index: 400;
+      background: rgba(0,0,0,.88);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .22s ease;
+    }
+    .lightbox.open {
+      opacity: 1;
+      pointer-events: all;
+    }
+    .lightbox-img-wrap {
+      position: relative;
+      max-width: 92vw;
+      max-height: 88vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .lightbox-img-wrap img {
+      display: block;
+      max-width: 92vw;
+      max-height: 88vh;
+      object-fit: contain;
+      border-radius: 2px;
+      box-shadow: 0 12px 60px rgba(0,0,0,.7);
+      transform: scale(.96);
+      transition: transform .25s cubic-bezier(.22,.68,0,1.2);
+      cursor: zoom-out;
+      user-select: none;
+    }
+    .lightbox.open .lightbox-img-wrap img {
+      transform: scale(1);
+    }
+    .lightbox-close {
+      position: fixed;
+      top: 1.1rem; right: 1.1rem;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 2px;
+      color: #fff;
+      width: 32px; height: 32px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background .18s;
+      z-index: 401;
+    }
+    .lightbox-close:hover { background: rgba(255,255,255,.18); }
+    .lightbox-close svg { width: 14px; height: 14px; }
+    .lightbox-arrow {
+      position: fixed;
+      top: 50%; transform: translateY(-50%);
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.22);
+      border-radius: 2px;
+      color: #fff;
+      width: 36px; height: 36px;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      transition: background .18s;
+      z-index: 401;
+    }
+    .lightbox-arrow:hover { background: rgba(255,255,255,.18); }
+    .lightbox-arrow.lb-prev { left: 1.1rem; }
+    .lightbox-arrow.lb-next { right: 1.1rem; }
+    .lightbox-arrow svg { width: 16px; height: 16px; }
+    .lightbox-counter {
+      position: fixed;
+      bottom: 1.1rem; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,.45);
+      font-size: .72rem;
+      letter-spacing: .1em;
+      font-family: var(--mono, monospace);
+      z-index: 401;
+    }
+
+
+    .contact-cv-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      margin-top: 1.5rem;
+      padding: .45rem .9rem;
+      border: 1px solid var(--border);
+      background: transparent;
+      color: var(--text);
+      font-size: .72rem;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: border-color .2s, background .2s, color .2s;
+      align-self: flex-start;
+    }
+    .contact-cv-btn:hover { border-color: var(--text); background: var(--text); color: var(--bg); }
+    .contact-cv-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
+
 </style>
 
 </head>
@@ -1544,6 +1649,7 @@
       <div class="contact-text reveal">
         <h3 data-i18n="contact.heading">¿Tenés un proyecto<br>o propuesta?</h3>
         <p data-i18n="contact.sub">Estoy disponible para trabajo freelance, relación de dependencia o colaboración en proyectos. Escribime y hablamos.</p>
+    
         <div class="contact-socials">
           <a href="https://linkedin.com/in/franco-wagenhöfer" class="contact-social-link" target="_blank">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
@@ -1558,6 +1664,10 @@
             francowagenhofer@gmail.com
           </a>
         </div>
+        <a href="cv/CvFrancoWagenhöfer.pdf" class="btn-outline contact-cv-btn" target="_blank" download data-i18n="nav.cv">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Descargar CV
+        </a>
       </div>
 
       <form class="contact-form reveal" action="https://formspree.io/f/TU_FORM_ID" method="POST">
@@ -2216,7 +2326,90 @@ setLang(lang);
 
 document.getElementById('lang-btn' ).addEventListener('click', () => setLang(lang   === 'es' ? 'en' : 'es'));
 document.getElementById('theme-btn').addEventListener('click', () => setTheme(theme === 'light' ? 'dark' : 'light'));
+
+
+
 </script>
 
+
+<!-- ════════════ LIGHTBOX ════════════ -->
+<div class="lightbox" id="lightbox" aria-hidden="true">
+  <button class="lightbox-close" id="lb-close" aria-label="Cerrar">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+  </button>
+  <button class="lightbox-arrow lb-prev" id="lb-prev" aria-label="Anterior">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+  </button>
+  <div class="lightbox-img-wrap">
+    <img id="lb-img" src="" alt="" />
+  </div>
+  <button class="lightbox-arrow lb-next" id="lb-next" aria-label="Siguiente">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+  </button>
+  <div class="lightbox-counter" id="lb-counter"></div>
+</div>
+
+<script>
+/* ═══════════════════════════════════════════════════
+   LIGHTBOX
+═══════════════════════════════════════════════════ */
+(function () {
+  const lb        = document.getElementById('lightbox');
+  const lbImg     = document.getElementById('lb-img');
+  const lbCounter = document.getElementById('lb-counter');
+  let lbImages = [];
+  let lbIndex  = 0;
+
+  function lbOpen(images, index) {
+    lbImages = images;
+    lbIndex  = index;
+    lbImg.src = lbImages[lbIndex];
+    lbCounter.textContent = lbImages.length > 1 ? (lbIndex + 1) + ' / ' + lbImages.length : '';
+    lb.classList.add('open');
+    lb.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function lbClose() {
+    lb.classList.remove('open');
+    lb.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function lbNav(dir) {
+    if (lbImages.length < 2) return;
+    lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+    lbImg.src = lbImages[lbIndex];
+    lbCounter.textContent = (lbIndex + 1) + ' / ' + lbImages.length;
+  }
+
+  // Abrir al click en la imagen del modal
+  document.getElementById('modal-gallery-main').addEventListener('click', function (e) {
+    // ignorar clicks en flechas del modal
+    if (e.target.closest('.gallery-arrow')) return;
+    var proj = PROJECTS[modalIndex];
+    if (!proj || !proj.images || !proj.images[galleryIndex]) return;
+    lbOpen(proj.images, galleryIndex);
+  });
+
+  document.getElementById('lb-close').addEventListener('click', lbClose);
+  document.getElementById('lb-prev').addEventListener('click', function(e){ e.stopPropagation(); lbNav(-1); });
+  document.getElementById('lb-next').addEventListener('click', function(e){ e.stopPropagation(); lbNav(1); });
+
+  // Click en fondo o imagen → cerrar
+  lb.addEventListener('click', function(e){
+    if (e.target === lb) lbClose();
+  });
+  lbImg.addEventListener('click', lbClose);
+
+  // Teclado
+  document.addEventListener('keydown', function(e){
+    if (!lb.classList.contains('open')) return;
+    if (e.key === 'Escape')      lbClose();
+    if (e.key === 'ArrowRight')  lbNav(1);
+    if (e.key === 'ArrowLeft')   lbNav(-1);
+  });
+})();
+</script>
 </body>
 </html>
