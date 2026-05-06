@@ -1,27 +1,37 @@
 <!DOCTYPE html>
 <html lang="es" data-theme="light">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  
+
   <!-- el title esta en js -->
-  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23fafaf8'/%3E%3Ctext x='6' y='22' font-family='Georgia, serif' font-size='16' font-style='italic' font-weight='600' letter-spacing='-1.8' fill='%230a0a0a'%3Efw%3C/text%3E%3Ccircle cx='25' cy='22' r='1.6' fill='%237c3aed'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/svg+xml"
+    href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%23fafaf8'/%3E%3Ctext x='6' y='22' font-family='Georgia, serif' font-size='16' font-style='italic' font-weight='600' letter-spacing='-1.8' fill='%230a0a0a'%3Efw%3C/text%3E%3Ccircle cx='25' cy='22' r='1.6' fill='%237c3aed'/%3E%3C/svg%3E" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap"
+    rel="stylesheet">
 
   <!-- <link rel="stylesheet" href="css/styles.css" /> -->
   <!-- <script src="js/main.js" defer></script> -->
 
-<style>
-  /* ════════════════════════════════════════
+  <style>
+    /* ════════════════════════════════════════
        RESET & TOKENS
     ════════════════════════════════════════ */
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    *,
+    *::before,
+    *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
     :root {
       --violet: #7c3aed;
-      --violet-dim: rgba(124,58,237,.08);
+      --violet-dim: rgba(124, 58, 237, .08);
       --serif: 'DM Serif Display', Georgia, serif;
       --sans: 'DM Sans', system-ui, sans-serif;
       /* light */
@@ -31,10 +41,11 @@
       --border: #d4d4d2;
       --text: #0a0a0a;
       --muted: #666;
-      --nav-bg: rgba(250,250,248,.93);
-      --modal-bg: rgba(250,250,248,.98);
-      --overlay: rgba(10,10,10,.6);
+      --nav-bg: rgba(250, 250, 248, .93);
+      --modal-bg: rgba(250, 250, 248, .98);
+      --overlay: rgba(10, 10, 10, .6);
     }
+
     [data-theme="dark"] {
       --bg: #0e0e0e;
       --surface: #141414;
@@ -42,12 +53,15 @@
       --border: #2a2a2a;
       --text: #f0f0ee;
       --muted: #888;
-      --nav-bg: rgba(14,14,14,.93);
-      --modal-bg: rgba(18,18,18,.99);
-      --overlay: rgba(0,0,0,.75);
+      --nav-bg: rgba(14, 14, 14, .93);
+      --modal-bg: rgba(18, 18, 18, .99);
+      --overlay: rgba(0, 0, 0, .75);
     }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
+
     body {
       font-family: var(--sans);
       background: var(--bg);
@@ -62,7 +76,9 @@
     ════════════════════════════════════════ */
     nav {
       position: fixed;
-      top: 0; left: 0; right: 0;
+      top: 0;
+      left: 0;
+      right: 0;
       z-index: 200;
       display: flex;
       align-items: center;
@@ -73,9 +89,16 @@
       border-bottom: 1px solid transparent;
       transition: border-color .3s, background .35s;
     }
-    nav.scrolled { border-color: var(--border); }
 
-    .nav-left { display: flex; align-items: center; gap: 2.5rem; }
+    nav.scrolled {
+      border-color: var(--border);
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 2.5rem;
+    }
 
     .nav-logo {
       font-family: var(--serif);
@@ -87,14 +110,15 @@
       align-items: center;
       gap: 3px;
     }
-    
+
     .nav-logo-dot {
-      width: 6px; height: 6px;
+      width: 6px;
+      height: 6px;
       background: var(--violet);
       border-radius: 50%;
       flex-shrink: 0;
       margin-bottom: 10px;
-    } 
+    }
 
     .nav-logo-svg {
       width: 52px;
@@ -103,7 +127,12 @@
       flex-shrink: 0;
     }
 
-    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
     .nav-links a {
       text-decoration: none;
       font-size: .8rem;
@@ -113,13 +142,22 @@
       color: var(--muted);
       transition: color .2s;
     }
-    .nav-links a:hover { color: var(--text); }
 
-    .nav-right { display: flex; align-items: center; gap: .55rem; }
+    .nav-links a:hover {
+      color: var(--text);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: .55rem;
+    }
 
     .icon-btn {
       height: 32px;
-      display: flex; align-items: center; justify-content: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: 1.5px solid var(--border);
       border-radius: 2px;
       background: none;
@@ -132,20 +170,35 @@
       font-weight: 500;
       letter-spacing: .08em;
     }
-    .icon-btn:hover { border-color: var(--text); color: var(--text); }
-    .icon-btn svg { width: 14px; height: 14px; }
+
+    .icon-btn:hover {
+      border-color: var(--text);
+      color: var(--text);
+    }
+
+    .icon-btn svg {
+      width: 14px;
+      height: 14px;
+    }
 
     .nav-cv {
-      font-size: .8rem; font-weight: 500;
-      letter-spacing: .06em; text-transform: uppercase;
-      text-decoration: none; color: var(--text);
+      font-size: .8rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      text-decoration: none;
+      color: var(--text);
       border: 1.5px solid var(--text);
       padding: .38rem 1rem;
       border-radius: 2px;
       transition: background .2s, color .2s;
       margin-left: .3rem;
     }
-    .nav-cv:hover { background: var(--text); color: var(--bg); }
+
+    .nav-cv:hover {
+      background: var(--text);
+      color: var(--bg);
+    }
 
     /* ════════════════════════════════════════
        HERO — layout en dos columnas
@@ -157,6 +210,7 @@
       padding: 9rem 4rem 6rem;
       border-bottom: 1px solid var(--border);
     }
+
     .hero-inner {
       max-width: 780px;
       margin: 0 auto;
@@ -179,10 +233,12 @@
       color: var(--muted);
       margin-bottom: 2rem;
     }
+
     .hero-tag::before {
       content: '';
       display: inline-block;
-      width: 18px; height: 1px;
+      width: 18px;
+      height: 1px;
       background: var(--violet);
     }
 
@@ -194,11 +250,16 @@
       color: var(--text);
       margin-bottom: 1.5rem;
     }
-    .hero h1 em { font-style: italic; color: var(--muted); }
+
+    .hero h1 em {
+      font-style: italic;
+      color: var(--muted);
+    }
 
     .hero-accent {
       display: block;
-      width: 44px; height: 2.5px;
+      width: 44px;
+      height: 2.5px;
       background: var(--violet);
       border-radius: 2px;
       margin-bottom: 1.75rem;
@@ -211,35 +272,60 @@
       margin-bottom: 2.5rem;
     }
 
-    .hero-btns { display: flex; gap: .75rem; flex-wrap: wrap; }
+    .hero-btns {
+      display: flex;
+      gap: .75rem;
+      flex-wrap: wrap;
+    }
 
     .btn-fill {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: var(--text); color: var(--bg);
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
+      background: var(--text);
+      color: var(--bg);
       padding: .75rem 1.75rem;
       border-radius: 2px;
-      font-size: .82rem; font-weight: 500;
-      letter-spacing: .06em; text-transform: uppercase;
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
       text-decoration: none;
       border: 1.5px solid var(--text);
       cursor: pointer;
       transition: opacity .2s;
     }
-    .btn-fill:hover { opacity: .75; }
+
+    .btn-fill:hover {
+      opacity: .75;
+    }
 
     .btn-outline {
-      display: inline-flex; align-items: center; gap: .5rem;
+      display: inline-flex;
+      align-items: center;
+      gap: .5rem;
       color: var(--text);
       padding: .75rem 1.75rem;
       border-radius: 2px;
-      font-size: .82rem; font-weight: 500;
-      letter-spacing: .06em; text-transform: uppercase;
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
       text-decoration: none;
       border: 1.5px solid var(--border);
       transition: border-color .2s;
     }
-    .btn-outline:hover { border-color: var(--text); }
-    .btn-outline svg, .btn-fill svg { width: 14px; height: 14px; flex-shrink: 0; }
+
+    .btn-outline:hover {
+      border-color: var(--text);
+    }
+
+    .btn-outline svg,
+    .btn-fill svg {
+      width: 14px;
+      height: 14px;
+      flex-shrink: 0;
+    }
 
     .hero-stat {
       background: var(--surface);
@@ -249,7 +335,10 @@
       gap: .3rem;
       transition: background .2s;
     }
-    .hero-stat:hover { background: var(--surface-alt); }
+
+    .hero-stat:hover {
+      background: var(--surface-alt);
+    }
 
     .hero-stat-label {
       font-size: .7rem;
@@ -258,12 +347,14 @@
       text-transform: uppercase;
       color: var(--muted);
     }
+
     .hero-stat-value {
       font-family: var(--serif);
       font-size: 1.1rem;
       letter-spacing: -.01em;
       color: var(--text);
     }
+
     .hero-stat-value span {
       color: var(--violet);
     }
@@ -275,27 +366,40 @@
       padding: 7rem 4rem;
       position: relative;
     }
+
     /* secciones de proyectos y skills más compactas */
-    #proyectos, #skills {
+    #proyectos,
+    #skills {
       padding-top: 4.5rem;
       padding-bottom: 4.5rem;
     }
+
     /* línea divisora como pseudo-elemento para poder animarla */
     section::after {
       content: '';
       position: absolute;
-      bottom: 0; left: 4rem; right: 4rem;
+      bottom: 0;
+      left: 4rem;
+      right: 4rem;
       height: 1px;
       background: var(--border);
       opacity: 1;
       transition: opacity .6s ease;
     }
+
     section.divider-faded::after {
       opacity: 0;
     }
+
     /* hero ya tiene su propia lógica, no necesita el pseudo */
-    .hero::after { display: none; }
-    .section-inner { max-width: 1200px; margin: 0 auto; }
+    .hero::after {
+      display: none;
+    }
+
+    .section-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
 
     .section-header {
       display: flex;
@@ -303,15 +407,21 @@
       gap: 1.25rem;
       margin-bottom: 3rem;
     }
+
     .section-num {
-      font-size: .7rem; font-weight: 500;
-      letter-spacing: .12em; text-transform: uppercase;
-      color: var(--violet); flex-shrink: 0;
+      font-size: .7rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--violet);
+      flex-shrink: 0;
     }
+
     .section-title {
       font-family: var(--serif);
       font-size: clamp(1.9rem, 3.5vw, 3rem);
-      letter-spacing: -.03em; line-height: 1.1;
+      letter-spacing: -.03em;
+      line-height: 1.1;
       color: var(--text);
     }
 
@@ -337,7 +447,10 @@
       position: relative;
       overflow: hidden;
     }
-    .project-card:hover { border-color: var(--muted); }
+
+    .project-card:hover {
+      border-color: var(--muted);
+    }
 
     /* imagen con overlay en hover */
     .project-card-img {
@@ -348,25 +461,33 @@
       background: var(--surface-alt);
       flex-shrink: 0;
     }
+
     .project-card-img img {
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: cover;
       display: block;
       transition: transform .45s ease;
     }
-    .project-card:hover .project-card-img img { transform: scale(1.04); }
+
+    .project-card:hover .project-card-img img {
+      transform: scale(1.04);
+    }
 
     .project-card-overlay {
       position: absolute;
       inset: 0;
-      background: rgba(10,10,10,.55);
+      background: rgba(10, 10, 10, .55);
       display: flex;
       align-items: center;
       justify-content: center;
       opacity: 0;
       transition: opacity .3s;
     }
-    .project-card:hover .project-card-overlay { opacity: 1; }
+
+    .project-card:hover .project-card-overlay {
+      opacity: 1;
+    }
 
     .project-card-overlay-btn {
       background: var(--bg);
@@ -384,6 +505,7 @@
       transition: transform .3s, opacity .3s;
       opacity: 0;
     }
+
     .project-card:hover .project-card-overlay-btn {
       transform: none;
       opacity: 1;
@@ -391,8 +513,11 @@
     }
 
     .project-card-img-placeholder {
-      width: 100%; aspect-ratio: 16/7;
-      display: flex; align-items: center; justify-content: center;
+      width: 100%;
+      aspect-ratio: 16/7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       background: var(--surface-alt);
       color: var(--border);
       font-size: .68rem;
@@ -416,10 +541,17 @@
       gap: .4rem;
     }
 
-    .project-tags { display: flex; gap: .3rem; flex-wrap: wrap; }
+    .project-tags {
+      display: flex;
+      gap: .3rem;
+      flex-wrap: wrap;
+    }
+
     .tag {
-      font-size: .6rem; font-weight: 500;
-      letter-spacing: .06em; text-transform: uppercase;
+      font-size: .6rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
       padding: .15rem .4rem;
       border: 1px solid var(--border);
       border-radius: 1px;
@@ -428,8 +560,10 @@
 
     /* badge tipo (App web / escritorio) */
     .project-type {
-      font-size: .6rem; font-weight: 500;
-      letter-spacing: .06em; text-transform: uppercase;
+      font-size: .6rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
       color: var(--violet);
       border: 1px solid var(--violet-dim);
       background: var(--violet-dim);
@@ -461,32 +595,57 @@
       border-top: 1px solid var(--border);
     }
 
-    .project-quick-links { display: flex; gap: .6rem; }
+    .project-quick-links {
+      display: flex;
+      gap: .6rem;
+    }
 
     .project-link {
-      font-size: .65rem; font-weight: 500;
-      letter-spacing: .06em; text-transform: uppercase;
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
       text-decoration: none;
       color: var(--muted);
       border-bottom: 1px solid var(--border);
       padding-bottom: 1px;
       transition: color .2s, border-color .2s;
     }
-    .project-link:hover { color: var(--text); border-color: var(--text); }
+
+    .project-link:hover {
+      color: var(--text);
+      border-color: var(--text);
+    }
 
     .btn-vermas {
-      font-size: .65rem; font-weight: 500;
-      letter-spacing: .06em; text-transform: uppercase;
-      background: none; border: none;
+      font-size: .65rem;
+      font-weight: 500;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      background: none;
+      border: none;
       color: var(--text);
       cursor: pointer;
-      display: flex; align-items: center; gap: .25rem;
+      display: flex;
+      align-items: center;
+      gap: .25rem;
       padding: 0;
       transition: opacity .2s;
     }
-    .btn-vermas:hover { opacity: .6; }
-    .btn-vermas svg { width: 11px; height: 11px; transition: transform .2s; }
-    .btn-vermas:hover svg { transform: translateX(3px); }
+
+    .btn-vermas:hover {
+      opacity: .6;
+    }
+
+    .btn-vermas svg {
+      width: 11px;
+      height: 11px;
+      transition: transform .2s;
+    }
+
+    .btn-vermas:hover svg {
+      transform: translateX(3px);
+    }
 
     /* ════════════════════════════════════════
        MODAL DE PROYECTO
@@ -505,6 +664,7 @@
       transition: opacity .3s;
       backdrop-filter: blur(4px);
     }
+
     .project-modal-overlay.open {
       opacity: 1;
       pointer-events: all;
@@ -521,8 +681,9 @@
       display: grid;
       grid-template-columns: 1fr 1fr;
       transform: translateY(20px);
-      transition: transform .35s cubic-bezier(.22,.68,0,1.2);
+      transition: transform .35s cubic-bezier(.22, .68, 0, 1.2);
     }
+
     .project-modal-overlay.open .project-modal {
       transform: none;
     }
@@ -552,13 +713,17 @@
     .modal-gallery-main img {
       position: absolute;
       inset: 0;
-      width: 100%; height: 100%;
+      width: 100%;
+      height: 100%;
       object-fit: contain;
       background: var(--surface);
       transition: opacity .3s;
       cursor: zoom-in;
     }
-    .modal-gallery-main img.fade-out { opacity: 0; }
+
+    .modal-gallery-main img.fade-out {
+      opacity: 0;
+    }
 
     .gallery-arrow {
       position: absolute;
@@ -568,17 +733,35 @@
       background: var(--modal-bg);
       border: 1px solid var(--border);
       border-radius: 2px;
-      width: 28px; height: 28px;
-      display: flex; align-items: center; justify-content: center;
+      width: 28px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       color: var(--text);
       z-index: 2;
       transition: background .2s;
     }
-    .gallery-arrow:hover { background: var(--surface-alt); }
-    .gallery-arrow.prev { left: 50%; margin-left: -32px; }
-    .gallery-arrow.next { left: 50%; margin-left: 4px; }
-    .gallery-arrow svg { width: 13px; height: 13px; }
+
+    .gallery-arrow:hover {
+      background: var(--surface-alt);
+    }
+
+    .gallery-arrow.prev {
+      left: 50%;
+      margin-left: -32px;
+    }
+
+    .gallery-arrow.next {
+      left: 50%;
+      margin-left: 4px;
+    }
+
+    .gallery-arrow svg {
+      width: 13px;
+      height: 13px;
+    }
 
     .modal-gallery-thumbs {
       display: flex;
@@ -589,10 +772,14 @@
       overflow-x: auto;
       scrollbar-width: none;
     }
-    .modal-gallery-thumbs::-webkit-scrollbar { display: none; }
+
+    .modal-gallery-thumbs::-webkit-scrollbar {
+      display: none;
+    }
 
     .gallery-thumb {
-      width: 46px; height: 32px;
+      width: 46px;
+      height: 32px;
       flex-shrink: 0;
       border-radius: 1px;
       overflow: hidden;
@@ -600,10 +787,16 @@
       cursor: pointer;
       transition: border-color .2s;
     }
-    .gallery-thumb.active { border-color: var(--violet); }
+
+    .gallery-thumb.active {
+      border-color: var(--violet);
+    }
+
     .gallery-thumb img {
-      width: 100%; height: 100%;
-      object-fit: cover; display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     /* columna info — scroll independiente */
@@ -626,8 +819,11 @@
     }
 
     .modal-close {
-      width: 30px; height: 30px;
-      display: flex; align-items: center; justify-content: center;
+      width: 30px;
+      height: 30px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       border: 1.5px solid var(--border);
       border-radius: 2px;
       background: none;
@@ -636,8 +832,16 @@
       flex-shrink: 0;
       transition: color .2s, border-color .2s;
     }
-    .modal-close:hover { color: var(--text); border-color: var(--text); }
-    .modal-close svg { width: 14px; height: 14px; }
+
+    .modal-close:hover {
+      color: var(--text);
+      border-color: var(--text);
+    }
+
+    .modal-close svg {
+      width: 14px;
+      height: 14px;
+    }
 
     .modal-title {
       font-family: var(--serif);
@@ -648,20 +852,25 @@
     }
 
     .modal-type {
-      font-size: .68rem; font-weight: 500;
-      letter-spacing: .1em; text-transform: uppercase;
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
       color: var(--violet);
     }
 
     .modal-divider {
-      width: 100%; height: 1px;
+      width: 100%;
+      height: 1px;
       background: var(--border);
       border: none;
     }
 
     .modal-section-label {
-      font-size: .68rem; font-weight: 500;
-      letter-spacing: .12em; text-transform: uppercase;
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
       color: var(--muted);
       margin-bottom: .6rem;
     }
@@ -671,16 +880,25 @@
       color: var(--muted);
       line-height: 1.75;
     }
-    .modal-desc p + p { margin-top: .75rem; }
-    .modal-desc strong { color: var(--text); font-weight: 500; }
+
+    .modal-desc p+p {
+      margin-top: .75rem;
+    }
+
+    .modal-desc strong {
+      color: var(--text);
+      font-weight: 500;
+    }
 
     .modal-chips {
       display: flex;
       flex-wrap: wrap;
       gap: .35rem;
     }
+
     .modal-chip {
-      font-size: .72rem; font-weight: 500;
+      font-size: .72rem;
+      font-weight: 500;
       letter-spacing: .05em;
       padding: .28rem .65rem;
       border: 1px solid var(--border);
@@ -696,10 +914,13 @@
     }
 
     .modal-detail-label {
-      font-size: .67rem; font-weight: 500;
-      letter-spacing: .1em; text-transform: uppercase;
+      font-size: .67rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
       color: var(--muted);
     }
+
     .modal-detail-value {
       font-size: .88rem;
       color: var(--text);
@@ -716,32 +937,55 @@
     }
 
     .modal-btn-fill {
-      display: inline-flex; align-items: center; gap: .4rem;
-      background: var(--text); color: var(--bg);
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: var(--text);
+      color: var(--bg);
       border: 1.5px solid var(--text);
       padding: .55rem 1.25rem;
       border-radius: 2px;
       font-family: var(--sans);
-      font-size: .75rem; font-weight: 500;
-      letter-spacing: .07em; text-transform: uppercase;
-      text-decoration: none; cursor: pointer;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
       transition: opacity .2s;
     }
-    .modal-btn-fill:hover { opacity: .72; }
+
+    .modal-btn-fill:hover {
+      opacity: .72;
+    }
+
     .modal-btn-outline {
-      display: inline-flex; align-items: center; gap: .4rem;
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
       color: var(--text);
       border: 1.5px solid var(--border);
       padding: .55rem 1.25rem;
       border-radius: 2px;
       font-family: var(--sans);
-      font-size: .75rem; font-weight: 500;
-      letter-spacing: .07em; text-transform: uppercase;
-      text-decoration: none; cursor: pointer;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .07em;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
       transition: border-color .2s;
     }
-    .modal-btn-outline:hover { border-color: var(--text); }
-    .modal-btn-fill svg, .modal-btn-outline svg { width: 13px; height: 13px; }
+
+    .modal-btn-outline:hover {
+      border-color: var(--text);
+    }
+
+    .modal-btn-fill svg,
+    .modal-btn-outline svg {
+      width: 13px;
+      height: 13px;
+    }
 
     /* nav entre proyectos en modal */
     .modal-nav {
@@ -750,19 +994,35 @@
       justify-content: space-between;
       padding-top: 1rem;
     }
+
     .modal-nav-btn {
-      background: none; border: none; cursor: pointer;
+      background: none;
+      border: none;
+      cursor: pointer;
       font-family: var(--sans);
-      font-size: .72rem; font-weight: 500;
-      letter-spacing: .08em; text-transform: uppercase;
+      font-size: .72rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
       color: var(--muted);
-      display: flex; align-items: center; gap: .35rem;
+      display: flex;
+      align-items: center;
+      gap: .35rem;
       transition: color .2s;
     }
-    .modal-nav-btn:hover { color: var(--text); }
-    .modal-nav-btn svg { width: 13px; height: 13px; }
+
+    .modal-nav-btn:hover {
+      color: var(--text);
+    }
+
+    .modal-nav-btn svg {
+      width: 13px;
+      height: 13px;
+    }
+
     .modal-nav-counter {
-      font-size: .72rem; color: var(--muted);
+      font-size: .72rem;
+      color: var(--muted);
       letter-spacing: .06em;
     }
 
@@ -783,15 +1043,21 @@
     }
 
     .skill-group-label {
-      font-size: .68rem; font-weight: 500;
-      letter-spacing: .14em; text-transform: uppercase;
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .14em;
+      text-transform: uppercase;
       color: var(--violet);
       margin-bottom: 1.75rem;
-      display: flex; align-items: center; gap: .5rem;
+      display: flex;
+      align-items: center;
+      gap: .5rem;
     }
+
     .skill-group-label::after {
       content: '';
-      flex: 1; height: 1px;
+      flex: 1;
+      height: 1px;
       background: var(--border);
     }
 
@@ -811,17 +1077,22 @@
       transition: background .2s, border-color .2s;
       cursor: default;
     }
+
     .skill-item:hover {
       background: var(--surface-alt);
       border-color: var(--border);
     }
 
     .skill-icon {
-      width: 22px; height: 22px;
-      flex-shrink: 0; object-fit: contain;
+      width: 22px;
+      height: 22px;
+      flex-shrink: 0;
+      object-fit: contain;
     }
+
     .skill-name {
-      font-size: .85rem; color: var(--text);
+      font-size: .85rem;
+      color: var(--text);
       white-space: nowrap;
     }
 
@@ -834,10 +1105,23 @@
       gap: 6rem;
       align-items: start;
     }
-    .about-text p { font-size: 1rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.5rem; }
-    .about-text p:last-child { margin-bottom: 0; }
 
-    .about-details { display: flex; flex-direction: column; }
+    .about-text p {
+      font-size: 1rem;
+      color: var(--muted);
+      line-height: 1.85;
+      margin-bottom: 1.5rem;
+    }
+
+    .about-text p:last-child {
+      margin-bottom: 0;
+    }
+
+    .about-details {
+      display: flex;
+      flex-direction: column;
+    }
+
     .about-detail-item {
       padding: 1.25rem 0;
       border-bottom: 1px solid var(--border);
@@ -846,69 +1130,151 @@
       gap: 1rem;
       align-items: baseline;
     }
-    .about-detail-item:first-child { padding-top: 0; }
-    .about-detail-item:last-child { border-bottom: none; }
+
+    .about-detail-item:first-child {
+      padding-top: 0;
+    }
+
+    .about-detail-item:last-child {
+      border-bottom: none;
+    }
 
     .about-detail-label {
-      font-size: .68rem; font-weight: 500;
-      letter-spacing: .12em; text-transform: uppercase;
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
       color: var(--muted);
     }
-    .about-detail-value { font-size: .92rem; color: var(--text); }
+
+    .about-detail-value {
+      font-size: .92rem;
+      color: var(--text);
+    }
 
     /* ════════════════════════════════════════
        CONTACT
     ════════════════════════════════════════ */
-    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 6rem;
+    }
 
     .contact-text h3 {
       font-family: var(--serif);
-      font-size: 1.9rem; letter-spacing: -.03em;
-      margin-bottom: .9rem; color: var(--text);
+      font-size: 1.9rem;
+      letter-spacing: -.03em;
+      margin-bottom: .9rem;
+      color: var(--text);
     }
-    .contact-text p { color: var(--muted); font-size: .95rem; line-height: 1.75; margin-bottom: 2rem; }
 
-    .contact-socials { display: flex; flex-direction: column; }
+    .contact-text p {
+      color: var(--muted);
+      font-size: .95rem;
+      line-height: 1.75;
+      margin-bottom: 2rem;
+    }
+
+    .contact-socials {
+      display: flex;
+      flex-direction: column;
+    }
+
     .contact-social-link {
-      display: flex; align-items: center; gap: .75rem;
-      text-decoration: none; color: var(--text);
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      text-decoration: none;
+      color: var(--text);
       font-size: .87rem;
       padding: .9rem 0;
       border-bottom: 1px solid var(--border);
       transition: gap .2s, color .2s;
     }
-    .contact-social-link:hover { gap: 1.1rem; color: var(--violet); }
-    .contact-social-link svg { width: 16px; height: 16px; flex-shrink: 0; }
 
-    .contact-form { display: flex; flex-direction: column; gap: 1.5rem; }
-    .form-field { display: flex; flex-direction: column; gap: .45rem; }
+    .contact-social-link:hover {
+      gap: 1.1rem;
+      color: var(--violet);
+    }
+
+    .contact-social-link svg {
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .form-field {
+      display: flex;
+      flex-direction: column;
+      gap: .45rem;
+    }
+
     .form-field label {
-      font-size: .68rem; font-weight: 500;
-      letter-spacing: .1em; text-transform: uppercase;
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
       color: var(--muted);
     }
-    .form-field input, .form-field textarea {
-      font-family: var(--sans); font-size: .92rem;
-      color: var(--text); background: transparent;
-      border: none; border-bottom: 1.5px solid var(--border);
-      padding: .55rem 0; outline: none;
-      transition: border-color .2s; resize: none;
+
+    .form-field input,
+    .form-field textarea {
+      font-family: var(--sans);
+      font-size: .92rem;
+      color: var(--text);
+      background: transparent;
+      border: none;
+      border-bottom: 1.5px solid var(--border);
+      padding: .55rem 0;
+      outline: none;
+      transition: border-color .2s;
+      resize: none;
     }
-    .form-field input:focus, .form-field textarea:focus { border-color: var(--violet); }
-    .form-field textarea { min-height: 95px; }
+
+    .form-field input:focus,
+    .form-field textarea:focus {
+      border-color: var(--violet);
+    }
+
+    .form-field textarea {
+      min-height: 95px;
+    }
+
     .form-submit {
-      display: inline-block; background: var(--text); color: var(--bg);
-      padding: .8rem 2.25rem; border: none; border-radius: 2px;
-      font-family: var(--sans); font-size: .82rem; font-weight: 500;
-      letter-spacing: .08em; text-transform: uppercase;
-      cursor: pointer; transition: opacity .2s; align-self: flex-start;
+      display: inline-block;
+      background: var(--text);
+      color: var(--bg);
+      padding: .8rem 2.25rem;
+      border: none;
+      border-radius: 2px;
+      font-family: var(--sans);
+      font-size: .82rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: opacity .2s;
+      align-self: flex-start;
     }
-    .form-submit:hover { opacity: .72; }
+
+    .form-submit:hover {
+      opacity: .72;
+    }
 
     /* ════════════════════════════════════════
        EXPERIENCIA — timeline
     ════════════════════════════════════════ */
-    .exp-timeline { display: flex; flex-direction: column; }
+    .exp-timeline {
+      display: flex;
+      flex-direction: column;
+    }
 
     .exp-item {
       display: grid;
@@ -916,63 +1282,119 @@
       gap: 0 2.5rem;
       padding-bottom: 3.5rem;
     }
-    .exp-item:last-child { padding-bottom: 0; }
+
+    .exp-item:last-child {
+      padding-bottom: 0;
+    }
 
     .exp-date {
-      display: flex; flex-direction: column;
-      align-items: flex-end; padding-top: .1rem; gap: .2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      padding-top: .1rem;
+      gap: .2rem;
     }
+
     .exp-year {
-      font-family: var(--serif); font-size: 1.15rem;
-      letter-spacing: -.02em; color: var(--text); line-height: 1;
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      letter-spacing: -.02em;
+      color: var(--text);
+      line-height: 1;
     }
+
     .exp-period {
-      font-size: .68rem; font-weight: 500;
-      letter-spacing: .08em; text-transform: uppercase; color: var(--violet);
+      font-size: .68rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--violet);
     }
 
     .exp-line-col {
-      display: flex; flex-direction: column; align-items: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .exp-dot {
-      width: 9px; height: 9px; border-radius: 50%;
-      background: var(--violet); flex-shrink: 0; margin-top: .18rem;
-    }
-    .exp-vline {
-      width: 1px; flex: 1; background: var(--border); margin-top: .4rem;
-    }
-    .exp-item:last-child .exp-vline { display: none; }
 
-    .exp-content { display: flex; flex-direction: column; gap: .8rem; }
+    .exp-dot {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: var(--violet);
+      flex-shrink: 0;
+      margin-top: .18rem;
+    }
+
+    .exp-vline {
+      width: 1px;
+      flex: 1;
+      background: var(--border);
+      margin-top: .4rem;
+    }
+
+    .exp-item:last-child .exp-vline {
+      display: none;
+    }
+
+    .exp-content {
+      display: flex;
+      flex-direction: column;
+      gap: .8rem;
+    }
+
     .exp-role {
-      font-family: var(--serif); font-size: 1.25rem;
-      letter-spacing: -.02em; color: var(--text); line-height: 1.2;
+      font-family: var(--serif);
+      font-size: 1.25rem;
+      letter-spacing: -.02em;
+      color: var(--text);
+      line-height: 1.2;
     }
+
     .exp-company {
-      font-size: .75rem; font-weight: 500;
-      letter-spacing: .08em; text-transform: uppercase;
-      color: var(--muted); margin-top: -.4rem;
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--muted);
+      margin-top: -.4rem;
     }
+
     .exp-desc {
-      font-size: .92rem; color: var(--muted);
-      line-height: 1.78; max-width: 540px;
+      font-size: .92rem;
+      color: var(--muted);
+      line-height: 1.78;
+      max-width: 540px;
     }
-    .exp-tags { display: flex; gap: .35rem; flex-wrap: wrap; }
+
+    .exp-tags {
+      display: flex;
+      gap: .35rem;
+      flex-wrap: wrap;
+    }
 
     /* ════════════════════════════════════════
        FOOTER
     ════════════════════════════════════════ */
     footer {
       padding: 2.25rem 4rem;
-      display: flex; align-items: center; justify-content: space-between;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
     }
-    .footer-left, .footer-right { font-size: .78rem; color: var(--muted); }
+
+    .footer-left,
+    .footer-right {
+      font-size: .78rem;
+      color: var(--muted);
+    }
 
     /* ════════════════════════════════════════
        HERO GRADIENT CANVAS
     ════════════════════════════════════════ */
     .hero {
-      position: relative; /* needed for canvas positioning */
+      position: relative;
+      /* needed for canvas positioning */
       overflow: hidden;
     }
 
@@ -981,8 +1403,10 @@
       inset: 0;
       width: 100%;
       height: 100%;
-      z-index: 0;               /* behind all hero content */
-      pointer-events: none;     /* never intercept clicks */
+      z-index: 0;
+      /* behind all hero content */
+      pointer-events: none;
+      /* never intercept clicks */
       display: block;
     }
 
@@ -993,17 +1417,23 @@
     }
 
     /* hero ya tiene ::after para el canvas mask — no necesita línea */
-    .hero { border-bottom: none; }
+    .hero {
+      border-bottom: none;
+    }
+
     .hero::after {
       /* overrides the section::after divider rule — canvas mask goes here */
       content: '';
       position: absolute;
-      bottom: 0; left: 0; right: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
       height: 160px;
       background: linear-gradient(to bottom, transparent, var(--bg));
       z-index: 2;
       pointer-events: none;
-      opacity: 1 !important; /* never fade this one */
+      opacity: 1 !important;
+      /* never fade this one */
     }
 
     /* ════════════════════════════════════════
@@ -1014,29 +1444,68 @@
       transform: translateY(20px);
       transition: opacity .65s ease, transform .65s ease;
     }
-    .reveal.visible { opacity: 1; transform: none; }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
 
     /* ════════════════════════════════════════
        RESPONSIVE
     ════════════════════════════════════════ */
     @media (max-width: 900px) {
-      nav { padding: 1.2rem 1.5rem; }
-      .nav-links { display: none; }
-      .hero { padding: 7rem 1.5rem 4rem; }
+      nav {
+        padding: 1.2rem 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        padding: 7rem 1.5rem 4rem;
+      }
+
       /* hero-inner ya es flex columna, no necesita override */
-      section { padding: 5rem 1.5rem; }
-      .projects-grid { grid-template-columns: 1fr; }
-      .skills-grid { grid-template-columns: 1fr; }
-      .about-grid { grid-template-columns: 1fr; gap: 3rem; }
-      .contact-grid { grid-template-columns: 1fr; gap: 3rem; }
-      footer { padding: 2rem 1.5rem; flex-direction: column; gap: .4rem; text-align: center; }
-      .nav-cv { display: none; }
+      section {
+        padding: 5rem 1.5rem;
+      }
+
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+        gap: 3rem;
+      }
+
+      footer {
+        padding: 2rem 1.5rem;
+        flex-direction: column;
+        gap: .4rem;
+        text-align: center;
+      }
+
+      .nav-cv {
+        display: none;
+      }
 
       .project-modal {
         grid-template-columns: 1fr;
         max-width: 500px;
         max-height: 88vh;
       }
+
       .modal-gallery {
         position: static;
         height: 200px;
@@ -1048,7 +1517,7 @@
       position: fixed;
       inset: 0;
       z-index: 400;
-      background: rgba(0,0,0,.88);
+      background: rgba(0, 0, 0, .88);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -1056,10 +1525,12 @@
       pointer-events: none;
       transition: opacity .22s ease;
     }
+
     .lightbox.open {
       opacity: 1;
       pointer-events: all;
     }
+
     .lightbox-img-wrap {
       position: relative;
       max-width: 92vw;
@@ -1068,57 +1539,92 @@
       align-items: center;
       justify-content: center;
     }
+
     .lightbox-img-wrap img {
       display: block;
       max-width: 92vw;
       max-height: 88vh;
       object-fit: contain;
       border-radius: 2px;
-      box-shadow: 0 12px 60px rgba(0,0,0,.7);
+      box-shadow: 0 12px 60px rgba(0, 0, 0, .7);
       transform: scale(.96);
-      transition: transform .25s cubic-bezier(.22,.68,0,1.2);
+      transition: transform .25s cubic-bezier(.22, .68, 0, 1.2);
       cursor: zoom-out;
       user-select: none;
     }
+
     .lightbox.open .lightbox-img-wrap img {
       transform: scale(1);
     }
+
     .lightbox-close {
       position: fixed;
-      top: 1.1rem; right: 1.1rem;
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.22);
+      top: 1.1rem;
+      right: 1.1rem;
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .22);
       border-radius: 2px;
       color: #fff;
-      width: 32px; height: 32px;
-      display: flex; align-items: center; justify-content: center;
+      width: 32px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       transition: background .18s;
       z-index: 401;
     }
-    .lightbox-close:hover { background: rgba(255,255,255,.18); }
-    .lightbox-close svg { width: 14px; height: 14px; }
+
+    .lightbox-close:hover {
+      background: rgba(255, 255, 255, .18);
+    }
+
+    .lightbox-close svg {
+      width: 14px;
+      height: 14px;
+    }
+
     .lightbox-arrow {
       position: fixed;
-      top: 50%; transform: translateY(-50%);
-      background: rgba(255,255,255,.08);
-      border: 1px solid rgba(255,255,255,.22);
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, .08);
+      border: 1px solid rgba(255, 255, 255, .22);
       border-radius: 2px;
       color: #fff;
-      width: 36px; height: 36px;
-      display: flex; align-items: center; justify-content: center;
+      width: 36px;
+      height: 36px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       cursor: pointer;
       transition: background .18s;
       z-index: 401;
     }
-    .lightbox-arrow:hover { background: rgba(255,255,255,.18); }
-    .lightbox-arrow.lb-prev { left: 1.1rem; }
-    .lightbox-arrow.lb-next { right: 1.1rem; }
-    .lightbox-arrow svg { width: 16px; height: 16px; }
+
+    .lightbox-arrow:hover {
+      background: rgba(255, 255, 255, .18);
+    }
+
+    .lightbox-arrow.lb-prev {
+      left: 1.1rem;
+    }
+
+    .lightbox-arrow.lb-next {
+      right: 1.1rem;
+    }
+
+    .lightbox-arrow svg {
+      width: 16px;
+      height: 16px;
+    }
+
     .lightbox-counter {
       position: fixed;
-      bottom: 1.1rem; left: 50%; transform: translateX(-50%);
-      color: rgba(255,255,255,.45);
+      bottom: 1.1rem;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(255, 255, 255, .45);
       font-size: .72rem;
       letter-spacing: .1em;
       font-family: var(--mono, monospace);
@@ -1143,84 +1649,111 @@
       transition: border-color .2s, background .2s, color .2s;
       align-self: flex-start;
     }
-    .contact-cv-btn:hover { border-color: var(--text); background: var(--text); color: var(--bg); }
-    .contact-cv-btn svg { width: 13px; height: 13px; flex-shrink: 0; }
 
-</style>
+    .contact-cv-btn:hover {
+      border-color: var(--text);
+      background: var(--text);
+      color: var(--bg);
+    }
+
+    .contact-cv-btn svg {
+      width: 13px;
+      height: 13px;
+      flex-shrink: 0;
+    }
+  </style>
 
 </head>
+
 <body>
 
-<!-- ════════════ NAV ════════════ -->
-<nav id="navbar">         
-  <div class="nav-left">
-    
-    <a href="#home" class="nav-logo" aria-label="Ir al inicio">
-      <svg id="nav-logo-svg" class="nav-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img" aria-label="FW">
-        <rect width="32" height="32" rx="7" fill="#fafaf8"/>
-        <text x="6" y="22"
-          font-family="Georgia, serif"
-          font-size="16"
-          font-style="italic"
-          font-weight="600"
-          letter-spacing="-1.8"
-          fill="#0a0a0a">fw</text>
-        <circle cx="25" cy="22" r="1.6" fill="#7c3aed"/>
-      </svg>
-    </a>
+  <!-- ════════════ NAV ════════════ -->
+  <nav id="navbar">
+    <div class="nav-left">
 
-    <ul class="nav-links">
-      <!-- <li><a href="#experiencia" data-i18n="nav.experience">Experiencia</a></li> -->
-      <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
-      <li><a href="#skills"    data-i18n="nav.skills">Tecnologías</a></li>
-      <li><a href="#about"     data-i18n="nav.about">Sobre mí</a></li>
-      <li><a href="#contact"   data-i18n="nav.contact">Contacto</a></li>
-    </ul>
-  </div>
-  <div class="nav-right">
-    <button class="icon-btn" id="lang-btn" aria-label="Cambiar idioma">
-      <span id="lang-label">EN</span>
-    </button>
-    <button class="icon-btn" id="theme-btn" aria-label="Cambiar tema">
-      <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      <svg id="icon-sun"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" style="display:none"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-    </button>
-    <a href="cv/CvFrancoWagenhöfer.pdf" class="nav-cv" target="_blank" data-i18n="nav.cv">Descargar CV</a>
-  </div>
-</nav>
+      <a href="#home" class="nav-logo" aria-label="Ir al inicio">
+        <svg id="nav-logo-svg" class="nav-logo-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" role="img"
+          aria-label="FW">
+          <rect width="32" height="32" rx="7" fill="#fafaf8" />
+          <text x="6" y="22" font-family="Georgia, serif" font-size="16" font-style="italic" font-weight="600"
+            letter-spacing="-1.8" fill="#0a0a0a">fw</text>
+          <circle cx="25" cy="22" r="1.6" fill="#7c3aed" />
+        </svg>
+      </a>
 
-<!-- ════════════ HERO ════════════ -->
-<section class="hero" id="home">
-  <canvas id="hero-canvas" aria-hidden="true"></canvas>
-  <div class="hero-inner">
-
-    <!-- Izquierda: copy + botones -->
-    <div class="hero-left">
-      <span class="hero-tag" data-i18n="hero.tag">Desarrollador .NET · Buenos Aires, Argentina</span>
-      <h1>Franco<br><em>Wagenhöfer</em></h1>
-      <span class="hero-accent"></span>
-      <p class="hero-desc" data-i18n="hero.desc">
-        Desarrollo aplicaciones web y de escritorio, y soluciones de gestión de datos con C# .NET y SQL Server. Formado en la UTN, con foco en código limpio y resolución de problemas reales.      </p>
-      <div class="hero-btns">
-        <!-- Botón principal → contacto -->
-        <a href="#contact" class="btn-fill" data-i18n="hero.ctaContact">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          Contactar
-        </a>
-        <!-- LinkedIn -->
-        <a href="https://linkedin.com/in/franco-wagenhöfer" target="_blank" rel="noopener noreferrer" class="btn-outline">
-          LinkedIn
-        </a>
-        <!-- Github -->
-        <a href="https://github.com/francowagenhofer" target="_blank" rel="noopener noreferrer" class="btn-outline" data-i18n="header.github">GitHub</a>
-      </div>
+      <ul class="nav-links">
+        <!-- <li><a href="#experiencia" data-i18n="nav.experience">Experiencia</a></li> -->
+        <li><a href="#proyectos" data-i18n="nav.projects">Proyectos</a></li>
+        <li><a href="#skills" data-i18n="nav.skills">Tecnologías</a></li>
+        <li><a href="#about" data-i18n="nav.about">Sobre mí</a></li>
+        <li><a href="#contact" data-i18n="nav.contact">Contacto</a></li>
+      </ul>
     </div>
+    <div class="nav-right">
+      <button class="icon-btn" id="lang-btn" aria-label="Cambiar idioma">
+        <span id="lang-label">EN</span>
+      </button>
+      <button class="icon-btn" id="theme-btn" aria-label="Cambiar tema">
+        <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
+        </svg>
+        <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+          stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <circle cx="12" cy="12" r="5" />
+          <line x1="12" y1="1" x2="12" y2="3" />
+          <line x1="12" y1="21" x2="12" y2="23" />
+          <line x1="4.22" y1="4.22" x2="5.64" y2="5.64" />
+          <line x1="18.36" y1="18.36" x2="19.78" y2="19.78" />
+          <line x1="1" y1="12" x2="3" y2="12" />
+          <line x1="21" y1="12" x2="23" y2="12" />
+          <line x1="4.22" y1="19.78" x2="5.64" y2="18.36" />
+          <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
+        </svg>
+      </button>
+      <a href="cv/CvFrancoWagenhöfer.pdf" class="nav-cv" target="_blank" data-i18n="nav.cv">Descargar CV</a>
+    </div>
+  </nav>
 
-  </div>
-</section>
+  <!-- ════════════ HERO ════════════ -->
+  <section class="hero" id="home">
+    <canvas id="hero-canvas" aria-hidden="true"></canvas>
+    <div class="hero-inner">
 
-<!-- ════════════ EXPERIENCIA ════════════ -->
-<!-- <section id="experiencia">
+      <!-- Izquierda: copy + botones -->
+      <div class="hero-left">
+        <span class="hero-tag" data-i18n="hero.tag">Desarrollador .NET · Buenos Aires, Argentina</span>
+        <h1>Franco<br><em>Wagenhöfer</em></h1>
+        <span class="hero-accent"></span>
+        <p class="hero-desc" data-i18n="hero.desc">
+          Desarrollo aplicaciones web y de escritorio, y soluciones de gestión de datos con C# .NET y SQL Server.
+          Formado en la UTN, con foco en código limpio y resolución de problemas reales. </p>
+        <div class="hero-btns">
+          <!-- Botón principal → contacto -->
+          <a href="#contact" class="btn-fill" data-i18n="hero.ctaContact">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+              <polyline points="22,6 12,13 2,6" />
+            </svg>
+            Contactar
+          </a>
+          <!-- LinkedIn -->
+          <a href="https://linkedin.com/in/franco-wagenhöfer" target="_blank" rel="noopener noreferrer"
+            class="btn-outline">
+            LinkedIn
+          </a>
+          <!-- Github -->
+          <a href="https://github.com/francowagenhofer" target="_blank" rel="noopener noreferrer" class="btn-outline"
+            data-i18n="header.github">GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ════════════ EXPERIENCIA ════════════ -->
+  <!-- <section id="experiencia">
   <div class="section-inner">
     <div class="section-header reveal">
       <span class="section-num">00</span>
@@ -1251,456 +1784,534 @@
   </div>
 </section> -->
 
-<!-- ════════════ PROYECTOS ════════════ -->
-<section id="proyectos">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-num">01</span>
-      <h2 class="section-title" data-i18n="projects.title">Proyectos<br>destacados</h2>
+  <!-- ════════════ PROYECTOS ════════════ -->
+  <section id="proyectos">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <span class="section-num">01</span>
+        <h2 class="section-title" data-i18n="projects.title">Proyectos<br>destacados</h2>
+      </div>
+
+      <div class="projects-grid" id="projects-grid">
+
+        <!-- PROYECTO 1 — .MovieApp -->
+        <div class="project-card reveal" data-project="0">
+          <div class="project-card-img">
+            <img src="assets/Imagenes/MovieApp/home.webp" alt=".MovieApp"
+              onerror="this.parentElement.innerHTML='<div class=&quot;project-card-img-placeholder&quot;>Screenshot próximamente</div>'" />
+            <div class="project-card-overlay">
+              <button class="project-card-overlay-btn" data-open="0" data-i18n="projects.viewDetail">Ver
+                detalle</button>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-card-meta">
+              <div class="project-tags">
+                <span class="tag">C#</span>
+                <span class="tag">ASP.NET MVC</span>
+                <span class="tag">SQL Server</span>
+              </div>
+              <span class="project-type" data-i18n="projects.p1.type">App web</span>
+            </div>
+            <h3 class="project-name">.MovieApp</h3>
+            <p class="project-desc-short" data-i18n="projects.p1.desc">
+              Catálogo de películas con sistema de reseñas, favoritos, calificaciones y autenticación por roles.
+            </p>
+            <div class="project-card-footer">
+              <div class="project-quick-links">
+                <a href="https://github.com/francowagenhofer/movieapp-mvc-dotnet" class="project-link" target="_blank"
+                  data-i18n="projects.code">Ver código</a>
+              </div>
+              <button class="btn-vermas" data-open="0">
+                <span data-i18n="projects.viewDetail">Ver detalle</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROYECTO 2 — CatálogoWeb -->
+        <div class="project-card reveal" data-project="1">
+          <div class="project-card-img">
+            <img src="assets/Imagenes/CatalogoWeb/CatalogoWeb.webp" alt="CatálogoWeb"
+              onerror="this.parentElement.innerHTML='<div class=&quot;project-card-img-placeholder&quot;>Screenshot próximamente</div>'" />
+            <div class="project-card-overlay">
+              <button class="project-card-overlay-btn" data-open="1" data-i18n="projects.viewDetail">Ver
+                detalle</button>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-card-meta">
+              <div class="project-tags">
+                <span class="tag">C#</span>
+                <span class="tag">Web Forms</span>
+                <span class="tag">SQL Server</span>
+              </div>
+              <span class="project-type" data-i18n="projects.p2.type">App web</span>
+            </div>
+            <h3 class="project-name">Catálogo de Artículos</h3>
+            <p class="project-desc-short" data-i18n="projects.p2.desc">
+              Plataforma para administrar y filtrar productos con control de acceso y roles diferenciados. Deployada
+              online.
+            </p>
+            <div class="project-card-footer">
+              <div class="project-quick-links">
+                <a href="http://webcatalog.somee.com/" class="project-link" target="_blank"
+                  data-i18n="projects.demo">Sitio web</a>
+                <a href="https://github.com/francowagenhofer/tp-final-nivel3-Wagenhofer-Franco.git" class="project-link"
+                  target="_blank" data-i18n="projects.code">Ver código</a>
+              </div>
+              <button class="btn-vermas" data-open="1">
+                <span data-i18n="projects.viewDetail">Ver detalle</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROYECTO 3 — Gestor Pyme -->
+        <div class="project-card reveal" data-project="2">
+          <div class="project-card-img">
+            <img src="assets/Imagenes/GestorEmpleados/MenuEscritorio.webp" alt="Gestor Pyme"
+              onerror="this.parentElement.innerHTML='<div class=&quot;project-card-img-placeholder&quot;>Screenshot próximamente</div>'" />
+            <div class="project-card-overlay">
+              <button class="project-card-overlay-btn" data-open="2" data-i18n="projects.viewDetail">Ver
+                detalle</button>
+            </div>
+          </div>
+          <div class="project-card-body">
+            <div class="project-card-meta">
+              <div class="project-tags">
+                <span class="tag">C#</span>
+                <span class="tag">WinForms</span>
+                <span class="tag">SQL Server</span>
+                <span class="tag">SQLite</span>
+              </div>
+              <span class="project-type" data-i18n="projects.p3.type">App escritorio</span>
+            </div>
+            <h3 class="project-name">Gestor Pyme</h3>
+            <p class="project-desc-short" data-i18n="projects.p3.desc">
+              Gestión integral de empleados, proyectos y sueldos para PyMEs. Versiones SQLite y SQL Server disponibles.
+            </p>
+            <div class="project-card-footer">
+
+              <div class="project-quick-links">
+                <a href="https://github.com/francowagenhofer/Gestion-Pyme-SQLite/releases/download/v1.0.0/AppGestionPyme_Portable.zip"
+                  class="project-link" target="_blank" data-i18n="projects.download">Descargar app</a>
+                <a href="https://github.com/francowagenhofer/app-gestion-empleados-csharp" class="project-link"
+                  target="_blank" data-i18n="projects.code">Ver código</a>
+              </div>
+              <button class="btn-vermas" data-open="2">
+                <span data-i18n="projects.viewDetail">Ver detalle</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                  <polyline points="12 5 19 12 12 19" />
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+
+
+
+      </div>
     </div>
+  </section>
 
-    <div class="projects-grid" id="projects-grid">
+  <!-- ════════════ MODAL DE PROYECTO ════════════ -->
+  <div class="project-modal-overlay" id="project-modal-overlay" role="dialog" aria-modal="true">
+    <div class="project-modal" id="project-modal">
 
-      <!-- PROYECTO 1 — .MovieApp -->
-      <div class="project-card reveal" data-project="0">
-        <div class="project-card-img">
-          <img src="assets/Imagenes/MovieApp/home.webp" alt=".MovieApp"
-               onerror="this.parentElement.innerHTML='<div class=&quot;project-card-img-placeholder&quot;>Screenshot próximamente</div>'" />
-          <div class="project-card-overlay">
-            <button class="project-card-overlay-btn" data-open="0" data-i18n="projects.viewDetail">Ver detalle</button>
-          </div>
+      <!-- columna galería -->
+      <div class="modal-gallery">
+        <div class="modal-gallery-main" id="modal-gallery-main">
+          <img id="modal-gallery-img" src="" alt="" />
+          <button class="gallery-arrow prev" id="gallery-prev" aria-label="Anterior">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+          </button>
+          <button class="gallery-arrow next" id="gallery-next" aria-label="Siguiente">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
         </div>
-        <div class="project-card-body">
-          <div class="project-card-meta">
-            <div class="project-tags">
-              <span class="tag">C#</span>
-              <span class="tag">ASP.NET MVC</span>
-              <span class="tag">SQL Server</span>
-            </div>
-            <span class="project-type" data-i18n="projects.p1.type">App web</span>
-          </div>
-          <h3 class="project-name">.MovieApp</h3>
-          <p class="project-desc-short" data-i18n="projects.p1.desc">
-            Catálogo de películas con sistema de reseñas, favoritos, calificaciones y autenticación por roles.
-          </p>
-          <div class="project-card-footer">
-            <div class="project-quick-links">
-              <a href="https://github.com/francowagenhofer/movieapp-mvc-dotnet" class="project-link" target="_blank" data-i18n="projects.code">Ver código</a>
-            </div>
-            <button class="btn-vermas" data-open="0">
-              <span data-i18n="projects.viewDetail">Ver detalle</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </button>
-          </div>
-        </div>
+        <div class="modal-gallery-thumbs" id="modal-gallery-thumbs"></div>
       </div>
 
-      <!-- PROYECTO 2 — CatálogoWeb -->
-      <div class="project-card reveal" data-project="1">
-        <div class="project-card-img">
-          <img src="assets/Imagenes/CatalogoWeb/CatalogoWeb.webp" alt="CatálogoWeb"
-               onerror="this.parentElement.innerHTML='<div class=&quot;project-card-img-placeholder&quot;>Screenshot próximamente</div>'" />
-          <div class="project-card-overlay">
-            <button class="project-card-overlay-btn" data-open="1" data-i18n="projects.viewDetail">Ver detalle</button>
+      <!-- columna info -->
+      <div class="modal-info" id="modal-info">
+        <div class="modal-header">
+          <div>
+            <div class="modal-type" id="modal-type"></div>
+            <h2 class="modal-title" id="modal-title"></h2>
           </div>
+          <button class="modal-close" id="modal-close" aria-label="Cerrar">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </button>
         </div>
-        <div class="project-card-body">
-          <div class="project-card-meta">
-            <div class="project-tags">
-              <span class="tag">C#</span>
-              <span class="tag">Web Forms</span>
-              <span class="tag">SQL Server</span>
-            </div>
-            <span class="project-type" data-i18n="projects.p2.type">App web</span>
-          </div>
-          <h3 class="project-name">CatálogoWeb</h3>
-          <p class="project-desc-short" data-i18n="projects.p2.desc">
-            Plataforma para administrar y filtrar productos con control de acceso y roles diferenciados. Deployada online.
-          </p>
-          <div class="project-card-footer">
-            <div class="project-quick-links">
-              <a href="http://webcatalog.somee.com/" class="project-link" target="_blank" data-i18n="projects.demo">Sitio web</a>
-              <a href="https://github.com/francowagenhofer/tp-final-nivel3-Wagenhofer-Franco.git" class="project-link" target="_blank" data-i18n="projects.code">Ver código</a>
-            </div>
-            <button class="btn-vermas" data-open="1">
-              <span data-i18n="projects.viewDetail">Ver detalle</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
 
-      <!-- PROYECTO 3 — Gestor Pyme -->
-      <div class="project-card reveal" data-project="2">
-        <div class="project-card-img">
-          <img src="assets/Imagenes/GestorEmpleados/MenuEscritorio.webp" alt="Gestor Pyme"
-               onerror="this.parentElement.innerHTML='<div class=&quot;project-card-img-placeholder&quot;>Screenshot próximamente</div>'" />
-          <div class="project-card-overlay">
-            <button class="project-card-overlay-btn" data-open="2" data-i18n="projects.viewDetail">Ver detalle</button>
-          </div>
-        </div>
-        <div class="project-card-body">
-          <div class="project-card-meta">
-            <div class="project-tags">
-              <span class="tag">C#</span>
-              <span class="tag">WinForms</span>
-              <span class="tag">SQL Server</span>
-              <span class="tag">SQLite</span>
-            </div>
-            <span class="project-type" data-i18n="projects.p3.type">App escritorio</span>
-          </div>
-          <h3 class="project-name">Gestor Pyme</h3>
-          <p class="project-desc-short" data-i18n="projects.p3.desc">
-            Gestión integral de empleados, proyectos y sueldos para PyMEs. Versiones SQLite y SQL Server disponibles.
-          </p>
-          <div class="project-card-footer">
+        <hr class="modal-divider" />
 
-            <div class="project-quick-links">
-              <a href="https://github.com/francowagenhofer/Gestion-Pyme-SQLite/releases/download/v1.0.0/AppGestionPyme_Portable.zip" class="project-link" target="_blank" data-i18n="projects.download">Descargar app</a>
-              <a href="https://github.com/francowagenhofer/app-gestion-empleados-csharp" class="project-link" target="_blank" data-i18n="projects.code">Ver código</a>
-            </div>
-            <button class="btn-vermas" data-open="2">
-              <span data-i18n="projects.viewDetail">Ver detalle</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
-            </button>
-          </div>
-        </div>
-      </div>
-
-
-
-    </div>
-  </div>
-</section>
-
-<!-- ════════════ MODAL DE PROYECTO ════════════ -->
-<div class="project-modal-overlay" id="project-modal-overlay" role="dialog" aria-modal="true">
-  <div class="project-modal" id="project-modal">
-
-    <!-- columna galería -->
-    <div class="modal-gallery">
-      <div class="modal-gallery-main" id="modal-gallery-main">
-        <img id="modal-gallery-img" src="" alt="" />
-        <button class="gallery-arrow prev" id="gallery-prev" aria-label="Anterior">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-        </button>
-        <button class="gallery-arrow next" id="gallery-next" aria-label="Siguiente">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
-      <div class="modal-gallery-thumbs" id="modal-gallery-thumbs"></div>
-    </div>
-
-    <!-- columna info -->
-    <div class="modal-info" id="modal-info">
-      <div class="modal-header">
         <div>
-          <div class="modal-type" id="modal-type"></div>
-          <h2 class="modal-title" id="modal-title"></h2>
+          <div class="modal-section-label" data-i18n="modal.description">Descripción</div>
+          <div class="modal-desc" id="modal-desc"></div>
         </div>
-        <button class="modal-close" id="modal-close" aria-label="Cerrar">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-        </button>
+
+        <div>
+          <div class="modal-section-label" data-i18n="modal.technologies">Tecnologías</div>
+          <div class="modal-chips" id="modal-techs"></div>
+        </div>
+
+        <div>
+          <div class="modal-section-label" data-i18n="modal.details">Detalles</div>
+          <div class="modal-detail-grid" id="modal-details"></div>
+        </div>
+
+        <div class="modal-links" id="modal-links"></div>
+
+        <div class="modal-nav">
+          <button class="modal-nav-btn" id="modal-prev">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="15 18 9 12 15 6" />
+            </svg>
+            <span data-i18n="modal.prev">Anterior</span>
+          </button>
+          <span class="modal-nav-counter" id="modal-counter"></span>
+          <button class="modal-nav-btn" id="modal-next">
+            <span data-i18n="modal.next">Siguiente</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+              stroke-linejoin="round">
+              <polyline points="9 18 15 12 9 6" />
+            </svg>
+          </button>
+        </div>
       </div>
 
-      <hr class="modal-divider" />
-
-      <div>
-        <div class="modal-section-label" data-i18n="modal.description">Descripción</div>
-        <div class="modal-desc" id="modal-desc"></div>
-      </div>
-
-      <div>
-        <div class="modal-section-label" data-i18n="modal.technologies">Tecnologías</div>
-        <div class="modal-chips" id="modal-techs"></div>
-      </div>
-
-      <div>
-        <div class="modal-section-label" data-i18n="modal.details">Detalles</div>
-        <div class="modal-detail-grid" id="modal-details"></div>
-      </div>
-
-      <div class="modal-links" id="modal-links"></div>
-
-      <div class="modal-nav">
-        <button class="modal-nav-btn" id="modal-prev">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-          <span data-i18n="modal.prev">Anterior</span>
-        </button>
-        <span class="modal-nav-counter" id="modal-counter"></span>
-        <button class="modal-nav-btn" id="modal-next">
-          <span data-i18n="modal.next">Siguiente</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-        </button>
-      </div>
     </div>
-
   </div>
-</div>
 
-<!-- ════════════ TECNOLOGÍAS — 4 grupos ════════════ -->
-<section id="skills">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-num">02</span>
-      <h2 class="section-title" data-i18n="skills.title">Tecnologías<br>& herramientas</h2>
-    </div>
+  <!-- ════════════ TECNOLOGÍAS — 4 grupos ════════════ -->
+  <section id="skills">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <span class="section-num">02</span>
+        <h2 class="section-title" data-i18n="skills.title">Tecnologías<br>& herramientas</h2>
+      </div>
 
-    <div class="skills-grid">
+      <div class="skills-grid">
 
-      <!-- Backend -->
-      <div class="skill-group reveal">
-        <div class="skill-group-label" data-i18n="skills.backend">Backend</div>
-        <div class="skill-list">
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/csharp.svg" alt="C#" onerror="this.style.display='none'"/>
-            <span class="skill-name">C#</span>
-          </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/dotnet2.svg" alt=".NET" onerror="this.style.display='none'"/>
-            <span class="skill-name">.NET</span>
-          </div>
-          <!-- <div class="skill-item">
+        <!-- Backend -->
+        <div class="skill-group reveal">
+          <div class="skill-group-label" data-i18n="skills.backend">Backend</div>
+          <div class="skill-list">
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/csharp.svg" alt="C#" onerror="this.style.display='none'" />
+              <span class="skill-name">C#</span>
+            </div>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/dotnet2.svg" alt=".NET" onerror="this.style.display='none'" />
+              <span class="skill-name">.NET</span>
+            </div>
+            <!-- <div class="skill-item">
                       <img class="skill-icon" src="assets/Iconos/java.svg" alt="Java" onerror="this.style.display='none'"/>
                       <span class="skill-name">Java</span>
                     </div> -->
-          <!-- <div class="skill-item">
+            <!-- <div class="skill-item">
             <img class="skill-icon" src="assets/Iconos/c-plusplus.svg" alt="C++" onerror="this.style.display='none'"/>
             <span class="skill-name">C++</span>
           </div> -->
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/api.svg" alt="REST API" onerror="this.style.display='none'"/>
-            <span class="skill-name">REST APIs</span>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/api.svg" alt="REST API" onerror="this.style.display='none'" />
+              <span class="skill-name">REST APIs</span>
+            </div>
           </div>
+
         </div>
 
-      </div>
-
-      <!-- Frontend -->
-      <div class="skill-group reveal">
-        <div class="skill-group-label" data-i18n="skills.frontend">Frontend</div>
-        <div class="skill-list">
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/html5.svg" alt="HTML5" onerror="this.style.display='none'"/>
-            <span class="skill-name">HTML5</span>
-          </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/css_old.svg" alt="CSS3" onerror="this.style.display='none'"/>
-            <span class="skill-name">CSS3</span>
-          </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/javascript.svg" alt="JavaScript" onerror="this.style.display='none'"/>
-            <span class="skill-name">JavaScript</span>
-          </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/typescript.svg" alt="TypeScript" onerror="this.style.display='none'"/>
-            <span class="skill-name">TypeScript</span>
-          </div>
-          <!-- <div class="skill-item">
+        <!-- Frontend -->
+        <div class="skill-group reveal">
+          <div class="skill-group-label" data-i18n="skills.frontend">Frontend</div>
+          <div class="skill-list">
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/html5.svg" alt="HTML5" onerror="this.style.display='none'" />
+              <span class="skill-name">HTML5</span>
+            </div>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/css_old.svg" alt="CSS3" onerror="this.style.display='none'" />
+              <span class="skill-name">CSS3</span>
+            </div>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/javascript.svg" alt="JavaScript"
+                onerror="this.style.display='none'" />
+              <span class="skill-name">JavaScript</span>
+            </div>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/typescript.svg" alt="TypeScript"
+                onerror="this.style.display='none'" />
+              <span class="skill-name">TypeScript</span>
+            </div>
+            <!-- <div class="skill-item">
             <img class="skill-icon" src="assets/Iconos/angular.svg" alt="Angular" onerror="this.style.display='none'"/>
             <span class="skill-name">Angular</span>
           </div> -->
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/tailwindcss.svg" alt="Tailwind CSS" onerror="this.style.display='none'"/>
-            <span class="skill-name">Tailwind CSS</span>
-          </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/bootstrap.svg" alt="Bootstrap" onerror="this.style.display='none'"/>
-            <span class="skill-name">Bootstrap</span>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/tailwindcss.svg" alt="Tailwind CSS"
+                onerror="this.style.display='none'" />
+              <span class="skill-name">Tailwind CSS</span>
+            </div>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/bootstrap.svg" alt="Bootstrap"
+                onerror="this.style.display='none'" />
+              <span class="skill-name">Bootstrap</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Base de datos -->
-      <div class="skill-group reveal">
-        <div class="skill-group-label" data-i18n="skills.databases">Base de datos</div>
-        <div class="skill-list">
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/sql-server.svg" alt="SQL Server" onerror="this.style.display='none'"/>
-            <span class="skill-name">SQL Server</span>
-          </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/postgresql.svg" alt="PostgreSQL" onerror="this.style.display='none'"/>
-            <span class="skill-name">PostgreSQL</span>
-          </div>
-          <!-- <div class="skill-item">
+        <!-- Base de datos -->
+        <div class="skill-group reveal">
+          <div class="skill-group-label" data-i18n="skills.databases">Base de datos</div>
+          <div class="skill-list">
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/sql-server.svg" alt="SQL Server"
+                onerror="this.style.display='none'" />
+              <span class="skill-name">SQL Server</span>
+            </div>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/postgresql.svg" alt="PostgreSQL"
+                onerror="this.style.display='none'" />
+              <span class="skill-name">PostgreSQL</span>
+            </div>
+            <!-- <div class="skill-item">
             <img class="skill-icon" src="assets/Iconos/mongodb.svg" alt="MongoDB" onerror="this.style.display='none'"/>
             <span class="skill-name">MongoDB</span>
           </div> -->
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/sqlite-color.svg" alt="SQLite" onerror="this.style.display='none'"/>
-            <span class="skill-name">SQLite</span>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/sqlite-color.svg" alt="SQLite"
+                onerror="this.style.display='none'" />
+              <span class="skill-name">SQLite</span>
+            </div>
           </div>
         </div>
-      </div>
 
-      <!-- Herramientas -->
-      <div class="skill-group reveal">
-        <div class="skill-group-label" data-i18n="skills.tools">Herramientas</div>
-        <div class="skill-list">
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/git.svg" alt="Git" onerror="this.style.display='none'"/>
-            <span class="skill-name">Git</span>
-          </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/github.svg" alt="GitHub" onerror="this.style.display='none'"/>
-            <span class="skill-name">GitHub</span>
-          </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/docker.svg" alt="Docker" onerror="this.style.display='none'"/>
-            <span class="skill-name">Docker</span>
-          </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/postman.svg" alt="Postman" onerror="this.style.display='none'"/>
-            <span class="skill-name">Postman</span>
-          </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/swagger.svg" alt="Swagger" onerror="this.style.display='none'"/>
-            <span class="skill-name">Swagger</span>
-          </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/copilot.svg" alt="GitHub Copilot" onerror="this.style.display='none'"/>
-            <span class="skill-name">GitHub Copilot</span>
+        <!-- Herramientas -->
+        <div class="skill-group reveal">
+          <div class="skill-group-label" data-i18n="skills.tools">Herramientas</div>
+          <div class="skill-list">
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/git.svg" alt="Git" onerror="this.style.display='none'" />
+              <span class="skill-name">Git</span>
+            </div>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/github.svg" alt="GitHub" onerror="this.style.display='none'" />
+              <span class="skill-name">GitHub</span>
+            </div>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/docker.svg" alt="Docker" onerror="this.style.display='none'" />
+              <span class="skill-name">Docker</span>
+            </div>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/postman.svg" alt="Postman"
+                onerror="this.style.display='none'" />
+              <span class="skill-name">Postman</span>
+            </div>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/swagger.svg" alt="Swagger"
+                onerror="this.style.display='none'" />
+              <span class="skill-name">Swagger</span>
+            </div>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/copilot.svg" alt="GitHub Copilot"
+                onerror="this.style.display='none'" />
+              <span class="skill-name">GitHub Copilot</span>
+            </div>
           </div>
         </div>
-      </div>
-      
-          <!-- Otros lenguajes -->
-      <div class="skill-group reveal">
-        <div class="skill-group-label" data-i18n="skills.additional">Lenguajes adicionales</div>
-        <div class="skill-list">
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/c-plusplus.svg" alt="C++" onerror="this.style.display='none'"/>
-            <span class="skill-name">C++</span>
-          </div>
-          <div class="skill-item">
-              <img class="skill-icon" src="assets/Iconos/java.svg" alt="Java" onerror="this.style.display='none'"/>
+
+        <!-- Otros lenguajes -->
+        <div class="skill-group reveal">
+          <div class="skill-group-label" data-i18n="skills.additional">Lenguajes adicionales</div>
+          <div class="skill-list">
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/c-plusplus.svg" alt="C++"
+                onerror="this.style.display='none'" />
+              <span class="skill-name">C++</span>
+            </div>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/java.svg" alt="Java" onerror="this.style.display='none'" />
               <span class="skill-name">Java</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aprendiendo -->
+        <div class="skill-group reveal">
+          <div class="skill-group-label" data-i18n="skills.learning">Aprendiendo</div>
+          <div class="skill-list">
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/angular.svg" alt="Angular"
+                onerror="this.style.display='none'" />
+              <span class="skill-name">Angular</span>
+            </div>
+            <div class="skill-item">
+              <img class="skill-icon" src="assets/Iconos/mongodb.svg" alt="MongoDB"
+                onerror="this.style.display='none'" />
+              <span class="skill-name">MongoDB</span>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════ SOBRE MÍ ════════════ -->
+  <section id="about">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <span class="section-num">03</span>
+        <h2 class="section-title" data-i18n="about.title">Sobre<br>mí</h2>
+      </div>
+      <div class="about-grid">
+        <div class="about-text reveal">
+          <p data-i18n="about.p1">Soy desarrollador .NET formado en la Tecnicatura Universitaria en Programación de la
+            UTN, con práctica constante en proyectos reales usando C#, .NET y SQL Server.</p>
+          <p data-i18n="about.p2">Me apasiona construir software que resuelva problemas concretos — desde aplicaciones
+            de escritorio hasta soluciones web y manejo de datos. Trabajo con foco en código limpio, legible y
+            mantenible.</p>
+          <p data-i18n="about.p3">Busco seguir creciendo profesionalmente, ampliar mis capacidades técnicas y aportar
+            valor real en cada proyecto que enfrento.</p>
+        </div>
+        <div class="about-details reveal">
+          <div class="about-detail-item">
+            <div class="about-detail-label" data-i18n="about.education.label">Formación</div>
+            <div class="about-detail-value" data-i18n="about.education.value">Tec. Universitaria en Programación · UTN
+            </div>
+          </div>
+          <div class="about-detail-item">
+            <div class="about-detail-label" data-i18n="about.specialty.label">Especialidad</div>
+            <div class="about-detail-value" data-i18n="about.specialty.value">Aplicaciones web, desktop y datos (.NET)
+            </div>
+          </div>
+          <div class="about-detail-item">
+            <div class="about-detail-label" data-i18n="about.location.label">Ubicación</div>
+            <div class="about-detail-value" data-i18n="about.location.value">Buenos Aires, Argentina</div>
+          </div>
+          <div class="about-detail-item">
+            <div class="about-detail-label" data-i18n="about.languages.label">Idiomas</div>
+            <div class="about-detail-value" data-i18n="about.languages.value">Español · Inglés técnico</div>
+          </div>
+          <div class="about-detail-item">
+            <div class="about-detail-label" data-i18n="about.availability.label">Disponibilidad</div>
+            <div class="about-detail-value" data-i18n="about.availability.value">Abierto a oportunidades</div>
           </div>
         </div>
       </div>
-      
-      <!-- Aprendiendo -->
-      <div class="skill-group reveal">
-        <div class="skill-group-label" data-i18n="skills.learning">Aprendiendo</div>
-        <div class="skill-list">
-          <div class="skill-item">
-          <img class="skill-icon" src="assets/Iconos/angular.svg" alt="Angular" onerror="this.style.display='none'"/>
-          <span class="skill-name">Angular</span>
-        </div>
-          <div class="skill-item">
-            <img class="skill-icon" src="assets/Iconos/mongodb.svg" alt="MongoDB" onerror="this.style.display='none'"/>
-            <span class="skill-name">MongoDB</span>
+    </div>
+  </section>
+
+  <!-- ════════════ CONTACTO ════════════ -->
+  <section id="contact">
+    <div class="section-inner">
+      <div class="section-header reveal">
+        <span class="section-num">04</span>
+        <h2 class="section-title" data-i18n="contact.title">Hablemos</h2>
+      </div>
+      <div class="contact-grid">
+        <div class="contact-text reveal">
+          <h3 data-i18n="contact.heading">¿Tenés un proyecto<br>o propuesta?</h3>
+          <p data-i18n="contact.sub">Estoy disponible para trabajo freelance, relación de dependencia o colaboración en
+            proyectos. Escribime y hablamos.</p>
+
+          <div class="contact-socials">
+            <a href="https://linkedin.com/in/franco-wagenhöfer" class="contact-social-link" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z" />
+                <rect x="2" y="9" width="4" height="12" />
+                <circle cx="4" cy="4" r="2" />
+              </svg>
+              linkedin.com/in/franco-wagenhöfer
+            </a>
+            <a href="https://github.com/francowagenhofer" class="contact-social-link" target="_blank">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path
+                  d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22" />
+              </svg>
+              github.com/francowagenhofer
+            </a>
+            <a href="mailto:francowagenhofer@gmail.com" class="contact-social-link">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                stroke-linejoin="round">
+                <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                <polyline points="22,6 12,13 2,6" />
+              </svg>
+              francowagenhofer@gmail.com
+            </a>
           </div>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-</section>
-
-<!-- ════════════ SOBRE MÍ ════════════ -->
-<section id="about">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-num">03</span>
-      <h2 class="section-title" data-i18n="about.title">Sobre<br>mí</h2>
-    </div>
-    <div class="about-grid">
-      <div class="about-text reveal">
-        <p data-i18n="about.p1">Soy desarrollador .NET formado en la Tecnicatura Universitaria en Programación de la UTN, con práctica constante en proyectos reales usando C#, .NET y SQL Server.</p>
-        <p data-i18n="about.p2">Me apasiona construir software que resuelva problemas concretos — desde aplicaciones de escritorio hasta soluciones web y manejo de datos. Trabajo con foco en código limpio, legible y mantenible.</p>
-        <p data-i18n="about.p3">Busco seguir creciendo profesionalmente, ampliar mis capacidades técnicas y aportar valor real en cada proyecto que enfrento.</p>
-      </div>
-      <div class="about-details reveal">
-        <div class="about-detail-item">
-          <div class="about-detail-label" data-i18n="about.education.label">Formación</div>
-          <div class="about-detail-value" data-i18n="about.education.value">Tec. Universitaria en Programación · UTN</div>
-        </div>
-        <div class="about-detail-item">
-          <div class="about-detail-label" data-i18n="about.specialty.label">Especialidad</div>
-          <div class="about-detail-value" data-i18n="about.specialty.value">Aplicaciones web, desktop y datos (.NET)</div>
-        </div>
-        <div class="about-detail-item">
-          <div class="about-detail-label" data-i18n="about.location.label">Ubicación</div>
-          <div class="about-detail-value" data-i18n="about.location.value">Buenos Aires, Argentina</div>
-        </div>
-        <div class="about-detail-item">
-          <div class="about-detail-label" data-i18n="about.languages.label">Idiomas</div>
-          <div class="about-detail-value" data-i18n="about.languages.value">Español · Inglés técnico</div>
-        </div>
-        <div class="about-detail-item">
-          <div class="about-detail-label" data-i18n="about.availability.label">Disponibilidad</div>
-          <div class="about-detail-value" data-i18n="about.availability.value">Abierto a oportunidades</div>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ════════════ CONTACTO ════════════ -->
-<section id="contact">
-  <div class="section-inner">
-    <div class="section-header reveal">
-      <span class="section-num">04</span>
-      <h2 class="section-title" data-i18n="contact.title">Hablemos</h2>
-    </div>
-    <div class="contact-grid">
-      <div class="contact-text reveal">
-        <h3 data-i18n="contact.heading">¿Tenés un proyecto<br>o propuesta?</h3>
-        <p data-i18n="contact.sub">Estoy disponible para trabajo freelance, relación de dependencia o colaboración en proyectos. Escribime y hablamos.</p>
-    
-        <div class="contact-socials">
-          <a href="https://linkedin.com/in/franco-wagenhöfer" class="contact-social-link" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-            linkedin.com/in/franco-wagenhöfer
-          </a>
-          <a href="https://github.com/francowagenhofer" class="contact-social-link" target="_blank">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
-            github.com/francowagenhofer
-          </a>
-          <a href="mailto:francowagenhofer@gmail.com" class="contact-social-link">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-            francowagenhofer@gmail.com
+          <a href="cv/CvFrancoWagenhöfer.pdf" class="btn-outline contact-cv-btn" target="_blank" download
+            data-i18n="nav.cv">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+              stroke-linejoin="round">
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+              <polyline points="7 10 12 15 17 10" />
+              <line x1="12" y1="15" x2="12" y2="3" />
+            </svg>
+            Descargar CV
           </a>
         </div>
-        <a href="cv/CvFrancoWagenhöfer.pdf" class="btn-outline contact-cv-btn" target="_blank" download data-i18n="nav.cv">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
-          Descargar CV
-        </a>
+
+        <form class="contact-form reveal" action="https://formspree.io/f/TU_FORM_ID" method="POST">
+          <div class="form-field">
+            <label for="nombre" data-i18n="contact.name">Nombre</label>
+            <input type="text" id="nombre" name="nombre" data-i18n-ph="contact.namePh" placeholder="Tu nombre"
+              required />
+          </div>
+          <div class="form-field">
+            <label for="email" data-i18n="contact.email">Correo electrónico</label>
+            <input type="email" id="email" name="email" placeholder="tu@email.com" required />
+          </div>
+          <div class="form-field">
+            <label for="mensaje" data-i18n="contact.message">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" data-i18n-ph="contact.messagePh"
+              placeholder="Contame sobre tu proyecto o consulta…" required></textarea>
+          </div>
+          <button type="submit" class="form-submit" data-i18n="contact.send">Enviar mensaje</button>
+        </form>
       </div>
-
-      <form class="contact-form reveal" action="https://formspree.io/f/TU_FORM_ID" method="POST">
-        <div class="form-field">
-          <label for="nombre" data-i18n="contact.name">Nombre</label>
-          <input type="text" id="nombre" name="nombre" data-i18n-ph="contact.namePh" placeholder="Tu nombre" required />
-        </div>
-        <div class="form-field">
-          <label for="email" data-i18n="contact.email">Correo electrónico</label>
-          <input type="email" id="email" name="email" placeholder="tu@email.com" required />
-        </div>
-        <div class="form-field">
-          <label for="mensaje" data-i18n="contact.message">Mensaje</label>
-          <textarea id="mensaje" name="mensaje" data-i18n-ph="contact.messagePh" placeholder="Contame sobre tu proyecto o consulta…" required></textarea>
-        </div>
-        <button type="submit" class="form-submit" data-i18n="contact.send">Enviar mensaje</button>
-      </form>
     </div>
-  </div>
-</section>
+  </section>
 
-<!-- ════════════ FOOTER ════════════ -->
-<footer>
-  <div class="footer-left">© 2026 Franco Wagenhöfer</div>
-  <div class="footer-right" data-i18n="footer.role">Desarrollador .NET · Buenos Aires</div>
-</footer>
+  <!-- ════════════ FOOTER ════════════ -->
+  <footer>
+    <div class="footer-left">© 2026 Franco Wagenhöfer</div>
+    <div class="footer-right" data-i18n="footer.role">Desarrollador .NET · Buenos Aires</div>
+  </footer>
 
 
-<script>
+  <script>
     /* ═══════════════════════════════════════════════════
    LOGO VERSIONS
 ═══════════════════════════════════════════════════ */
-const LOGO_LIGHT = `<text x="6" y="22"
+    const LOGO_LIGHT = `<text x="6" y="22"
   font-family="Georgia, serif"
   font-size="16"
   font-style="italic"
@@ -1709,7 +2320,7 @@ const LOGO_LIGHT = `<text x="6" y="22"
   fill="#0a0a0a">fw</text>
 <circle cx="25" cy="22" r="1.6" fill="#7c3aed"/>`;
 
-const LOGO_DARK = `<text x="6" y="22"
+    const LOGO_DARK = `<text x="6" y="22"
   font-family="Georgia, serif"
   font-size="16"
   font-style="italic"
@@ -1718,698 +2329,737 @@ const LOGO_DARK = `<text x="6" y="22"
   fill="#fafaf8">fw</text>
 <circle cx="25" cy="22" r="1.6" fill="#7c3aed"/>`;
 
-/* ═══════════════════════════════════════════════════
-   DATOS DE PROYECTOS
-   Editá este objeto para actualizar todo el modal.
-═══════════════════════════════════════════════════ */
-const PROJECTS = [
-  {
-    id: 0,
-    type: { es: "App web · MVC", en: "Web App · MVC" },
-    name: ".MovieApp",
-    desc: {
-      es: `<p><strong>App web ASP.NET MVC</strong> para gestión completa de películas. Catálogo con CRUD, sistema de reviews con calificaciones de 1–5 estrellas, favoritos por usuario y autenticación con roles diferenciados (admin/usuario).</p>
-           <p><strong>Problema que resuelve:</strong> centralizar la gestión de un catálogo de contenido con experiencia de usuario moderna, seguridad por roles y datos persistentes en SQL Server.</p>`,
-      en: `<p><strong>ASP.NET MVC web app</strong> for full movie management. Catalog with CRUD, review system with 1–5 star ratings, per-user favorites and role-based authentication (admin/user).</p>
-           <p><strong>Problem it solves:</strong> centralize content catalog management with modern UX, role-based security and SQL Server persistence.</p>`
-    },
-    techs: ["C#", ".NET 9", "ASP.NET MVC", "Entity Framework Core", "SQL Server", "ASP.NET Identity", "Bootstrap", "Razor Views"],
-    details: {
-      es: [
-        { label: "Rol", value: "Desarrollador full-stack" },
-        { label: "Arquitectura", value: "MVC · separación de responsabilidades" },
-        { label: "Autenticación", value: "ASP.NET Identity · roles" },
-        { label: "IDE", value: "Visual Studio 2022" },
-      ],
-      en: [
-        { label: "Role", value: "Full-stack developer" },
-        { label: "Architecture", value: "MVC · separation of concerns" },
-        { label: "Authentication", value: "ASP.NET Identity · roles" },
-        { label: "IDE", value: "Visual Studio 2022" },
-      ]
-    },
-    links: {
-      es: [{ label: "Ver repositorio", href: "https://github.com/francowagenhofer/movieapp-mvc-dotnet", primary: true }],
-      en: [{ label: "View repository", href: "https://github.com/francowagenhofer/movieapp-mvc-dotnet", primary: true }]
-    },
-    images: [
-      "assets/Imagenes/MovieApp/home.webp",
-      "assets/Imagenes/MovieApp/movie.webp",
-      "assets/Imagenes/MovieApp/favoritos.webp",
-      "assets/Imagenes/MovieApp/reseñas.webp",
-      "assets/Imagenes/MovieApp/admin.webp",
-    ]
-  },
-  {
-    id: 1,
-    type: { es: "App web · Web Forms", en: "Web App · Web Forms" },
-    name: "CatálogoWeb",
-    desc: {
-      es: `<p><strong>App web en C# con ASP.NET Web Forms</strong> para gestión de artículos. CRUD completo, filtros por categoría/marca, búsqueda dinámica, gestión de usuarios con autenticación y roles.</p>
-           <p><strong>Problema que resuelve:</strong> simular un sistema de inventario real con arquitectura en capas, seguridad mediante roles y buenas prácticas de usabilidad. <strong>Proyecto deployado y accesible online.</strong></p>`,
-      en: `<p><strong>C# web app with ASP.NET Web Forms</strong> for product management. Full CRUD, category/brand filters, dynamic search, user management with authentication and roles.</p>
-           <p><strong>Problem it solves:</strong> simulate a real inventory system with layered architecture, role-based security and usability best practices. <strong>Project deployed and accessible online.</strong></p>`
-    },
-    techs: ["C#", "ASP.NET Web Forms", "SQL Server", "Bootstrap", "JavaScript", "HTML5", "CSS3"],
-    details: {
-      es: [
-        { label: "Rol", value: "Desarrollador full-stack" },
-        { label: "Arquitectura", value: "Capas (dominio, negocio, UI)" },
-        { label: "Deploy", value: "Somee (online)" },
-        { label: "Seguridad", value: "Sistema de roles y login" },
-      ],
-      en: [
-        { label: "Role", value: "Full-stack developer" },
-        { label: "Architecture", value: "Layers (domain, business, UI)" },
-        { label: "Deploy", value: "Somee (online)" },
-        { label: "Security", value: "Role system and login" },
-      ]
-    },
-    links: {
-      es: [
-        { label: "Sitio web", href: "http://webcatalog.somee.com/", primary: true },
-        { label: "Ver repositorio", href: "https://github.com/francowagenhofer/tp-final-nivel3-Wagenhofer-Franco.git", primary: false }
-      ],
-      en: [
-        { label: "Website", href: "http://webcatalog.somee.com/", primary: true },
-        { label: "View repository", href: "https://github.com/francowagenhofer/tp-final-nivel3-Wagenhofer-Franco.git", primary: false }
-      ]
-    },
-    images: [
-      "assets/Imagenes/CatalogoWeb/CatalogoWeb.webp",
-      "assets/Imagenes/CatalogoWeb/CatalogoWeb_Lista.webp",
-      "assets/Imagenes/CatalogoWeb/CatalogoWeb_Articulo.webp",
-      "assets/Imagenes/CatalogoWeb/CatalogoWebDB.webp",
-    ]
-  },
-  {
-    id: 2,
-    type: { es: "App escritorio · WinForms", en: "Desktop App · WinForms" },
-    name: "Gestor Pyme",
-    desc: {
-      es: `<p><strong>App C# .NET para gestión de PYME.</strong> Comenzó como consola y evolucionó a WinForms. Gestiona empleados, proyectos y salarios con CRUD completo.</p>
-           <p><strong>Dos versiones independientes:</strong> SQLite (portable, sin instalación) y SQL Server (multiusuario, procedimientos almacenados, consola + WinForms).</p>`,
-      en: `<p><strong>C# .NET app for SME management.</strong> Started as a console app, evolved to WinForms. Manages employees, projects and salaries with full CRUD.</p>
-           <p><strong>Two independent versions:</strong> SQLite (portable, no install needed) and SQL Server (multiuser, stored procedures, console + WinForms).</p>`
-    },
-    techs: ["C#", ".NET", "WinForms", "SQL Server", "SQLite", "Stored Procedures"],
-    details: {
-      es: [
-        { label: "Rol", value: "Desarrollador full-stack" },
-        { label: "Arquitectura", value: "Capas (dominio, negocio, UI)" },
-        { label: "Versiones", value: "SQLite · SQL Server" },
-        { label: "Distribución", value: "Portable · sin instalación" },
-      ],
-      en: [
-        { label: "Role", value: "Full-stack developer" },
-        { label: "Architecture", value: "Layers (domain, business, UI)" },
-        { label: "Versions", value: "SQLite · SQL Server" },
-        { label: "Distribution", value: "Portable · no install" },
-      ]
-    },
-    links: {
-      es: [
-        { label: "Descargar app", href: "https://github.com/francowagenhofer/Gestion-Pyme-SQLite/releases/download/v1.0.0/AppGestionPyme_Portable.zip", primary: true },
-        { label: "SQLite repo", href: "https://github.com/francowagenhofer/Gestion-Pyme-SQLite.git", primary: false },
-        { label: "SQL Server repo", href: "https://github.com/francowagenhofer/app-gestion-empleados-csharp.git", primary: false }
-      ],
-      en: [
-        { label: "Download app", href: "https://github.com/francowagenhofer/Gestion-Pyme-SQLite/releases/download/v1.0.0/AppGestionPyme_Portable.zip", primary: true },
-        { label: "SQLite repo", href: "https://github.com/francowagenhofer/Gestion-Pyme-SQLite.git", primary: false },
-        { label: "SQL Server repo", href: "https://github.com/francowagenhofer/app-gestion-empleados-csharp.git", primary: false }
-      ]
-    },
-    images: [
-      "assets/Imagenes/GestorEmpleados/MenuEscritorio.webp",
-      "assets/Imagenes/GestorEmpleados/GestionOperaciones.webp",
-      "assets/Imagenes/GestorEmpleados/MenuConsola.webp",
-      "assets/Imagenes/GestorEmpleados/GestionEmpleadosDB.webp",
-    ]
-  }
-];
+    /* ═══════════════════════════════════════════════════
+       DATOS DE PROYECTOS
+       Editá este objeto para actualizar todo el modal.
+    ═══════════════════════════════════════════════════ */
 
-/* ═══════════════════════════════════════════════════
-   i18n
-═══════════════════════════════════════════════════ */
-const T = {
-  es: {
-    "nav.projects":"Proyectos","nav.skills":"Tecnologías","nav.about":"Sobre mí","nav.contact":"Contacto","nav.cv":"Descargar CV",
-    "hero.tag":"Desarrollador .NET · Buenos Aires, Argentina",
-    // "hero.desc":"Desarrollo aplicaciones web, de escritorio y soluciones de manejo de datos con C# .NET y SQL Server. Formado en la UTN, orientado a código limpio y soluciones reales.",
-    "hero.desc":"Desarrollo aplicaciones web y de escritorio, y soluciones de gestión de datos con C# .NET y SQL Server. Formado en la UTN, con foco en código limpio y resolución de problemas reales.",
-    "hero.ctaContact":"Contactar","hero.ctaCV":"Descargar CV","hero.ctaProjects":"Ver proyectos",
-    "hero.stat1Label":"Especialidad","hero.stat2Label":"Formación","hero.stat3Label":"Stack principal",
-    "hero.stat4Label":"Disponibilidad","hero.stat5Label":"Ubicación",
-    "projects.title":"Proyectos\ndestacados",
-    "exp.title":"Experiencia","exp.present":"Presente",
-    "projects.p1.type":"App web","projects.p2.type":"App web","projects.p3.type":"App escritorio",
-    "projects.p1.desc":"Catálogo de películas con sistema de reseñas, favoritos, calificaciones y autenticación por roles.",
-    "projects.p2.desc":"Plataforma para administrar y filtrar productos con control de acceso y roles diferenciados. Disponible online.",
-    "projects.p3.desc":"Gestión integral de empleados, proyectos y sueldos para PyMEs. Versiones SQLite y SQL Server disponibles.",
-    "projects.p4.desc":"Nuevo proyecto en desarrollo. Próximamente con todos los detalles.",
-    "projects.demo":"Ver demo","projects.code":"Ver código","projects.download":"Descargar app","projects.viewDetail":"Ver detalle",
-    "skills.title":"Tecnologías\n& herramientas",
-    "skills.backend":"Backend","skills.frontend":"Frontend","skills.databases":"Base de datos","skills.tools":"Herramientas", "skills.learning":"Aprendiendo","skills.additional":"Lenguajes adicionales",
-    "about.title":"Sobre\nmí",
-    "about.p1":"Soy desarrollador .NET formado en la Tecnicatura Universitaria en Programación de la UTN, con práctica constante en proyectos reales usando C#, .NET y SQL Server.",
-    "about.p2":"Me apasiona construir software que resuelva problemas concretos — desde aplicaciones de escritorio hasta soluciones web y manejo de datos. Trabajo con foco en código limpio, legible y mantenible.",
-    "about.p3":"Busco seguir creciendo profesionalmente, ampliar mis capacidades técnicas y aportar valor real en cada proyecto que enfrento.",
-    "about.education.label":"Formación","about.education.value":"Tec. Universitaria en Programación · UTN",
-    "about.specialty.label":"Especialidad","about.specialty.value":"Aplicaciones web, desktop y datos (.NET)",
-    "about.location.label":"Ubicación","about.location.value":"Buenos Aires, Argentina",
-    "about.languages.label":"Idiomas","about.languages.value":"Español · Inglés técnico",
-    "about.availability.label":"Disponibilidad","about.availability.value":"Abierto a oportunidades",
-    "contact.title":"Hablemos","contact.heading":"¿Tenés un proyecto\no propuesta?",
-    "contact.sub":"Estoy disponible para trabajo freelance, relación de dependencia o colaboración en proyectos. Escribime y hablamos.",
-    "contact.name":"Nombre","contact.namePh":"Tu nombre",
-    "contact.email":"Correo electrónico","contact.message":"Mensaje","contact.messagePh":"Contame sobre tu proyecto o consulta…",
-    "contact.send":"Enviar mensaje",
-    "modal.description":"Descripción","modal.technologies":"Tecnologías","modal.details":"Detalles",
-    "modal.prev":"Anterior","modal.next":"Siguiente",
-    "footer.role":"Desarrollador .NET · Buenos Aires",
-  },
-  en: {
-    "nav.projects":"Projects","nav.skills":"Skills","nav.about":"About","nav.contact":"Contact","nav.cv":"Download CV",
-    "hero.tag":".NET Developer · Buenos Aires, Argentina",
-    // "hero.desc":"I build web apps, desktop applications and data solutions using C# .NET and SQL Server. Trained at UTN, focused on clean code and real-world results.",
-    "hero.desc":"I build web and desktop applications, as well as data solutions using C# .NET and SQL Server. I studied at UTN and focus on clean code and solving real-world problems.",
-    "hero.ctaContact":"Contact","hero.ctaCV":"Download CV","hero.ctaProjects":"View projects",
-    "hero.stat1Label":"Specialty","hero.stat2Label":"Education","hero.stat3Label":"Main stack",
-    "hero.stat4Label":"Availability","hero.stat5Label":"Location",
-    "projects.title":"Featured\nprojects",
-    "exp.title":"Experience","exp.present":"Present",
-    "projects.p1.type":"Web app","projects.p2.type":"Web app","projects.p3.type":"Desktop app",
-    "projects.p1.desc":"Movie catalog with review system, favorites, ratings and role-based authentication.",
-    // "projects.p2.desc":"Platform to manage and filter products with access control and roles. Deployed online.",
-    "projects.p2.desc":"Platform for managing and filtering products with role-based access control. Deployed online.",
-    // "projects.p3.desc":"Comprehensive management of employees, projects and salaries for SMEs. SQLite and SQL Server versions available.",
-    "projects.p3.desc":"Full management system for employees, projects and salaries for SMEs. SQLite and SQL Server versions available.",
-    "projects.p4.desc":"New project in development. Details coming soon.",
-    "projects.demo":"Live demo","projects.code":"View code","projects.download":"Download app","projects.viewDetail":"View details",
-    "skills.title":"Technologies\n& tools",
-    "skills.backend":"Backend","skills.frontend":"Frontend","skills.databases":"Databases","skills.tools":"Tools", "skills.learning":"Learning","skills.additional":"Additional languages",
-    "about.title":"About\nme",
-    // "about.p1":"I'm a .NET developer trained at UTN's University Technical Degree in Programming, with ongoing practice building real-world projects in C#, .NET and SQL Server.",
-    "about.p1":"I'm a .NET developer with a University Technical Degree in Programming from UTN, with hands-on experience building real-world projects using C#, .NET and SQL Server.",
-    "about.p2":"I'm passionate about crafting software that solves concrete problems — from desktop apps to web solutions and data management. I focus on clean, readable and maintainable code.",
-    "about.p3":"I'm looking to keep growing professionally, expand my technical capabilities and bring real value to every challenge I take on.",
-    "about.education.label":"Education","about.education.value":"Univ. Tech. Degree in Programming · UTN",
-    "about.specialty.label":"Specialty","about.specialty.value":"Web, desktop & data apps (.NET)",
-    "about.location.label":"Location","about.location.value":"Buenos Aires, Argentina",
-    "about.languages.label":"Languages","about.languages.value":"Spanish (native) · Technical English",
-    "about.availability.label":"Availability","about.availability.value":"Open to opportunities",
-    "contact.title":"Let's talk","contact.heading":"Have a project\nor proposal?",
-    // "contact.sub":"Available for freelance work, full-time roles or project collaboration. Reach out and let's chat.",
-    "contact.sub":"Available for freelance work, full-time positions or project collaborations. Feel free to reach out.",
-    "contact.name":"Name","contact.namePh":"Your name",
-    "contact.email":"Email address","contact.message":"Message","contact.messagePh":"Tell me about your project or inquiry…",
-    "contact.send":"Send message",
-    "modal.description":"Description","modal.technologies":"Technologies","modal.details":"Details",
-    // "modal.prev":"Previous","modal.next":"Next",
-    "modal.prev":"Prev","modal.next":"Next",
-    "footer.role":".NET Developer · Buenos Aires",
-  }
-};
+    const PROJECTS = [
+      {
+        id: 0,
+        type: { es: "App web · MVC", en: "Web App · MVC" },
+        name: ".MovieApp",
+        desc: {
+          es: `<p><strong>Aplicación web para gestión de películas</strong> con catálogo completo, reseñas y autenticación por roles.</p>
+       <p>Permite administrar contenido, gestionar favoritos por usuario y registrar calificaciones (1–5 estrellas) con persistencia en SQL Server.</p>
+       <p>Resuelve la necesidad de organizar y controlar la información de forma centralizada, mejorando la experiencia de usuario y asegurando consistencia en los datos, con una estética inspirada en el cine.</p>`,
+          en: `<p><strong>Web application for movie management</strong> with full catalog, reviews and role-based authentication.</p>
+       <p>Includes content administration, per-user favorites and 1–5 star ratings with SQL Server persistence.</p>
+       <p>Addresses the need to organize and control information in a centralized way, improving user experience and ensuring data consistency, with a cinema-inspired aesthetic.</p>`
+        },
+        techs: [
+          "C#",
+          ".NET 9",
+          "ASP.NET MVC",
+          "Entity Framework Core",
+          "ASP.NET Identity",
+          "SQL Server",
+          "Bootstrap"
+        ],
+        details: {
+          es: [
+            { label: "Arquitectura", value: "MVC · separación de responsabilidades" },
+            { label: "Autenticación", value: "ASP.NET Identity · roles" },
+            { label: "Funcionalidades", value: "CRUD, reseñas, favoritos" }
+          ],
+          en: [
+            { label: "Architecture", value: "MVC · separation of concerns" },
+            { label: "Authentication", value: "ASP.NET Identity · roles" },
+            { label: "Features", value: "CRUD, reviews, favorites" }
+          ]
+        },
+        links: {
+          es: [
+            {
+              label: "Ver repositorio",
+              href: "https://github.com/francowagenhofer/movieapp-mvc-dotnet",
+              primary: true
+            }
+          ],
+          en: [
+            {
+              label: "View repository",
+              href: "https://github.com/francowagenhofer/movieapp-mvc-dotnet",
+              primary: true
+            }
+          ]
+        },
+        images: [
+          "assets/Imagenes/MovieApp/home.webp",
+          "assets/Imagenes/MovieApp/movie.webp",
+          "assets/Imagenes/MovieApp/favoritos.webp",
+          "assets/Imagenes/MovieApp/reseñas.webp",
+          "assets/Imagenes/MovieApp/admin.webp"
+        ]
+      },
+      {
+        id: 1,
+        type: { es: "App web · Web Forms", en: "Web App · Web Forms" },
+        name: "Catálogo de Artículos",
+        desc: {
+          es: `<p><strong>Aplicación web para gestión de artículos</strong> con catálogo completo, filtros y búsqueda dinámica.</p>
+         <p>Permite administrar productos, organizarlos por categoría y marca, y gestionar usuarios con autenticación y roles.</p>
+         <p>Resuelve la necesidad de estructurar y consultar información de productos de forma eficiente, con acceso centralizado y datos persistentes.</p>`,
+          en: `<p><strong>Web application for product management</strong> with full catalog, filtering and dynamic search.</p>
+         <p>Includes product organization by category and brand, along with user management and role-based authentication.</p>
+         <p>Addresses the need to structure and query product data efficiently, with centralized access and persistent storage.</p>`
+        },
+        techs: [
+          "C#",
+          "ASP.NET Web Forms",
+          "SQL Server",
+          "Bootstrap",
+          "JavaScript"
+        ],
+        details: {
+          es: [
+            { label: "Arquitectura", value: "Capas (dominio, negocio, UI)" },
+            { label: "Autenticación", value: "Sistema de roles y login" },
+            { label: "Funcionalidades", value: "CRUD, filtros, búsqueda dinámica" },
+            { label: "Deploy", value: "Online (Somee)" }
+          ],
+          en: [
+            { label: "Architecture", value: "Layers (domain, business, UI)" },
+            { label: "Authentication", value: "Role-based login system" },
+            { label: "Features", value: "CRUD, filtering, dynamic search" },
+            { label: "Deploy", value: "Online (Somee)" }
+          ]
+        },
+        links: {
+          es: [
+            { label: "Sitio web", href: "http://webcatalog.somee.com/", primary: true },
+            { label: "Repositorio", href: "https://github.com/francowagenhofer/tp-final-nivel3-Wagenhofer-Franco.git", primary: false }
+          ],
+          en: [
+            { label: "Website", href: "http://webcatalog.somee.com/", primary: true },
+            { label: "Repository", href: "https://github.com/francowagenhofer/tp-final-nivel3-Wagenhofer-Franco.git", primary: false }
+          ]
+        },
+        images: [
+          "assets/Imagenes/CatalogoWeb/CatalogoWeb.webp",
+          "assets/Imagenes/CatalogoWeb/CatalogoWeb_Lista.webp",
+          "assets/Imagenes/CatalogoWeb/CatalogoWeb_Articulo.webp",
+          "assets/Imagenes/CatalogoWeb/CatalogoWebDB.webp",
+        ]
+      },
+      {
+        id: 2,
+        type: { es: "App escritorio · WinForms", en: "Desktop App · WinForms" },
+        name: "Gestor Pyme",
+        desc: {
+          es: `<p><strong>Aplicación de escritorio para gestión de PyME</strong> orientada a la administración de empleados, proyectos y salarios.</p>
+         <p>Evolucionó desde una versión de consola a una interfaz gráfica en WinForms, incorporando una experiencia más usable y estructurada.</p>
+         <p>Incluye dos variantes: una versión portable con SQLite y otra orientada a entornos multiusuario con SQL Server y procedimientos almacenados, permitiendo gestionar la información de forma centralizada y escalable.</p>`,
+          en: `<p><strong>Desktop application for SME management</strong> focused on employees, projects and salaries.</p>
+         <p>Evolved from a console-based application into a WinForms graphical interface, improving usability and structure.</p>
+         <p>Includes two variants: a portable SQLite version and a multiuser-oriented SQL Server version with stored procedures, enabling centralized and scalable data management.</p>`
+        },
+        techs: [
+          "C#",
+          ".NET",
+          "WinForms",
+          "SQL Server",
+          "SQLite"
+        ],
+        details: {
+          es: [
+            { label: "Arquitectura", value: "Capas (dominio, negocio, UI)" },
+            { label: "Versiones", value: "SQLite (portable) · SQL Server (multiusuario)" },
+            { label: "Funcionalidades", value: "Gestión de empleados, proyectos y salarios (CRUD)" }
+          ],
+          en: [
+            { label: "Architecture", value: "Layers (domain, business, UI)" },
+            { label: "Versions", value: "SQLite (portable) · SQL Server (multiuser)" },
+            { label: "Features", value: "Employee, project and salary management (CRUD)" }
+          ]
+        },
+        links: {
+          es: [
+            { label: "Descargar app", href: "https://github.com/francowagenhofer/Gestion-Pyme-SQLite/releases/download/v1.0.0/AppGestionPyme_Portable.zip", primary: true },
+            { label: "SQLite repo", href: "https://github.com/francowagenhofer/Gestion-Pyme-SQLite.git", primary: false },
+            { label: "SQL Server repo", href: "https://github.com/francowagenhofer/app-gestion-empleados-csharp.git", primary: false }
+          ],
+          en: [
+            { label: "Download app", href: "https://github.com/francowagenhofer/Gestion-Pyme-SQLite/releases/download/v1.0.0/AppGestionPyme_Portable.zip", primary: true },
+            { label: "SQLite repo", href: "https://github.com/francowagenhofer/Gestion-Pyme-SQLite.git", primary: false },
+            { label: "SQL Server repo", href: "https://github.com/francowagenhofer/app-gestion-empleados-csharp.git", primary: false }
+          ]
+        },
+        images: [
+          "assets/Imagenes/GestorEmpleados/MenuEscritorio.webp",
+          "assets/Imagenes/GestorEmpleados/GestionOperaciones.webp",
+          "assets/Imagenes/GestorEmpleados/MenuConsola.webp",
+          "assets/Imagenes/GestorEmpleados/GestionEmpleadosDB.webp"
+        ]
+      }
+    ];
 
-/* ═══════════════════════════════════════════════════
-   STATE
-═══════════════════════════════════════════════════ */
-let lang  = localStorage.getItem('fw-lang')  || 'es';
-let theme = localStorage.getItem('fw-theme') || 'light';
-let modalIndex = 0;
-let galleryIndex = 0;
+    /* ═══════════════════════════════════════════════════
+       i18n
+    ═══════════════════════════════════════════════════ */
+    const T = {
+      es: {
+        "nav.projects": "Proyectos", "nav.skills": "Tecnologías", "nav.about": "Sobre mí", "nav.contact": "Contacto", "nav.cv": "Descargar CV",
+        "hero.tag": "Desarrollador .NET · Buenos Aires, Argentina",
+        "hero.desc": "Desarrollo aplicaciones web y de escritorio, y soluciones de gestión de datos con C# .NET y SQL Server. Formado en la UTN, con foco en código limpio y resolución de problemas reales.",
+        "hero.ctaContact": "Contactar", "hero.ctaCV": "Descargar CV", "hero.ctaProjects": "Ver proyectos",
+        "hero.stat1Label": "Especialidad", "hero.stat2Label": "Formación", "hero.stat3Label": "Stack principal",
+        "hero.stat4Label": "Disponibilidad", "hero.stat5Label": "Ubicación",
+        "projects.title": "Proyectos\ndestacados",
+        "exp.title": "Experiencia", "exp.present": "Presente",
+        "projects.p1.type": "App web", "projects.p2.type": "App web", "projects.p3.type": "App escritorio",
+        "projects.p1.desc": "Catálogo de películas con sistema de reseñas, favoritos, calificaciones y autenticación por roles.",
+        "projects.p2.desc": "Plataforma para administrar y filtrar productos con control de acceso y roles diferenciados. Disponible online.",
+        "projects.p3.desc": "Gestión integral de empleados, proyectos y sueldos para PyMEs. Versiones SQLite y SQL Server disponibles.",
+        "projects.p4.desc": "Nuevo proyecto en desarrollo. Próximamente con todos los detalles.",
+        "projects.demo": "Ver demo", "projects.code": "Ver código", "projects.download": "Descargar app", "projects.viewDetail": "Ver detalle",
+        "skills.title": "Tecnologías\n& herramientas",
+        "skills.backend": "Backend", "skills.frontend": "Frontend", "skills.databases": "Base de datos", "skills.tools": "Herramientas", "skills.learning": "Aprendiendo", "skills.additional": "Lenguajes adicionales",
+        "about.title": "Sobre\nmí",
+        "about.p1": "Soy desarrollador .NET formado en la Tecnicatura Universitaria en Programación de la UTN, con práctica constante en proyectos reales usando C#, .NET y SQL Server.",
+        "about.p2": "Me apasiona construir software que resuelva problemas concretos — desde aplicaciones de escritorio hasta soluciones web y manejo de datos. Trabajo con foco en código limpio, legible y mantenible.",
+        "about.p3": "Busco seguir creciendo profesionalmente, ampliar mis capacidades técnicas y aportar valor real en cada proyecto que enfrento.",
+        "about.education.label": "Formación", "about.education.value": "Tec. Universitaria en Programación · UTN",
+        "about.specialty.label": "Especialidad", "about.specialty.value": "Aplicaciones web, desktop y datos (.NET)",
+        "about.location.label": "Ubicación", "about.location.value": "Buenos Aires, Argentina",
+        "about.languages.label": "Idiomas", "about.languages.value": "Español · Inglés técnico",
+        "about.availability.label": "Disponibilidad", "about.availability.value": "Abierto a oportunidades",
+        "contact.title": "Hablemos", "contact.heading": "¿Tenés un proyecto\no propuesta?",
+        "contact.sub": "Estoy disponible para trabajo freelance, relación de dependencia o colaboración en proyectos. Escribime y hablamos.",
+        "contact.name": "Nombre", "contact.namePh": "Tu nombre",
+        "contact.email": "Correo electrónico", "contact.message": "Mensaje", "contact.messagePh": "Contame sobre tu proyecto o consulta…",
+        "contact.send": "Enviar mensaje",
+        "modal.description": "Descripción", "modal.technologies": "Tecnologías", "modal.details": "Detalles",
+        "modal.prev": "Anterior", "modal.next": "Siguiente",
+        "footer.role": "Desarrollador .NET · Buenos Aires",
+      },
+      en: {
+        "nav.projects": "Projects", "nav.skills": "Skills", "nav.about": "About", "nav.contact": "Contact", "nav.cv": "Download CV",
+        "hero.tag": ".NET Developer · Buenos Aires, Argentina",
+        "hero.desc": "I build web and desktop applications, as well as data solutions using C# .NET and SQL Server. I studied at UTN and focus on clean code and solving real-world problems.",
+        "hero.ctaContact": "Contact", "hero.ctaCV": "Download CV", "hero.ctaProjects": "View projects",
+        "hero.stat1Label": "Specialty", "hero.stat2Label": "Education", "hero.stat3Label": "Main stack",
+        "hero.stat4Label": "Availability", "hero.stat5Label": "Location",
+        "projects.title": "Featured\nprojects",
+        "exp.title": "Experience", "exp.present": "Present",
+        "projects.p1.type": "Web app", "projects.p2.type": "Web app", "projects.p3.type": "Desktop app",
+        "projects.p1.desc": "Movie catalog with review system, favorites, ratings and role-based authentication.",
+        "projects.p2.desc": "Platform for managing and filtering products with role-based access control. Deployed online.",
+        "projects.p3.desc": "Full management system for employees, projects and salaries for SMEs. SQLite and SQL Server versions available.",
+        "projects.p4.desc": "New project in development. Details coming soon.",
+        "projects.demo": "Live demo", "projects.code": "View code", "projects.download": "Download app", "projects.viewDetail": "View details",
+        "skills.title": "Technologies\n& tools",
+        "skills.backend": "Backend", "skills.frontend": "Frontend", "skills.databases": "Databases", "skills.tools": "Tools", "skills.learning": "Learning", "skills.additional": "Additional languages",
+        "about.title": "About\nme",
+        "about.p1": "I'm a .NET developer with a University Technical Degree in Programming from UTN, with hands-on experience building real-world projects using C#, .NET and SQL Server.",
+        "about.p2": "I'm passionate about crafting software that solves concrete problems — from desktop apps to web solutions and data management. I focus on clean, readable and maintainable code.",
+        "about.p3": "I'm looking to keep growing professionally, expand my technical capabilities and bring real value to every challenge I take on.",
+        "about.education.label": "Education", "about.education.value": "Univ. Tech. Degree in Programming · UTN",
+        "about.specialty.label": "Specialty", "about.specialty.value": "Web, desktop & data apps (.NET)",
+        "about.location.label": "Location", "about.location.value": "Buenos Aires, Argentina",
+        "about.languages.label": "Languages", "about.languages.value": "Spanish (native) · Technical English",
+        "about.availability.label": "Availability", "about.availability.value": "Open to opportunities",
+        "contact.title": "Let's talk", "contact.heading": "Have a project\nor proposal?",
+        "contact.sub": "Available for freelance work, full-time positions or project collaborations. Feel free to reach out.",
+        "contact.name": "Name", "contact.namePh": "Your name",
+        "contact.email": "Email address", "contact.message": "Message", "contact.messagePh": "Tell me about your project or inquiry…",
+        "contact.send": "Send message",
+        "modal.description": "Description", "modal.technologies": "Technologies", "modal.details": "Details",
+        "modal.prev": "Prev", "modal.next": "Next",
+        "footer.role": ".NET Developer · Buenos Aires",
+      }
+    };
 
-/* ═══════════════════════════════════════════════════
-   i18n APPLY
-═══════════════════════════════════════════════════ */
-function setLang(l) {
-  lang = l;
-  localStorage.setItem('fw-lang', l);
-  document.documentElement.setAttribute('lang', l);
-  document.getElementById('lang-label').textContent = l === 'es' ? 'EN' : 'ES';
-  const t = T[l];
-  document.querySelectorAll('[data-i18n]').forEach(el => {
-    const v = t[el.getAttribute('data-i18n')];
-    if (v !== undefined) el.innerHTML = v.replace(/\n/g, '<br>');
-  });
-  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
-    const v = t[el.getAttribute('data-i18n-ph')];
-    if (v !== undefined) el.placeholder = v;
-  });
-  document.title = l === 'es'
-  // ? 'Franco Wagenhöfer — Desarrollador .NET'
-  // : 'Franco Wagenhöfer — .NET Developer';
-    ? 'Franco Wagenhöfer'
-    : 'Franco Wagenhöfer';
-}
+    /* ═══════════════════════════════════════════════════
+       STATE
+    ═══════════════════════════════════════════════════ */
+    let lang = localStorage.getItem('fw-lang') || 'es';
+    let theme = localStorage.getItem('fw-theme') || 'light';
+    let modalIndex = 0;
+    let galleryIndex = 0;
 
-/* ═══════════════════════════════════════════════════
-   THEME
-═══════════════════════════════════════════════════ */
-function setTheme(t) {
-  theme = t;
-  localStorage.setItem('fw-theme', t);
-  document.documentElement.setAttribute('data-theme', t);
-  document.getElementById('icon-moon').style.display = t === 'dark' ? 'none'  : 'block';
-  document.getElementById('icon-sun' ).style.display = t === 'dark' ? 'block' : 'none';
-  
-  /* actualizar logo del navbar según tema (sincronizado) */
-  const navLogoSvg = document.getElementById('nav-logo-svg');
-  if (navLogoSvg) {
-    navLogoSvg.innerHTML = t === 'dark' ? LOGO_DARK : LOGO_LIGHT;
-  }
-}
+    /* ═══════════════════════════════════════════════════
+       i18n APPLY
+    ═══════════════════════════════════════════════════ */
+    function setLang(l) {
+      lang = l;
+      localStorage.setItem('fw-lang', l);
+      document.documentElement.setAttribute('lang', l);
+      document.getElementById('lang-label').textContent = l === 'es' ? 'EN' : 'ES';
+      const t = T[l];
+      document.querySelectorAll('[data-i18n]').forEach(el => {
+        const v = t[el.getAttribute('data-i18n')];
+        if (v !== undefined) el.innerHTML = v.replace(/\n/g, '<br>');
+      });
+      document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+        const v = t[el.getAttribute('data-i18n-ph')];
+        if (v !== undefined) el.placeholder = v;
+      });
+      document.title = l === 'es'
+        // ? 'Franco Wagenhöfer — Desarrollador .NET'
+        // : 'Franco Wagenhöfer — .NET Developer';
+        ? 'Franco Wagenhöfer'
+        : 'Franco Wagenhöfer';
+    }
 
-/* ═══════════════════════════════════════════════════
-   MODAL — galería + info
-═══════════════════════════════════════════════════ */
-const overlay    = document.getElementById('project-modal-overlay');
-const modalImg   = document.getElementById('modal-gallery-img');
-const thumbsCont = document.getElementById('modal-gallery-thumbs');
+    /* ═══════════════════════════════════════════════════
+       THEME
+    ═══════════════════════════════════════════════════ */
+    function setTheme(t) {
+      theme = t;
+      localStorage.setItem('fw-theme', t);
+      document.documentElement.setAttribute('data-theme', t);
+      document.getElementById('icon-moon').style.display = t === 'dark' ? 'none' : 'block';
+      document.getElementById('icon-sun').style.display = t === 'dark' ? 'block' : 'none';
 
-function renderGallery(images) {
-  thumbsCont.innerHTML = '';
-  galleryIndex = 0;
+      /* actualizar logo del navbar según tema (sincronizado) */
+      const navLogoSvg = document.getElementById('nav-logo-svg');
+      if (navLogoSvg) {
+        navLogoSvg.innerHTML = t === 'dark' ? LOGO_DARK : LOGO_LIGHT;
+      }
+    }
 
-  if (!images || images.length === 0) {
-    modalImg.src = '';
-    return;
-  }
+    /* ═══════════════════════════════════════════════════
+       MODAL — galería + info
+    ═══════════════════════════════════════════════════ */
+    const overlay = document.getElementById('project-modal-overlay');
+    const modalImg = document.getElementById('modal-gallery-img');
+    const thumbsCont = document.getElementById('modal-gallery-thumbs');
 
-  modalImg.src = images[0];
-  modalImg.alt = '';
+    function renderGallery(images) {
+      thumbsCont.innerHTML = '';
+      galleryIndex = 0;
 
-  images.forEach((src, i) => {
-    const th = document.createElement('div');
-    th.className = 'gallery-thumb' + (i === 0 ? ' active' : '');
-    const img = document.createElement('img');
-    img.src = src; img.alt = '';
-    th.appendChild(img);
-    th.addEventListener('click', () => setGalleryIndex(i, images));
-    thumbsCont.appendChild(th);
-  });
-}
+      if (!images || images.length === 0) {
+        modalImg.src = '';
+        return;
+      }
 
-function setGalleryIndex(i, images) {
-  if (!images || i < 0 || i >= images.length) return;
-  galleryIndex = i;
+      modalImg.src = images[0];
+      modalImg.alt = '';
 
-  modalImg.classList.add('fade-out');
-  setTimeout(() => {
-    modalImg.src = images[i];
-    modalImg.classList.remove('fade-out');
-  }, 150);
+      images.forEach((src, i) => {
+        const th = document.createElement('div');
+        th.className = 'gallery-thumb' + (i === 0 ? ' active' : '');
+        const img = document.createElement('img');
+        img.src = src; img.alt = '';
+        th.appendChild(img);
+        th.addEventListener('click', () => setGalleryIndex(i, images));
+        thumbsCont.appendChild(th);
+      });
+    }
 
-  thumbsCont.querySelectorAll('.gallery-thumb').forEach((t, idx) => {
-    t.classList.toggle('active', idx === i);
-  });
-}
+    function setGalleryIndex(i, images) {
+      if (!images || i < 0 || i >= images.length) return;
+      galleryIndex = i;
 
-function openModal(projectIdx) {
-  const p = PROJECTS[projectIdx];
-  if (!p) return;
-  modalIndex = projectIdx;
+      modalImg.classList.add('fade-out');
+      setTimeout(() => {
+        modalImg.src = images[i];
+        modalImg.classList.remove('fade-out');
+      }, 150);
 
-  // tipo + título
-  document.getElementById('modal-type').textContent  = p.type[lang];
-  document.getElementById('modal-title').textContent = p.name;
+      thumbsCont.querySelectorAll('.gallery-thumb').forEach((t, idx) => {
+        t.classList.toggle('active', idx === i);
+      });
+    }
 
-  // descripción
-  document.getElementById('modal-desc').innerHTML = p.desc[lang];
+    function openModal(projectIdx) {
+      const p = PROJECTS[projectIdx];
+      if (!p) return;
+      modalIndex = projectIdx;
 
-  // chips de tecnologías
-  const techsCont = document.getElementById('modal-techs');
-  techsCont.innerHTML = p.techs.map(t => `<span class="modal-chip">${t}</span>`).join('');
+      // tipo + título
+      document.getElementById('modal-type').textContent = p.type[lang];
+      document.getElementById('modal-title').textContent = p.name;
 
-  // detalles
-  const detailsCont = document.getElementById('modal-details');
-  detailsCont.innerHTML = (p.details[lang] || []).map(d =>
-    `<div class="modal-detail-item">
+      // descripción
+      document.getElementById('modal-desc').innerHTML = p.desc[lang];
+
+      // chips de tecnologías
+      const techsCont = document.getElementById('modal-techs');
+      techsCont.innerHTML = p.techs.map(t => `<span class="modal-chip">${t}</span>`).join('');
+
+      // detalles
+      const detailsCont = document.getElementById('modal-details');
+      detailsCont.innerHTML = (p.details[lang] || []).map(d =>
+        `<div class="modal-detail-item">
        <div class="modal-detail-label">${d.label}</div>
        <div class="modal-detail-value">${d.value}</div>
      </div>`
-  ).join('');
+      ).join('');
 
-  // links
-  const linksCont = document.getElementById('modal-links');
-  linksCont.innerHTML = (p.links[lang] || []).map(l =>
-    `<a href="${l.href}" target="_blank" rel="noopener noreferrer"
+      // links
+      const linksCont = document.getElementById('modal-links');
+      linksCont.innerHTML = (p.links[lang] || []).map(l =>
+        `<a href="${l.href}" target="_blank" rel="noopener noreferrer"
         class="${l.primary ? 'modal-btn-fill' : 'modal-btn-outline'}">${l.label}</a>`
-  ).join('');
+      ).join('');
 
-  // galería
-  renderGallery(p.images);
+      // galería
+      renderGallery(p.images);
 
-  // contador
-  document.getElementById('modal-counter').textContent =
-    `${projectIdx + 1} / ${PROJECTS.length}`;
+      // contador
+      document.getElementById('modal-counter').textContent =
+        `${projectIdx + 1} / ${PROJECTS.length}`;
 
-  // abrir overlay
-  overlay.classList.add('open');
-  document.body.style.overflow = 'hidden';
-}
-
-function closeModal() {
-  overlay.classList.remove('open');
-  document.body.style.overflow = '';
-}
-
-function navigateModal(dir) {
-  let next = modalIndex + dir;
-  if (next < 0) next = PROJECTS.length - 1;
-  if (next >= PROJECTS.length) next = 0;
-  openModal(next);
-}
-
-// abrir con botón "Ver detalle" o overlay hover btn
-document.addEventListener('click', e => {
-  const btn = e.target.closest('[data-open]');
-  if (!btn) return;
-  const idx = parseInt(btn.dataset.open, 10);
-  if (!isNaN(idx) && PROJECTS[idx]) openModal(idx);
-});
-
-// cerrar
-document.getElementById('modal-close').addEventListener('click', closeModal);
-overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
-
-// flechas galería
-document.getElementById('gallery-prev').addEventListener('click', e => {
-  e.stopPropagation();
-  const imgs = PROJECTS[modalIndex].images;
-  setGalleryIndex((galleryIndex - 1 + imgs.length) % imgs.length, imgs);
-});
-document.getElementById('gallery-next').addEventListener('click', e => {
-  e.stopPropagation();
-  const imgs = PROJECTS[modalIndex].images;
-  setGalleryIndex((galleryIndex + 1) % imgs.length, imgs);
-});
-
-// nav entre proyectos
-document.getElementById('modal-prev').addEventListener('click', () => navigateModal(-1));
-document.getElementById('modal-next').addEventListener('click', () => navigateModal(1));
-
-// teclado
-window.addEventListener('keydown', e => {
-  if (!overlay.classList.contains('open')) return;
-  if (e.key === 'Escape')      closeModal();
-  if (e.key === 'ArrowRight')  setGalleryIndex((galleryIndex + 1) % PROJECTS[modalIndex].images.length, PROJECTS[modalIndex].images);
-  if (e.key === 'ArrowLeft')   setGalleryIndex((galleryIndex - 1 + PROJECTS[modalIndex].images.length) % PROJECTS[modalIndex].images.length, PROJECTS[modalIndex].images);
-});
-
-/* ═══════════════════════════════════════════════════
-   NAV SCROLL
-═══════════════════════════════════════════════════ */
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll', () => {
-  navbar.classList.toggle('scrolled', window.scrollY > 20);
-}, { passive: true });
-
-/* ═══════════════════════════════════════════════════
-   SCROLL REVEAL
-═══════════════════════════════════════════════════ */
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry, i) => {
-    if (entry.isIntersecting) {
-      setTimeout(() => entry.target.classList.add('visible'), i * 70);
-      revealObserver.unobserve(entry.target);
-    }
-  });
-}, { threshold: 0.08 });
-document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
-
-/* ═══════════════════════════════════════════════════════════════
-   HERO GRADIENT ANIMATION — "Alejandra"
-   ────────────────────────────────────────────────────────────
-   HOW IT WORKS
-   Four large radial "blobs" drift slowly across the canvas on
-   independent sinusoidal paths. Each blob is a radial gradient
-   that fades to transparent at its edge, so they blend softly.
-   The canvas opacity is driven by scroll position, creating a
-   smooth fade-out as the user scrolls away from the hero.
-   The animation loop pauses automatically when the hero is
-   fully off-screen, saving CPU.
-
-   ── TUNE THESE TO ADJUST THE FEEL ──────────────────────────
-   SPEED        lower  → slower drift          (default 0.00025)
-   BLOB_RADIUS  higher → larger, softer blobs  (default 0.60)
-   ALPHA_LIGHT  higher → more visible light-mode (default 0.60)
-   ALPHA_DARK   higher → more visible dark-mode  (default 0.50)
-   FADE_START   scroll px where fade begins    (default 60)
-   FADE_END     scroll px where fully gone     (default heroH)
-═══════════════════════════════════════════════════════════════ */
-(function heroGradient() {
-  'use strict';
-
-  const canvas = document.getElementById('hero-canvas');
-  if (!canvas) return;
-  const ctx = canvas.getContext('2d');
-
-  /* ── tuneable ────────────────────────────────────────────── */
-  const BLOB_COUNT   = 4;
-  // const SPEED        = 0.00025;
-  const SPEED        = 0.0003;
-  const BLOB_RADIUS  = 0.60;   /* fraction of canvas width     */
-  const ALPHA_LIGHT  = 0.75;   /* peak opacity, light mode     */
-  const ALPHA_DARK   = 0.50;   /* peak opacity, dark mode      */
-  const FADE_START   = 60;     /* px scrolled → start fade     */
-
-  /* ── palettes ────────────────────────────────────────────── */
-  const PAL = {
-    light: [
-      [200, 200, 198], // gris muy claro
-      [230, 230, 230], // gris suave
-      [245, 245, 245], // casi blanco
-      [235, 235, 235], // gris perla claro
-    ],
-    dark: [
-      [58, 28, 98] /* deep violet    */,
-      [38, 18, 78] /* indigo shadow  */,
-      [18, 38, 80] /* midnight blue  */,
-      [78, 28, 118] /* plum           */,
-    ],
-  };
-
-  /* ── state ───────────────────────────────────────────────── */
-  let W = 0, H = 0;
-  let rafId      = null;
-  let offScreen  = false;   /* IntersectionObserver flag        */
-  let scrollAlpha = 1;      /* driven by scroll, 0..1           */
-
-  /* ── blobs: each wanders on its own sinusoidal path ──────── */
-  const blobs = Array.from({ length: BLOB_COUNT }, (_, i) => ({
-    phaseX : Math.random() * Math.PI * 2,
-    phaseY : Math.random() * Math.PI * 2,
-    freqX  : 0.65 + Math.random() * 0.55,
-    freqY  : 0.65 + Math.random() * 0.55,
-    ampX   : 0.16 + Math.random() * 0.16,
-    ampY   : 0.12 + Math.random() * 0.14,
-    baseX  : 0.12 + (i / (BLOB_COUNT - 1)) * 0.76,
-    baseY  : 0.18 + Math.random() * 0.64,
-    ci     : i,   /* color index */
-  }));
-
-  /* ── helpers ─────────────────────────────────────────────── */
-  function isDark() {
-    return document.documentElement.getAttribute('data-theme') === 'dark';
-  }
-
-  function resize() {
-    const r = canvas.parentElement.getBoundingClientRect();
-    W = canvas.width  = Math.round(r.width);
-    H = canvas.height = Math.round(r.height);
-  }
-
-  /* ── scroll → opacity ────────────────────────────────────── */
-  function updateScrollAlpha() {
-    const heroH    = canvas.parentElement.offsetHeight;
-    const fadeEnd  = heroH * 0.65;          /* fully gone at 65% scroll */
-    const y        = window.scrollY;
-    if (y <= FADE_START) {
-      scrollAlpha = 1;
-    } else if (y >= fadeEnd) {
-      scrollAlpha = 0;
-    } else {
-      scrollAlpha = 1 - (y - FADE_START) / (fadeEnd - FADE_START);
-    }
-    /* apply directly to canvas element — no layout impact */
-    canvas.style.opacity = scrollAlpha;
-  }
-
-  /* ── main draw loop ──────────────────────────────────────── */
-  function draw(ts) {
-    rafId = requestAnimationFrame(draw);
-
-    /* skip painting when invisible (saves GPU/CPU) */
-    if (offScreen || scrollAlpha <= 0.01) {
-      ctx.clearRect(0, 0, W, H);
-      return;
+      // abrir overlay
+      overlay.classList.add('open');
+      document.body.style.overflow = 'hidden';
     }
 
-    ctx.clearRect(0, 0, W, H);
+    function closeModal() {
+      overlay.classList.remove('open');
+      document.body.style.overflow = '';
+    }
 
-    const t      = ts * SPEED;
-    const dark   = isDark();
-    const alpha  = dark ? ALPHA_DARK : ALPHA_LIGHT;
-    const pal    = dark ? PAL.dark : PAL.light;
-    const radius = W * BLOB_RADIUS;
+    function navigateModal(dir) {
+      let next = modalIndex + dir;
+      if (next < 0) next = PROJECTS.length - 1;
+      if (next >= PROJECTS.length) next = 0;
+      openModal(next);
+    }
 
-    blobs.forEach(b => {
-      const x  = (b.baseX + Math.sin(t * b.freqX + b.phaseX) * b.ampX) * W;
-      const y  = (b.baseY + Math.cos(t * b.freqY + b.phaseY) * b.ampY) * H;
-      const [r, g, bl] = pal[b.ci];
-
-      const grd = ctx.createRadialGradient(x, y, 0, x, y, radius);
-      grd.addColorStop(0,   `rgba(${r},${g},${bl},${alpha})`);
-      grd.addColorStop(0.5, `rgba(${r},${g},${bl},${alpha * 0.3})`);
-      grd.addColorStop(1,   `rgba(${r},${g},${bl},0)`);
-
-      ctx.fillStyle = grd;
-      ctx.beginPath();
-      ctx.arc(x, y, radius, 0, Math.PI * 2);
-      ctx.fill();
+    // abrir con botón "Ver detalle" o overlay hover btn
+    document.addEventListener('click', e => {
+      const btn = e.target.closest('[data-open]');
+      if (!btn) return;
+      const idx = parseInt(btn.dataset.open, 10);
+      if (!isNaN(idx) && PROJECTS[idx]) openModal(idx);
     });
-  }
 
-  /* ── pause when hero leaves viewport (IntersectionObserver) ─ */
-  new IntersectionObserver(entries => {
-    offScreen = !entries[0].isIntersecting;
-  }, { threshold: 0 }).observe(canvas.parentElement);
+    // cerrar
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    overlay.addEventListener('click', e => { if (e.target === overlay) closeModal(); });
 
-  /* ── responsive: redraw canvas size on resize ────────────── */
-  new ResizeObserver(resize).observe(canvas.parentElement);
+    // flechas galería
+    document.getElementById('gallery-prev').addEventListener('click', e => {
+      e.stopPropagation();
+      const imgs = PROJECTS[modalIndex].images;
+      setGalleryIndex((galleryIndex - 1 + imgs.length) % imgs.length, imgs);
+    });
+    document.getElementById('gallery-next').addEventListener('click', e => {
+      e.stopPropagation();
+      const imgs = PROJECTS[modalIndex].images;
+      setGalleryIndex((galleryIndex + 1) % imgs.length, imgs);
+    });
 
-  /* ── scroll listener (throttled with rAF flag) ───────────── */
-  let scrollTicking = false;
-  window.addEventListener('scroll', () => {
-    if (scrollTicking) return;
-    scrollTicking = true;
-    requestAnimationFrame(() => { updateScrollAlpha(); scrollTicking = false; });
-  }, { passive: true });
+    // nav entre proyectos
+    document.getElementById('modal-prev').addEventListener('click', () => navigateModal(-1));
+    document.getElementById('modal-next').addEventListener('click', () => navigateModal(1));
 
-  /* ── boot ────────────────────────────────────────────────── */
-  resize();
-  updateScrollAlpha();
-  rafId = requestAnimationFrame(draw);
-})();
+    // teclado
+    window.addEventListener('keydown', e => {
+      if (!overlay.classList.contains('open')) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowRight') setGalleryIndex((galleryIndex + 1) % PROJECTS[modalIndex].images.length, PROJECTS[modalIndex].images);
+      if (e.key === 'ArrowLeft') setGalleryIndex((galleryIndex - 1 + PROJECTS[modalIndex].images.length) % PROJECTS[modalIndex].images.length, PROJECTS[modalIndex].images);
+    });
 
-/* ═══════════════════════════════════════════════════
-   DIVIDER FADE — líneas divisoras se desvanecen
-   cuando la sección ya pasó por el viewport
-═══════════════════════════════════════════════════ */
-(function dividerFade() {
-  /* observamos todas las secciones excepto hero */
-  const sections = document.querySelectorAll('section:not(.hero)');
+    /* ═══════════════════════════════════════════════════
+       NAV SCROLL
+    ═══════════════════════════════════════════════════ */
+    const navbar = document.getElementById('navbar');
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 20);
+    }, { passive: true });
 
-  const obs = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-      /* cuando la sección sale por ARRIBA (ya pasó) → fade la línea */
-      if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
-        entry.target.classList.add('divider-faded');
-      } else {
-        entry.target.classList.remove('divider-faded');
+    /* ═══════════════════════════════════════════════════
+       SCROLL REVEAL
+    ═══════════════════════════════════════════════════ */
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 70);
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => revealObserver.observe(el));
+
+    /* ═══════════════════════════════════════════════════════════════
+       HERO GRADIENT ANIMATION — "Alejandra"
+       ────────────────────────────────────────────────────────────
+       HOW IT WORKS
+       Four large radial "blobs" drift slowly across the canvas on
+       independent sinusoidal paths. Each blob is a radial gradient
+       that fades to transparent at its edge, so they blend softly.
+       The canvas opacity is driven by scroll position, creating a
+       smooth fade-out as the user scrolls away from the hero.
+       The animation loop pauses automatically when the hero is
+       fully off-screen, saving CPU.
+    
+       ── TUNE THESE TO ADJUST THE FEEL ──────────────────────────
+       SPEED        lower  → slower drift          (default 0.00025)
+       BLOB_RADIUS  higher → larger, softer blobs  (default 0.60)
+       ALPHA_LIGHT  higher → more visible light-mode (default 0.60)
+       ALPHA_DARK   higher → more visible dark-mode  (default 0.50)
+       FADE_START   scroll px where fade begins    (default 60)
+       FADE_END     scroll px where fully gone     (default heroH)
+    ═══════════════════════════════════════════════════════════════ */
+    (function heroGradient() {
+      'use strict';
+
+      const canvas = document.getElementById('hero-canvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      /* ── tuneable ────────────────────────────────────────────── */
+      const BLOB_COUNT = 4;
+      // const SPEED        = 0.00025;
+      const SPEED = 0.0003;
+      const BLOB_RADIUS = 0.60;   /* fraction of canvas width     */
+      const ALPHA_LIGHT = 0.75;   /* peak opacity, light mode     */
+      const ALPHA_DARK = 0.50;   /* peak opacity, dark mode      */
+      const FADE_START = 60;     /* px scrolled → start fade     */
+
+      /* ── palettes ────────────────────────────────────────────── */
+      const PAL = {
+        light: [
+          [200, 200, 198], // gris muy claro
+          [230, 230, 230], // gris suave
+          [245, 245, 245], // casi blanco
+          [235, 235, 235], // gris perla claro
+        ],
+        dark: [
+          [58, 28, 98] /* deep violet    */,
+          [38, 18, 78] /* indigo shadow  */,
+          [18, 38, 80] /* midnight blue  */,
+          [78, 28, 118] /* plum           */,
+        ],
+      };
+
+      /* ── state ───────────────────────────────────────────────── */
+      let W = 0, H = 0;
+      let rafId = null;
+      let offScreen = false;   /* IntersectionObserver flag        */
+      let scrollAlpha = 1;      /* driven by scroll, 0..1           */
+
+      /* ── blobs: each wanders on its own sinusoidal path ──────── */
+      const blobs = Array.from({ length: BLOB_COUNT }, (_, i) => ({
+        phaseX: Math.random() * Math.PI * 2,
+        phaseY: Math.random() * Math.PI * 2,
+        freqX: 0.65 + Math.random() * 0.55,
+        freqY: 0.65 + Math.random() * 0.55,
+        ampX: 0.16 + Math.random() * 0.16,
+        ampY: 0.12 + Math.random() * 0.14,
+        baseX: 0.12 + (i / (BLOB_COUNT - 1)) * 0.76,
+        baseY: 0.18 + Math.random() * 0.64,
+        ci: i,   /* color index */
+      }));
+
+      /* ── helpers ─────────────────────────────────────────────── */
+      function isDark() {
+        return document.documentElement.getAttribute('data-theme') === 'dark';
       }
-    });
-  }, {
-    threshold: 0,
-    rootMargin: '0px 0px 0px 0px'
-  });
 
-  sections.forEach(s => obs.observe(s));
-})();
+      function resize() {
+        const r = canvas.parentElement.getBoundingClientRect();
+        W = canvas.width = Math.round(r.width);
+        H = canvas.height = Math.round(r.height);
+      }
 
-/* ═══════════════════════════════════════════════════
-   BOOT
-═══════════════════════════════════════════════════ */
-setTheme(theme);
-setLang(lang);
+      /* ── scroll → opacity ────────────────────────────────────── */
+      function updateScrollAlpha() {
+        const heroH = canvas.parentElement.offsetHeight;
+        const fadeEnd = heroH * 0.65;          /* fully gone at 65% scroll */
+        const y = window.scrollY;
+        if (y <= FADE_START) {
+          scrollAlpha = 1;
+        } else if (y >= fadeEnd) {
+          scrollAlpha = 0;
+        } else {
+          scrollAlpha = 1 - (y - FADE_START) / (fadeEnd - FADE_START);
+        }
+        /* apply directly to canvas element — no layout impact */
+        canvas.style.opacity = scrollAlpha;
+      }
 
-document.getElementById('lang-btn' ).addEventListener('click', () => setLang(lang   === 'es' ? 'en' : 'es'));
-document.getElementById('theme-btn').addEventListener('click', () => setTheme(theme === 'light' ? 'dark' : 'light'));
+      /* ── main draw loop ──────────────────────────────────────── */
+      function draw(ts) {
+        rafId = requestAnimationFrame(draw);
+
+        /* skip painting when invisible (saves GPU/CPU) */
+        if (offScreen || scrollAlpha <= 0.01) {
+          ctx.clearRect(0, 0, W, H);
+          return;
+        }
+
+        ctx.clearRect(0, 0, W, H);
+
+        const t = ts * SPEED;
+        const dark = isDark();
+        const alpha = dark ? ALPHA_DARK : ALPHA_LIGHT;
+        const pal = dark ? PAL.dark : PAL.light;
+        const radius = W * BLOB_RADIUS;
+
+        blobs.forEach(b => {
+          const x = (b.baseX + Math.sin(t * b.freqX + b.phaseX) * b.ampX) * W;
+          const y = (b.baseY + Math.cos(t * b.freqY + b.phaseY) * b.ampY) * H;
+          const [r, g, bl] = pal[b.ci];
+
+          const grd = ctx.createRadialGradient(x, y, 0, x, y, radius);
+          grd.addColorStop(0, `rgba(${r},${g},${bl},${alpha})`);
+          grd.addColorStop(0.5, `rgba(${r},${g},${bl},${alpha * 0.3})`);
+          grd.addColorStop(1, `rgba(${r},${g},${bl},0)`);
+
+          ctx.fillStyle = grd;
+          ctx.beginPath();
+          ctx.arc(x, y, radius, 0, Math.PI * 2);
+          ctx.fill();
+        });
+      }
+
+      /* ── pause when hero leaves viewport (IntersectionObserver) ─ */
+      new IntersectionObserver(entries => {
+        offScreen = !entries[0].isIntersecting;
+      }, { threshold: 0 }).observe(canvas.parentElement);
+
+      /* ── responsive: redraw canvas size on resize ────────────── */
+      new ResizeObserver(resize).observe(canvas.parentElement);
+
+      /* ── scroll listener (throttled with rAF flag) ───────────── */
+      let scrollTicking = false;
+      window.addEventListener('scroll', () => {
+        if (scrollTicking) return;
+        scrollTicking = true;
+        requestAnimationFrame(() => { updateScrollAlpha(); scrollTicking = false; });
+      }, { passive: true });
+
+      /* ── boot ────────────────────────────────────────────────── */
+      resize();
+      updateScrollAlpha();
+      rafId = requestAnimationFrame(draw);
+    })();
+
+    /* ═══════════════════════════════════════════════════
+       DIVIDER FADE — líneas divisoras se desvanecen
+       cuando la sección ya pasó por el viewport
+    ═══════════════════════════════════════════════════ */
+    (function dividerFade() {
+      /* observamos todas las secciones excepto hero */
+      const sections = document.querySelectorAll('section:not(.hero)');
+
+      const obs = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          /* cuando la sección sale por ARRIBA (ya pasó) → fade la línea */
+          if (!entry.isIntersecting && entry.boundingClientRect.top < 0) {
+            entry.target.classList.add('divider-faded');
+          } else {
+            entry.target.classList.remove('divider-faded');
+          }
+        });
+      }, {
+        threshold: 0,
+        rootMargin: '0px 0px 0px 0px'
+      });
+
+      sections.forEach(s => obs.observe(s));
+    })();
+
+    /* ═══════════════════════════════════════════════════
+       BOOT
+    ═══════════════════════════════════════════════════ */
+    setTheme(theme);
+    setLang(lang);
+
+    document.getElementById('lang-btn').addEventListener('click', () => setLang(lang === 'es' ? 'en' : 'es'));
+    document.getElementById('theme-btn').addEventListener('click', () => setTheme(theme === 'light' ? 'dark' : 'light'));
 
 
 
-</script>
+  </script>
 
 
-<!-- ════════════ LIGHTBOX ════════════ -->
-<div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lightbox-close" id="lb-close" aria-label="Cerrar">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
-  </button>
-  <button class="lightbox-arrow lb-prev" id="lb-prev" aria-label="Anterior">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
-  </button>
-  <div class="lightbox-img-wrap">
-    <img id="lb-img" src="" alt="" />
+  <!-- ════════════ LIGHTBOX ════════════ -->
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" id="lb-close" aria-label="Cerrar">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <line x1="18" y1="6" x2="6" y2="18" />
+        <line x1="6" y1="6" x2="18" y2="18" />
+      </svg>
+    </button>
+    <button class="lightbox-arrow lb-prev" id="lb-prev" aria-label="Anterior">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <polyline points="15 18 9 12 15 6" />
+      </svg>
+    </button>
+    <div class="lightbox-img-wrap">
+      <img id="lb-img" src="" alt="" />
+    </div>
+    <button class="lightbox-arrow lb-next" id="lb-next" aria-label="Siguiente">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <polyline points="9 18 15 12 9 6" />
+      </svg>
+    </button>
+    <div class="lightbox-counter" id="lb-counter"></div>
   </div>
-  <button class="lightbox-arrow lb-next" id="lb-next" aria-label="Siguiente">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-  </button>
-  <div class="lightbox-counter" id="lb-counter"></div>
-</div>
 
-<script>
-/* ═══════════════════════════════════════════════════
-   LIGHTBOX
-═══════════════════════════════════════════════════ */
-(function () {
-  const lb        = document.getElementById('lightbox');
-  const lbImg     = document.getElementById('lb-img');
-  const lbCounter = document.getElementById('lb-counter');
-  let lbImages = [];
-  let lbIndex  = 0;
+  <script>
+    /* ═══════════════════════════════════════════════════
+       LIGHTBOX
+    ═══════════════════════════════════════════════════ */
+    (function () {
+      const lb = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lb-img');
+      const lbCounter = document.getElementById('lb-counter');
+      let lbImages = [];
+      let lbIndex = 0;
 
-  function lbOpen(images, index) {
-    lbImages = images;
-    lbIndex  = index;
-    lbImg.src = lbImages[lbIndex];
-    lbCounter.textContent = lbImages.length > 1 ? (lbIndex + 1) + ' / ' + lbImages.length : '';
-    lb.classList.add('open');
-    lb.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-  }
+      function lbOpen(images, index) {
+        lbImages = images;
+        lbIndex = index;
+        lbImg.src = lbImages[lbIndex];
+        lbCounter.textContent = lbImages.length > 1 ? (lbIndex + 1) + ' / ' + lbImages.length : '';
+        lb.classList.add('open');
+        lb.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      }
 
-  function lbClose() {
-    lb.classList.remove('open');
-    lb.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
+      function lbClose() {
+        lb.classList.remove('open');
+        lb.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
+      }
 
-  function lbNav(dir) {
-    if (lbImages.length < 2) return;
-    lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
-    lbImg.src = lbImages[lbIndex];
-    lbCounter.textContent = (lbIndex + 1) + ' / ' + lbImages.length;
-  }
+      function lbNav(dir) {
+        if (lbImages.length < 2) return;
+        lbIndex = (lbIndex + dir + lbImages.length) % lbImages.length;
+        lbImg.src = lbImages[lbIndex];
+        lbCounter.textContent = (lbIndex + 1) + ' / ' + lbImages.length;
+      }
 
-  // Abrir al click en la imagen del modal
-  document.getElementById('modal-gallery-main').addEventListener('click', function (e) {
-    // ignorar clicks en flechas del modal
-    if (e.target.closest('.gallery-arrow')) return;
-    var proj = PROJECTS[modalIndex];
-    if (!proj || !proj.images || !proj.images[galleryIndex]) return;
-    lbOpen(proj.images, galleryIndex);
-  });
+      // Abrir al click en la imagen del modal
+      document.getElementById('modal-gallery-main').addEventListener('click', function (e) {
+        // ignorar clicks en flechas del modal
+        if (e.target.closest('.gallery-arrow')) return;
+        var proj = PROJECTS[modalIndex];
+        if (!proj || !proj.images || !proj.images[galleryIndex]) return;
+        lbOpen(proj.images, galleryIndex);
+      });
 
-  document.getElementById('lb-close').addEventListener('click', lbClose);
-  document.getElementById('lb-prev').addEventListener('click', function(e){ e.stopPropagation(); lbNav(-1); });
-  document.getElementById('lb-next').addEventListener('click', function(e){ e.stopPropagation(); lbNav(1); });
+      document.getElementById('lb-close').addEventListener('click', lbClose);
+      document.getElementById('lb-prev').addEventListener('click', function (e) { e.stopPropagation(); lbNav(-1); });
+      document.getElementById('lb-next').addEventListener('click', function (e) { e.stopPropagation(); lbNav(1); });
 
-  // Click en fondo o imagen → cerrar
-  lb.addEventListener('click', function(e){
-    if (e.target === lb) lbClose();
-  });
-  lbImg.addEventListener('click', lbClose);
+      // Click en fondo o imagen → cerrar
+      lb.addEventListener('click', function (e) {
+        if (e.target === lb) lbClose();
+      });
+      lbImg.addEventListener('click', lbClose);
 
-  // Teclado
-  document.addEventListener('keydown', function(e){
-    if (!lb.classList.contains('open')) return;
-    if (e.key === 'Escape')      lbClose();
-    if (e.key === 'ArrowRight')  lbNav(1);
-    if (e.key === 'ArrowLeft')   lbNav(-1);
-  });
-})();
-</script>
+      // Teclado
+      document.addEventListener('keydown', function (e) {
+        if (!lb.classList.contains('open')) return;
+        if (e.key === 'Escape') lbClose();
+        if (e.key === 'ArrowRight') lbNav(1);
+        if (e.key === 'ArrowLeft') lbNav(-1);
+      });
+    })();
+  </script>
 </body>
+
 </html>
