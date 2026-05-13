@@ -1711,7 +1711,7 @@
           <line x1="18.36" y1="5.64" x2="19.78" y2="4.22" />
         </svg>
       </button>
-      <a href="cv/CvFrancoWagenhöfer.pdf" class="nav-cv" target="_blank" data-i18n="nav.cv">Descargar CV</a>
+      <a href="cv/Franco_Wagenhofer_CV_ES.pdf" class="nav-cv" target="_blank" download="Franco_Wagenhofer_CV_ES.pdf" data-i18n="nav.cv">Descargar CV</a>
     </div>
   </nav>
 
@@ -1962,9 +1962,6 @@
             </div>
           </div>
         </div>
-
-
-
 
       </div>
     </div>
@@ -2310,7 +2307,7 @@
               francowagenhofer@gmail.com
             </a>
           </div>
-          <a href="cv/CvFrancoWagenhöfer.pdf" class="btn-outline contact-cv-btn" target="_blank" download
+          <a href="cv/Franco_Wagenhofer_CV_ES.pdf" class="btn-outline contact-cv-btn" target="_blank" download
             data-i18n="nav.cv">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
               stroke-linejoin="round">
@@ -2694,7 +2691,21 @@
         // : 'Franco Wagenhöfer — .NET Developer';
         ? 'Franco Wagenhöfer'
         : 'Franco Wagenhöfer';
+
+      // Actualizar enlaces del CV según idioma
+      const cvFile = l === 'es' ? 'Franco_Wagenhofer_CV_ES.pdf' : 'Franco_Wagenhofer_CV_EN.pdf';
+      const navCv = document.querySelector('a.nav-cv');
+      if (navCv) {
+        navCv.href = `cv/${cvFile}`;
+        navCv.setAttribute('download', cvFile);
+      }
+      const contactCv = document.querySelector('a.contact-cv-btn');
+      if (contactCv) {
+        contactCv.href = `cv/${cvFile}`;
+        contactCv.setAttribute('download', cvFile);
+      }
     }
+
 
     /* ═══════════════════════════════════════════════════
        THEME
